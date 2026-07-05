@@ -1,7 +1,14 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
+import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
+const migrationSteps = [
+  { icon: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/>', title: 'Start', desc: 'You have decided to migrate to Shopify with us.' },
+  { icon: '<line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="9" y2="9"/><line x1="21" x2="3" y1="14" y2="14"/><line x1="21" x2="13" y1="19" y2="19"/><polyline points="17 1 21 5 17 9"/><polyline points="7 6 3 10 7 14"/>', title: 'Preparation', desc: 'Together we will prepare for the migration.' },
+  { icon: '<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>', title: 'Data & SEO', desc: 'We will check inputs and set outputs to your expectations.' },
+  { icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>', title: 'Migration to Shopify', desc: 'Brand, narrative, colours, digital presence — all of it plays a role.' },
+];
 
 const features = [
   { title: 'Multichannel integration', desc: 'Sell <strong class="hl">from a single admin across all channels</strong> — Instagram, TikTok, Google Shopping, Amazon. One warehouse, one source of truth for inventory, everything from the Shopify admin.', img: '/shopify-chanels.webp', reverse: false },
@@ -27,13 +34,16 @@ const features = [
     imageAlt="Migration to Shopify"
   />
 
-  <!-- Intro -->
+  <!-- Intro + HOW WE DO IT sidebar -->
   <section class="section bg-primary">
-    <div class="container">
-      <h2 class="intro-h2">We'll kickstart your<br /><span class="accent-purple">MIGRATION TO SHOPIFY</span></h2>
-      <p class="intro-text">If you've hit the limits of your current platform, <strong class="hl">Shopify is the logical next step</strong>. Instead of a closed system with limited customisation, you get an open global platform built for growth — and expansion into international markets.</p>
-      <p class="intro-text">It supports <strong class="hl">multiple currencies and languages, integrations with external systems</strong>, and seamless connection between online and offline sales through a unified POS. We'll help you migrate smoothly — preserving your SEO, data and customer experience.</p>
-      <a href="#cta" class="btn-action btn-action--lg">Yes, we want to migrate</a>
+    <div class="container intro-layout">
+      <div class="intro-main">
+        <h2 class="h1 intro-h2">We'll kickstart your<br /><span class="accent-purple">MIGRATION TO SHOPIFY</span></h2>
+        <p class="intro-text">If you've hit the limits of your current platform, <strong class="hl">Shopify is the logical next step</strong>. Instead of a closed system with limited customisation, you get an open global platform built for growth — and expansion into international markets.</p>
+        <p class="intro-text">It supports <strong class="hl">multiple currencies and languages, integrations with external systems</strong>, and seamless connection between online and offline sales through a unified POS. We'll help you migrate smoothly — preserving your SEO, data and customer experience.</p>
+        <a href="#cta" class="btn-action btn-action--lg">Yes, we want to migrate</a>
+      </div>
+      <WorkSidebar heading="HOW WE DO IT" items={migrationSteps} />
     </div>
   </section>
 
@@ -64,7 +74,7 @@ const features = [
               <p class="body-maxi feature-lead-sub">If you have been around standard stores for a while, you will certainly appreciate these features and <strong class="hl">capabilities that come built-in with Shopify</strong></p>
             </div>
           )}
-          <h2 class="feature-title">{f.title}</h2>
+          <h3 class="h3 feature-title">{f.title}</h3>
           <p class="body" set:html={f.desc}></p>
         </div>
         <div class="feature-img-wrap">
@@ -87,7 +97,8 @@ const features = [
 </PageLayout>
 
 <style>
-  /* .hl (bold lavender) — globální utilita v global.css */
+  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
 
   /* Shopify Edition blok — obrázek + fialový štítek vlevo, text+tlačítko vpravo */
   /* obrázek = levá 1/3, čtverec přesahuje doprava až ke středu (1/2), text = pravá půlka */
@@ -118,7 +129,7 @@ const features = [
   .feature-section--reverse .feature-inner { direction: rtl; }
   .feature-section--reverse .feature-text,
   .feature-section--reverse .feature-img-wrap { direction: ltr; }
-  .feature-title { font-size: var(--fs-36); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-24); }
+  .feature-title { margin-bottom: var(--space-24); }
   .feature-img-wrap { display: flex; align-items: center; justify-content: center; }
 
 

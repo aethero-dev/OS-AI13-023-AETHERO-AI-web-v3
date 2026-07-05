@@ -1,19 +1,25 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
+import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
-const features = [
-  { title: 'Shopify Sidekick AI right in your store', logo: '/sidekick.png', desc: 'Sidekick is an AI assistant integrated into the store admin that significantly speeds up your work in Shopify. It can handle operational tasks (create products, edit collections, analyse sales, prepare reports), help with marketing (writing descriptions, emails) and advise based on your own data as well as general market knowledge.', img: null, reverse: false },
-  { title: 'A powerful "admin"', desc: 'We won\'t sugarcoat it — building a store takes work, and even then the road to success is not easy. So you will spend a lot of time in the "admin". And it helps when it is clear and keeps up with you. The Shopify admin has it all: analytics, hints, AI that sees your data and can even advise based on general experience from elsewhere. And that is just the beginning.', img: '/analytika.webp', reverse: true },
-  { title: 'Built for international selling', desc: 'Markets in Shopify handles local currency, payment methods and languages. Additional features help you give global customers a familiar shopping environment that demonstrably increases conversions. You can tune the theme, content, product selection and pricing per market. With Shop Pay you can offer their preferred payment methods and even adapt address formats to local conventions.', img: '/international-sale-shopify.webp', reverse: false },
-  { title: 'Sophisticated benchmarking against others', desc: 'Shopify shows you via AI and built-in benchmarks how similar stores around the world are performing. So you can measure your performance more accurately and use the information to your advantage.', img: '/store-benchmark.webp', reverse: true },
-  { title: 'Multichannel marketing', desc: 'Organise your marketing activities clearly across email, social media, advertising and organic traffic into cohesive campaigns. Clear per-channel reports help you better understand where customers come from, how much it costs to acquire them and what the return on your marketing investment is.', img: '/marketing-measurement.webp', reverse: false },
-  { title: 'Real-time store data overview', desc: 'With Shopify you have an immediate overview of how your store is truly performing — without waiting for daily recalculations or limited reports. Data updates in real time across the whole dashboard and reports. Customise the view to exactly what is decisive for you and monitor key metrics at a glance.', img: '/real-time-monitoring.png', reverse: true },
-  { title: 'B2B ready', desc: 'In Shopify Plus you will find native B2B functionality designed for companies with high order volume, complex pricing and individual business relationships. It enables working with company accounts, custom price lists, approval processes and recurring purchases in one unified solution. Want a smaller B2B solution? That is handled by an app or custom development.', img: '/b2b-1.webp', reverse: false },
-  { title: 'Shopify SHOP app, on your customer\'s phone', desc: 'Thanks to the Shop app, your brand reaches directly into customers\' mobile devices all over the world. An ideal user experience. Customers can easily track orders, return to favourite products and make repeat purchases without having to go through the entire checkout process again.', img: '/shopify-shop-app.webp', reverse: true },
-  { title: 'Automation', desc: 'With growing order volumes, manual management stops making sense. Automation lets you move key processes — from order and customer management through pricing and inventory to marketing scenarios — into controlled, predictable flows. The result is less dependence on manual intervention, lower error rates and the ability to scale without constantly growing the team.', img: '/flow-automation.webp', reverse: false },
+const startSteps = [
+  { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Market entry strategy', desc: 'Selection of priority countries, validation of potential, pricing and commercial strategy.' },
+  { icon: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>', title: 'Solution architecture', desc: 'Design of Shopify structure (Markets / multi-store), currencies, taxes, B2B, integrations.' },
+  { icon: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>', title: 'Localisation & compliance', desc: 'Content, payment methods, logistics, VAT, legislation and customer experience.' },
+  { icon: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>', title: 'Launch & scaling', desc: 'Go-to-market, performance, optimisation and systematic growth in new markets.' },
 ];
 
+const features = [
+  { title: 'A powerful "admin"', desc: '<p class="body">We won\'t sugarcoat it — building a store takes work, and even then the road to success is not easy. So you will spend a lot of time in the "admin". And it helps when it is clear and keeps up with you. The Shopify admin has it all: analytics, hints, AI that sees your data and can even advise based on general experience from elsewhere. And that is just the beginning.</p>', img: '/analytika.webp', reverse: true },
+  { title: 'Built for international selling', desc: '<p class="body">Markets in Shopify handles local currency, payment methods and languages. Additional features help you give global customers a familiar shopping environment that demonstrably increases conversions. You can tune the theme, content, product selection and pricing per market. With Shop Pay you can offer their preferred payment methods and even adapt address formats to local conventions.</p>', img: '/international-sale-shopify.webp', reverse: false },
+  { title: 'Sophisticated benchmarking against others', desc: '<p class="body">Shopify shows you via AI and built-in benchmarks how similar stores around the world are performing. So you can measure your performance more accurately and use the information to your advantage.</p>', img: '/store-benchmark.webp', reverse: true },
+  { title: 'Multichannel marketing', desc: '<p class="body">Organise your marketing activities clearly across email, social media, advertising and organic traffic into cohesive campaigns. Clear per-channel reports help you better understand where customers come from, how much it costs to acquire them and what the return on your marketing investment is.</p>', img: '/marketing-measurement.webp', reverse: false },
+  { title: 'Real-time store data overview', desc: '<p class="body">With Shopify you have an immediate overview of how your store is truly performing — without waiting for daily recalculations or limited reports. Data updates in real time across the whole dashboard and reports. Customise the view to exactly what is decisive for you and monitor key metrics at a glance.</p>', img: '/real-time-monitoring.png', reverse: true },
+  { title: 'B2B ready', desc: '<p class="body">In Shopify Plus you will find native B2B functionality designed for companies with high order volume, complex pricing and individual business relationships. It enables working with company accounts, custom price lists, approval processes and recurring purchases in one unified solution.</p><p class="body">Want a smaller B2B solution? That is handled by an app or custom development.</p>', img: '/b2b-1.webp', reverse: false },
+  { title: 'Shopify SHOP app, on your customer\'s phone', desc: '<p class="body">Thanks to the Shop app, your brand reaches directly into customers\' mobile devices all over the world. An ideal user experience. Customers can easily track orders, return to favourite products and make repeat purchases without having to go through the entire checkout process again.</p>', img: '/shopify-shop-app.webp', reverse: true },
+  { title: 'Automation', desc: '<p class="body">With growing order volumes, manual management stops making sense. Automation lets you move key processes — from order and customer management through pricing and inventory to marketing scenarios — into controlled, predictable flows.</p><p class="body">The result is less dependence on manual intervention, lower error rates and the ability to scale without constantly growing the team.</p>', img: '/flow-automation.webp', reverse: false },
+];
 ---
 
 <PageLayout title="International Expansion | aethero" description="One Shopify store, the whole world. We help you expand into international markets using Shopify Markets." lang="en">
@@ -30,13 +36,17 @@ const features = [
     imageAlt="International expansion"
   />
 
-  <!-- Intro -->
+  <!-- Intro + HOW WE START sidebar -->
   <section class="section bg-primary">
-    <div class="container">
-      <h2 class="intro-h2">Do you have a plan for<br /><span class="accent-purple">INTERNATIONAL EXPANSION</span>?</h2>
-      <p class="intro-text">With Shopify, we'll open the door to growth that <strong class="hl">simply isn't possible on local platforms</strong>. Take the decisive step forward into international markets and global e-commerce.</p>
-      <p class="intro-text">You'll get <strong class="hl">one global platform built from the ground up for international selling</strong> — enabling multiple currencies, languages, and localised customer experiences.</p>
-      <a href="#cta" class="btn-action btn-action--lg">Let's expand</a>
+    <div class="container intro-layout">
+      <div class="intro-main">
+        <h2 class="h1 intro-h2">Do you have a plan for<br /><span class="accent-purple">INTERNATIONAL EXPANSION</span>?</h2>
+        <p class="intro-text">With Shopify, we'll open the door to growth that <strong class="hl">simply isn't possible on local platforms</strong>. Take the decisive step forward into international markets and global e-commerce.</p>
+        <p class="intro-text">You'll get <strong class="hl">one global platform built from the ground up for international selling</strong> — enabling multiple currencies, languages, and localised customer experiences.</p>
+        <p class="intro-text">On one platform you'll <strong class="hl">connect online sales across countries including B2B and physical stores via Shopify POS</strong>. Shopify isn't just an e-commerce system, but a complete commerce ecosystem that — thanks to built-in AI — helps with content localisation, performance optimisation and automation of expansion processes. <strong class="hl">On top of that, the platform evolves every six months with hundreds of new features from a global community of more than 4,000 Shopify developers</strong>, so your store is built for long-term growth beyond the home market.</p>
+        <a href="#cta" class="btn-action btn-action--lg">Let's expand</a>
+      </div>
+      <WorkSidebar heading="HOW WE START" items={startSteps} />
     </div>
   </section>
 
@@ -49,17 +59,31 @@ const features = [
       </div>
       <div class="intro-highlights">
         <div class="highlight-item">
-          <span class="highlight-num">30+</span>
-          <span class="highlight-label">countries available via Shopify Markets from a single admin</span>
+          <span class="highlight-num">170+ countries</span>
+          <span class="highlight-label">available via Shopify Markets from a single admin</span>
         </div>
         <div class="highlight-item">
-          <span class="highlight-num">1</span>
-          <span class="highlight-label">platform for the whole world — no migration when scaling</span>
+          <span class="highlight-num">1 platform</span>
+          <span class="highlight-label">for the whole world — no migration when scaling</span>
         </div>
         <div class="highlight-item">
-          <span class="highlight-num">100%</span>
-          <span class="highlight-label">localisation — language, currency, payments, taxes for each market</span>
+          <span class="highlight-num">100% localisation</span>
+          <span class="highlight-label">language, currency, payments, taxes for each market</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopify Sidekick — dedicated section -->
+  <section class="feature-section">
+    <div class="container feature-inner">
+      <div class="feature-text">
+        <h3 class="h3 sidekick-title">Shopify Sidekick</h3>
+        <h4 class="h3 sidekick-sub">AI right in your store</h4>
+        <p class="body"><strong class="hl">Sidekick</strong> is an AI assistant integrated into the store admin that significantly speeds up your work in Shopify. It can handle <strong class="hl">operational tasks</strong> (create products, edit collections, analyse sales, prepare reports), help with <strong class="hl">marketing</strong> (writing descriptions, emails, SEO recommendations), propose and apply <strong class="hl">storefront changes</strong> including design modifications or edit the theme — including generating Liquid code. Sidekick can explain how settings in the admin work, recommend steps for store growth, automate processes and suggest best practices. Answers are personalised based on your store's sales, customers and specific configuration.</p>
+      </div>
+      <div class="feature-img-wrap">
+        <img src="/sidekick.png" alt="Shopify Sidekick AI" class="feature-img" loading="lazy" />
       </div>
     </div>
   </section>
@@ -69,9 +93,8 @@ const features = [
     <section class={`feature-section${f.reverse ? ' feature-section--reverse' : ''}`}>
       <div class="container feature-inner">
         <div class="feature-text">
-          {f.logo && <img src={f.logo} alt={f.title} class="feature-logo" loading="lazy" />}
-          <h2 class="feature-title">{f.title}</h2>
-          <p class="body">{f.desc}</p>
+          <h3 class="h3 feature-title">{f.title}</h3>
+          <div class="feature-desc" set:html={f.desc}></div>
         </div>
         <div class="feature-img-wrap">
           {f.img && <img src={f.img} alt={f.title} class="feature-img" loading="lazy" />}
@@ -83,7 +106,7 @@ const features = [
   <!-- You are in the right place -->
   <section class="section bg-primary">
     <div class="container" style="text-align: center; max-width: 720px; margin: 0 auto;">
-      <h3 class="tady-heading">You are in the right place!</h3>
+      <h2 class="h2-mini tady-heading">You are in the right place!</h2>
       <p class="body">When it comes to global expansion, the question is not whether — but when. Shopify gives you the technological foundation so you can focus on growth instead of working around platform limitations. Is now the right time, and do you want to take your store further with us?</p>
     </div>
   </section>
@@ -101,23 +124,29 @@ const features = [
 </PageLayout>
 
 <style>
-  /* .hl (bold lavender) — globální utilita v global.css */
+  /* Intro + HOW WE START sidebar = 2 columns */
+  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
-  .intro-highlights { display: flex; flex-direction: column; gap: var(--space-40); padding-top: var(--space-8); }
-  .highlight-item { display: flex; flex-direction: column; gap: var(--space-8); border-left: 2px solid var(--action); padding-left: var(--space-24); }
-  .highlight-num { font-size: 48px; font-weight: 700; color: #fff; line-height: 1; font-family: var(--font-primary); }
-  .highlight-label { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .intro-highlights { display: flex; flex-direction: column; gap: 4px; padding-top: var(--space-8); max-width: 340px; }
+  .highlight-item { display: flex; flex-direction: column; gap: var(--space-8); background: var(--text-secondary); padding: 24px 28px; border-radius: var(--radius-sm, 6px); }
+  .highlight-num { font-size: var(--fs-36); font-weight: 700; color: #fff; line-height: 1.1; font-family: var(--font-primary); }
+  .highlight-label { font-size: 16px; color: rgba(255,255,255,0.85); font-weight: 600; line-height: 1.5; }
+
+  .sidekick-title { color: #fff; margin-bottom: 4px; }
+  .sidekick-sub { color: #fff; margin-bottom: var(--space-24); }
 
   .feature-section--reverse .feature-inner { direction: rtl; }
   .feature-section--reverse .feature-text,
   .feature-section--reverse .feature-img-wrap { direction: ltr; }
   .feature-logo { height: 48px; width: auto; display: block; margin-bottom: var(--space-24); object-fit: contain; }
-  .feature-title { font-size: var(--fs-30); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-24); color: #fff; }
+  .feature-title { margin-bottom: var(--space-24); color: #fff; }
+  .feature-desc :global(p) { margin-bottom: var(--space-24); }
+  .feature-desc :global(p:last-child) { margin-bottom: 0; }
   .feature-img-wrap { display: flex; align-items: center; justify-content: center; }
 
-  .tady-heading { font-size: var(--fs-48); font-weight: 600; margin-bottom: var(--space-24); }
-
+  .tady-heading { margin-bottom: var(--space-24); }
 
   @media (max-width: 1024px) {
     .two-col { grid-template-columns: 1fr; }

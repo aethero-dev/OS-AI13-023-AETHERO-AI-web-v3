@@ -1,6 +1,14 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
+import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+const placeholderItems = [
+  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'To be added', desc: 'Content coming soon.' },
+  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'To be added', desc: 'Content coming soon.' },
+  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'To be added', desc: 'Content coming soon.' },
+  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'To be added', desc: 'Content coming soon.' },
+];
 
 const features = [
   { title: 'Technical support & troubleshooting', desc: 'We solve complex technical problems in Liquid templates, custom apps, Shopify Functions, checkout and connected services. We identify the root cause of errors — not just the symptoms.', img: '/support.jpg', reverse: false },
@@ -28,13 +36,16 @@ const features = [
     imageAlt="Shopify development and support"
   />
 
-  <!-- Intro -->
+  <!-- Intro + HOW WE START sidebar -->
   <section class="section bg-primary">
-    <div class="container">
-      <h2 class="intro-h2"><span class="accent-purple">WHAT DO YOU NEED HELP WITH</span><br />on your Shopify project?</h2>
-      <p class="intro-text"><strong class="hl">Sometimes searching for tutorial videos just isn't enough.</strong> What you need is deeper technical insight, experience from multiple real-world projects, and the ability to connect the dots.</p>
-      <p class="intro-text">We want you to know that even after years in this field, <strong class="hl">we haven't lost our humility</strong> — and when we can help, we will. Developing and supporting a Shopify project doesn't end at launch.</p>
-      <a href="#cta" class="btn-action btn-action--lg">Let's get to it</a>
+    <div class="container intro-layout">
+      <div class="intro-main">
+        <h2 class="h1 intro-h2"><span class="accent-purple">WHAT DO YOU NEED HELP WITH</span><br />on your Shopify project?</h2>
+        <p class="intro-text"><strong class="hl">Sometimes searching for tutorial videos just isn't enough.</strong> What you need is deeper technical insight, experience from multiple real-world projects, and the ability to connect the dots.</p>
+        <p class="intro-text">We want you to know that even after years in this field, <strong class="hl">we haven't lost our humility</strong> — and when we can help, we will. Developing and supporting a Shopify project doesn't end at launch.</p>
+        <a href="#cta" class="btn-action btn-action--lg">Let's get to it</a>
+      </div>
+      <WorkSidebar heading="HOW WE START" items={placeholderItems} />
     </div>
   </section>
 
@@ -50,7 +61,7 @@ const features = [
     <section class={`feature-section${f.reverse ? ' feature-section--reverse' : ''}`}>
       <div class="container feature-inner">
         <div class="feature-text">
-          <h2 class="feature-title">{f.title}</h2>
+          <h3 class="h3 feature-title">{f.title}</h3>
           <p class="body">{f.desc}</p>
         </div>
         <div class="feature-img-wrap">
@@ -73,13 +84,15 @@ const features = [
 </PageLayout>
 
 <style>
-  /* .hl (bold lavender) — globální utilita v global.css */
+  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
+
   .section-title { text-align: center; }
 
   .feature-section--reverse .feature-inner { direction: rtl; }
   .feature-section--reverse .feature-text,
   .feature-section--reverse .feature-img-wrap { direction: ltr; }
-  .feature-title { font-size: var(--fs-30); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-24); color: #fff; }
+  .feature-title { margin-bottom: var(--space-24); color: #fff; }
   .feature-img-wrap { display: flex; align-items: center; justify-content: center; }
 
 
