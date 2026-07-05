@@ -1,14 +1,15 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
+import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
-const analyzeItems = [
-  'Email marketing — Leadhub, Klaviyo, Mailchimp, Ecomail and others. Campaigns, automations, segments, open rate, CTR, revenue per email.',
-  'E-commerce platform — Shoptet, Shopify, WooCommerce — orders, customers, products, seasonality, retention, AOV.',
-  'Google Analytics / GA4 — Traffic sources, conversion paths, attribution model, channel performance, user behaviour.',
-  'Google Ads — Campaign performance, ROAS, search terms, lost impressions, opportunities to scale or save.',
-  'Meta Ads — Facebook & Instagram — reach, frequency, CPM, ROAS, audience overlap, funnel analysis.',
-  'Web crawling — If the data is not in an export — we crawl the store or website automatically and extract the product catalogue, prices, categories, UX patterns.',
+const analyzeItemsSidebar = [
+  { icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>', title: 'Email marketing', desc: 'Leadhub, Klaviyo, Mailchimp, Ecomail. Campaigns, automations, segments, open rate, CTR, revenue per email.' },
+  { icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>', title: 'E-commerce platform', desc: 'Shoptet, Shopify, WooCommerce — orders, customers, products, seasonality, retention, AOV.' },
+  { icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>', title: 'Google Analytics / GA4', desc: 'Traffic sources, conversion paths, attribution model, channel performance, user behaviour.' },
+  { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Google Ads', desc: 'Campaign performance, ROAS, search terms, lost impressions, opportunities to scale or save.' },
+  { icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', title: 'Meta Ads', desc: 'Facebook & Instagram — reach, frequency, CPM, ROAS, audience overlap, funnel analysis.' },
+  { icon: '<circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>', title: 'Web crawling', desc: 'Data not in an export? We crawl the store automatically — product catalogue, prices, categories, UX patterns.' },
 ];
 
 const deliverables = [
@@ -52,35 +53,25 @@ const steps = [
     imageAlt="Strategy and analytics for an e-shop"
   />
 
-  <!-- Stop guessing -->
+  <!-- Stop guessing + WHAT WE ANALYSE sidebar -->
   <section class="section bg-primary">
-    <div class="container">
-      <h2 class="intro-h2">Stop guessing,<br /><span class="accent-purple">FIND OUT WHY</span></h2>
-      <p class="intro-text">Your store is telling you something. <strong class="hl">Are you listening?</strong> Every store has a story hidden inside its data — where it earns, where it bleeds, why some customers stay and others disappear after the first purchase. <strong class="hl">You already have that data — nobody is reading it.</strong> And someone should.</p>
-      <p class="intro-text">It takes experience and a bit of technical voodoo, but then we sit down with your data, plans and a tamed AI, connect them to what is needed: Google Ads, Analytics, Meta and your email client — and <strong class="hl">hand you back a strategy with numbers against every recommendation</strong>: how much it will earn, how much it will save, when to switch it on.</p>
-      <a href="#cta" class="btn-action btn-action--lg">Want an analysis? Call or write</a>
+    <div class="container intro-layout">
+      <div class="intro-main">
+        <h2 class="h1 intro-h2">Stop guessing,<br /><span class="accent-purple">FIND OUT WHY</span></h2>
+        <p class="intro-text">Your store is telling you something. <strong class="hl">Are you listening?</strong> Every store has a story hidden inside its data — where it earns, where it bleeds, why some customers stay and others disappear after the first purchase. <strong class="hl">You already have that data — nobody is reading it.</strong> And someone should.</p>
+        <p class="intro-text">It takes experience and a bit of technical voodoo, but then we sit down with your data, plans and a tamed AI, connect them to what is needed: Google Ads, Analytics, Meta and your email client — and <strong class="hl">hand you back a strategy with numbers against every recommendation</strong>: how much it will earn, how much it will save, when to switch it on.</p>
+        <a href="#cta" class="btn-action btn-action--lg">Want an analysis? Call or write</a>
+      </div>
+      <WorkSidebar heading="WHAT WE ANALYSE" items={analyzeItemsSidebar} />
     </div>
   </section>
 
   <!-- Your data says more -->
   <section class="section bg-primary">
     <div class="container">
-      <div class="two-col-analyze">
-        <div>
-          <h2 class="h2 section-title">Your data says more<br />than you think</h2>
-          <p class="section-text body">API access, CSV exports or web crawling — we can connect almost any data source. We combine data from your store, email campaigns, Google Ads, Analytics and social media. And you then receive a specific strategy with the quantified benefit of each recommendation — no generic advice.</p>
-          <p class="section-text body"><strong>We most often work with stores from €120k annual revenue on Shoptet, Shopify and WooCommerce.</strong></p>
-          <a href="#how-it-works" class="text-link">What are those?</a>
-        </div>
-        <div>
-          <h4 class="h4">WHAT WE ANALYSE</h4>
-          <ul class="arrow-list">
-            {analyzeItems.map((a) => (
-              <li>{a}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <h2 class="h2 section-title">Your data says more<br />than you think</h2>
+      <p class="section-text body">API access, CSV exports or web crawling — we can connect almost any data source. We combine data from your store, email campaigns, Google Ads, Analytics and social media. And you then receive a specific strategy with the quantified benefit of each recommendation — no generic advice.</p>
+      <p class="section-text body"><strong>We most often work with stores from €120k annual revenue on Shoptet, Shopify and WooCommerce.</strong></p>
     </div>
   </section>
 
@@ -209,8 +200,9 @@ const steps = [
   .section-title-center { font-size: var(--fs-48); font-weight: 600; margin-bottom: var(--space-40); text-align: center; }
   .section-text-center { text-align: center; max-width: 600px; margin: 0 auto; }
 
-  .two-col-analyze { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
-  /* WHAT WE ANALYSE nadpis → .h4; seznamy → globální .arrow-list */
+  /* Intro + sidebar = 2 sloupce */
+  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
 
   .output-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
 
@@ -278,7 +270,6 @@ const steps = [
 
 
   @media (max-width: 1024px) {
-    .two-col-analyze { grid-template-columns: 1fr; }
     .output-col { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
     .case-study-wrap { display: none; }

@@ -10,13 +10,13 @@ const processItems = [
   { icon: '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/>', title: 'Strategický dokument + plán', desc: 'Online dokument s analýzou a klikacím 365denním plánem, kdykoli přístupný.' },
 ];
 
-const analyzeItems = [
-  'E-mail marketing — Leadhub, Klaviyo, Mailchimp, Ecomail a další. Kampaně, automations, segmenty, open rate, CTR, revenue na email.',
-  'E-shopová platforma — Shoptet, Shopify, WooCommerce — objednávky, zákazníci, produkty, sezónnost, retence, AOV.',
-  'Google Analytics / GA4 — Zdroje návštěvnosti, konverzní cesty, atribuční model, výkon kanálů, chování uživatelů.',
-  'Google Ads — Výkon kampaní, ROAS, search terms, ztracená imprese, příležitosti pro škálování nebo úsporu.',
-  'Meta Ads — Facebook & Instagram — dosah, frekvence, CPM, ROAS, audience overlap, funnel analýza.',
-  'Crawling webu — Pokud data nejsou v exportu — projdeme e-shop nebo web automaticky a vytěžíme produktový katalog, ceny, kategorie, UX vzory.',
+const analyzeItemsSidebar = [
+  { icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>', title: 'E-mail marketing', desc: 'Leadhub, Klaviyo, Mailchimp, Ecomail. Kampaně, automations, segmenty, open rate, CTR, revenue na email.' },
+  { icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>', title: 'E-shopová platforma', desc: 'Shoptet, Shopify, WooCommerce — objednávky, zákazníci, produkty, sezónnost, retence, AOV.' },
+  { icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>', title: 'Google Analytics / GA4', desc: 'Zdroje návštěvnosti, konverzní cesty, atribuční model, výkon kanálů, chování uživatelů.' },
+  { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Google Ads', desc: 'Výkon kampaní, ROAS, search terms, ztracená imprese, příležitosti pro škálování nebo úsporu.' },
+  { icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', title: 'Meta Ads', desc: 'Facebook & Instagram — dosah, frekvence, CPM, ROAS, audience overlap, funnel analýza.' },
+  { icon: '<circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>', title: 'Crawling webu', desc: 'Data nejsou v exportu? Projdeme e-shop automaticky — produktový katalog, ceny, kategorie, UX vzory.' },
 ];
 
 const deliverables = [
@@ -68,30 +68,16 @@ const steps = [
         <p class="intro-text">Chce to zkušenost a trochu technického voo-doo, ale pak se s vašimi daty, plány a ochočenou AI posadíme, propojíme je s čím je potřeba: Google Ads, Analytics, Metou i s mailovým klientem a <strong class="hl">vrátíme vám strategii, která má čísla u každého doporučení</strong>: kolik to vydělá, kolik ušetří, kdy to zapnout.</p>
         <a href="#cta" class="btn-action btn-action--lg">Chcete analýzu? Zavolejte</a>
       </div>
-      {/* TODO k dořešení (memory: todo_co_umime_lists): tento proces je duplicitní — stejné kroky jsou i dole jako steps-grid sekce. */}
-      <WorkSidebar heading="JAK TO FUNGUJE" items={processItems} />
+      <WorkSidebar heading="CO ANALYZUJEME" items={analyzeItemsSidebar} />
     </div>
   </section>
 
   <!-- Vaše data říkají víc -->
   <section class="section bg-primary">
     <div class="container">
-      <div class="two-col-analyze">
-        <div>
-          <h2 class="h2 section-title">Vaše data říkají víc,<br />než si myslíte</h2>
-          <p class="section-text body">API přístup, CSV exporty nebo crawling webu — dokážeme napojit téměř jakýkoliv zdroj dat. Propojíme data z vašeho e-shopu, emailové kampaně, GAds, Analytiku i sociální sítě. A vy pak dostanete konkrétní strategii s kvantifikovaným přínosem každého doporučení — žádné obecné rady.</p>
-          <p class="section-text body"><strong>Nejčastěji pracujeme s e-shopy od 3M Kč ročního obratu na Shoptetu, Shopify a WooCommerce.</strong></p>
-          <a href="#jak-to-funguje" class="text-link">Co to jsou?</a>
-        </div>
-        <div>
-          <h4 class="h4">CO ANALYZUJEME</h4>
-          <ul class="arrow-list">
-            {analyzeItems.map((a) => (
-              <li>{a}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <h2 class="h2 section-title">Vaše data říkají víc,<br />než si myslíte</h2>
+      <p class="section-text body">API přístup, CSV exporty nebo crawling webu — dokážeme napojit téměř jakýkoliv zdroj dat. Propojíme data z vašeho e-shopu, emailové kampaně, GAds, Analytiku i sociální sítě. A vy pak dostanete konkrétní strategii s kvantifikovaným přínosem každého doporučení — žádné obecné rady.</p>
+      <p class="section-text body"><strong>Nejčastěji pracujeme s e-shopy od 3M Kč ročního obratu na Shoptetu, Shopify a WooCommerce.</strong></p>
     </div>
   </section>
 
@@ -224,9 +210,6 @@ const steps = [
   .section-title-center { margin-bottom: var(--space-40); text-align: center; }
   .section-text-center { text-align: center; max-width: 600px; margin: 0 auto; }
 
-  .two-col-analyze { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
-  /* CO ANALYZUJEME nadpis → globální .h4; seznam → globální .arrow-list */
-
   .output-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
 
   .case-study-wrap { display: flex; }
@@ -294,7 +277,6 @@ const steps = [
 
 
   @media (max-width: 1024px) {
-    .two-col-analyze { grid-template-columns: 1fr; }
     .output-col { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
     .case-study-wrap { display: none; }
