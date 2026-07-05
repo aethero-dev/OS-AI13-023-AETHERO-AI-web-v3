@@ -396,31 +396,36 @@ img { max-width: 100%; height: auto; }
 
 /* edge-glow — jemný lavender světelný přejezd po hraně karty. Reusable: přidej class="edge-glow"
    na prvek s border-radius. Přejezd spouští JS (BaseLayout) nepravidelně a jen když je prvek ve viewportu. */
-@property --edge-ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@property --egx { syntax: '<length-percentage>'; initial-value: 0%; inherits: false; }
+@property --egy { syntax: '<length-percentage>'; initial-value: 0%; inherits: false; }
 .edge-glow { position: relative; }
-/* stálé "zmrazené" jemné rozsvícení malé části hrany na rohu (odtud se rozbíhá přejezd).
-   Zbytek obvodu je průhledný → původní tlumený border karty zůstává. */
+/* stálé "zmrazené" jemné rozsvícení na LEVÉM HORNÍM ROHU — radiál kotvený přesně na roh (0% 0%),
+   symetrický a nezávislý na poměru stran. Zbytek obvodu průhledný → původní tlumený border zůstává. */
 .edge-glow::before {
   content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-  background: conic-gradient(from 0deg, transparent 297deg, rgba(160,129,209,0.9) 315deg, transparent 333deg);
+  background: radial-gradient(circle 46px at 0% 0%, rgba(160,129,209,0.85), transparent 72%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   pointer-events: none; z-index: 0;
 }
 .edge-glow > * { position: relative; z-index: 1; }
+/* přejezd — světlo objede rohy po hraně (start i konec = levý horní roh, kde je zmrazený glow) */
 .edge-glow::after {
   content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-  background: conic-gradient(from var(--edge-ang), rgba(160,129,209,0.9) 0deg, transparent 18deg, transparent 342deg, rgba(160,129,209,0.9) 360deg);
+  background: radial-gradient(circle 46px at var(--egx) var(--egy), rgba(160,129,209,0.9), transparent 72%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   pointer-events: none; opacity: 0; z-index: 0;
 }
-.edge-glow.is-sweeping::after { animation: edgeGlowSweep 3.2s ease-in-out; }
+.edge-glow.is-sweeping::after { animation: edgeGlowSweep 3.8s ease-in-out; }
 @keyframes edgeGlowSweep {
-  0% { --edge-ang: 315deg; opacity: 0; }
-  12% { opacity: 1; }
-  88% { opacity: 1; }
-  100% { --edge-ang: 675deg; opacity: 0; }
+  0% { --egx: 0%; --egy: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  27% { --egx: 100%; --egy: 0%; }
+  50% { --egx: 100%; --egy: 100%; }
+  73% { --egx: 0%; --egy: 100%; }
+  90% { opacity: 1; }
+  100% { --egx: 0%; --egy: 0%; opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .edge-glow.is-sweeping::after { animation: none; } }
 
