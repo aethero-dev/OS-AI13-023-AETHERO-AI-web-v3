@@ -394,6 +394,26 @@ img { max-width: 100%; height: auto; }
 }
 .ref-card-cta:hover { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.65); color: #000326; }
 
+/* edge-glow — jemný lavender světelný přejezd po hraně karty. Reusable: přidej class="edge-glow"
+   na prvek s border-radius. Přejezd spouští JS (BaseLayout) nepravidelně a jen když je prvek ve viewportu. */
+@property --edge-ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.edge-glow { position: relative; }
+.edge-glow::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: conic-gradient(from var(--edge-ang), transparent 0 80%, rgba(160,129,209,0.5) 86%, rgba(160,129,209,0.95) 89%, rgba(160,129,209,0.5) 92%, transparent 98% 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none; opacity: 0;
+}
+.edge-glow.is-sweeping::after { animation: edgeGlowSweep 3.2s ease-in-out; }
+@keyframes edgeGlowSweep {
+  0% { --edge-ang: 0deg; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { --edge-ang: 360deg; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .edge-glow.is-sweeping::after { animation: none; } }
+
 /* text-link — sjednocená třída pro všechny textové inline odkazy.
    Teal (--action) + o řez silnější (font-weight 500). Podtržení až na hover. */
 .text-link { color: var(--action); font-weight: 500; text-decoration: none; transition: color var(--transition-base); }

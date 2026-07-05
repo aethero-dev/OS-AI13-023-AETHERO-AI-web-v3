@@ -1860,6 +1860,26 @@ font-family: var(--font-secondary);</code></pre>
       </section>
 
 
+      <!-- EDGE GLOW -->
+      <section class="ds-section" id="edge-glow">
+        <h2 class="ds-section-title">Edge glow — světelný přejezd po hraně</h2>
+        <div class="ds-block-label">Jemný lavender světelný přejezd po hraně karty · spouští se jen když je karta ve viewportu · poprvé s malým zpožděním, pak nepravidelně (8–30 s) · respektuje prefers-reduced-motion</div>
+        <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin-bottom:24px">
+          <div class="edge-glow" style="background:var(--ae-bg-deep);border:1px solid rgba(255,255,255,0.10);border-radius:var(--radius-md);padding:var(--space-32);max-width:320px">
+            <p class="body" style="color:rgba(255,255,255,0.8);margin:0">Karta s efektem <code style="color:#A081D1">.edge-glow</code>. Přejezd naskočí sám — počkej chvíli a sleduj hranu.</p>
+          </div>
+          <div style="flex:1;min-width:220px;padding-top:4px">
+            <div class="ds-spec-grid">
+              <div class="ds-spec-item"><code>.edge-glow</code><span>reusable class · přidej na prvek s border-radius · JS v BaseLayout</span></div>
+              <div class="ds-spec-item"><code>barva</code><span>conic-gradient lavender rgba(160,129,209) · maskováno na 1px border</span></div>
+              <div class="ds-spec-item"><code>rytmus</code><span>IntersectionObserver · 1. přejezd 1,5–3,5 s · pak náhodně 8–30 s</span></div>
+              <div class="ds-spec-item"><code>použití</code><span>plus-list (nový e-shop) · lze přidat na jakoukoli kartu</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <!-- ARROW LIST -->
       <section class="ds-section" id="arrow-list">
         <h2 class="ds-section-title ds-locked">Arrow list (➔)</h2>
