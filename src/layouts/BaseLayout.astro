@@ -107,13 +107,14 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const rand = (min, max) => min + Math.random() * (max - min);
       document.querySelectorAll('.edge-glow').forEach((el) => {
+        if (el.dataset.egInit) return; el.dataset.egInit = '1';
         let timer = null;
         const stop = () => { if (timer) { clearTimeout(timer); timer = null; } el.classList.remove('is-sweeping'); };
-        const schedule = (delay) => { timer = setTimeout(() => { el.classList.add('is-sweeping'); schedule(rand(8000, 30000)); }, delay); };
+        const schedule = (delay) => { timer = setTimeout(() => { el.classList.add('is-sweeping'); schedule(rand(15000, 45000)); }, delay); };
         el.addEventListener('animationend', () => el.classList.remove('is-sweeping'));
         const io = new IntersectionObserver((entries) => {
           entries.forEach((e) => {
-            if (e.isIntersecting && !timer) schedule(rand(1500, 3500));
+            if (e.isIntersecting && !timer) schedule(rand(2500, 5000));
             else if (!e.isIntersecting) stop();
           });
         }, { threshold: 0.25 });
