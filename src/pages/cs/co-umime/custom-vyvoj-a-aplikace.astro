@@ -196,15 +196,11 @@ const faq = [
 </PageLayout>
 
 <style>
-  .intro-h2 { margin-bottom: var(--space-40); }
   .intro-subhead { margin-top: var(--space-16); color: #fff; }
   /* Intro + sidebar = 2 sloupce */
   .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
-  .intro-main { min-width: 0; }
-  .intro-main .intro-text { max-width: none; }
   @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
   /* .hl (bold lavender) — globální utilita v global.css */
-  .intro-text { font-size: var(--fs-20); color: rgba(255,255,255,0.85); line-height: 1.6; max-width: 860px; margin-bottom: var(--space-24); }
   .section-text { margin-bottom: var(--space-24); max-width: 760px; }
 
   .intro-wrap { max-width: 800px; }

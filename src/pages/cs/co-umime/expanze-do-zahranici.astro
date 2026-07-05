@@ -111,15 +111,10 @@ const features = [
 </PageLayout>
 
 <style>
-  .intro-heading { font-size: var(--fs-52); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-40); }
-  .intro-h2 { margin-bottom: var(--space-40); }
   /* Intro + JAK ZAČNEME sidebar = 2 sloupce */
   .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
-  .intro-main { min-width: 0; }
-  .intro-main .intro-text { max-width: none; }
   @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
   /* .hl (bold lavender) — globální utilita v global.css */
-  .intro-text { font-size: var(--fs-20); color: rgba(255,255,255,0.85); line-height: 1.6; max-width: 860px; margin-bottom: var(--space-24); }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
   .intro-highlights { display: flex; flex-direction: column; gap: var(--space-40); padding-top: var(--space-8); }

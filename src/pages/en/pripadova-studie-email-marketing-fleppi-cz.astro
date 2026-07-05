@@ -314,29 +314,6 @@ import PageLayout from '../../layouts/PageLayout.astro';
 </PageLayout>
 
 <style>
-  /* ─── 2-ROW × 2-COL LAYOUT ─── */
-  .cs-layout {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    grid-template-areas:
-      ". hero-head"
-      "aside main";
-    column-gap: 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 160px var(--space-24) 80px;
-  }
-  .cs-hero-head {
-    grid-area: hero-head;
-    padding-bottom: var(--space-32);
-  }
-  .cs-aside {
-    grid-area: aside;
-    position: sticky;
-    top: 88px;
-    align-self: start;
-  }
-  .cs-main { grid-area: main; min-width: 0; }
   .cs-hero-inner { padding-bottom: var(--space-80); }
 
   /* ─── TYPOGRAPHY ─── */
@@ -518,12 +495,6 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
-    .cs-layout {
-      grid-template-columns: 1fr;
-      grid-template-areas: "hero-head" "main";
-      padding-top: 120px;
-    }
-    .cs-aside { display: none; }
     .ref-split { grid-template-columns: 1fr; gap: var(--space-40); }
   }
   @media (max-width: 768px) {
