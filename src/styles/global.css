@@ -398,6 +398,13 @@ img { max-width: 100%; height: auto; }
    na prvek s border-radius. Přejezd spouští JS (BaseLayout) nepravidelně a jen když je prvek ve viewportu. */
 @property --edge-ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 .edge-glow { position: relative; }
+/* stálý jemný rohový glow (zůstává i když animace nejede) */
+.edge-glow::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(200px 200px at top left, rgba(160,129,209,0.20), transparent 68%);
+  pointer-events: none; z-index: 0;
+}
+.edge-glow > * { position: relative; z-index: 1; }
 .edge-glow::after {
   content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
   background: conic-gradient(from var(--edge-ang), transparent 0 80%, rgba(160,129,209,0.5) 86%, rgba(160,129,209,0.95) 89%, rgba(160,129,209,0.5) 92%, transparent 98% 100%);
