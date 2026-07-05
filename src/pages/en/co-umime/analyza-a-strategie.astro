@@ -88,12 +88,24 @@ const steps = [
     </div>
   </section>
 
-  <!-- Your data says more -->
+  <!-- Your data says more + For whom -->
   <section class="section bg-primary">
     <div class="container">
-      <h2 class="h2 section-title">Your data says more<br />than you think</h2>
-      <p class="section-text body">API access, CSV exports or web crawling — we can connect almost any data source. We combine data from your store, email campaigns, Google Ads, Analytics and social media. And you then receive a specific strategy with the quantified benefit of each recommendation — no generic advice.</p>
-      <p class="section-text body"><strong>We most often work with stores from €120k annual revenue on Shoptet, Shopify and WooCommerce.</strong></p>
+      <div class="data-forwho-grid">
+        <div>
+          <h2 class="h2 section-title">Your data says more<br />than you think</h2>
+          <p class="section-text body">API access, CSV exports or web crawling — we can connect almost any data source. We combine data from your store, email campaigns, Google Ads, Analytics and social media. And you then receive a specific strategy with the quantified benefit of each recommendation — no generic advice.</p>
+          <p class="section-text body"><strong>We most often work with stores from €120k annual revenue on Shoptet, Shopify and WooCommerce.</strong></p>
+        </div>
+        <div>
+          <h2 class="h2-mini section-title">This service is for you, <span class="text-action">if...</span></h2>
+          <ul class="arrow-list">
+            {forWho.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -184,18 +196,6 @@ const steps = [
     </div>
   </section>
 
-  <!-- For whom -->
-  <section class="section bg-primary">
-    <div class="container">
-      <h2 class="section-title-center">This service is for you, <span class="text-action">if...</span></h2>
-      <ul class="arrow-list arrow-list--center">
-        {forWho.map((f) => (
-          <li>{f}</li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
   <!-- Find out where -->
   <section class="section-mid bg-primary">
     <div class="container">
@@ -228,6 +228,9 @@ const steps = [
 
   .jak-grid { display: grid; grid-template-columns: 420px 1fr; gap: var(--space-80); align-items: start; }
   @media (max-width: 900px) { .jak-grid { grid-template-columns: 1fr; } }
+
+  .data-forwho-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
+  @media (max-width: 900px) { .data-forwho-grid { grid-template-columns: 1fr; } }
 
   .output-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
 

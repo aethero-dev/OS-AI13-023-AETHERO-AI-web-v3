@@ -87,12 +87,24 @@ const steps = [
     </div>
   </section>
 
-  <!-- Vaše data říkají víc -->
+  <!-- Vaše data říkají víc + Pro koho -->
   <section class="section bg-primary">
     <div class="container">
-      <h2 class="h2 section-title">Vaše data říkají víc,<br />než si myslíte</h2>
-      <p class="section-text body">API přístup, CSV exporty nebo crawling webu — dokážeme napojit téměř jakýkoliv zdroj dat. Propojíme data z vašeho e-shopu, emailové kampaně, GAds, Analytiku i sociální sítě. A vy pak dostanete konkrétní strategii s kvantifikovaným přínosem každého doporučení — žádné obecné rady.</p>
-      <p class="section-text body"><strong>Nejčastěji pracujeme s e-shopy od 3M Kč ročního obratu na Shoptetu, Shopify a WooCommerce.</strong></p>
+      <div class="data-forwho-grid">
+        <div>
+          <h2 class="h2 section-title">Vaše data říkají víc,<br />než si myslíte</h2>
+          <p class="section-text body">API přístup, CSV exporty nebo crawling webu — dokážeme napojit téměř jakýkoliv zdroj dat. Propojíme data z vašeho e-shopu, emailové kampaně, GAds, Analytiku i sociální sítě. A vy pak dostanete konkrétní strategii s kvantifikovaným přínosem každého doporučení — žádné obecné rady.</p>
+          <p class="section-text body"><strong>Nejčastěji pracujeme s e-shopy od 3M Kč ročního obratu na Shoptetu, Shopify a WooCommerce.</strong></p>
+        </div>
+        <div>
+          <h2 class="h2-mini section-title">Služba je pro vás, <span class="text-action">pokud...</span></h2>
+          <ul class="arrow-list">
+            {forWho.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -184,18 +196,6 @@ const steps = [
     </div>
   </section>
 
-  <!-- Pro koho -->
-  <section class="section bg-primary">
-    <div class="container">
-      <h2 class="h2-mini section-title-center">Služba je pro vás, <span class="text-action">pokud...</span></h2>
-      <ul class="arrow-list arrow-list--center">
-        {forWho.map((f) => (
-          <li>{f}</li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
   <!-- Zjistěte kde -->
   <section class="section-mid bg-primary">
     <div class="container">
@@ -223,6 +223,9 @@ const steps = [
   /* .hl (bold lavender) — globální utilita v global.css */
   .jak-grid { display: grid; grid-template-columns: 420px 1fr; gap: var(--space-80); align-items: start; }
   @media (max-width: 900px) { .jak-grid { grid-template-columns: 1fr; } }
+
+  .data-forwho-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
+  @media (max-width: 900px) { .data-forwho-grid { grid-template-columns: 1fr; } }
 
   .section-mid { padding: var(--space-80) 0; }
   .section-title-center { margin-bottom: var(--space-40); text-align: center; }
