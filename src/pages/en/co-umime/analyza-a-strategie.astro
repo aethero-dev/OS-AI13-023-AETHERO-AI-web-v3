@@ -9,8 +9,6 @@ const analyzeItemsSidebar = [
   { icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>', title: 'Google Analytics / GA4', desc: 'Traffic sources, conversion paths, attribution model, channel performance, user behaviour.' },
   { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Google Ads', desc: 'Campaign performance, ROAS, search terms, lost impressions, opportunities to scale or save.' },
   { icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', title: 'Meta Ads', desc: 'Facebook & Instagram — reach, frequency, CPM, ROAS, audience overlap, funnel analysis.' },
-  { icon: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>', title: 'Customer data', desc: 'CRM exports, purchase history, RFM segmentation — who buys, how often, how much they spend, when they churn.' },
-  { icon: '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" x2="7.01" y1="7" y2="7"/>', title: 'Price comparison', desc: 'Heureka, Zboží.cz, Google Shopping — feed performance, revenue share, CPC, category visibility.' },
   { icon: '<circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>', title: 'Web crawling', desc: 'Data not in an export? We crawl the store automatically — product catalogue, prices, categories, UX patterns.' },
 ];
 
@@ -203,7 +201,7 @@ const steps = [
   .section-text-center { text-align: center; max-width: 600px; margin: 0 auto; }
 
   /* Intro + sidebar = 2 sloupce */
-  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  .intro-layout { display: grid; grid-template-columns: 1fr 420px; gap: var(--space-64); align-items: start; }
   @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
 
   .output-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
