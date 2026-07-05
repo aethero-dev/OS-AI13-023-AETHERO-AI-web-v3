@@ -72,6 +72,21 @@ const steps = [
     </div>
   </section>
 
+  <!-- Jak to funguje -->
+  <section class="section bg-primary" id="jak-to-funguje">
+    <div class="container">
+      <div class="jak-grid">
+        <WorkSidebar heading="JAK TO FUNGUJE" items={processItems} />
+        <div>
+          <h2 class="h2 section-title">Od dat ke strategii<br />za 1–2 týdny</h2>
+          <p class="section-text body">Pošlete nám přístupy nebo exporty — zbytek je na nás. Projdeme data do hloubky, posadíme se s vámi v reálném čase a vrátíme vám živý strategický dokument s klikacím 365denním plánem a číslem u každého doporučení.</p>
+          <p class="section-text body"><strong>Žádné šablony. Žádné obecné rady. Strategie šitá přímo na váš e-shop.</strong></p>
+          <a href="#cta" class="btn-action btn-action--lg">Chci analýzu — zavolám</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Vaše data říkají víc -->
   <section class="section bg-primary">
     <div class="container">
@@ -154,7 +169,7 @@ const steps = [
   </section>
 
   <!-- 4 kroky -->
-  <section class="section bg-primary" id="jak-to-funguje">
+  <section class="section bg-primary">
     <div class="container">
       <h2 class="h2-mini section-title-center"><strong>4 kroky</strong> k hotové strategii</h2>
       <div class="steps-grid">
@@ -206,6 +221,9 @@ const steps = [
   .intro-layout { display: grid; grid-template-columns: 1fr 420px; gap: var(--space-64); align-items: start; }
   @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
   /* .hl (bold lavender) — globální utilita v global.css */
+  .jak-grid { display: grid; grid-template-columns: 420px 1fr; gap: var(--space-80); align-items: start; }
+  @media (max-width: 900px) { .jak-grid { grid-template-columns: 1fr; } }
+
   .section-mid { padding: var(--space-80) 0; }
   .section-title-center { margin-bottom: var(--space-40); text-align: center; }
   .section-text-center { text-align: center; max-width: 600px; margin: 0 auto; }
