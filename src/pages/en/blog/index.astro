@@ -1,0 +1,257 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  perex: string;
+  readTime: string;
+  date: string;
+  img: string;
+}
+
+const STATIC_POSTS: BlogPost[] = [
+  { slug: 'shopify-mandatory-button', title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem", perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', readTime: '7', date: '2026-05-01', img: '/blog-01.webp' },
+  { slug: 'ai-seo-2026', title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', readTime: '7', date: '2026-01-15', img: '/blog-02.webp' },
+  { slug: 'shopify-editions-winter-2026', title: 'Shopify Editions — Winter 2026', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', readTime: '5', date: '2025-12-10', img: '/blog-03.webp' },
+  { slug: 'translating-payment-methods-shopify', title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', readTime: '3', date: '2025-10-05', img: '/blog-04.webp' },
+  { slug: 'shopify-vs-shoptet', title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', readTime: '18', date: '2025-06-01', img: '/blog-05.webp' },
+];
+
+const SLUG_IMG: Record<string, string> = {
+  'shopify-mandatory-button': '/blog-01.webp',
+  'ai-seo-2026': '/blog-02.webp',
+  'shopify-editions-winter-2026': '/blog-03.webp',
+  'translating-payment-methods-shopify': '/blog-04.webp',
+  'shopify-vs-shoptet': '/blog-05.webp',
+};
+
+let posts: BlogPost[] = STATIC_POSTS;
+
+try {
+  const storyblok = useStoryblokApi();
+  const { data } = await storyblok.get('cdn/stories', {
+    version: 'published',
+    starts_with: 'en/blog/',
+    content_type: 'blog_post',
+    per_page: 100,
+    sort_by: 'first_published_at:desc',
+  });
+  if (data.stories.length > 0) {
+    posts = data.stories.map((s: any) => ({
+      slug: s.slug,
+      title: s.content.title,
+      perex: s.content.perex || '',
+      readTime: s.content.read_time?.replace(' min', '') || '5',
+      date: s.first_published_at?.split('T')[0] || s.created_at.split('T')[0],
+      img: s.content.featured_image?.filename || SLUG_IMG[s.slug] || '/blog-01.webp',
+    }));
+  }
+} catch (_e) {
+  // Storyblok not set up → fallback to static
+}
+
+const formatDate = (d: string) =>
+  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<PageLayout title="Blog — AETHERO" description="Shopify tips, e-commerce strategy and case studies from the AETHERO team." lang="en">
+
+  <section class="blog-index-hero">
+    <div class="container">
+      <p class="hero-eyebrow">Shopify tips, e-commerce, AI & inspiration</p>
+      <h1 class="h2-maxi">æ Blog</h1>
+    </div>
+  </section>
+
+  <section class="blog-index-section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post, i) => (
+          <a href={`/en/blog/${post.slug}`} class={`blog-card ${i === 0 ? 'blog-card--featured' : ''}`}>
+            <div class="blog-card-img">
+              <img
+                src={post.img}
+                alt={post.title}
+                width="837"
+                height="450"
+                loading={i < 2 ? 'eager' : 'lazy'}
+              />
+              <span class="blog-time">⏱{post.readTime} min.</span>
+            </div>
+            <div class="blog-card-body">
+              <span class="blog-date">{formatDate(post.date)}</span>
+              <h2 class={`blog-title ${i === 0 ? 'h3-maxi' : 'h3-mini'}`}>{post.title}</h2>
+              <p class="blog-perex">{post.perex}</p>
+              <span class="blog-cta">Read article →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <h2>Something to discuss?<br />Let us know:</h2>
+      <div class="cta-contacts">
+        <a href="mailto:info@aethero.cz" class="cta-contact">info@aethero.cz</a>
+        <a href="tel:+420776067663" class="cta-contact">+420 776 067 663</a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .blog-index-hero {
+    background: var(--ae-bg-primary);
+    padding: 160px 0 0;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: var(--text-small);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: var(--space-16);
+  }
+  .blog-index-hero h1 { margin-bottom: var(--space-16); }
+  .hero-sub {
+    font-size: var(--fs-24);
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.5;
+  }
+
+  .blog-index-section {
+    background: var(--ae-bg-primary);
+    padding: var(--space-40) 0 var(--space-120);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-32);
+  }
+
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+    text-decoration: none;
+  }
+  .blog-card:hover {
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-2px);
+  }
+
+  .blog-card--featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .blog-card--featured .blog-card-img {
+    flex: 0 0 55%;
+    max-width: 55%;
+    aspect-ratio: unset;
+  }
+  .blog-card--featured .blog-card-img img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-card--featured .blog-card-body {
+    padding: var(--space-32) var(--space-40) var(--space-32) var(--space-32);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .blog-card-img {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+  }
+  .blog-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .blog-card:hover .blog-card-img img { transform: scale(1.03); }
+
+  .blog-time {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .blog-card-body {
+    padding: var(--space-24) var(--space-24) var(--space-32);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .blog-date {
+    font-size: 13px;
+    color: var(--neutral-500);
+    margin-bottom: var(--space-12);
+    display: block;
+  }
+  .blog-title {
+    color: var(--action);
+    margin-bottom: var(--space-12);
+    text-decoration: none;
+  }
+  .blog-card:hover .blog-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .blog-perex {
+    font-size: 15px;
+    color: var(--neutral-300);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: var(--space-20);
+  }
+  .blog-cta {
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--action);
+    letter-spacing: 0.01em;
+  }
+
+
+  @media (max-width: 1024px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-card--featured {
+      flex-direction: column;
+      grid-column: 1 / -1;
+    }
+    .blog-card--featured .blog-card-img { flex: none; max-width: 100%; aspect-ratio: 16/9; }
+    .blog-card--featured .blog-card-body { padding: var(--space-32); }
+  }
+  @media (max-width: 640px) {
+    .blog-index-hero { padding: 120px 0 56px; }
+    .hero-sub { font-size: 18px; }
+    .blog-grid { grid-template-columns: 1fr; gap: var(--space-24); }
+    .blog-card--featured .blog-card-body { padding: var(--space-24); }
+    .blog-card--featured .blog-title { font-size: var(--fs-24); }
+  }
+</style>

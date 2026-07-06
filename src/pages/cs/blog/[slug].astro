@@ -1,55 +1,60 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
-import { useStoryblokApi } from '@storyblok/astro';
+import { useStoryblokApi, renderRichText } from '@storyblok/astro';
 
 export async function getStaticPaths() {
-  // STORYBLOK: odkomentovat až David vytvoří content type "blog_post" v app.storyblok.com
-  // try {
-  //   const storyblok = useStoryblokApi();
-  //   const { data } = await storyblok.get('cdn/stories', {
-  //     version: 'published',
-  //     starts_with: 'blog/',
-  //     content_type: 'blog_post',
-  //   });
-  //   return data.stories.map((story) => ({
-  //     params: { slug: story.slug },
-  //     props: {
-  //       title: story.content.title,
-  //       readTime: story.content.read_time || '5 min',
-  //       date: story.published_at?.split('T')[0] || story.created_at.split('T')[0],
-  //       perex: story.content.perex || '',
-  //       content: story.content.content,
-  //       isStoryblok: true,
-  //     },
-  //   }));
-  // } catch (e) { /* fallthrough to static */ }
+  try {
+    const storyblok = useStoryblokApi();
+    const { data } = await storyblok.get('cdn/stories', {
+      version: 'published',
+      starts_with: 'blog/',
+      content_type: 'blog_post',
+      per_page: 100,
+    });
+    if (data.stories.length > 0) {
+      return data.stories.map((story: any) => ({
+        params: { slug: story.slug },
+        props: {
+          title: story.content.title,
+          readTime: story.content.read_time || '5 min',
+          date: story.first_published_at?.split('T')[0] || story.created_at.split('T')[0],
+          perex: story.content.perex || '',
+          content: story.content.content,
+          featuredImage: story.content.featured_image?.filename || null,
+          isStoryblok: true,
+        },
+      }));
+    }
+  } catch (_e) {
+    // Storyblok není nastavený nebo žádný obsah → fallback na statické
+  }
 
-  // STATICKÉ placeholdery — zůstávají do napojení Storyblok
   return [
     {
       params: { slug: 'povinne-tlacitko-shopify' },
-      props: { title: 'Povinné tlačítko v Shopify: nečekejte, až z toho bude problém', readTime: '7 min', date: '2026-05-01', perex: 'Jak správně nastavit povinné tlačítko v Shopify a vyhnout se problémům.', content: 'Obsah článku bude doplněn. Napojení na Storyblok CMS v Milestone 2.x.' },
+      props: { title: 'Povinné tlačítko v Shopify: nečekejte, až z toho bude problém', readTime: '7 min', date: '2026-05-01', perex: 'Jak správně nastavit povinné tlačítko v Shopify a vyhnout se problémům s compliance.', content: null, featuredImage: '/blog-01.webp', isStoryblok: false },
     },
     {
       params: { slug: 'ai-seo-2026' },
-      props: { title: 'AI SEO — nová tvrdá realita vyhledávání pro e-shopy (2026)', readTime: '7 min', date: '2026-01-15', perex: 'Jak umělá inteligence mění SEO a co to znamená pro váš e-shop.', content: 'Obsah článku bude doplněn. Napojení na Storyblok CMS v Milestone 2.x.' },
+      props: { title: 'AI SEO — nová tvrdá realita vyhledávání pro e-shopy (2026)', readTime: '7 min', date: '2026-01-15', perex: 'Jak umělá inteligence mění SEO a co to znamená pro váš e-shop v roce 2026.', content: null, featuredImage: '/blog-02.webp', isStoryblok: false },
     },
     {
       params: { slug: 'shopify-editions-zima-2026' },
-      props: { title: 'Shopify Editions — Zima 2026', readTime: '5 min', date: '2025-12-10', perex: 'Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026.', content: 'Obsah článku bude doplněn. Napojení na Storyblok CMS v Milestone 2.x.' },
+      props: { title: 'Shopify Editions — Zima 2026', readTime: '5 min', date: '2025-12-10', perex: 'Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026.', content: null, featuredImage: '/blog-03.webp', isStoryblok: false },
     },
     {
       params: { slug: 'preklad-platebni-metody-shopify' },
-      props: { title: 'Překlad platební metody v Shopify, když Translate & Adapt nepomáhá', readTime: '3 min', date: '2025-10-05', perex: 'Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje.', content: 'Obsah článku bude doplněn. Napojení na Storyblok CMS v Milestone 2.x.' },
+      props: { title: 'Překlad platební metody v Shopify, když Translate & Adapt nepomáhá', readTime: '3 min', date: '2025-10-05', perex: 'Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje.', content: null, featuredImage: '/blog-04.webp', isStoryblok: false },
     },
     {
       params: { slug: 'shopify-vs-shoptet' },
-      props: { title: 'Jakou e-commerce platformu zvolit? Shopify versus Shoptet', readTime: '18 min', date: '2025-06-01', perex: 'Detailní srovnání Shopify a Shoptetu pro český trh.', content: 'Obsah článku bude doplněn. Napojení na Storyblok CMS v Milestone 2.x.' },
+      props: { title: 'Jakou e-commerce platformu zvolit? Shopify versus Shoptet', readTime: '18 min', date: '2025-06-01', perex: 'Detailní srovnání Shopify a Shoptetu pro český trh — výkon, cena, ekosystém i budoucnost.', content: null, featuredImage: '/blog-05.webp', isStoryblok: false },
     },
   ];
 }
 
-const { title, readTime, date, perex, content } = Astro.props;
+const { title, readTime, date, perex, content, featuredImage, isStoryblok } = Astro.props;
+const renderedContent = isStoryblok && content ? renderRichText(content) : null;
 const dateFormatted = new Date(date).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const articleSchema = {
@@ -59,6 +64,7 @@ const articleSchema = {
   "description": perex,
   "datePublished": date,
   "inLanguage": "cs-CZ",
+  "image": featuredImage || undefined,
   "publisher": {
     "@type": "Organization",
     "name": "AETHERO s.r.o.",
@@ -85,17 +91,29 @@ const articleSchema = {
     </div>
   </section>
 
+  {featuredImage && (
+    <div class="blog-cover">
+      <div class="container">
+        <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
+      </div>
+    </div>
+  )}
+
   <article class="section bg-primary">
     <div class="container article-inner">
-      <div class="article-body">
-        <p>{content}</p>
-      </div>
+      {renderedContent ? (
+        <div class="article-body sb-content" set:html={renderedContent} />
+      ) : (
+        <div class="article-body">
+          <p class="coming-soon">Obsah článku bude brzy doplněn.</p>
+        </div>
+      )}
     </div>
   </article>
 
   <section class="cta-section">
     <div class="container cta-inner">
-      <h2>Máme spolu co probrat?</h2>
+      <h2 class="h2-maxi">Máme spolu co probrat?</h2>
       <div class="cta-links">
         <a href="mailto:info@aethero.cz" class="btn-primary">info@aethero.cz</a>
         <a href="/cs/kontakt" class="btn-ghost">Kontakt</a>
@@ -106,25 +124,91 @@ const articleSchema = {
 </PageLayout>
 
 <style>
-  .blog-hero { background: var(--ae-bg-primary); padding: 160px 0 80px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .blog-hero {
+    background: var(--ae-bg-primary);
+    padding: 160px 0 80px;
+  }
   .blog-hero-inner { max-width: 760px; }
-  .blog-meta { display: flex; align-items: center; gap: var(--space-8); font-size: var(--text-small); color: var(--neutral-500); margin-bottom: var(--space-24); }
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--text-small);
+    color: var(--neutral-500);
+    margin-bottom: var(--space-24);
+  }
   .dot { opacity: 0.4; }
-  .blog-hero h1 { font-size: var(--fs-72); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-24); }
-  .blog-perex { font-size: var(--fs-24); color: var(--text-secondary); line-height: 1.6; }
+  .blog-hero h1 {
+    font-size: var(--fs-72);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-24);
+  }
+  .blog-perex {
+    font-size: var(--fs-24);
+    color: var(--neutral-300);
+    line-height: 1.6;
+  }
+
+  .blog-cover {
+    background: var(--ae-bg-primary);
+    padding: var(--space-40) 0 0;
+  }
+  .blog-cover img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: block;
+  }
+
   .article-inner { max-width: 760px; }
-  .article-body { font-size: 18px; color: var(--neutral-300); line-height: 1.6; }
+  .article-body { font-size: 18px; color: var(--neutral-300); line-height: 1.7; }
+
+  .article-body.sb-content :global(h2) { font-size: var(--fs-36); font-weight: 700; margin: 2em 0 0.75em; color: var(--text-primary); }
+  .article-body.sb-content :global(h3) { font-size: var(--fs-28); font-weight: 600; margin: 1.75em 0 0.6em; color: var(--text-primary); }
+  .article-body.sb-content :global(p) { margin-bottom: 1.4em; }
+  .article-body.sb-content :global(ul), .article-body.sb-content :global(ol) { padding-left: 1.5em; margin-bottom: 1.4em; }
+  .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.7; }
+  .article-body.sb-content :global(a) { color: var(--action); text-decoration: underline; text-underline-offset: 3px; }
+  .article-body.sb-content :global(strong) { font-weight: 700; color: var(--text-primary); }
+  .article-body.sb-content :global(em) { font-style: italic; }
+  .article-body.sb-content :global(blockquote) { border-left: 3px solid var(--action); padding-left: 1.5em; margin: 1.5em 0; font-style: italic; color: var(--neutral-400); }
+  .article-body.sb-content :global(code) { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; }
+  .article-body.sb-content :global(pre) { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5em; overflow-x: auto; margin-bottom: 1.4em; }
+  .article-body.sb-content :global(img) { border-radius: var(--radius-sm); max-width: 100%; margin: 1.5em 0; }
+  .article-body.sb-content :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 2.5em 0; }
+
+  .coming-soon { color: var(--neutral-500); font-style: italic; }
+
   .cta-section { padding: var(--space-80) 0; background: var(--ae-bg-primary); }
-  .cta-inner h2 { font-size: var(--fs-70); font-weight: 600; margin-bottom: var(--space-40); }
+  .cta-inner { text-align: center; }
+  .cta-inner h2 { margin-bottom: var(--space-40); }
   .cta-links { display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--action); color: var(--ae-bg-primary); font-family: var(--font-primary); font-size: 16px; font-weight: 600; border-radius: var(--radius-sm); transition: background var(--transition-base); }
+  .btn-primary {
+    display: inline-flex; padding: 14px 32px;
+    background: var(--action); color: var(--ae-bg-primary);
+    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-base);
+  }
   .btn-primary:hover { background: var(--action-hover); }
-  .btn-ghost { display: inline-flex; padding: 14px 32px; border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary); font-family: var(--font-primary); font-size: 16px; font-weight: 600; border-radius: var(--radius-sm); transition: border-color var(--transition-base), color var(--transition-base); }
+  .btn-ghost {
+    display: inline-flex; padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary);
+    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-base), color var(--transition-base);
+  }
   .btn-ghost:hover { border-color: var(--action); color: var(--action); }
+
   @media (max-width: 768px) {
     .blog-hero { padding: 120px 0 60px; }
+    .blog-hero h1 { font-size: var(--fs-48); }
+    .blog-perex { font-size: 20px; }
   }
   @media (max-width: 480px) {
     .blog-hero { padding: 90px 0 48px; }
+    .blog-hero h1 { font-size: var(--fs-36); }
   }
 </style>

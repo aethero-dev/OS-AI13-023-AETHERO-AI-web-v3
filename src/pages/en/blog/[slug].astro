@@ -1,34 +1,61 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
+import { useStoryblokApi, renderRichText } from '@storyblok/astro';
 
 export async function getStaticPaths() {
-  // TODO: Connect to Storyblok in Milestone 2.x
+  try {
+    const storyblok = useStoryblokApi();
+    const { data } = await storyblok.get('cdn/stories', {
+      version: 'published',
+      starts_with: 'en/blog/',
+      content_type: 'blog_post',
+      per_page: 100,
+    });
+    if (data.stories.length > 0) {
+      return data.stories.map((story: any) => ({
+        params: { slug: story.slug },
+        props: {
+          title: story.content.title,
+          readTime: story.content.read_time || '5 min',
+          date: story.first_published_at?.split('T')[0] || story.created_at.split('T')[0],
+          perex: story.content.perex || '',
+          content: story.content.content,
+          featuredImage: story.content.featured_image?.filename || null,
+          isStoryblok: true,
+        },
+      }));
+    }
+  } catch (_e) {
+    // Storyblok not set up or no content yet → fallback to static
+  }
+
   return [
     {
       params: { slug: 'shopify-mandatory-button' },
-      props: { title: 'Mandatory Button in Shopify: Don\'t Wait Until It Becomes a Problem', readTime: '7 min', date: '2026-05-01', perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', content: 'Article content will be added. Storyblok CMS integration in Milestone 2.x.' },
+      props: { title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem", readTime: '7 min', date: '2026-05-01', perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', content: null, featuredImage: '/blog-01.webp', isStoryblok: false },
     },
     {
       params: { slug: 'ai-seo-2026' },
-      props: { title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', readTime: '7 min', date: '2026-01-15', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', content: 'Article content will be added. Storyblok CMS integration in Milestone 2.x.' },
+      props: { title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', readTime: '7 min', date: '2026-01-15', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', content: null, featuredImage: '/blog-02.webp', isStoryblok: false },
     },
     {
       params: { slug: 'shopify-editions-winter-2026' },
-      props: { title: 'Shopify Editions — Winter 2026', readTime: '5 min', date: '2025-12-10', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', content: 'Article content will be added. Storyblok CMS integration in Milestone 2.x.' },
+      props: { title: 'Shopify Editions — Winter 2026', readTime: '5 min', date: '2025-12-10', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', content: null, featuredImage: '/blog-03.webp', isStoryblok: false },
     },
     {
       params: { slug: 'translating-payment-methods-shopify' },
-      props: { title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", readTime: '3 min', date: '2025-10-05', perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', content: 'Article content will be added. Storyblok CMS integration in Milestone 2.x.' },
+      props: { title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", readTime: '3 min', date: '2025-10-05', perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', content: null, featuredImage: '/blog-04.webp', isStoryblok: false },
     },
     {
       params: { slug: 'shopify-vs-shoptet' },
-      props: { title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', readTime: '18 min', date: '2025-06-01', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', content: 'Article content will be added. Storyblok CMS integration in Milestone 2.x.' },
+      props: { title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', readTime: '18 min', date: '2025-06-01', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', content: null, featuredImage: '/blog-05.webp', isStoryblok: false },
     },
   ];
 }
 
-const { title, readTime, date, perex, content } = Astro.props;
-const dateFormatted = new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+const { title, readTime, date, perex, content, featuredImage, isStoryblok } = Astro.props;
+const renderedContent = isStoryblok && content ? renderRichText(content) : null;
+const dateFormatted = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -37,6 +64,7 @@ const articleSchema = {
   "description": perex,
   "datePublished": date,
   "inLanguage": "en-US",
+  "image": featuredImage || undefined,
   "publisher": {
     "@type": "Organization",
     "name": "AETHERO s.r.o.",
@@ -51,32 +79,44 @@ const articleSchema = {
 
 <PageLayout {title} description={perex} lang="en" jsonLd={articleSchema}>
 
-  <article class="blog-article">
-    <header class="article-hero">
-      <div class="hero-blob" aria-hidden="true"></div>
-      <div class="container article-hero-inner">
-        <div class="article-meta">
-          <time datetime={date}>{dateFormatted}</time>
-          <span class="read-time">{readTime} read</span>
-        </div>
-        <h1>{title}</h1>
-        <p class="article-perex">{perex}</p>
+  <section class="blog-hero">
+    <div class="container blog-hero-inner">
+      <div class="blog-meta">
+        <span>{dateFormatted}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{readTime} read</span>
       </div>
-    </header>
+      <h1>{title}</h1>
+      <p class="blog-perex">{perex}</p>
+    </div>
+  </section>
 
-    <section class="article-body">
-      <div class="container article-content">
-        <p class="placeholder-note">{content}</p>
+  {featuredImage && (
+    <div class="blog-cover">
+      <div class="container">
+        <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
       </div>
-    </section>
+    </div>
+  )}
+
+  <article class="section bg-primary">
+    <div class="container article-inner">
+      {renderedContent ? (
+        <div class="article-body sb-content" set:html={renderedContent} />
+      ) : (
+        <div class="article-body">
+          <p class="coming-soon">Article content coming soon.</p>
+        </div>
+      )}
+    </div>
   </article>
 
   <section class="cta-section">
     <div class="container cta-inner">
-      <h2>Something to discuss?</h2>
+      <h2 class="h2-maxi">Something to discuss?</h2>
       <div class="cta-links">
         <a href="mailto:info@aethero.cz" class="btn-primary">info@aethero.cz</a>
-        <a href="/en/kontakt" class="btn-ghost">Contact</a>
+        <a href="/en/contact" class="btn-ghost">Contact</a>
       </div>
     </div>
   </section>
@@ -84,36 +124,91 @@ const articleSchema = {
 </PageLayout>
 
 <style>
-  .article-hero {
-    position: relative; overflow: hidden;
+  .blog-hero {
     background: var(--ae-bg-primary);
     padding: 160px 0 80px;
   }
-  .hero-blob {
-    position: absolute; top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(160,129,209,0.15) 0%, transparent 70%);
-    border-radius: 50%; pointer-events: none;
+  .blog-hero-inner { max-width: 760px; }
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--text-small);
+    color: var(--neutral-500);
+    margin-bottom: var(--space-24);
   }
-  .article-hero-inner { max-width: 760px; }
-  .article-meta { display: flex; gap: 16px; margin-bottom: 24px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); }
-  .read-time::before { content: '·'; margin-right: 16px; }
-  .article-hero h1 { font-size: var(--fs-72); font-weight: 700; line-height: 1.2; margin-bottom: 24px; }
-  .article-perex { font-size: var(--fs-24); color: rgba(255,255,255,0.85); line-height: 1.5; }
-  .article-body { padding: var(--space-120) 0; background: var(--ae-bg-primary); }
-  .article-content { max-width: 800px; }
-  .placeholder-note { font-size: 18px; color: var(--neutral-500); font-style: italic; }
+  .dot { opacity: 0.4; }
+  .blog-hero h1 {
+    font-size: var(--fs-72);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-24);
+  }
+  .blog-perex {
+    font-size: var(--fs-24);
+    color: var(--neutral-300);
+    line-height: 1.6;
+  }
+
+  .blog-cover {
+    background: var(--ae-bg-primary);
+    padding: var(--space-40) 0 0;
+  }
+  .blog-cover img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: block;
+  }
+
+  .article-inner { max-width: 760px; }
+  .article-body { font-size: 18px; color: var(--neutral-300); line-height: 1.7; }
+
+  .article-body.sb-content :global(h2) { font-size: var(--fs-36); font-weight: 700; margin: 2em 0 0.75em; color: var(--text-primary); }
+  .article-body.sb-content :global(h3) { font-size: var(--fs-28); font-weight: 600; margin: 1.75em 0 0.6em; color: var(--text-primary); }
+  .article-body.sb-content :global(p) { margin-bottom: 1.4em; }
+  .article-body.sb-content :global(ul), .article-body.sb-content :global(ol) { padding-left: 1.5em; margin-bottom: 1.4em; }
+  .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.7; }
+  .article-body.sb-content :global(a) { color: var(--action); text-decoration: underline; text-underline-offset: 3px; }
+  .article-body.sb-content :global(strong) { font-weight: 700; color: var(--text-primary); }
+  .article-body.sb-content :global(em) { font-style: italic; }
+  .article-body.sb-content :global(blockquote) { border-left: 3px solid var(--action); padding-left: 1.5em; margin: 1.5em 0; font-style: italic; color: var(--neutral-400); }
+  .article-body.sb-content :global(code) { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; }
+  .article-body.sb-content :global(pre) { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5em; overflow-x: auto; margin-bottom: 1.4em; }
+  .article-body.sb-content :global(img) { border-radius: var(--radius-sm); max-width: 100%; margin: 1.5em 0; }
+  .article-body.sb-content :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 2.5em 0; }
+
+  .coming-soon { color: var(--neutral-500); font-style: italic; }
+
   .cta-section { padding: var(--space-80) 0; background: var(--ae-bg-primary); }
-  .cta-inner h2 { font-size: var(--fs-70); font-weight: 600; margin-bottom: var(--space-40); }
+  .cta-inner { text-align: center; }
+  .cta-inner h2 { margin-bottom: var(--space-40); }
   .cta-links { display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; padding: 14px 32px; background: var(--action); color: var(--ae-bg-primary); font-family: var(--font-primary); font-size: 16px; font-weight: 600; border-radius: var(--radius-sm); transition: background var(--transition-base); }
+  .btn-primary {
+    display: inline-flex; padding: 14px 32px;
+    background: var(--action); color: var(--ae-bg-primary);
+    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-base);
+  }
   .btn-primary:hover { background: var(--action-hover); }
-  .btn-ghost { display: inline-flex; padding: 14px 32px; border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary); font-family: var(--font-primary); font-size: 16px; font-weight: 600; border-radius: var(--radius-sm); transition: border-color var(--transition-base), color var(--transition-base); }
+  .btn-ghost {
+    display: inline-flex; padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary);
+    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-base), color var(--transition-base);
+  }
   .btn-ghost:hover { border-color: var(--action); color: var(--action); }
+
   @media (max-width: 768px) {
     .blog-hero { padding: 120px 0 60px; }
+    .blog-hero h1 { font-size: var(--fs-48); }
+    .blog-perex { font-size: 20px; }
   }
   @media (max-width: 480px) {
     .blog-hero { padding: 90px 0 48px; }
+    .blog-hero h1 { font-size: var(--fs-36); }
   }
 </style>

@@ -1,5 +1,11 @@
 @import './tokens.css';
 
+/* =====================================================================
+   DS ZÁKAZY — nikdy nepoužívat
+   border-bottom / border-top jako vizuální oddělovač sekcí je ZAKÁZÁN.
+   Sekce se oddělují pouze paddingem a barvou pozadí.
+   ===================================================================== */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -213,7 +219,7 @@ img { max-width: 100%; height: auto; }
   padding: 4px 14px;
   border-radius: 100px;
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.03em;
   border: 1px solid currentColor;
@@ -430,12 +436,12 @@ img { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) { .edge-glow.is-sweeping::after { animation: none; } }
 
 /* text-link — sjednocená třída pro všechny textové inline odkazy.
-   Teal (--action) + o řez silnější (font-weight 500). Podtržení až na hover. */
-.text-link { color: var(--action); font-weight: 500; text-decoration: none; transition: color var(--transition-base); }
+   Teal (--action) + o 2 řezy silnější než okolní text (font-weight 600 v kontextu .body 400). Podtržení až na hover. */
+.text-link { color: var(--action); font-weight: 600; text-decoration: none; transition: color var(--transition-base); }
 .text-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* text-link--arrow — šipka se nepodtrhuje, pouze text ve <span> na hover */
-.text-link--arrow { color: var(--action); font-weight: 500; text-decoration: none; }
+.text-link--arrow { color: var(--action); font-weight: 600; text-decoration: none; }
 .text-link--arrow:hover span { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ─── QUOTE — znovupoužitelný citát (dekorativní glyf „ + jemný glow, serif kurzíva) ─── */
@@ -617,7 +623,7 @@ img { max-width: 100%; height: auto; }
 .lightbox-counter {
   position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
   color: rgba(255,255,255,0.55);
-  font-family: var(--font-primary); font-size: 13px; letter-spacing: 0.08em;
+  font-family: var(--font-primary); font-size: 14px; letter-spacing: 0.08em;
 }
 .lightbox--scroll .lightbox-counter { position: fixed; }
 
