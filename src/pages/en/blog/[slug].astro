@@ -83,14 +83,27 @@ const articleSchema = {
     {featuredImage && (
       <div class="hero-img-wrap">
         <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
+        <div class="hero-meta-bar">
+          <div class="container">
+            <div class="blog-meta">
+              <span>{dateFormatted}</span>
+              <span class="dot" aria-hidden="true">·</span>
+              <span>{readTime} read</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+    {!featuredImage && (
+      <div class="container blog-hero-inner--no-img">
+        <div class="blog-meta">
+          <span>{dateFormatted}</span>
+          <span class="dot" aria-hidden="true">·</span>
+          <span>{readTime} read</span>
+        </div>
       </div>
     )}
     <div class="container blog-hero-inner">
-      <div class="blog-meta">
-        <span>{dateFormatted}</span>
-        <span class="dot" aria-hidden="true">·</span>
-        <span>{readTime} read</span>
-      </div>
       <h1>{title}</h1>
       <p class="blog-perex">{perex}</p>
     </div>
@@ -130,6 +143,7 @@ const articleSchema = {
     width: 100%;
     max-height: 520px;
     overflow: hidden;
+    position: relative;
   }
   .hero-img-wrap img {
     width: 100%;
@@ -138,10 +152,22 @@ const articleSchema = {
     object-position: center;
     display: block;
   }
+  .hero-meta-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-16) 0;
+    background: linear-gradient(to bottom, transparent, rgba(8,8,16,0.72));
+  }
 
+  .blog-hero-inner--no-img {
+    max-width: 760px;
+    padding-top: var(--space-48);
+  }
   .blog-hero-inner {
     max-width: 760px;
-    padding: var(--space-48) 0 var(--space-80);
+    padding: var(--space-32) 0 var(--space-80);
   }
   .blog-meta {
     display: flex;
