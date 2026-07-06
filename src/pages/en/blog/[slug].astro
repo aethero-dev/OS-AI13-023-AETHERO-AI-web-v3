@@ -79,7 +79,13 @@ const articleSchema = {
 
 <PageLayout {title} description={perex} lang="en" jsonLd={articleSchema}>
 
-  <section class="blog-hero">
+  <section class={`blog-hero${featuredImage ? ' blog-hero--image' : ''}`}>
+    {featuredImage && (
+      <div class="hero-img-wrap">
+        <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
+        <div class="hero-overlay" />
+      </div>
+    )}
     <div class="container blog-hero-inner">
       <div class="blog-meta">
         <span>{dateFormatted}</span>
@@ -90,14 +96,6 @@ const articleSchema = {
       <p class="blog-perex">{perex}</p>
     </div>
   </section>
-
-  {featuredImage && (
-    <div class="blog-cover">
-      <div class="container">
-        <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
-      </div>
-    </div>
-  )}
 
   <article class="section bg-primary">
     <div class="container article-inner">
@@ -127,8 +125,45 @@ const articleSchema = {
   .blog-hero {
     background: var(--ae-bg-primary);
     padding: 160px 0 80px;
+    position: relative;
+    overflow: hidden;
   }
-  .blog-hero-inner { max-width: 760px; }
+  .blog-hero--image {
+    min-height: 580px;
+    padding: 120px 0 80px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-img-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8,8,16,0.35) 0%,
+      rgba(8,8,16,0.55) 40%,
+      rgba(8,8,16,0.88) 75%,
+      rgba(8,8,16,0.97) 100%
+    );
+  }
+
+  .blog-hero-inner {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+  }
   .blog-meta {
     display: flex;
     align-items: center;
@@ -148,18 +183,6 @@ const articleSchema = {
     font-size: var(--fs-24);
     color: var(--neutral-300);
     line-height: 1.6;
-  }
-
-  .blog-cover {
-    background: var(--ae-bg-primary);
-    padding: var(--space-40) 0 0;
-  }
-  .blog-cover img {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    border-radius: var(--radius-md);
-    display: block;
   }
 
   .article-inner { max-width: 760px; }
