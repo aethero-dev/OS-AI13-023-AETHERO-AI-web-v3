@@ -74,7 +74,7 @@ const features = [
               <p class="body-maxi feature-lead-sub">Pokud se okolo standartních e-shopů pohybujete už delší dobu, tak tyto funkce a <strong class="hl">možnosti, které jsou u Shopify rovnou v základu, určitě oceníte</strong></p>
             </div>
           )}
-          <h3 class="h3-mini feature-title">{f.title}</h3>
+          <h3 class="h3 feature-title">{f.title}</h3>
           <p class="body" set:html={f.desc}></p>
         </div>
         <div class="feature-img-wrap">
@@ -130,7 +130,7 @@ const features = [
   .feature-section--reverse .feature-inner { direction: rtl; }
   .feature-section--reverse .feature-text,
   .feature-section--reverse .feature-img-wrap { direction: ltr; }
-  .feature-title { font-size: var(--fs-36); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-24); }
+  .feature-title { margin-bottom: var(--space-24); }
   .feature-img-wrap { display: flex; align-items: center; justify-content: center; }
 
 

@@ -11,15 +11,46 @@ const startSteps = [
 ];
 
 const features = [
-  { title: 'Shopify Sidekick AI přímo v e-shopu', logo: '/sidekick.png', desc: 'Sidekick je AI asistent integrovaný do adminu e-shopu a výrazně vám urychlí práci v Shopify. Dokáže provádět operativní úkoly (vytvořit produkt, upravovat kolekce, analyzovat prodeje, připravit reporty), pomůže s marketingem (psaní popisků, e-mailů) a poradí na základě vašich vlastních dat i obecných zkušeností z trhu.', img: null, reverse: false },
-  { title: 'Nabušený „admin"', desc: 'Nebudeme vám nic lakovat na růžovo... postavit e-shop dá práci a ani pak není cesta k úspěchu snadná. Takže v „adminu" budete trávit spoustu času. A hodí se, když je přehledný a drží s vámi krok. Shopify admin umí: analytika, nápovědy, AI která vidí na vaše data a dokáže i poradit podle obecných zkušeností odjinud. A to je jen začátek.', img: '/analytika.webp', reverse: true },
-  { title: 'Postaveno pro mezinárodní prodej', desc: 'Trhy neboli Markets řeší v Shopify nastavení místní měny, platebních metod, jazyků. Další funkce vám pomohou poskytnout globálním zákazníkům důvěrně známé nákupní prostředí, které prokazatelně zvyšuje konverze. Podle trhu lze naladit šablonu, obsah, vybrat výrobky, nastavit ceny. S Shop Pay jim můžete nabídnout jejich platební metody a přizpůsobit i adresy dle zvyklostí.', img: '/international-sale-shopify.webp', reverse: false },
-  { title: 'Možnost sofistikovaného porovnání se s ostatními', desc: 'Shopify vám skrze AI a také díky zabudovaným benchmarkům ukáže jak jsou na tom podobné obchody ve světě. Takže svou výkonnost můžete lépe měřit a využít informace ve svůj prospěch.', img: '/store-benchmark.webp', reverse: true },
-  { title: 'Multichannel marketing', desc: 'Přehledně si organizujte marketingové aktivity napříč e-mailem, sociálními sítěmi, reklamou i organickou návštěvností do ucelených kampaní. Díky přehledným reportům jednotlivých kanálů lépe porozumíte tomu, odkud přichází zákazníci, kolik stojí jejich získání a jaká je návratnost marketingových investic.', img: '/marketing-measurement.webp', reverse: false },
-  { title: 'Real-time přehled o datech e-shopu', desc: 'S Shopify máte okamžitý přehled o tom, jak si váš e-shop skutečně vede – bez čekání na denní přepočty nebo omezené přehledy. Data se aktualizují v reálném čase napříč celým dashboardem i reporty. Přizpůsobte si přehled přesně podle toho, co je pro vás rozhodující, a sledujte klíčové metriky na první pohled.', img: '/real-time-monitoring.png', reverse: true },
-  { title: 'B2B ready', desc: 'Ve verzi Shopify Plus najdete nativní B2B funkcionalitu navrženou pro firmy s vysokým objemem objednávek, složitou cenotvorbou a individuálními obchodními vztahy. Umožňuje pracovat s firemními účty, vlastními ceníky, schvalovacími procesy i opakovanými nákupy v jednom sjednoceném řešení. Chcete menší B2B řešení? To vyřeší aplikace nebo custom vývoj.', img: '/b2b-1.webp', reverse: false },
-  { title: 'Shopify SHOP aplikace, u zákazníka v mobilu', desc: 'Díky Shop aplikaci se vaše značka dostává přímo do mobilních zařízení zákazníků a to po celém světě. Ideální uživatelská zkušenost. Zákazníci mohou jednoduše sledovat objednávky, vracet se k oblíbeným produktům a opakovaně nakupovat bez nutnosti znovu procházet celý nákupní proces.', img: '/shopify-shop-app.webp', reverse: true },
-  { title: 'Automatizace', desc: 'S rostoucím objemem objednávek nedává ruční správa smysl. Automatizace umožňuje převést klíčové procesy — od práce s objednávkami a zákazníky, přes cenotvorbu a zásoby až po marketingové scénáře — do řízených, předvídatelných toků. Výsledkem je menší závislost na manuálních zásazích, nižší chybovost a schopnost škálovat bez neustálého navyšování týmu.', img: '/flow-automation.webp', reverse: false },
+  {
+    title: 'Nabušený<br />„admin"',
+    desc: '<p class="body">Nebudeme vám nic lakovat na růžovo... postavit e-shop dá práci a ani pak není cesta k úspěchu snadná. Takže v „adminu" budete trávit spoustu času. A hodí se, když je přehledný a drží s vámi krok. Shopify admin umí: analytika, nápovědy, AI která vidí na vaše data a dokáže i poradit podle obecných zkušeností odjinud. A to je jen začátek.</p>',
+    img: '/analytika.webp', reverse: true,
+  },
+  {
+    title: 'Postaveno pro<br />mezinárodní prodej',
+    desc: '<p class="body">Trhy neboli Markets řeší v Shopify nastavení místní měny, platebních metod, jazyků. Další funkce vám pomohou poskytnout globálním zákazníkům důvěrně známé nákupní prostředí, které prokazatelně zvyšuje konverze. Podle trhu lze naladit šablonu, obsah, vybrat výrobky, nastavit ceny. S Shop Pay jim můžete nabídnout jejich platební metody a přizpůsobit i adresy dle zvyklostí.</p>',
+    img: '/international-sale-shopify.webp', reverse: false,
+  },
+  {
+    title: 'Možnost sofistikovaného porovnání se s ostatními',
+    desc: '<p class="body">Shopify vám skrze AI a také díky zabudovaným benchmarkům ukáže jak jsou na tom podobné obchody ve světě. Takže svou výkonnost můžete lépe měřit a využít informace ve svůj prospěch.</p>',
+    img: '/store-benchmark.webp', reverse: true,
+  },
+  {
+    title: 'Multichannel<br />marketing',
+    desc: '<p class="body">Přehledně si organizujte marketingové aktivity napříč e-mailem, sociálními sítěmi, reklamou i organickou návštěvností do ucelených kampaní.</p><p class="body">Díky přehledným reportům jednotlivých kanálů lépe porozumíte tomu, odkud přichází zákazníci, kolik stojí jejich získání a jaká je návratnost marketingových investic.</p>',
+    img: '/marketing-measurement.webp', reverse: false,
+  },
+  {
+    title: 'Real-time přehled o datech e-shopu',
+    desc: '<p class="body">S Shopify máte okamžitý přehled o tom, jak si váš e-shop skutečně vede – bez čekání na denní přepočty nebo omezené přehledy. Data se aktualizují v reálném čase napříč celým dashboardem i reporty. Přizpůsobte si přehled přesně podle toho, co je pro vás rozhodující, a sledujte klíčové metriky na první pohled. Díky aktuálním datům můžete řídit výkon aktivně, ne zpětně, a reagovat na změny ve chvíli, kdy na nich ještě záleží.</p>',
+    img: '/real-time-monitoring.png', reverse: true,
+  },
+  {
+    title: 'B2B ready',
+    desc: '<p class="body">Ve verzi Shopify Plus najdete nativní B2B funkcionalitu navrženou pro firmy s vysokým objemem objednávek, složitou cenotvorbou a individuálními obchodními vztahy. Umožňuje pracovat s firemními účty, vlastními ceníky, schvalovacími procesy i opakovanými nákupy v jednom sjednoceném řešení.</p><p class="body">Chcete menší B2B řešení? To vyřeší aplikace nebo custom vývoj.</p>',
+    img: '/b2b-1.webp', reverse: false,
+  },
+  {
+    title: 'Shopify SHOP aplikace,<br />u zákazníka v&nbsp;mobilu',
+    desc: '<p class="body">Díky Shop aplikaci se vaše značka dostává přímo do mobilních zařízení zákazníků a to po celém světě. Ideální uživatelská zkušenost. Zákazníci mohou jednoduše sledovat objednávky, vracet se k oblíbeným produktům a opakovaně nakupovat bez nutnosti znovu procházet celý nákupní proces.</p>',
+    img: '/shopify-shop-app.webp', reverse: true,
+  },
+  {
+    title: 'Automatizace',
+    desc: '<p class="body">S rostoucím objemem objednávek nedává ruční správa smysl. Automatizace umožňuje převést klíčové procesy — od práce s objednávkami a zákazníky, přes cenotvorbu a zásoby až po marketingové scénáře — do řízených, předvídatelných toků.</p><p class="body">Výsledkem je menší závislost na manuálních zásazích, nižší chybovost a schopnost škálovat bez neustálého navyšování týmu. E-shop tak může růst rychleji, s lepší kontrolou nákladů a bez toho, aby provoz začal brzdit obchodní ambice.</p>',
+    img: '/flow-automation.webp', reverse: false,
+  },
 ];
 
 ---
@@ -42,9 +73,10 @@ const features = [
     <div class="container intro-layout">
       <div class="intro-main">
         <h2 class="h1 intro-h2">Máte plán na<br /><span class="accent-purple">EXPANZI DO ZAHRANIČÍ</span>?</h2>
-        <p class="intro-text">S Shopify vám otevřeme cestu k růstu, <strong class="hl">který na lokálních platformách jednoduše není možný</strong>. Udělejte rozhodný krok vpřed na mezinárodní trhy a do globálního e-commerce.</p>
-        <p class="intro-text">Získáte <strong class="hl">jednu globální platformu postavenou od základu pro mezinárodní prodej</strong> — více měn, jazyků a lokalizovaná zákaznická zkušenost.</p>
-        <a href="#cta" class="btn-action btn-action--lg">Jdeme expandovat</a>
+        <p class="intro-text">S Shopify vám otevřeme cestu k růstu, <strong class="hl">který na lokálních platformách jednoduše není možný</strong>. Učiňte zásadní krok vpřed pro expanzi na zahraniční trhy a do světového e-commerce.</p>
+        <p class="intro-text">Získáte <strong class="hl">jednu globální platformu od základu navrženou pro mezinárodní prodej</strong> — umožňuje snadno vstoupit na nové trhy, pracovat s více měnami i jazyky a přizpůsobit nabídku lokálním zákazníkům.</p>
+        <p class="intro-text">Na jednom místě <strong class="hl">propojíte online prodej napříč zeměmi včetně B2B, ale i kamenné prodejny prostřednictvím Shopify POS</strong>. Shopify není jen e-shopový systém, ale kompletní obchodní ekosystém, který vám díky vestavěné AI pomáhá s lokalizací obsahu, optimalizací výkonu i automatizací expanzních procesů. <strong class="hl">Navíc se platforma každého půl roku rozvíjí díky stovkám nových funkcí vytvářených globální komunitou více než 4 000 Shopify vývojářů</strong>, takže váš e-shop je dlouhodobě připraven růst i mimo domácí trh.</p>
+        <a href="#cta" class="btn-action btn-action--lg">Chceme expandovat</a>
       </div>
       <WorkSidebar heading="JAK ZAČNEME" items={startSteps} />
     </div>
@@ -54,22 +86,36 @@ const features = [
   <section class="section bg-primary" id="expanze-proc">
     <div class="container two-col">
       <div>
-        <h2 class="h2 section-title">Co vám expanze s Shopify přinese?</h2>
+        <h2 class="h2 section-title">Co vám expanze s&nbsp;Shopify přinese?</h2>
         <p class="section-text body">K dispozici máte vše, co potřebujete proto, abyste svůj e-shop proměnili ve skutečnou globální značku. Zde je jen částečný výčet funkcí, které by vás mohly zaujmout.</p>
       </div>
       <div class="intro-highlights">
         <div class="highlight-item">
-          <span class="highlight-num">30+</span>
-          <span class="highlight-label">zemí dostupných přes Shopify Markets z jednoho adminu</span>
+          <span class="highlight-num">170+ zemí</span>
+          <span class="highlight-label">kde můžete prodávat z jednoho adminu</span>
         </div>
         <div class="highlight-item">
-          <span class="highlight-num">1</span>
-          <span class="highlight-label">platforma pro celý svět — bez migrace při škálování</span>
+          <span class="highlight-num">1 platforma</span>
+          <span class="highlight-label">pro celý svět — bez migrace při škálování</span>
         </div>
         <div class="highlight-item">
-          <span class="highlight-num">100%</span>
-          <span class="highlight-label">lokalizace — jazyk, měna, platby, daně pro každý trh</span>
+          <span class="highlight-num">100% lokalizace</span>
+          <span class="highlight-label">jazyk, měna, platby, daně pro každý trh</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopify Sidekick — custom sekce -->
+  <section class="feature-section">
+    <div class="container feature-inner">
+      <div class="feature-text">
+        <h3 class="h3 sidekick-title">Shopify Sidekick</h3>
+        <h4 class="h3 sidekick-sub">AI přímo v&nbsp;e-shopu</h4>
+        <p class="body"><strong class="hl">Sidekick</strong> je AI asistent integrovaný do adminu e-shopu a výrazně vám urychlí práci v Shopify. Dokáže provádět <strong class="hl">operativní úkoly</strong> (vytvořit produkt, upravovat kolekce, analyzovat prodeje, připraví reporty), pomůže s <strong class="hl">marketingem</strong> (psaní popisků, e-mailů, SEO doporučení), umí navrhovat a aplikovat <strong class="hl">úpravy storefrontu</strong> včetně změn vzhledu nebo upravovat téma podle zadání včetně tvorby Liquid kódu. Sidekick umí vysvětlit, jak fungují nastavení v adminu, doporučit kroky pro růst e-shopu, automatizovat procesy a navrhovat best practices. Odpovědi personalizuje podle prodejů, zákazníků a specifické konfigurace vašeho obchodu.</p>
+      </div>
+      <div class="feature-img-wrap">
+        <img src="/sidekick.png" alt="Shopify Sidekick AI" class="feature-img" loading="lazy" />
       </div>
     </div>
   </section>
@@ -80,8 +126,8 @@ const features = [
       <div class="container feature-inner">
         <div class="feature-text">
           {f.logo && <img src={f.logo} alt={f.title} class="feature-logo" loading="lazy" />}
-          <h3 class="h3-mini feature-title">{f.title}</h3>
-          <p class="body">{f.desc}</p>
+          <h3 class="h3 feature-title" set:html={f.title}></h3>
+          <div class="feature-desc" set:html={f.desc}></div>
         </div>
         <div class="feature-img-wrap">
           {f.img && <img src={f.img} alt={f.title} class="feature-img" loading="lazy" />}
@@ -117,16 +163,21 @@ const features = [
   /* .hl (bold lavender) — globální utilita v global.css */
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
-  .intro-highlights { display: flex; flex-direction: column; gap: var(--space-40); padding-top: var(--space-8); }
-  .highlight-item { display: flex; flex-direction: column; gap: var(--space-8); border-left: 2px solid var(--action); padding-left: var(--space-24); }
-  .highlight-num { font-size: 48px; font-weight: 700; color: #fff; line-height: 1; font-family: var(--font-primary); }
-  .highlight-label { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .intro-highlights { display: flex; flex-direction: column; gap: 4px; padding-top: var(--space-8); max-width: 340px; }
+  .highlight-item { display: flex; flex-direction: column; gap: var(--space-8); background: var(--text-secondary); padding: 24px 28px; border-radius: var(--radius-sm, 6px); }
+  .highlight-num { font-size: var(--fs-36); font-weight: 700; color: #fff; line-height: 1.1; font-family: var(--font-primary); }
+  .highlight-label { font-size: 16px; color: rgba(255,255,255,0.85); font-weight: 600; line-height: 1.5; }
+
+  .sidekick-title { color: #fff; margin-bottom: 4px; }
+  .sidekick-sub { color: #fff; margin-bottom: var(--space-24); }
 
   .feature-section--reverse .feature-inner { direction: rtl; }
   .feature-section--reverse .feature-text,
   .feature-section--reverse .feature-img-wrap { direction: ltr; }
   .feature-logo { height: 48px; width: auto; display: block; margin-bottom: var(--space-24); object-fit: contain; }
   .feature-title { margin-bottom: var(--space-24); color: #fff; }
+  .feature-desc :global(p) { margin-bottom: var(--space-24); }
+  .feature-desc :global(p:last-child) { margin-bottom: 0; }
   .feature-img-wrap { display: flex; align-items: center; justify-content: center; }
 
   .tady-heading { font-size: var(--fs-48); font-weight: 600; margin-bottom: var(--space-24); }

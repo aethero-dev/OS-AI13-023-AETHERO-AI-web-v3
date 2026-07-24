@@ -2,6 +2,26 @@
 import PageLayout from '../../../layouts/PageLayout.astro';
 import { useStoryblokApi, renderRichText } from '@storyblok/astro';
 
+interface PostSummary {
+  slug: string; title: string; perex: string; readTime: string; date: string; img: string;
+}
+
+const SLUG_IMG: Record<string, string> = {
+  'shopify-mandatory-button': '/blog-01.webp',
+  'ai-seo-2026': '/blog-02.webp',
+  'shopify-editions-winter-2026': '/blog-03.webp',
+  'translating-payment-methods-shopify': '/blog-04.webp',
+  'shopify-vs-shoptet': '/blog-05.webp',
+};
+
+const STATIC_ALL: PostSummary[] = [
+  { slug: 'shopify-mandatory-button', title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem", perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', readTime: '7 min', date: '2026-05-01', img: '/blog-01.webp' },
+  { slug: 'ai-seo-2026', title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', readTime: '7 min', date: '2026-01-15', img: '/blog-02.webp' },
+  { slug: 'shopify-editions-winter-2026', title: 'Shopify Editions — Winter 2026', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', readTime: '5 min', date: '2025-12-10', img: '/blog-03.webp' },
+  { slug: 'translating-payment-methods-shopify', title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', readTime: '3 min', date: '2025-10-05', img: '/blog-04.webp' },
+  { slug: 'shopify-vs-shoptet', title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', readTime: '18 min', date: '2025-06-01', img: '/blog-05.webp' },
+];
+
 export async function getStaticPaths() {
   try {
     const storyblok = useStoryblokApi();
@@ -10,8 +30,17 @@ export async function getStaticPaths() {
       starts_with: 'en/blog/',
       content_type: 'blog_post',
       per_page: 100,
+      sort_by: 'first_published_at:desc',
     });
     if (data.stories.length > 0) {
+      const allPosts: PostSummary[] = data.stories.map((s: any) => ({
+        slug: s.slug,
+        title: s.content.title,
+        perex: s.content.perex || '',
+        readTime: s.content.read_time || '5 min',
+        date: s.first_published_at?.split('T')[0] || s.created_at.split('T')[0],
+        img: s.content.featured_image?.filename || SLUG_IMG[s.slug] || '/blog-01.webp',
+      }));
       return data.stories.map((story: any) => ({
         params: { slug: story.slug },
         props: {
@@ -22,40 +51,28 @@ export async function getStaticPaths() {
           content: story.content.content,
           featuredImage: story.content.featured_image?.filename || null,
           isStoryblok: true,
+          allPosts,
         },
       }));
     }
-  } catch (_e) {
-    // Storyblok not set up or no content yet → fallback to static
-  }
+  } catch (_e) {}
 
-  return [
-    {
-      params: { slug: 'shopify-mandatory-button' },
-      props: { title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem", readTime: '7 min', date: '2026-05-01', perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', content: null, featuredImage: '/blog-01.webp', isStoryblok: false },
+  return STATIC_ALL.map(post => ({
+    params: { slug: post.slug },
+    props: {
+      title: post.title, readTime: post.readTime, date: post.date,
+      perex: post.perex, content: null, featuredImage: post.img,
+      isStoryblok: false, allPosts: STATIC_ALL,
     },
-    {
-      params: { slug: 'ai-seo-2026' },
-      props: { title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', readTime: '7 min', date: '2026-01-15', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', content: null, featuredImage: '/blog-02.webp', isStoryblok: false },
-    },
-    {
-      params: { slug: 'shopify-editions-winter-2026' },
-      props: { title: 'Shopify Editions — Winter 2026', readTime: '5 min', date: '2025-12-10', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', content: null, featuredImage: '/blog-03.webp', isStoryblok: false },
-    },
-    {
-      params: { slug: 'translating-payment-methods-shopify' },
-      props: { title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", readTime: '3 min', date: '2025-10-05', perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', content: null, featuredImage: '/blog-04.webp', isStoryblok: false },
-    },
-    {
-      params: { slug: 'shopify-vs-shoptet' },
-      props: { title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', readTime: '18 min', date: '2025-06-01', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', content: null, featuredImage: '/blog-05.webp', isStoryblok: false },
-    },
-  ];
+  }));
 }
 
-const { title, readTime, date, perex, content, featuredImage, isStoryblok } = Astro.props;
+const { title, readTime, date, perex, content, featuredImage, isStoryblok, allPosts } = Astro.props;
+const { slug } = Astro.params;
 const renderedContent = isStoryblok && content ? renderRichText(content) : null;
-const dateFormatted = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const formatDate = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const dateFormatted = formatDate(date);
+const otherPosts = ((allPosts || []) as PostSummary[]).filter(p => p.slug !== slug).slice(0, 3);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -123,25 +140,46 @@ const articleSchema = {
 
   <section class="cta-section">
     <div class="container cta-inner">
-      <h2 class="h2-maxi">Something to discuss?</h2>
-      <div class="cta-links">
-        <a href="mailto:info@aethero.cz" class="btn-primary">info@aethero.cz</a>
-        <a href="/en/contact" class="btn-ghost">Contact</a>
+      <h2>Something to discuss?<br />Let us know:</h2>
+      <div class="cta-contacts">
+        <a href="mailto:info@aethero.cz" class="cta-contact">info@aethero.cz</a>
+        <a href="tel:+420776067663" class="cta-contact">+420 776 067 663</a>
       </div>
     </div>
   </section>
+
+  {otherPosts.length > 0 && (
+    <section class="more-articles">
+      <div class="container">
+        <h2 class="h3-maxi more-heading">More articles</h2>
+        <div class="more-grid">
+          {otherPosts.map(post => (
+            <a href={`/en/blog/${post.slug}`} class="more-card">
+              <div class="more-card-img">
+                <img src={post.img} alt={post.title} loading="lazy" width="600" height="340" />
+              </div>
+              <div class="more-card-body">
+                <span class="more-date">{formatDate(post.date)}</span>
+                <h3 class="h3-mini more-title">{post.title}</h3>
+                <span class="more-cta">Read article →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
 </PageLayout>
 
 <style>
   .blog-hero {
     background: var(--ae-bg-primary);
-    padding-top: 80px;
   }
 
   .hero-img-wrap {
     width: 100%;
-    max-height: 520px;
+    height: 600px;
     overflow: hidden;
     position: relative;
   }
@@ -167,8 +205,9 @@ const articleSchema = {
   }
   .blog-hero-inner {
     max-width: 760px;
-    padding: var(--space-32) 0 var(--space-80);
+    padding: var(--space-32) 0 0;
   }
+  article.section { padding-top: var(--space-40); }
   .blog-meta {
     display: flex;
     align-items: center;
@@ -209,31 +248,75 @@ const articleSchema = {
 
   .coming-soon { color: var(--neutral-500); font-style: italic; }
 
-  .cta-section { padding: var(--space-80) 0; background: var(--ae-bg-primary); }
-  .cta-inner { text-align: center; }
-  .cta-inner h2 { margin-bottom: var(--space-40); }
-  .cta-links { display: flex; gap: var(--space-16); justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-flex; padding: 14px 32px;
-    background: var(--action); color: var(--ae-bg-primary);
-    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
-    border-radius: var(--radius-sm);
-    transition: background var(--transition-base);
+  .more-articles {
+    background: var(--ae-bg-deep);
+    padding: var(--space-80) 0 var(--space-120);
   }
-  .btn-primary:hover { background: var(--action-hover); }
-  .btn-ghost {
-    display: inline-flex; padding: 14px 32px;
-    border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary);
-    font-family: var(--font-primary); font-size: 16px; font-weight: 600;
-    border-radius: var(--radius-sm);
-    transition: border-color var(--transition-base), color var(--transition-base);
+  .more-heading { margin-bottom: var(--space-40); }
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-32);
   }
-  .btn-ghost:hover { border-color: var(--action); color: var(--action); }
+  .more-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+  .more-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-2px); }
+  .more-card-img {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+  }
+  .more-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .more-card:hover .more-card-img img { transform: scale(1.03); }
+  .more-card-body {
+    padding: var(--space-24);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .more-date {
+    font-size: 13px;
+    color: var(--neutral-500);
+    margin-bottom: var(--space-12);
+    display: block;
+  }
+  .more-title {
+    color: var(--action);
+    margin-bottom: var(--space-16);
+    flex: 1;
+  }
+  .more-card:hover .more-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .more-cta {
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--action);
+    align-self: flex-end;
+  }
 
+  @media (max-width: 1024px) {
+    .more-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 768px) {
     .blog-hero { padding: 120px 0 60px; }
     .blog-hero h1 { font-size: var(--fs-48); }
     .blog-perex { font-size: 20px; }
+    .more-grid { grid-template-columns: 1fr; gap: var(--space-24); }
   }
   @media (max-width: 480px) {
     .blog-hero { padding: 90px 0 48px; }

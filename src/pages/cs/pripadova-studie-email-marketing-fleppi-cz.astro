@@ -141,35 +141,35 @@ import PageLayout from '../../layouts/PageLayout.astro';
           <div class="step-row">
             <div class="step-n">01</div>
             <div>
-              <strong>Import a validace dat</strong>
+              <strong class="hl">Import a validace dat</strong>
               <p class="body step-desc">CSV exporty ze Shoptetu a z Leadhub — kampaně, automations i objednávky za dvouletý horizont. Čistění dat, sjednocení formátů, ověření konzistence.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-n">02</div>
             <div>
-              <strong>Meziroční srovnání objednávek</strong>
+              <strong class="hl">Meziroční srovnání objednávek</strong>
               <p class="body step-desc">Každý kalendářní měsíc rok po roku — obrat, počet objednávek, průměrná hodnota košíku, zákazníci, retence. Přesná identifikace měsíců a příčin propadu.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-n">03</div>
             <div>
-              <strong>Analýza emailových kampaní</strong>
+              <strong class="hl">Analýza emailových kampaní</strong>
               <p class="body step-desc">Stovky broadcast kampaní a automations za dva roky. Open rate, CTR, revenue a revenue na odeslaný email — po měsících i po kampaních. Identifikace top performers a slepých skvrn.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-n">04</div>
             <div>
-              <strong>Market basket analýza</strong>
+              <strong class="hl">Market basket analýza</strong>
               <p class="body step-desc">Z desetitisíců objednávek identifikace nejčastějších produktových kombinací — základ pro cross-sell automations a produktově zaměřené newslettery.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-n">05</div>
             <div>
-              <strong>Sestavení strategie a 365denního plánu</strong>
+              <strong class="hl">Sestavení strategie a 365denního plánu</strong>
               <p class="body step-desc">Všechna zjištění přetavena do konkrétního akčního plánu s odůvodněním a odhadovaným přínosem každého úkolu.</p>
             </div>
           </div>
@@ -285,7 +285,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
           </div>
           <div class="ref-card">
             <div class="ref-card-logo">
-              <img src="/ref-fleppi-logo.jpg" alt="fleppi.cz" class="ref-logo-img" />
+              <img src="/ref-fleppi-logo.png" alt="fleppi.cz" class="ref-logo-img" />
             </div>
             <p class="ref-quote">„Pokud hledáte partnera, který se do věcí dokáže opravdu ponořit, přemýšlel nad nimi v širších souvislostech a zároveň dokáže předat srozumitelná a prakticky využitelná doporučení, spolupráci s aethero mohu rozhodně doporučit. Zpracovávali nám marketingovou analýzu e-mailingu a z celé zkušenosti jsem opravdu nadšená. Výstup byl kvalitně zpracovaný, přehledný a hlavně plný konkrétních podnětů, které můžeme rovnou využít pro další růst našeho e-shopu. Žádná obecná doporučení, ale řešení šitá nám na míru."</p>
             <div class="ref-author">
@@ -435,17 +435,18 @@ import PageLayout from '../../layouts/PageLayout.astro';
     line-height: 1; padding-top: 4px;
   }
   .step-row strong { display: block; color: #fff; margin-bottom: 6px; }
+  .step-row strong.hl { color: var(--text-secondary); }
   .step-desc { margin: 0; }
 
   /* Findings */
   .findings-list { display: flex; flex-direction: column; gap: 32px; margin-top: var(--space-40); }
   .finding { max-width: 720px; }
-  .finding-title { font-weight: 700; margin-bottom: 8px; }
+  .finding-title { font-weight: 900; color: var(--text-secondary); margin-bottom: 8px; }
 
   /* Recommendations */
   .reco-list { display: flex; flex-direction: column; gap: 28px; margin-top: var(--space-40); }
   .reco-item { max-width: 720px; }
-  .reco-title { font-weight: 700; margin-bottom: 8px; }
+  .reco-title { font-weight: 900; color: var(--text-secondary); margin-bottom: 8px; }
 
   /* Output */
   .output-list { display: flex; flex-direction: column; gap: 20px; margin-top: var(--space-32); max-width: 720px; }

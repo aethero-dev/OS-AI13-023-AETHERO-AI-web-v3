@@ -12,13 +12,13 @@ const placeholderItems = [
 ];
 
 const features = [
-  { title: 'Technický support & troubleshooting', desc: 'Řešíme komplexní technické problémy v Liquid šablonách, custom aplikacích, Shopify Functions, checkoutu i napojených službách. Identifikujeme příčiny chyb, ne jen jejich symptomy.', img: '/support.jpg', reverse: false },
-  { title: 'Rozšiřování funkcionalit & custom vývoj', desc: 'Vyvíjíme custom úpravy na míru – pokročilá práce s produkty, cenotvorbou, checkoutem, logikou dopravy a plateb, včetně vlastních aplikací.', img: '/custom.webp', reverse: true },
-  { title: 'Integrace & systémová architektura', desc: 'Navrhujeme a realizujeme robustní integrace na ERP, CRM, skladové a logistické systémy. Automatizujeme datové toky a nastavujeme škálovatelnou architekturu bez vendor locku.', img: '/system1.webp', reverse: false },
+  { title: 'Technický support & troubleshooting', desc: 'Řešíme komplexní technické problémy v Liquid šablonách, custom aplikacích, Shopify Functions, checkoutu i napojených službách. Identifikujeme příčiny chyb, ne jen jejich symptomy.', img: '/support.jpg', reverse: false },
+  { title: 'Rozšiřování funkcionalit & custom vývoj', desc: 'Vyvíjíme custom úpravy na míru – pokročilá práce s produkty, cenotvorbou, checkoutem, logikou dopravy a plateb, včetně vlastních aplikací.', img: '/custom.webp', reverse: true },
+  { title: 'Integrace & systémová architektura', desc: 'Navrhujeme a realizujeme robustní integrace na ERP, CRM, skladové a logistické systémy. Automatizujeme datové toky a nastavujeme škálovatelnou architekturu bez vendor locku.', img: '/system1.webp', reverse: false },
   { title: 'Nastavení Shopify Markets pro mezinárodní expanzi', desc: 'Technické nastavení více trhů, měn, jazyků, domén, daňových pravidel, dopravy a lokálních plateb. Připravíme e-shop na provoz napříč zemí bez duplikace řešení.', img: '/shopify-international.webp', reverse: true },
-  { title: 'Výkon, stabilita & škálování', desc: 'Výkon šablon, zátěž aplikací, Core Web Vitals a celkovou stabilitu e-shopu udržíme ve stavu, aby zvládal vysokou návštěvnost i špičky v prodeji.', img: '/vykon.webp', reverse: false },
-  { title: 'Design & UX podpora s technickým přesahem', desc: 'Pomůžeme s úpravami designu, UX optimalizací a implementací design systému přímo v Shopify – od práce s existující šablonou až po custom řešení, to vše v souladu s brandem i technickými best practices.', img: '/ux-we-do.webp', reverse: true },
-  { title: 'Technické konzultace i dlouhodobý support', desc: 'Jsme váš technický partner pro kontinuální rozvoj – od auditů a code review až po strategická rozhodnutí o dalším směřování Shopify řešení.', img: '/longtime-support.jpg', reverse: false },
+  { title: 'Výkon, stabilita & škálování', desc: 'Výkon šablon, zátěž aplikací, Core Web Vitals a celkovou stabilitu e-shopu udržíme ve stavu, aby zvládal vysokou návštěvnost i špičky v prodeji.', img: '/vykon.webp', reverse: false },
+  { title: 'Design & UX podpora s technickým přesahem', desc: 'Pomůžeme s úpravami designu, UX optimalizací a implementací design systému přímo v Shopify – od práce s existující šablonou až po custom řešení, to vše v souladu s brandem i technickými best practices.', img: '/ux-we-do.webp', reverse: true },
+  { title: 'Technické konzultace i dlouhodobý support', desc: 'Jsme váš technický partner pro kontinuální rozvoj – od auditů a code review až po strategická rozhodnutí o dalším směřování Shopify řešení.', img: '/longtime-support.jpg', reverse: false },
 ];
 
 ---
@@ -61,7 +61,7 @@ const features = [
     <section class={`feature-section${f.reverse ? ' feature-section--reverse' : ''}`}>
       <div class="container feature-inner">
         <div class="feature-text">
-          <h3 class="h3-mini feature-title">{f.title}</h3>
+          <h3 class="h3 feature-title">{f.title}</h3>
           <p class="body">{f.desc}</p>
         </div>
         <div class="feature-img-wrap">
