@@ -19,16 +19,16 @@ git status
 Očekáváš: remote origin = github.com/david-kuba/OS-AI13-023-AETHERO-AI-web-v3
 Pokud chybí nebo push selže → zastav, zapiš do QUESTIONS.md
 
-**Storyblok:**
+**Storyblok:** (token načti z .env — nikdy ho nepiš do tohoto souboru)
 ```bash
-curl -s "https://api.storyblok.com/v2/cdn/stories?token=EwsGMtpckWvz9jKfpcfHhwtt&version=draft" | head -c 300
+source .env && curl -s "https://api.storyblok.com/v2/cdn/stories?token=${STORYBLOK_TOKEN}&version=draft" | head -c 300
 ```
 Očekáváš: JSON s klíčem `"stories"` (i prázdný seznam je OK)
 Pokud vrátí chybu 401/403 → zastav, zapiš do QUESTIONS.md
 
-**Cloudflare Pages build hook:**
+**Cloudflare Pages build hook:** (URL načti z .env)
 ```bash
-curl -s -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/4b0cc692-c45f-47bd-9510-b5663cfd5585" | head -c 200
+source .env && curl -s -X POST "${CF_PAGES_BUILD_HOOK_URL}" | head -c 200
 ```
 Očekáváš: JSON odpověď bez 401/403
 Poznámka: build hook potřebujeme až v Milestone 1.1, neblokuj kvůli němu start
@@ -162,12 +162,16 @@ Pokud hledáš logo, fotky, grafiku, brandové materiály nebo jakékoliv vstupn
 Lokální workspace:
 /Users/davidkuba/Library/CloudStorage/Dropbox/__13 AI PROJECTS/OS-AI13-023-AETHERO-AI-web-v3
 
-.env soubor (vytvoř ho, nikdy nepushuj na GitHub):
+.env soubor (vytvoř ho, nikdy nepushuj na GitHub; hodnoty jsou POUZE v .env
+a v password manageru — nikdy v MD souborech ani promptech, viz WEB-STANDARD §12):
 ```
-STORYBLOK_TOKEN=EwsGMtpckWvz9jKfpcfHhwtt
-STORYBLOK_SPACE_ID=293337461480339
-CF_PAGES_BUILD_HOOK_URL=https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/4b0cc692-c45f-47bd-9510-b5663cfd5585
+STORYBLOK_TOKEN=          # Storyblok → Settings → Access Tokens (Preview)
+STORYBLOK_SPACE_ID=       # Storyblok → Settings → Space
+CF_PAGES_BUILD_HOOK_URL=  # CF Pages → Settings → Builds → Deploy hooks
 ```
+Pozn. 2026-07-24: původní token i build hook z tohoto souboru unikly do git
+historie → obojí ROTOVÁNO a revokováno (session AI13009/04). Aktuální hodnoty
+jsou v .env.
 
 ---
 

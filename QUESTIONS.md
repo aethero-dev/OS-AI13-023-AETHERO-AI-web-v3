@@ -21,7 +21,7 @@ Formát záznamu:
 
 ✓ **Storyblok:** API token funguje. Vrátil stories se story "Home" (uuid: 9bf530d6...). Space je připraven.
 
-⚠️ **Cloudflare hook:** Zablokován automatickým bezpečnostním klasifikátorem Claude Code. Neblokuje start (potřebujeme až od 1.2). David může zkontrolovat ručně: `curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/4b0cc692-c45f-47bd-9510-b5663cfd5585"` — nebo přidat permission do settings.
+⚠️ **Cloudflare hook:** Zablokován automatickým bezpečnostním klasifikátorem Claude Code. Neblokuje start (potřebujeme až od 1.2). David může zkontrolovat ručně: `source .env && curl -X POST "$CF_PAGES_BUILD_HOOK_URL"` — nebo přidat permission do settings. (Pozn. 2026-07-24: původní hook URL odsud odstraněna — unikla do git historie, hook rotován, viz CLAUDE-CODE-START.md §Přístupy.)
 
 ✓ **Web www.aethero.cz:** Přístupný. Navigace odpovídá spec: Úvod / Co umíme (7 podsekce) / Aplikace (eSyncer, AE Translator) / O nás / Kontakt.
 - /esyncer ✓
