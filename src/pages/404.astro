@@ -1,0 +1,71 @@
+---
+// 404 — jedna stránka pro CS i EN (CF Pages servíruje dist/404.html pro
+// všechny neexistující cesty; jazyk nejde určit server-side → bilingvní obsah).
+// Vzniklo: AI13009 06-UDRZBA bod 1 (soft-404 nález NALEZY-05/1).
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="404 — stránka nenalezena"
+  description="Stránka neexistuje nebo byla přesunuta."
+  lang="cs"
+>
+  <section class="nf">
+    <div class="container">
+      <p class="nf-code" aria-hidden="true">404</p>
+      <h1 class="h2">Stránka nenalezena</h1>
+      <p class="nf-sub">Tahle adresa neexistuje, nebo se přestěhovala jinam.</p>
+      <p class="nf-sub nf-en">Page not found — it may have been moved.</p>
+      <div class="nf-actions">
+        <a href="/cs/" class="btn-action">Zpět na úvod</a>
+        <a href="/en/" class="btn-ghost btn-ghost--lower">Home (EN)</a>
+      </div>
+      <p class="nf-links">
+        Hledáte něco konkrétního?
+        <a href="/cs/co-umime/" class="text-link">Co umíme</a> ·
+        <a href="/cs/blog/" class="text-link">Blog</a> ·
+        <a href="/cs/kontakt/" class="text-link">Kontakt</a>
+      </p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .nf {
+    padding: 200px 0 120px; /* fixed header offset dle vzoru .cs-layout */
+    text-align: center;
+    min-height: 70vh;
+  }
+  .nf-code {
+    font-family: var(--font-primary);
+    font-size: var(--fs-160);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    color: var(--text-secondary);
+    opacity: 0.35;
+  }
+  .nf h1 { margin: 8px 0 16px; }
+  .nf-sub {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--fs-20);
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .nf-en {
+    color: var(--neutral-500);
+    font-size: var(--text-body);
+    margin-top: 4px;
+  }
+  .nf-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0 48px;
+  }
+  .nf-links { color: var(--neutral-500); font-size: var(--text-body); }
+  @media (max-width: 480px) {
+    .nf { padding: 154px 0 80px; }
+  }
+</style>
