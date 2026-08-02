@@ -1,0 +1,327 @@
+---
+// Privacy policy aplikace AE TRANSLATOR pro Shopify App Store.
+//
+// POZOR NA URL: stránka je záměrně BEZ jazykového prefixu (/privacy-policy),
+// protože na tuhle adresu odkazuje listing aplikace v Shopify App Store.
+// Po výměně webu pod doménou musí adresa odpovídat dál — nesmí zaniknout
+// ani se přesunout (karta webu AI13009, položka AE-33).
+//
+// Text je převzatý doslova ze starého webu (verze 17. 2. 2026) — je to
+// právní dokument, nepřepisuje se.
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Privacy Policy — AE TRANSLATOR"
+  description="Privacy policy for the AE TRANSLATOR Shopify application by AETHERO s.r.o."
+  lang="en"
+>
+
+  <section class="legal-hero">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="legal-eyebrow">AE TRANSLATOR</p>
+      <h1>Privacy Policy</h1>
+      <p class="legal-date">17. 2. 2026</p>
+    </div>
+  </section>
+
+  <section class="section bg-primary">
+    <div class="container legal-body">
+      <p>
+        AE TRANSLATOR (“App”) is provided by AETHERO s.r.o., Czech Republic
+        (“we”, “us”, “our”). This Privacy Policy describes how we collect, use,
+        and process data when merchants install and use the App in connection
+        with their Shopify store. If you are a merchant installing the App, you
+        are the “Merchant” under this Policy.
+      </p>
+
+      <h2 class="h3">1. Scope</h2>
+      <p>
+        This Privacy Policy applies to data processed through the AE TRANSLATOR
+        Shopify application available via the Shopify App Store. The App is
+        designed to translate Shopify store content (products, pages, blogs, and
+        translations). The App does not process or store end-customer (shopper)
+        personal data.
+      </p>
+
+      <h2 class="h3">2. Data We Collect and Process</h2>
+
+      <h3 class="h4">2.1 Merchant and Store Data (via Shopify API)</h3>
+      <p>When a Merchant installs the App, we access the following Shopify API scopes:</p>
+      <ul>
+        <li>read_content</li>
+        <li>read_locales</li>
+        <li>read_products</li>
+        <li>read_translations</li>
+        <li>write_translations</li>
+      </ul>
+      <p>This allows us to access and process:</p>
+      <ul>
+        <li>Product titles and descriptions</li>
+        <li>Store pages and blog content</li>
+        <li>Store locales and languages</li>
+        <li>Existing translations</li>
+        <li>Writing translated content back to Shopify</li>
+      </ul>
+      <p>We do not request access to:</p>
+      <ul>
+        <li>Customers</li>
+        <li>Orders</li>
+        <li>Checkouts</li>
+        <li>Payment data</li>
+        <li>Any end-customer personally identifiable information (PII)</li>
+      </ul>
+
+      <h3 class="h4">2.2 Authentication and Session Data</h3>
+      <p>To provide secure access to the App, we store:</p>
+      <ul>
+        <li>Shopify shop domain</li>
+        <li>OAuth state and granted scopes</li>
+        <li>Shopify access token</li>
+        <li>Staff user ID</li>
+        <li>Staff name and email address (for app access control and job attribution)</li>
+      </ul>
+      <p>This data is used solely for authentication, authorization, and app functionality.</p>
+
+      <h3 class="h4">2.3 Translation and Job Data</h3>
+      <p>For translation processing, we may temporarily process and store:</p>
+      <ul>
+        <li>Content submitted for translation (e.g., product titles, descriptions, pages)</li>
+        <li>Source and target languages</li>
+        <li>Translation results</li>
+        <li>Translation rules and merchant-configured dictionary</li>
+        <li>Batch/job names</li>
+        <li>Job status, results, and error logs</li>
+        <li>Optional staff email for “batch completed” notifications</li>
+      </ul>
+      <p>This data is used strictly to perform translation services and return results to Shopify.</p>
+
+      <h3 class="h4">2.4 API Settings and Configuration</h3>
+      <p>Per merchant store, we may store:</p>
+      <ul>
+        <li>Selected translation provider</li>
+        <li>Merchant-provided API keys (e.g., DeepL, OpenAI-compatible providers, Anthropic Claude)</li>
+        <li>SMTP credentials for sending translation completion emails</li>
+      </ul>
+      <p>API keys and SMTP credentials are stored securely and used only:</p>
+      <ul>
+        <li>To call the merchant’s chosen translation service</li>
+        <li>To send merchant-configured email notifications</li>
+      </ul>
+      <p>We do not use these credentials for any other purpose.</p>
+
+      <h2 class="h3">3. End-Customer Data</h2>
+      <p>
+        AE TRANSLATOR does not collect, store, or process end-customer (shopper)
+        data. We do not access:
+      </p>
+      <ul>
+        <li>Customer names</li>
+        <li>Emails</li>
+        <li>Addresses</li>
+        <li>Order history</li>
+        <li>Checkout information</li>
+      </ul>
+      <p>The App processes only merchant data and store content.</p>
+
+      <h2 class="h3">4. How We Use the Data</h2>
+      <p>We use collected data solely to:</p>
+      <ul>
+        <li>Authenticate merchants</li>
+        <li>Provide translation functionality</li>
+        <li>Write translations back to Shopify</li>
+        <li>Manage translation batches</li>
+        <li>Improve app reliability and performance</li>
+        <li>Provide technical support</li>
+      </ul>
+      <p>We do not sell data. We do not use merchant content for advertising or profiling.</p>
+
+      <h2 class="h3">5. Data Storage and Hosting</h2>
+      <p>Primary hosting location: European Union (Czech Republic)</p>
+      <p>Infrastructure provider: Linode (Akamai Cloud Services)</p>
+      <p>App URL: <a href="https://aetr.aethero.cz">https://aetr.aethero.cz</a></p>
+      <p>
+        We apply appropriate technical and organizational measures to protect
+        data against unauthorized access, loss, or misuse.
+      </p>
+
+      <h2 class="h3">6. Third-Party Services and Subprocessors</h2>
+      <p>We may share data only as necessary to operate the App:</p>
+
+      <h3 class="h4">Shopify</h3>
+      <ul>
+        <li>OAuth authentication</li>
+        <li>Shopify API (content and translations)</li>
+        <li>Required webhooks for compliance</li>
+      </ul>
+
+      <h3 class="h4">
+        Translation Providers (only if enabled and configured by the Merchant
+        using their own API keys)
+      </h3>
+      <ul>
+        <li>DeepL</li>
+        <li>OpenAI or OpenAI-compatible APIs (e.g., DeepSeek)</li>
+        <li>Anthropic (Claude)</li>
+      </ul>
+      <p>
+        Content submitted for translation is transmitted to the selected provider
+        solely for translation purposes.
+      </p>
+
+      <h3 class="h4">Hosting</h3>
+      <p>
+        Linode (Akamai Cloud Services). We do not share data with third parties
+        for marketing purposes.
+      </p>
+
+      <h2 class="h3">7. Data Retention</h2>
+      <p>We retain merchant and translation data only as long as necessary to:</p>
+      <ul>
+        <li>Provide translation services</li>
+        <li>Maintain app functionality</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+      <p>
+        Upon app uninstallation, we delete or anonymize merchant data within a
+        reasonable period, except where retention is required by law.
+      </p>
+
+      <h2 class="h3">8. Merchant Rights (GDPR and Applicable Laws)</h2>
+      <p>
+        If you are located in the European Economic Area (EEA), United Kingdom,
+        or other jurisdictions with data protection laws, you may have rights
+        including:
+      </p>
+      <ul>
+        <li>Right of access</li>
+        <li>Right to rectification</li>
+        <li>Right to erasure</li>
+        <li>Right to restriction of processing</li>
+        <li>Right to data portability</li>
+        <li>Right to lodge a complaint with a supervisory authority</li>
+      </ul>
+      <p>Requests may be submitted to: <a href="mailto:info@aethero.cz">info@aethero.cz</a></p>
+      <p>
+        We also comply with Shopify’s mandatory data protection webhooks for data
+        access and erasure requests.
+      </p>
+
+      <h2 class="h3">9. International Transfers</h2>
+      <p>
+        If translation providers process data outside the EU/EEA, transfers occur
+        under appropriate safeguards in accordance with applicable data
+        protection laws.
+      </p>
+      <p>
+        Merchants are responsible for ensuring that their selected translation
+        provider complies with applicable laws.
+      </p>
+
+      <h2 class="h3">10. Security</h2>
+      <p>We implement reasonable administrative, technical, and organizational safeguards including:</p>
+      <ul>
+        <li>Encrypted connections (HTTPS/TLS)</li>
+        <li>Secure storage of API credentials</li>
+        <li>Access controls</li>
+        <li>Logging and monitoring</li>
+      </ul>
+      <p>However, no method of transmission over the Internet is 100% secure.</p>
+
+      <h2 class="h3">11. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Updates will be posted at:</p>
+      <p><a href="https://aetr.aethero.cz/privacy-policy">https://aetr.aethero.cz/privacy-policy</a></p>
+
+      <h2 class="h3">12. Contact Information</h2>
+      <p>
+        AETHERO s.r.o., Czech Republic<br />
+        Website: <a href="https://www.aethero.cz">https://www.aethero.cz</a><br />
+        Email: <a href="mailto:info@aethero.cz">info@aethero.cz</a>
+      </p>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .legal-hero {
+    position: relative;
+    padding: 130px 0 80px;
+    background: var(--ae-bg-primary);
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    top: -20%;
+    right: -5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(80, 20, 160, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .legal-eyebrow {
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--action);
+  }
+  .hero-inner h1 {
+    font-size: var(--fs-70);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+  .legal-date {
+    margin: 0;
+    font-size: 15px;
+    color: var(--neutral-500);
+  }
+
+  .section {
+    padding: var(--space-64) 0 var(--space-120);
+  }
+  .legal-body {
+    max-width: 760px;
+  }
+  .legal-body h2 {
+    margin: var(--space-64) 0 var(--space-16);
+  }
+  .legal-body h3 {
+    margin: var(--space-32) 0 var(--space-8);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .legal-body p {
+    margin-bottom: var(--space-16);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .legal-body ul {
+    margin: 0 0 var(--space-24);
+    padding-left: 22px;
+  }
+  .legal-body li {
+    margin-bottom: 6px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .legal-body a {
+    color: var(--action);
+    text-decoration: underline;
+    word-break: break-word;
+  }
+
+  @media (max-width: 760px) {
+    .legal-hero {
+      padding: 100px 0 50px;
+    }
+  }
+</style>
