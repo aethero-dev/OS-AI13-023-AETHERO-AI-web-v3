@@ -253,6 +253,10 @@ const articleSchema = {
   @media (max-width: 640px) {
     .article-cta-inner {
       padding: var(--space-32) var(--space-24);
+      /* .container má na mobilu vlastní boční padding, ale ten výše
+         přepisujeme — box by pak dosedl na okraje displeje. */
+      margin-left: 16px;
+      margin-right: 16px;
     }
     .article-cta-title {
       max-width: none;
