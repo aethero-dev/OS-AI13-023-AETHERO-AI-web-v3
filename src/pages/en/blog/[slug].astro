@@ -89,8 +89,11 @@ const articleSchema = {
   },
   "author": {
     "@type": "Organization",
-    "name": "AETHERO s.r.o."
-  }
+    "name": "æthero team",
+    "url": "https://aethero.agency"
+  },
+  "dateModified": date,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href }
 };
 ---
 
@@ -103,6 +106,8 @@ const articleSchema = {
         <div class="hero-meta-bar">
           <div class="container">
             <div class="blog-meta">
+              <span class="blog-author">æthero team</span>
+              <span class="dot" aria-hidden="true">·</span>
               <span>{dateFormatted}</span>
               <span class="dot" aria-hidden="true">·</span>
               <span>{readTime} read</span>

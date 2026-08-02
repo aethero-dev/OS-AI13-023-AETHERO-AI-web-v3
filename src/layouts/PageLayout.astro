@@ -9,12 +9,16 @@ export interface Props {
   description?: string;
   ogImage?: string;
   lang?: string;
+  /** Schéma stránky (Article, FAQPage…). MUSÍ se předat do BaseLayoutu —
+      dokud tady chybělo, články sice schéma posílaly, ale tiše se zahazovalo
+      a do HTML se nikdy nedostalo (AE-7, opraveno 2026-08-02). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, ogImage, lang } = Astro.props;
+const { title, description, ogImage, lang, jsonLd } = Astro.props;
 ---
 
-<BaseLayout {title} {description} {ogImage} {lang}>
+<BaseLayout {title} {description} {ogImage} {lang} {jsonLd}>
   <a href="#main-content" class="skip-link">
     {lang === 'en' ? 'Skip to content' : 'Přeskočit na obsah'}
   </a>
