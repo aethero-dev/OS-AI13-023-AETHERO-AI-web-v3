@@ -75,7 +75,7 @@ const renderedContent = isStoryblok && content ? renderRichText(content) : null;
 const formatDate = (d: string) => new Date(d).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
 const dateFormatted = formatDate(date);
 const otherPosts = ((allPosts || []) as PostSummary[]).filter(p => p.slug !== slug).slice(0, 3);
-const extras = articleExtras[slug as string] || {};
+const extras = articleExtras.cs[slug as string] || {};
 
 const articleSchema = {
   "@context": "https://schema.org",

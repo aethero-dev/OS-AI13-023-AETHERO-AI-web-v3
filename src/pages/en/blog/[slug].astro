@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import { useStoryblokApi, renderRichText } from '@storyblok/astro';
+import ArticleFaq from '../../../components/ArticleFaq.astro';
+import { articleExtras } from '../../../data/article-extras';
 
 interface PostSummary {
   slug: string; title: string; perex: string; readTime: string; date: string; img: string;
@@ -73,6 +75,7 @@ const renderedContent = isStoryblok && content ? renderRichText(content) : null;
 const formatDate = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 const dateFormatted = formatDate(date);
 const otherPosts = ((allPosts || []) as PostSummary[]).filter(p => p.slug !== slug).slice(0, 3);
+const extras = articleExtras.en[slug as string] || {};
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -131,6 +134,19 @@ const articleSchema = {
     </div>
   </section>
 
+  {extras.cta && (
+    <section class="article-cta">
+      <div class="container article-cta-inner">
+        {extras.cta.title && <h2 class="h2-mini article-cta-title">{extras.cta.title}</h2>}
+        {extras.cta.note && <p class="article-cta-note">{extras.cta.note}</p>}
+        <a href={extras.cta.href} class="article-cta-btn">
+          {extras.cta.label}
+          <span aria-hidden="true">➔</span>
+        </a>
+      </div>
+    </section>
+  )}
+
   <article class="section bg-primary">
     <div class="container article-inner">
       {renderedContent ? (
@@ -142,6 +158,10 @@ const articleSchema = {
       )}
     </div>
   </article>
+
+  {extras.faq && extras.faq.length > 0 && (
+    <ArticleFaq title={extras.faqTitle} items={extras.faq} />
+  )}
 
   <section class="cta-section">
     <div class="container cta-inner">
@@ -178,6 +198,103 @@ const articleSchema = {
 </PageLayout>
 
 <style>
+  /* ── Velké CTA hned pod perexem ── */
+  .article-cta {
+    background: var(--ae-bg-primary);
+    padding: var(--space-40) 0 0;
+  }
+  .article-cta-inner {
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* struktura dle B-07 CTA Banner: nadpis → doprovodný text → jedna akce */
+    gap: 0;
+    padding: var(--space-40) var(--space-40) calc(var(--space-40) + 4px);
+    border-radius: var(--radius-md);
+    /* Výsek z obrázku hlaviček služeb (jeho pravá, čistě fialová část —
+       modrý roh vlevo nahoře se nepoužívá) + fialový přechod přes něj,
+       aby text držel kontrast. Bez tyrkysové, ta zůstává jen tlačítku. */
+    background-image:
+      linear-gradient(100deg, rgba(12, 4, 44, 0.78) 0%, rgba(58, 18, 122, 0.55) 100%),
+      url('/ae-bgr-w-glass-b-2x-v3.webp');
+    background-size: cover;
+    background-position: 78% 45%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  }
+  .article-cta-title {
+    margin: 0 0 12px;
+    max-width: 20ch;
+  }
+  .article-cta-note {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .article-cta-btn {
+    /* větší vzduch kolem tlačítka — ať akce nesplývá s textem */
+    margin-top: var(--space-32);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    border-radius: var(--radius-md);
+    background: var(--action);
+    color: #00121a;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .article-cta-btn:hover {
+    filter: brightness(1.08);
+  }
+  .article-cta-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .article-cta-inner {
+      padding: var(--space-32) var(--space-24);
+      /* .container má na mobilu vlastní boční padding, ale ten výše
+         přepisujeme — box by pak dosedl na okraje displeje. */
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+    .article-cta-title {
+      max-width: none;
+    }
+    .article-cta-btn {
+      font-size: 17px;
+      padding: 16px 24px;
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--space-24);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .article-cta-inner {
+      padding: var(--space-32) var(--space-24);
+      /* .container má na mobilu vlastní boční padding, ale ten výše
+         přepisujeme — box by pak dosedl na okraje displeje. */
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+    .article-cta-title {
+      max-width: none;
+    }
+    .article-cta-btn {
+      font-size: 17px;
+      padding: 16px 24px;
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--space-24);
+    }
+  }
+
   .blog-hero {
     background: var(--ae-bg-primary);
   }
