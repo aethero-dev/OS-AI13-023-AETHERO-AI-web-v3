@@ -25,7 +25,9 @@ const orgSchema = {
   "name": "AETHERO s.r.o.",
   "alternateName": "aethero",
   "url": siteUrl,
-  "logo": `${siteUrl}/favicon.svg`,
+  // Google chce u Organization skutečné logo, ne favicon; navíc favicon.svg
+  // se po výměně ikony (2026-08-02) už nepoužívá.
+  "logo": `${siteUrl}/ae-logo.svg`,
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+420776067663",
@@ -60,8 +62,13 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <!-- Favicon: zdroj je značková ikona AE-2026-FAVICON-agency.png (BRAND AE).
+       SVG varianta se záměrně nepoužívá — v prohlížečích má přednost před PNG
+       a přebíjela by novou ikonu. -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
