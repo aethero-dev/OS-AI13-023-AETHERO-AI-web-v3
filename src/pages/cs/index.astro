@@ -161,7 +161,7 @@ const blogPosts = [
             </script>
           </div>
         </div>
-        <a href="#cta" class="btn-hero">Do čeho se spolu pustíme?</a>
+        <a href="#sluzby" class="btn-hero">Do čeho se spolu pustíme?</a>
       </div>
       <div class="hero-right" aria-hidden="true">
         <img src="/hero-glass.webp" alt="" width="704" height="630" class="hero-shape" loading="eager" />
@@ -170,7 +170,7 @@ const blogPosts = [
   </section>
 
   <!-- SERVICE SELECTOR CAROUSEL -->
-  <section class="services-section">
+  <section class="services-section" id="sluzby">
     <div class="svc-wide">
     <div class="services-track-wrap" id="services-track-wrap">
       <div class="services-track" id="services-track">
@@ -383,6 +383,9 @@ const blogPosts = [
 
   if (track && wrap) {
     const INTERVAL = 5000;
+    // Reset slideru na první kartu — volá se z hero tlačítka (kotva #sluzby),
+    // aby návštěvník po skoku nepřistál uprostřed rozjeté smyčky.
+    let resetToFirst: (() => void) | null = null;
 
     if (window.innerWidth <= 640) {
       // MOBIL: natívny CSS scroll-snap — prehliadač rieši momentum sám
@@ -399,6 +402,12 @@ const blogPosts = [
 
       wrap.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
       wrap.addEventListener('touchend', () => { autoTimer = setInterval(autoAdvance, INTERVAL); }, { passive: true });
+
+      resetToFirst = () => {
+        clearInterval(autoTimer);
+        wrap!.scrollTo({ left: 0, behavior: 'smooth' });
+        autoTimer = setInterval(autoAdvance, INTERVAL);
+      };
 
     } else {
       // DESKTOP: clone-based infinite loop + pointer drag
@@ -489,7 +498,17 @@ const blogPosts = [
       };
       document.getElementById('svc-prev')?.addEventListener('click', () => stepBy(-1));
       document.getElementById('svc-next')?.addEventListener('click', () => stepBy(1));
+
+      resetToFirst = () => {
+        clearInterval(timer);
+        moveTo(N * itemW(), true);
+        setTimeout(() => { normalize(); timer = setInterval(advance, INTERVAL); }, DUR + 50);
+      };
     }
+
+    document.querySelectorAll('a[href="#sluzby"]').forEach((a) => {
+      a.addEventListener('click', () => { if (resetToFirst) resetToFirst(); });
+    });
   }
 </script>
 
@@ -555,6 +574,8 @@ const blogPosts = [
     background: #000326;
     padding: 16px 0 56px;
     position: relative;
+    /* kotva #sluzby — aby sekci nepřekryla plovoucí hlavička */
+    scroll-margin-top: 90px;
   }
   .svc-wide {
     max-width: 1920px;
