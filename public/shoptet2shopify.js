@@ -1,7 +1,68 @@
 (function () {
   "use strict";
 
-  var ENDPOINT = "https://shoptet2shopify.aethero.workers.dev/api/deliver"; // ostrý režim: URL Cloudflare Workeru, např. https://convert.aethero.cz/api/deliver
+  var ENDPOINT = "https://shoptet2shopify.aethero.workers.dev/api/deliver";
+
+  /* ---------- jazyk ----------
+     ÚPRAVA aethero 2026-08-02: widget je dvojjazyčný. Jazyk se bere z <html lang>,
+     takže stačí stránku založit v /cs/ nebo /en/ a nic se nekonfiguruje.
+     Texty jsou na jednom místě — nikde jinde v souboru už nesmí být natvrdo. */
+  var LANG = (document.documentElement.lang || "cs").slice(0, 2) === "en" ? "en" : "cs";
+  var P = LANG === "en" ? "/en" : "/cs";
+  var I18N = {
+    cs: {
+      title: "Převaděč Shoptet Produkty → Shopify",
+      sub: "Nahrajte XML export produktů ze Shoptetu, my ho převedeme na CSV připravené pro import do Shopify. Konverze probíhá ve vašem prohlížeči.",
+      dropA: "Přetáhněte sem ", dropB: "XML export", dropC: " ze Shoptetu<br>nebo klikněte pro výběr souboru",
+      note: "Zvládne i velké katalogy — 5 000 produktů převede do vteřiny. Shopify import má limit 15 MB na soubor (zhruba 10 000 produktů), větší e-shopy s vámi rádi vyřešíme napřímo.",
+      nProd: "produktů", nVar: "variant", nImg: "obrázků",
+      gateText: "CSV je připravené. Zadejte email a zobrazí se vám odkaz ke stažení:",
+      emailPh: "vas@email.cz",
+      consent: " Souhlasím se zpracováním e-mailu a občasným zasíláním novinek od Aethero. ",
+      gdprLabel: "Zásady zpracování osobních údajů",
+      send: "Zobrazit odkaz ke stažení", sending: "Odesílám…", download: "Stáhnout CSV",
+      footA: "Nástroj od ", footB: " — migrace e-shopů na Shopify. Potřebujete převést celý e-shop včetně objednávek a zákazníků? ",
+      footLink: "Ozvěte se nám",
+      errXml: "Soubor není platné XML.",
+      errNoItems: "V souboru nejsou žádné položky <SHOPITEM> — je to produktový export ze Shoptetu?",
+      errRead: "Soubor se nepodařilo přečíst.",
+      warnNoName: function (i) { return "Položka #" + i + " nemá NAME — přeskočena."; },
+      warnParams: function (n, c) { return "„" + n + "“: varianta má " + c + " parametrů, Shopify podporuje max 3 — použity první 3."; },
+      warnMore: function (n) { return "… a dalších " + n + " upozornění."; },
+      okDownload: "CSV staženo. Ve Shopify: Products → Import.",
+      errEmail: "Zadejte platný email.",
+      errConsent: "Bez souhlasu vám soubor nemůžeme poslat.",
+      errServer: function (c) { return "Server vrátil chybu (" + c + "). Zkuste to prosím znovu."; },
+      okSent: function (e) { return "Hotovo! Odkaz ke stažení CSV jsme poslali na " + e + ". Platí 7 dní."; }
+    },
+    en: {
+      title: "Shoptet Products → Shopify converter",
+      sub: "Upload your Shoptet product XML export and we will turn it into a CSV ready for Shopify import. The conversion runs in your browser.",
+      dropA: "Drop your ", dropB: "XML export", dropC: " from Shoptet here<br>or click to choose a file",
+      note: "Handles large catalogues — 5,000 products in a second. Shopify limits imports to 15 MB per file (roughly 10,000 products); for bigger stores we are happy to help directly.",
+      nProd: "products", nVar: "variants", nImg: "images",
+      gateText: "Your CSV is ready. Enter your email and the download link will appear:",
+      emailPh: "you@email.com",
+      consent: " I agree to the processing of my e-mail and to occasional news from Aethero. ",
+      gdprLabel: "Privacy policy",
+      send: "Show download link", sending: "Sending…", download: "Download CSV",
+      footA: "A tool by ", footB: " — e-shop migrations to Shopify. Need to move a whole store including orders and customers? ",
+      footLink: "Get in touch",
+      errXml: "The file is not valid XML.",
+      errNoItems: "No <SHOPITEM> entries found — is this a Shoptet product export?",
+      errRead: "The file could not be read.",
+      warnNoName: function (i) { return "Item #" + i + " has no NAME — skipped."; },
+      warnParams: function (n, c) { return "\u201C" + n + "\u201D: variant has " + c + " parameters, Shopify supports max 3 — first 3 used."; },
+      warnMore: function (n) { return "… and " + n + " more warnings."; },
+      okDownload: "CSV downloaded. In Shopify: Products → Import.",
+      errEmail: "Please enter a valid email.",
+      errConsent: "We cannot send the file without your consent.",
+      errServer: function (c) { return "The server returned an error (" + c + "). Please try again."; },
+      okSent: function (e) { return "Done! We have sent the CSV download link to " + e + ". It is valid for 7 days."; }
+    }
+  };
+  var T = I18N[LANG];
+ // ostrý režim: URL Cloudflare Workeru, např. https://convert.aethero.cz/api/deliver
 
   /* ---------- styly ---------- */
   var css = [
@@ -94,8 +155,7 @@
       });
     });
     if (params.length > 3) {
-      warnings.push("„" + productName + "“: varianta má " + params.length +
-        " parametrů, Shopify podporuje max 3 — použity první 3.");
+      warnings.push(T.warnParams(productName, params.length));
       params = params.slice(0, 3);
     }
     var price = num(text(vEl, ["PRICE_VAT", "PRICEVAT", "PRICE"]));
@@ -117,17 +177,17 @@
 
   function convert(xmlText) {
     var doc = new DOMParser().parseFromString(xmlText, "text/xml");
-    if (doc.querySelector("parsererror")) throw new Error("Soubor není platné XML.");
+    if (doc.querySelector("parsererror")) throw new Error(T.errXml);
     var root = doc.documentElement;
     var items = root.getElementsByTagName("SHOPITEM");
-    if (!items.length) throw new Error("V souboru nejsou žádné položky <SHOPITEM> — je to produktový export ze Shoptetu?");
+    if (!items.length) throw new Error(T.errNoItems);
 
     var rows = [], warnings = [], usedHandles = {}, stats = { products: 0, variants: 0, images: 0 };
 
     for (var i = 0; i < items.length; i++) {
       var it = items[i];
       var name = text(it, ["NAME"]);
-      if (!name) { warnings.push("Položka #" + (i + 1) + " nemá NAME — přeskočena."); continue; }
+      if (!name) { warnings.push(T.warnNoName(i + 1)); continue; }
       stats.products++;
 
       var handle = slugify(name);
@@ -254,38 +314,40 @@
         cb(new TextDecoder(enc).decode(fr.result));
       } catch (e) { errCb(e); }
     };
-    fr.onerror = function () { errCb(new Error("Soubor se nepodařilo přečíst.")); };
+    fr.onerror = function () { errCb(new Error(T.errRead)); };
     fr.readAsArrayBuffer(file);
   }
 
   /* ---------- UI ---------- */
   var host = document.getElementById("ae-s2s");
   host.innerHTML =
-    '<h2 class="h2-mini">Převaděč Shoptet Produkty → Shopify</h2>' +
-    '<p class="ae-sub">Nahrajte XML export produktů ze Shoptetu, my ho převedeme na CSV připravené pro import do Shopify. Konverze probíhá ve vašem prohlížeči.</p>' +
-    '<div class="ae-drop" id="ae-drop">Přetáhněte sem <strong>XML export</strong> ze Shoptetu<br>nebo klikněte pro výběr souboru' +
+    '<h2 class="h2-mini">' + T.title + '</h2>' +
+    '<p class="ae-sub">' + T.sub + '</p>' +
+    '<div class="ae-drop" id="ae-drop">' + T.dropA + '<strong>' + T.dropB + '</strong>' + T.dropC +
     '<input type="file" id="ae-file" accept=".xml,text/xml" style="display:none"></div>' +
-    '<p class="ae-note">Zvládne i velké katalogy — 5 000 produktů převede do vteřiny. Shopify import má limit 15 MB na soubor (zhruba 10 000 produktů), větší e-shopy s vámi rádi vyřešíme napřímo.</p>' +
+    '<p class="ae-note">' + T.note + '</p>' +
     '<div id="ae-result" class="ae-hidden">' +
     '  <div class="ae-stats">' +
-    '    <div class="ae-stat"><b id="ae-n-prod">0</b><span>produktů</span></div>' +
-    '    <div class="ae-stat"><b id="ae-n-var">0</b><span>variant</span></div>' +
-    '    <div class="ae-stat"><b id="ae-n-img">0</b><span>obrázků</span></div>' +
+    '    <div class="ae-stat"><b id="ae-n-prod">0</b><span>' + T.nProd + '</span></div>' +
+    '    <div class="ae-stat"><b id="ae-n-var">0</b><span>' + T.nVar + '</span></div>' +
+    '    <div class="ae-stat"><b id="ae-n-img">0</b><span>' + T.nImg + '</span></div>' +
     '  </div>' +
     '  <div id="ae-warnings"></div>' +
     '  <div id="ae-gate">' +
-    '    <p style="font-size:.9rem">CSV je připravené. Zadejte email a zobrazí se vám odkaz ke stažení:</p>' +
-    '    <input type="email" id="ae-email" placeholder="vas@email.cz">' +
-    '    <label class="ae-gdpr"><input type="checkbox" id="ae-consent"> Souhlasím se zpracováním e-mailu a občasným zasíláním novinek od Aethero. <a href="/cs/gdpr" target="_blank">Zásady zpracování osobních údajů</a></label>' +
-    '    <button class="ae-btn" id="ae-send">Zobrazit odkaz ke stažení</button>' +
+    '    <p style="font-size:.9rem">' + T.gateText + '</p>' +
+    '    <input type="email" id="ae-email" placeholder="' + T.emailPh + '">' +
+    '    <label class="ae-gdpr"><input type="checkbox" id="ae-consent">' + T.consent +
+    '<a href="' + P + '/gdpr" target="_blank">' + T.gdprLabel + '</a></label>' +
+    '    <button class="ae-btn" id="ae-send">' + T.send + '</button>' +
     '  </div>' +
     '  <div id="ae-download" class="ae-hidden">' +
-    '    <button class="ae-btn" id="ae-dl">Stáhnout CSV</button>' +
+    '    <button class="ae-btn" id="ae-dl">' + T.download + '</button>' +
     '  </div>' +
     '  <div id="ae-done" class="ae-ok ae-hidden" style="margin-top:12px"></div>' +
     '</div>' +
     '<div id="ae-error" class="ae-err ae-hidden" style="margin-top:16px"></div>' +
-    '<p class="ae-foot">Nástroj od <a href="/cs/" target="_blank">AETHERO</a> — migrace e-shopů na Shopify. Potřebujete převést celý e-shop včetně objednávek a zákazníků? <a href="/cs/kontakt" target="_blank">Ozvěte se nám</a>.</p>';
+    '<p class="ae-foot">' + T.footA + '<a href="' + P + '/" target="_blank">AETHERO</a>' + T.footB +
+    '<a href="' + P + '/kontakt" target="_blank">' + T.footLink + '</a>.</p>';
 
   var state = { csv: null, filename: null };
   var drop = document.getElementById("ae-drop");
@@ -312,7 +374,7 @@
         });
         if (res.warnings.length > 10) {
           var d2 = document.createElement("div"); d2.className = "ae-warn";
-          d2.textContent = "… a dalších " + (res.warnings.length - 10) + " upozornění.";
+          d2.textContent = T.warnMore(res.warnings.length - 10);
           w.appendChild(d2);
         }
         document.getElementById("ae-result").classList.remove("ae-hidden");
@@ -344,37 +406,37 @@
     a.click();
     URL.revokeObjectURL(a.href);
     var done = document.getElementById("ae-done");
-    done.textContent = "CSV staženo. Ve Shopify: Products → Import.";
+    done.textContent = T.okDownload;
     done.classList.remove("ae-hidden");
   });
 
   document.getElementById("ae-send").addEventListener("click", function () {
     var email = document.getElementById("ae-email").value.trim();
     var consent = document.getElementById("ae-consent").checked;
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showError("Zadejte platný email."); return; }
-    if (!consent) { showError("Bez souhlasu vám soubor nemůžeme poslat."); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showError(T.errEmail); return; }
+    if (!consent) { showError(T.errConsent); return; }
     document.getElementById("ae-error").classList.add("ae-hidden");
     var btn = document.getElementById("ae-send");
-    btn.disabled = true; btn.textContent = "Odesílám…";
+    btn.disabled = true; btn.textContent = T.sending;
     fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email, filename: state.filename, csv: state.csv })
     }).then(function (r) {
-      if (!r.ok) throw new Error("Server vrátil chybu (" + r.status + "). Zkuste to prosím znovu.");
+      if (!r.ok) throw new Error(T.errServer(r.status));
       return r.json();
     }).then(function (data) {
       document.getElementById("ae-gate").classList.add("ae-hidden");
       var done = document.getElementById("ae-done");
       if (data.emailed) {
-        done.textContent = "Hotovo! Odkaz ke stažení CSV jsme poslali na " + email + ". Platí 7 dní.";
+        done.textContent = T.okSent(email);
       } else {
         done.innerHTML = 'Hotovo! CSV si stáhněte zde: <a href="' + data.link + '">stáhnout CSV</a> (odkaz platí 7 dní).';
       }
       done.classList.remove("ae-hidden");
     }).catch(function (e) {
       showError(e.message);
-      btn.disabled = false; btn.textContent = "Zobrazit odkaz ke stažení";
+      btn.disabled = false; btn.textContent = T.send;
     });
   });
 })();
