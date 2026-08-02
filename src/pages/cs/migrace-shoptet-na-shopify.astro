@@ -15,6 +15,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
       <div class="hero-text">
         <h1>Migrace ze&nbsp;Shoptetu<br />na&nbsp;Shopify? Jednoduše.</h1>
         <p class="hero-sub">
+          Vytvořili jsme pro vás aplikaci, která vám pomůže přenést produkty.
+        </p>
+        <p class="hero-sub">
           Nahrajte XML export produktů ze&nbsp;Shoptetu a&nbsp;stáhněte si CSV
           připravené k&nbsp;importu do&nbsp;Shopify. Zdarma, přímo
           v&nbsp;prohlížeči.
@@ -40,6 +43,171 @@ import PageLayout from '../../layouts/PageLayout.astro';
 </PageLayout>
 
 <script is:inline src="/shoptet2shopify.js" defer></script>
+
+<!-- Vzhled převaděče. Musí být globální: widget si DOM vytváří až za běhu
+     v JS, takže scoped styly Astra (data-astro-cid) by se na něj nenavěsily.
+     Vlastní CSS widgetu je vypnuté v public/shoptet2shopify.js. -->
+<style is:global>
+  #ae-s2s {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--space-40);
+    background: var(--ae-bg-raised);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    font-family: var(--font-secondary);
+    color: var(--neutral-100);
+  }
+  #ae-s2s * { box-sizing: border-box; }
+  #ae-s2s .ae-hidden { display: none; }
+
+  #ae-s2s h2 { margin-bottom: var(--space-8); }
+  #ae-s2s .ae-sub {
+    color: var(--neutral-300);
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 var(--space-32);
+  }
+
+  /* Plocha pro přetažení souboru */
+  #ae-s2s .ae-drop {
+    border: 2px dashed rgba(13, 212, 205, 0.45);
+    border-radius: var(--radius-md);
+    padding: var(--space-40) var(--space-24);
+    text-align: center;
+    cursor: pointer;
+    background: var(--ae-bg-deep);
+    color: var(--neutral-100);
+    font-size: 16px;
+    line-height: 1.6;
+    transition: border-color var(--transition-base), background var(--transition-base);
+  }
+  #ae-s2s .ae-drop:hover,
+  #ae-s2s .ae-drop.ae-over {
+    border-color: var(--action);
+    background: #0a0a3a;
+  }
+  #ae-s2s .ae-drop strong { color: var(--action); font-weight: 600; }
+
+  /* Spočítané položky po nahrání */
+  #ae-s2s .ae-stats {
+    display: flex;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+    margin: var(--space-24) 0;
+  }
+  #ae-s2s .ae-stat {
+    background: var(--ae-bg-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-16) var(--space-24);
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+  }
+  #ae-s2s .ae-stat b {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--action);
+  }
+  #ae-s2s .ae-stat span {
+    font-size: 13px;
+    color: var(--neutral-300);
+  }
+
+  /* Tlačítka — sjednoceno s btn-action--lg webu */
+  #ae-s2s .ae-btn {
+    display: inline-block;
+    background: var(--action);
+    color: #00121a;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: var(--fs-18);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-16) 40px;
+    cursor: pointer;
+    transition: background var(--transition-base), color var(--transition-base);
+  }
+  #ae-s2s .ae-btn:hover { background: #fff; }
+  #ae-s2s .ae-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--action); }
+  #ae-s2s .ae-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+  #ae-s2s input[type='email'] {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--neutral-700);
+    background: var(--ae-bg-deep);
+    color: var(--neutral-100);
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    margin: 0 0 14px;
+  }
+  #ae-s2s input[type='email']:focus {
+    outline: none;
+    border-color: var(--action);
+  }
+
+  #ae-s2s .ae-gdpr {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--neutral-300);
+    margin: 0 0 var(--space-16);
+  }
+  #ae-s2s .ae-gdpr input {
+    margin-top: 3px;
+    accent-color: var(--action);
+    width: 17px;
+    height: 17px;
+    flex: none;
+  }
+
+  /* Hlášky */
+  #ae-s2s .ae-warn,
+  #ae-s2s .ae-ok,
+  #ae-s2s .ae-err {
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--neutral-100);
+    margin: var(--space-8) 0;
+  }
+  #ae-s2s .ae-warn { background: rgba(203, 0, 215, 0.12); border-left: 3px solid #cb00d7; }
+  #ae-s2s .ae-ok   { background: rgba(13, 212, 205, 0.12); border-left: 3px solid var(--action); }
+  #ae-s2s .ae-err  { background: rgba(255, 80, 80, 0.12); border-left: 3px solid #ff5050; }
+
+  #ae-s2s .ae-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--neutral-300);
+    margin: var(--space-16) 0 0;
+    text-align: center;
+  }
+  #ae-s2s .ae-foot {
+    margin-top: var(--space-32);
+    padding-top: var(--space-24);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--neutral-500);
+  }
+  #ae-s2s a {
+    color: var(--action);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    #ae-s2s { padding: var(--space-24); }
+    #ae-s2s .ae-btn { width: 100%; padding: var(--space-16) 24px; }
+  }
+</style>
 
 <style>
   /* ── Hero ── */
@@ -78,6 +246,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.55;
     max-width: 720px;
+  }
+  .hero-sub + .hero-sub {
+    margin-top: var(--space-16);
   }
   .hero-bg-img {
     position: absolute;

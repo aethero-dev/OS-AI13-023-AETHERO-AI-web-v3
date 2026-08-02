@@ -44,9 +44,10 @@
     "#ae-s2s #ae-gate p{color:#F7F7F5!important}",
     "#ae-s2s a{color:var(--cyan)}"
   ].join("");
-  var style = document.createElement("style");
-  style.textContent = css;
-  document.head.appendChild(style);
+  // ÚPRAVA aethero 2026-08-02: vlastní CSS widgetu se NEVKLÁDÁ.
+  // Vzhled řídí design systém webu (styly u stránky /cs/migrace-shoptet-na-shopify).
+  // Původní `css` je ponechané jen jako reference k tomu, jak widget vypadal na aethero.cz.
+  void css;
 
   /* ---------- pomocné ---------- */
   function slugify(s) {
@@ -260,7 +261,7 @@
   /* ---------- UI ---------- */
   var host = document.getElementById("ae-s2s");
   host.innerHTML =
-    '<h2>Převaděč Shoptet Produkty → Shopify</h2>' +
+    '<h2 class="h2-mini">Převaděč Shoptet Produkty → Shopify</h2>' +
     '<p class="ae-sub">Nahrajte XML export produktů ze Shoptetu, my ho převedeme na CSV připravené pro import do Shopify. Konverze probíhá ve vašem prohlížeči.</p>' +
     '<div class="ae-drop" id="ae-drop">Přetáhněte sem <strong>XML export</strong> ze Shoptetu<br>nebo klikněte pro výběr souboru' +
     '<input type="file" id="ae-file" accept=".xml,text/xml" style="display:none"></div>' +
