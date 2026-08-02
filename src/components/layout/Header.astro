@@ -1,18 +1,21 @@
 ---
+import { altPath } from '../../lib/i18n-paths';
+
 export interface Props { lang?: string; }
 const { lang = 'cs' } = Astro.props;
 const p = lang === 'en' ? '/en' : '/cs';
 
-// Language switcher: swap /cs/ ↔ /en/ in current path
+// Přepínač jazyka — protějšek řeší altPath, ne záměna prefixu.
+// Blogové články mají v každém jazyce jiný slug, takže prostá záměna
+// vedla z článku rovnou do 404 (audit prokliků AE-38, 2026-08-02).
 const currentPath = Astro.url.pathname;
 const otherLang = lang === 'en' ? 'cs' : 'en';
 const isActive = (href: string) => {
   if (href === `${p}/`) return currentPath === `${p}/`;
   return currentPath === href || currentPath.startsWith(href + '/');
 };
-const otherPath = lang === 'en'
-  ? currentPath.replace(/^\/en/, '/cs')
-  : currentPath.replace(/^\/cs/, '/en');
+// null = protějšek neexistuje → přepínač se nevykreslí (lepší než odkaz do 404)
+const otherPath = altPath(currentPath, otherLang);
 
 const navItems = lang === 'en'
   ? [
@@ -109,17 +112,21 @@ const navItems = lang === 'en'
           );
         })}
         <!-- mobile-only lang switch inside nav overlay -->
-        <li class="mobile-lang-li">
-          <a href={otherPath} class="mobile-lang-link" aria-label={`Switch to ${otherLang.toUpperCase()}`}>
-            {otherLang.toUpperCase()}
-          </a>
-        </li>
+        {otherPath && (
+          <li class="mobile-lang-li">
+            <a href={otherPath} class="mobile-lang-link" aria-label={`Switch to ${otherLang.toUpperCase()}`}>
+              {otherLang.toUpperCase()}
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
 
-    <a href={otherPath} class="lang-switch" aria-label={`Switch to ${otherLang.toUpperCase()}`}>
-      {otherLang.toUpperCase()}
-    </a>
+    {otherPath && (
+      <a href={otherPath} class="lang-switch" aria-label={`Switch to ${otherLang.toUpperCase()}`}>
+        {otherLang.toUpperCase()}
+      </a>
+    )}
 
     <button class="hamburger" id="hamburger" aria-label={lang === 'en' ? 'Open menu' : 'Otevřít menu'} aria-expanded="false" aria-controls="nav-menu">
       <span></span>

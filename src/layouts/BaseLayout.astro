@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ANALYTICS_ID, CONSENT_KEY, analyticsEnabled } from '../config/analytics';
+import { altPath } from '../lib/i18n-paths';
 
 export interface Props {
   title: string;
@@ -17,7 +18,11 @@ const {
   jsonLd,
 } = Astro.props;
 const siteUrl = 'https://aethero.agency';
-const pathWithoutLang = Astro.url.pathname.replace(/^\/(cs|en)/, '') || '/';
+// Protějšky pro hreflang — přes altPath, ne prostou záměnou prefixu.
+// null = stránka protějšek nemá (mimo jazykové větve, nebo článek bez páru)
+// a hreflang se nevykreslí; dřív mířil na neexistující URL (AE-8).
+const altCs = altPath(Astro.url.pathname, 'cs');
+const altEn = altPath(Astro.url.pathname, 'en');
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -77,9 +82,9 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   <meta name="description" content={description} />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href={Astro.url.href} />
-  <link rel="alternate" hreflang="cs" href={`${siteUrl}/cs${pathWithoutLang}`} />
-  <link rel="alternate" hreflang="en" href={`${siteUrl}/en${pathWithoutLang}`} />
-  <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en${pathWithoutLang}`} />
+  {altCs && <link rel="alternate" hreflang="cs" href={`${siteUrl}${altCs}`} />}
+  {altEn && <link rel="alternate" hreflang="en" href={`${siteUrl}${altEn}`} />}
+  {altEn && <link rel="alternate" hreflang="x-default" href={`${siteUrl}${altEn}`} />}
   <meta property="og:type" content="website" />
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:title" content={`${title} | aethero`} />
