@@ -7,10 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && rm -rf dist/design-system",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "build:with-ds": "astro build"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
