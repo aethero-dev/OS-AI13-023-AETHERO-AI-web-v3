@@ -302,7 +302,9 @@ const articleSchema = {
   }
   .blog-hero-inner {
     max-width: 760px;
-    padding: var(--space-32) 0 0;
+    /* jen horní padding — `padding: X 0 0` by přepsalo boční odsazení
+       .containeru a nadpis by na mobilu dosedl na okraj displeje */
+    padding-top: var(--space-32);
   }
   article.section { padding-top: var(--space-40); }
   .blog-meta {
