@@ -1,0 +1,147 @@
+---
+// Cookie lišta — měřicí skript se načte až po souhlasu.
+// Loader window.aeLoadAnalytics() definuje BaseLayout; tady se jen rozhoduje.
+// localStorage "ae_cookie_consent": "accept" | "reject".
+// Znovuotevření z patičky přes window.aeOpenCookieSettings().
+//
+// Dokud je ANALYTICS_ID prázdné (src/config/analytics.ts), lišta se nevykreslí —
+// web totiž žádné cookies nenastavuje a nebylo by k čemu dávat souhlas.
+import { analyticsEnabled } from '../../config/analytics';
+
+export interface Props {
+  lang?: string;
+}
+const { lang = 'cs' } = Astro.props;
+const en = lang === 'en';
+
+const t = {
+  text: en
+    ? 'We use cookies to measure traffic and improve the site. Analytics only runs with your consent.'
+    : 'Používáme cookies k měření návštěvnosti a vylepšování webu. Analytika se spustí až po vašem souhlasu.',
+  more: en ? 'More info' : 'Více informací',
+  accept: en ? 'Accept all' : 'Přijmout',
+  // „Pouze nutné" místo „Odmítnout" — technické cookies zůstávají tak jako tak,
+  // odmítnutí se týká jen analytiky. Obě volby mají záměrně stejnou váhu
+  // (požadavek na rovnocennost volby, ÚOOÚ / EDPB).
+  reject: en ? 'Necessary only' : 'Pouze nutné',
+  aria: en ? 'Cookie settings' : 'Nastavení cookies',
+  href: en ? '/en/gdpr/' : '/cs/gdpr/',
+};
+---
+
+{analyticsEnabled && (
+  <div class="ae-cookies" id="ae-cookies" role="dialog" aria-label={t.aria} hidden>
+    <p class="ae-cookies-text">
+      {t.text}&nbsp;<a href={t.href}>{t.more}</a>
+    </p>
+    <div class="ae-cookies-actions">
+      <button class="ae-cookies-btn primary" id="ae-cookies-accept" type="button">{t.accept}</button>
+      <button class="ae-cookies-btn ghost" id="ae-cookies-reject" type="button">{t.reject}</button>
+    </div>
+  </div>
+)}
+
+<style>
+  /* MUSÍ být před .ae-cookies — jinak display:flex přebije atribut hidden
+     (stejná specificita, vyhrává pozdější pravidlo) a lišta po kliknutí nezmizí. */
+  .ae-cookies[hidden] {
+    display: none;
+  }
+  .ae-cookies {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 200; /* nad plovoucí hlavičkou */
+    margin: 0 auto;
+    max-width: 680px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-24);
+    padding: 20px 24px;
+    background: var(--ae-bg-raised);
+    color: var(--neutral-100);
+    border-radius: var(--radius-md);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  }
+  .ae-cookies-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .ae-cookies-text a {
+    color: var(--action);
+    text-decoration: underline;
+  }
+  .ae-cookies-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .ae-cookies-btn {
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .ae-cookies-btn.primary {
+    background: var(--action);
+    color: #00121a;
+  }
+  .ae-cookies-btn.primary:hover {
+    filter: brightness(1.08);
+  }
+  .ae-cookies-btn.ghost {
+    background: transparent;
+    color: var(--neutral-100);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+  }
+  .ae-cookies-btn.ghost:hover {
+    box-shadow: inset 0 0 0 1px var(--action);
+    color: var(--action);
+  }
+  .ae-cookies-btn:focus-visible {
+    outline: 2px solid var(--action);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .ae-cookies {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      text-align: center;
+    }
+    .ae-cookies-actions {
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  const KEY = 'ae_cookie_consent';
+  const banner = document.getElementById('ae-cookies');
+
+  function choose(value: string) {
+    localStorage.setItem(KEY, value);
+    banner?.setAttribute('hidden', '');
+    if (value === 'accept' && typeof (window as any).aeLoadAnalytics === 'function') {
+      (window as any).aeLoadAnalytics();
+    }
+  }
+
+  document.getElementById('ae-cookies-accept')?.addEventListener('click', () => choose('accept'));
+  document.getElementById('ae-cookies-reject')?.addEventListener('click', () => choose('reject'));
+
+  // První návštěva bez volby → ukázat lištu
+  if (banner && !localStorage.getItem(KEY)) {
+    banner.removeAttribute('hidden');
+  }
+
+  // Znovuotevření z patičky („Nastavení cookies")
+  (window as any).aeOpenCookieSettings = () => banner?.removeAttribute('hidden');
+</script>

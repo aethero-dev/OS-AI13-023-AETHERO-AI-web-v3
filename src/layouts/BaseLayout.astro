@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ANALYTICS_ID, CONSENT_KEY, analyticsEnabled } from '../config/analytics';
 
 export interface Props {
   title: string;
@@ -84,6 +85,38 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   {schemas.map((schema) => (
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
+
+  {analyticsEnabled && (
+    <script is:inline define:vars={{ ANALYTICS_ID, CONSENT_KEY }}>
+      // Měření se načte AŽ po souhlasu — do té doby se nespouští nic.
+      // Zdroj pravdy o souhlasu je u nás (localStorage), ne u měřicího nástroje.
+      window.dataLayer = window.dataLayer || [];
+      window.aeLoadAnalytics = function () {
+        if (window.__aeAnalyticsLoaded) return;
+        window.__aeAnalyticsLoaded = true;
+        var isGtm = ANALYTICS_ID.indexOf('GTM-') === 0;
+        var s = document.createElement('script');
+        s.async = true;
+        if (isGtm) {
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=' + ANALYTICS_ID;
+        } else {
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ANALYTICS_ID;
+          s.onload = function () {
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', ANALYTICS_ID, { anonymize_ip: true });
+          };
+        }
+        document.head.appendChild(s);
+      };
+      // Vracející se návštěvník, který už souhlas dal
+      try {
+        if (localStorage.getItem(CONSENT_KEY) === 'accept') window.aeLoadAnalytics();
+      } catch (e) {}
+    </script>
+  )}
 </head>
 <body>
   <slot />
