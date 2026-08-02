@@ -1,0 +1,103 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Migrace Shoptet na Shopify"
+  description="Zdarma a přímo v prohlížeči si převeďte export produktů ze Shoptetu na CSV pro Shopify během pár vteřin. Produkty, varianty, ceny, sklady i obrázky. Nástroj od aethero, specialistů na migrace e-shopů."
+  lang="cs"
+>
+
+  <!-- HERO -->
+  <section class="mig-hero">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Migrace ze&nbsp;Shoptetu<br />na&nbsp;Shopify? Jednoduše.</h1>
+        <p class="hero-sub">
+          Nahrajte XML export produktů ze&nbsp;Shoptetu a&nbsp;stáhněte si CSV
+          připravené k&nbsp;importu do&nbsp;Shopify. Zdarma, přímo
+          v&nbsp;prohlížeči.
+        </p>
+      </div>
+    </div>
+    <img
+      src="/a-blob-bgr-v31.webp"
+      alt=""
+      class="hero-bg-img"
+      aria-hidden="true"
+      loading="eager"
+    />
+  </section>
+
+  <!-- PŘEVADĚČ -->
+  <section class="section bg-primary">
+    <div class="container">
+      <div id="ae-s2s"></div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<script is:inline src="/shoptet2shopify.js" defer></script>
+
+<style>
+  /* ── Hero ── */
+  .mig-hero {
+    position: relative;
+    padding: 130px 0 100px;
+    background: var(--ae-bg-primary);
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    top: -15%;
+    right: -5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, rgba(80, 20, 160, 0.45) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text {
+    max-width: 900px;
+  }
+  .hero-text h1 {
+    font-size: var(--fs-70);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: var(--space-32);
+  }
+  .hero-sub {
+    font-size: var(--fs-24);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.55;
+    max-width: 720px;
+  }
+  .hero-bg-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
+  }
+
+  /* ── Sekce s převaděčem ── */
+  .section {
+    padding: var(--space-80) 0 var(--space-120);
+  }
+
+  @media (max-width: 760px) {
+    .mig-hero {
+      padding: 100px 0 60px;
+    }
+  }
+</style>
