@@ -67,13 +67,16 @@ export async function onRequest(context) {
     if (request.method === 'POST') {
       const form = await request.formData();
       if (form.get('password') === secret) {
-        const res = await next();
-        const out = new Response(res.body, res);
-        out.headers.append(
-          'Set-Cookie',
-          `${COOKIE}=ok; Path=/design-system; Max-Age=31536000; Secure; HttpOnly; SameSite=Lax`,
-        );
-        return out;
+        // POST/Redirect/GET: statický soubor na POST neodpovídá (vrátí 405),
+        // takže po ověření pošleme prohlížeč na tutéž adresu metodou GET
+        // a cookie přidáme k přesměrování.
+        return new Response(null, {
+          status: 303,
+          headers: {
+            Location: url.pathname,
+            'Set-Cookie': `${COOKIE}=ok; Path=/design-system; Max-Age=31536000; Secure; HttpOnly; SameSite=Lax`,
+          },
+        });
       }
       return loginPage('Špatné heslo.');
     }
