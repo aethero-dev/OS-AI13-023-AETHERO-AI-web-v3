@@ -75,9 +75,12 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Lora:ital,wght@1,400&family=Montserrat:wght@400;500;600;700&display=swap" />
+  <!-- Fonty jsou self-hostované (src/styles/fonts.css) — žádná cizí doména
+       v kritické cestě, žádná IP návštěvníka do USA bez souhlasu (AE-5).
+       Preload jen dvou řezů, které jsou v prvním viewportu: nadpisy Kanit 700
+       a běžný text Montserrat 400. Zbytek se dotáhne, až bude potřeba. -->
+  <link rel="preload" href="/fonts/kanit-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/montserrat-400-latin.woff2" as="font" type="font/woff2" crossorigin />
   <title>{title} | aethero</title>
   <meta name="description" content={description} />
   <meta name="robots" content="noindex, nofollow" />
