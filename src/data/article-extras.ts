@@ -8,9 +8,13 @@
 // Klíč = slug článku (bez jazykového prefixu).
 
 export interface ArticleCta {
+  /** Nadpis CTA bloku (h2-mini dle B-07 v katalogu bloků AI13008) */
+  title?: string;
+  /** Doprovodná věta pod nadpisem */
+  note?: string;
+  /** Popisek tlačítka — sloveso akce (GOV.UK: „Kontaktovat", ne „Více") */
   label: string;
   href: string;
-  note?: string;
 }
 
 export interface FaqItem {
@@ -27,9 +31,10 @@ export interface ArticleExtras {
 export const articleExtras: Record<string, ArticleExtras> = {
   'shopify-vs-shoptet': {
     cta: {
+      title: 'Převeďte si produkty ze Shoptetu do Shopify',
+      note: 'Zdarma a hned — přímo ve vašem prohlížeči.',
       label: 'Chci si přechod na Shopify vyzkoušet',
       href: '/cs/migrace-shoptet-na-shopify/',
-      note: 'Převeďte si produkty ze Shoptetu do Shopify zdarma a hned — přímo v prohlížeči.',
     },
     faqTitle: 'Časté otázky k výběru mezi Shopify a Shoptetem',
     faq: [

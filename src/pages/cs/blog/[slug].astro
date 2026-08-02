@@ -132,6 +132,7 @@ const articleSchema = {
   {extras.cta && (
     <section class="article-cta">
       <div class="container article-cta-inner">
+        {extras.cta.title && <h2 class="h2-mini article-cta-title">{extras.cta.title}</h2>}
         {extras.cta.note && <p class="article-cta-note">{extras.cta.note}</p>}
         <a href={extras.cta.href} class="article-cta-btn">
           {extras.cta.label}
@@ -202,8 +203,9 @@ const articleSchema = {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
-    padding: 32px 36px;
+    /* struktura dle B-07 CTA Banner: nadpis → doprovodný text → jedna akce */
+    gap: 0;
+    padding: var(--space-40) var(--space-40) calc(var(--space-40) + 4px);
     border-radius: var(--radius-md);
     /* Výsek z obrázku hlaviček služeb (jeho pravá, čistě fialová část —
        modrý roh vlevo nahoře se nepoužívá) + fialový přechod přes něj,
@@ -215,6 +217,10 @@ const articleSchema = {
     background-position: 78% 45%;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   }
+  .article-cta-title {
+    margin: 0 0 12px;
+    max-width: 20ch;
+  }
   .article-cta-note {
     margin: 0;
     font-size: 17px;
@@ -222,6 +228,8 @@ const articleSchema = {
     color: rgba(255, 255, 255, 0.9);
   }
   .article-cta-btn {
+    /* větší vzduch kolem tlačítka — ať akce nesplývá s textem */
+    margin-top: var(--space-32);
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -244,13 +252,17 @@ const articleSchema = {
 
   @media (max-width: 640px) {
     .article-cta-inner {
-      padding: 22px 20px;
+      padding: var(--space-32) var(--space-24);
+    }
+    .article-cta-title {
+      max-width: none;
     }
     .article-cta-btn {
       font-size: 17px;
       padding: 16px 24px;
       width: 100%;
       justify-content: center;
+      margin-top: var(--space-24);
     }
   }
 
