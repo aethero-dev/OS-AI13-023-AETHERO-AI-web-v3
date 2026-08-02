@@ -203,10 +203,17 @@ const articleSchema = {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    padding: 28px 32px;
+    padding: 32px 36px;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, rgba(203, 0, 215, 0.16), rgba(13, 212, 205, 0.16));
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    /* Výsek z obrázku hlaviček služeb (jeho pravá, čistě fialová část —
+       modrý roh vlevo nahoře se nepoužívá) + fialový přechod přes něj,
+       aby text držel kontrast. Bez tyrkysové, ta zůstává jen tlačítku. */
+    background-image:
+      linear-gradient(100deg, rgba(12, 4, 44, 0.78) 0%, rgba(58, 18, 122, 0.55) 100%),
+      url('/ae-bgr-w-glass-b-2x-v3.webp');
+    background-size: cover;
+    background-position: 78% 45%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   }
   .article-cta-note {
     margin: 0;
