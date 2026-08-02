@@ -1,0 +1,157 @@
+---
+// Časté otázky pod článkem — rozbalovací (nativní <details>, bez JS)
+// + FAQPage JSON-LD, aby se otázky mohly zobrazit přímo ve výsledcích Googlu.
+import type { FaqItem } from '../data/article-extras';
+
+export interface Props {
+  title?: string;
+  items: FaqItem[];
+}
+const { title = 'Časté otázky', items } = Astro.props;
+
+// [text](href) → odkaz; jinak čistý text
+const toHtml = (s: string) =>
+  s.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2">$1</a>',
+  );
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((it) => ({
+    '@type': 'Question',
+    name: it.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: it.a.join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
+    },
+  })),
+};
+---
+
+<section class="faq-section">
+  <div class="container faq-inner">
+    <h2 class="h2-mini">{title}</h2>
+    <div class="faq-list">
+      {items.map((it) => (
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">{it.q}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            {it.a.map((p) => <p set:html={toHtml(p)} />)}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq-section {
+    background: var(--ae-bg-deep);
+    padding: var(--space-80) 0;
+  }
+  .faq-inner {
+    max-width: 860px;
+  }
+  .faq-inner h2 {
+    margin-bottom: var(--space-40);
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item {
+    background: var(--ae-bg-raised);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-24);
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary:hover .faq-q {
+    color: var(--action);
+  }
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--action);
+    outline-offset: -2px;
+  }
+  .faq-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--action);
+    transition: transform 0.2s ease;
+  }
+  .faq-icon::before {
+    top: 7px;
+    left: 0;
+    width: 16px;
+    height: 2px;
+  }
+  .faq-icon::after {
+    top: 0;
+    left: 7px;
+    width: 2px;
+    height: 16px;
+  }
+  .faq-item[open] .faq-icon::after {
+    transform: scaleY(0);
+  }
+  .faq-a {
+    padding: 0 24px 20px;
+  }
+  .faq-a p {
+    margin: 0 0 12px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .faq-a p:last-child {
+    margin-bottom: 0;
+  }
+  .faq-a :global(a) {
+    color: var(--action);
+    text-decoration: underline;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon::before,
+    .faq-icon::after {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .faq-item summary {
+      font-size: 16px;
+      padding: 16px 18px;
+    }
+    .faq-a {
+      padding: 0 18px 16px;
+    }
+  }
+</style>
