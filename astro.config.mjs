@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import { storyblok } from '@storyblok/astro';
 import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 
@@ -9,14 +8,6 @@ export default defineConfig({
   output: 'static',
   site: 'https://aethero.agency',
   integrations: [
-    storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
-      components: {
-        blog_post: 'storyblok/BlogPost',
-        case_study: 'storyblok/CaseStudy',
-      },
-      apiOptions: { region: 'eu' },
-    }),
     sitemap({
       // /design-system je interní stránka — z produkčního buildu se maže
       // (viz skript "build" v package.json), takže nesmí být ani v sitemapě.

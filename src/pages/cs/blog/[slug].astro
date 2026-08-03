@@ -1,80 +1,45 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
-import { useStoryblokApi, renderRichText } from '@storyblok/astro';
 import ArticleFaq from '../../../components/ArticleFaq.astro';
 import { articleExtras } from '../../../data/article-extras';
+import { getCollection, render } from 'astro:content';
 
-interface PostSummary {
-  slug: string; title: string; perex: string; readTime: string; date: string; img: string;
-}
-
-const SLUG_IMG: Record<string, string> = {
-  'povinne-tlacitko-shopify': '/blog-01.webp',
-  'ai-seo-2026': '/blog-02.webp',
-  'shopify-editions-zima-2026': '/blog-03.webp',
-  'preklad-platebni-metody-shopify': '/blog-04.webp',
-  'shopify-vs-shoptet': '/blog-05.webp',
-};
-
-const STATIC_ALL: PostSummary[] = [
-  { slug: 'povinne-tlacitko-shopify', title: 'Povinné tlačítko v Shopify: nečekejte, až z toho bude problém', perex: 'Jak správně nastavit povinné tlačítko v Shopify.', readTime: '7 min', date: '2026-05-01', img: '/blog-01.webp' },
-  { slug: 'ai-seo-2026', title: 'AI SEO — nová tvrdá realita vyhledávání pro e-shopy (2026)', perex: 'Jak umělá inteligence mění SEO a co to znamená pro váš e-shop.', readTime: '7 min', date: '2026-01-15', img: '/blog-02.webp' },
-  { slug: 'shopify-editions-zima-2026', title: 'Shopify Editions — Zima 2026', perex: 'Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026.', readTime: '5 min', date: '2025-12-10', img: '/blog-03.webp' },
-  { slug: 'preklad-platebni-metody-shopify', title: 'Překlad platební metody v Shopify, když Translate & Adapt nepomáhá', perex: 'Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje.', readTime: '3 min', date: '2025-10-05', img: '/blog-04.webp' },
-  { slug: 'shopify-vs-shoptet', title: 'Jakou e-commerce platformu zvolit? Shopify versus Shoptet', perex: 'Detailní srovnání Shopify a Shoptetu pro český trh.', readTime: '18 min', date: '2025-06-01', img: '/blog-05.webp' },
-];
-
+// Články jsou .md soubory v src/content/blog/cs/ — viz src/content/config.ts.
+// Do 2026-08-02 se tahaly ze Storybloku; ten byl odstraněn (AE-49).
 export async function getStaticPaths() {
-  try {
-    const storyblok = useStoryblokApi();
-    const { data } = await storyblok.get('cdn/stories', {
-      version: 'published',
-      starts_with: 'blog/',
-      content_type: 'blog_post',
-      per_page: 100,
-      sort_by: 'first_published_at:desc',
-    });
-    if (data.stories.length > 0) {
-      const allPosts: PostSummary[] = data.stories.map((s: any) => ({
-        slug: s.slug,
-        title: s.content.title,
-        perex: s.content.perex || '',
-        readTime: s.content.read_time || '5 min',
-        date: s.first_published_at?.split('T')[0] || s.created_at.split('T')[0],
-        img: s.content.featured_image?.filename || SLUG_IMG[s.slug] || '/blog-01.webp',
-      }));
-      return data.stories.map((story: any) => ({
-        params: { slug: story.slug },
-        props: {
-          title: story.content.title,
-          readTime: story.content.read_time || '5 min',
-          date: story.first_published_at?.split('T')[0] || story.created_at.split('T')[0],
-          perex: story.content.perex || '',
-          content: story.content.content,
-          featuredImage: story.content.featured_image?.filename || null,
-          isStoryblok: true,
-          allPosts,
-        },
-      }));
-    }
-  } catch (_e) {}
+  const vsechny = (await getCollection('blog', (e) =>
+    e.id.startsWith('cs/') && !e.data.draft
+  )).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-  return STATIC_ALL.map(post => ({
-    params: { slug: post.slug },
-    props: {
-      title: post.title, readTime: post.readTime, date: post.date,
-      perex: post.perex, content: null, featuredImage: post.img,
-      isStoryblok: false, allPosts: STATIC_ALL,
-    },
+  const prehled = vsechny.map((e) => ({
+    slug: e.id.replace('cs/', ''),
+    title: e.data.title,
+    perex: e.data.perex,
+    readTime: e.data.readTime,
+    date: e.data.date,
+    img: e.data.image || '/blog-01.webp',
+  }));
+
+  return vsechny.map((entry) => ({
+    params: { slug: entry.id.replace('cs/', '') },
+    props: { entry, prehled },
   }));
 }
 
-const { title, readTime, date, perex, content, featuredImage, isStoryblok, allPosts } = Astro.props;
+const { entry, prehled } = Astro.props;
+const { Content } = await render(entry);
+
+const title = entry.data.title;
+const perex = entry.data.perex;
+const readTime = entry.data.readTime;
+const featuredImage = entry.data.image || null;
+const date = entry.data.date;
 const { slug } = Astro.params;
-const renderedContent = isStoryblok && content ? renderRichText(content) : null;
-const formatDate = (d: string) => new Date(d).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const formatDate = (d: Date) => d.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
 const dateFormatted = formatDate(date);
-const otherPosts = ((allPosts || []) as PostSummary[]).filter(p => p.slug !== slug).slice(0, 3);
+const dateIso = date.toISOString().split('T')[0];
+const otherPosts = prehled.filter((p) => p.slug !== slug).slice(0, 3);
 const extras = articleExtras.cs[slug as string] || {};
 
 const articleSchema = {
@@ -82,9 +47,11 @@ const articleSchema = {
   "@type": "Article",
   "headline": title,
   "description": perex,
-  "datePublished": date,
+  "datePublished": dateIso,
+  "dateModified": dateIso,
   "inLanguage": "cs-CZ",
   "image": featuredImage || undefined,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href },
   "publisher": {
     "@type": "Organization",
     "name": "AETHERO s.r.o.",
@@ -94,11 +61,10 @@ const articleSchema = {
     "@type": "Organization",
     "name": "æthero team",
     "url": "https://aethero.agency"
-  },
-  "dateModified": date,
-  "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href }
+  }
 };
 ---
+
 
 <PageLayout {title} description={perex} lang="cs" jsonLd={articleSchema}>
 
@@ -149,13 +115,7 @@ const articleSchema = {
 
   <article class="section bg-primary">
     <div class="container article-inner">
-      {renderedContent ? (
-        <div class="article-body sb-content" set:html={renderedContent} />
-      ) : (
-        <div class="article-body">
-          <p class="coming-soon">Obsah článku bude brzy doplněn.</p>
-        </div>
-      )}
+      <div class="article-body sb-content"><Content /></div>
     </div>
   </article>
 

@@ -1,59 +1,21 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
-import { useStoryblokApi } from '@storyblok/astro';
+import { getCollection } from 'astro:content';
 
-interface BlogPost {
-  slug: string;
-  title: string;
-  perex: string;
-  readTime: string;
-  date: string;
-  img: string;
-}
+// Články z repu (src/content/blog/en/), dřív ze Storybloku — AE-49.
+const posts = (await getCollection('blog', (e) => e.id.startsWith('en/') && !e.data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map((e) => ({
+    slug: e.id.replace('en/', ''),
+    title: e.data.title,
+    perex: e.data.perex,
+    readTime: e.data.readTime.replace(' min', ''),
+    date: e.data.date,
+    img: e.data.image || '/blog-01.webp',
+  }));
 
-const STATIC_POSTS: BlogPost[] = [
-  { slug: 'shopify-mandatory-button', title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem", perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', readTime: '7', date: '2026-05-01', img: '/blog-01.webp' },
-  { slug: 'ai-seo-2026', title: 'AI SEO — The New Hard Reality of Search for E-shops (2026)', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop.', readTime: '7', date: '2026-01-15', img: '/blog-02.webp' },
-  { slug: 'shopify-editions-winter-2026', title: 'Shopify Editions — Winter 2026', perex: 'Overview of the most important updates from Shopify Editions Winter 2026.', readTime: '5', date: '2025-12-10', img: '/blog-03.webp' },
-  { slug: 'translating-payment-methods-shopify', title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help", perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', readTime: '3', date: '2025-10-05', img: '/blog-04.webp' },
-  { slug: 'shopify-vs-shoptet', title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market.', readTime: '18', date: '2025-06-01', img: '/blog-05.webp' },
-];
-
-const SLUG_IMG: Record<string, string> = {
-  'shopify-mandatory-button': '/blog-01.webp',
-  'ai-seo-2026': '/blog-02.webp',
-  'shopify-editions-winter-2026': '/blog-03.webp',
-  'translating-payment-methods-shopify': '/blog-04.webp',
-  'shopify-vs-shoptet': '/blog-05.webp',
-};
-
-let posts: BlogPost[] = STATIC_POSTS;
-
-try {
-  const storyblok = useStoryblokApi();
-  const { data } = await storyblok.get('cdn/stories', {
-    version: 'published',
-    starts_with: 'en/blog/',
-    content_type: 'blog_post',
-    per_page: 100,
-    sort_by: 'first_published_at:desc',
-  });
-  if (data.stories.length > 0) {
-    posts = data.stories.map((s: any) => ({
-      slug: s.slug,
-      title: s.content.title,
-      perex: s.content.perex || '',
-      readTime: s.content.read_time?.replace(' min', '') || '5',
-      date: s.first_published_at?.split('T')[0] || s.created_at.split('T')[0],
-      img: s.content.featured_image?.filename || SLUG_IMG[s.slug] || '/blog-01.webp',
-    }));
-  }
-} catch (_e) {
-  // Storyblok not set up → fallback to static
-}
-
-const formatDate = (d: string) =>
-  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
 <PageLayout title="Blog — AETHERO" description="Shopify tips, e-commerce strategy and case studies from the AETHERO team." lang="en">
