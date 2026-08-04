@@ -21,6 +21,10 @@
   --cteni-linka: rgba(255, 255, 255, 0.10);
   --cteni-odkaz: var(--action);
   --cteni-zvyrazneni: var(--text-secondary);
+  /* Blok uvnitř čtecí plochy (otázka ve FAQ) — VŽDY tmavší než plocha,
+     nikdy světlejší. Původně to bylo obráceně: sekce měla vlastní tmavší
+     pozadí a bloky na ní svítily nahoru (DK 2026-08-04). */
+  --cteni-blok: rgba(0, 0, 0, 0.42);
 }
 
 /* ── velikost: šest poloh, kroky rostou geometricky (~1,15×), aby byl
@@ -51,6 +55,7 @@ html[data-cteni-motiv="svetly"] {
   --cteni-linka: rgba(0, 0, 0, 0.12);
   --cteni-odkaz: #0A7079;
   --cteni-zvyrazneni: var(--accent-purple);
+  --cteni-blok: rgba(0, 0, 0, 0.055);
 }
 html[data-cteni-motiv="sepia"] {
   --cteni-plocha: #f4ecd8;
@@ -60,6 +65,7 @@ html[data-cteni-motiv="sepia"] {
   --cteni-linka: rgba(74, 63, 53, 0.20);
   --cteni-odkaz: #0A7079;
   --cteni-zvyrazneni: var(--accent-purple);
+  --cteni-blok: rgba(74, 63, 53, 0.085);
 }
 
 /* ── čtecí plocha ───────────────────────────────────────────────────────

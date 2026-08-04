@@ -53,7 +53,10 @@ const faqSchema = {
 
 <style>
   .faq-section {
-    background: var(--ae-bg-deep);
+    /* Sekce jede po TÉŽE ploše jako zbytek čtení; zatmavené jsou bloky
+       s otázkami. Dřív to bylo obráceně — sekce měla vlastní tmavší
+       pozadí a bloky na něm svítily nahoru (DK 2026-08-04). */
+    background: var(--cteni-plocha, var(--ae-bg-primary));
     padding: var(--space-80) 0;
   }
   .faq-inner {
@@ -68,7 +71,7 @@ const faqSchema = {
     gap: 12px;
   }
   .faq-item {
-    background: var(--ae-bg-raised);
+    background: var(--cteni-blok, rgba(0, 0, 0, 0.42));
     border-radius: var(--radius-md);
     overflow: hidden;
   }
