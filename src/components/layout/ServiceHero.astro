@@ -43,7 +43,9 @@ const contactLabel = cta2Label || (lang === 'en' ? 'Find out how' : 'Zjistěte j
   .service-hero {
     position: relative;
     padding: 215px 0 153px;
-    background: #07051B;
+    /* Byla tu vlastní barva #07051B, jenže stránka má #000326 — na rozhraní
+       sekcí z toho byl vidět proužek. Teď táž barva jako zbytek stránky. */
+    background: var(--ae-bg-primary);
     overflow: hidden;
   }
   .hero-bg-image {
@@ -90,7 +92,27 @@ const contactLabel = cta2Label || (lang === 'en' ? 'Find out how' : 'Zjistěte j
     gap: 40px;
     align-items: center;
   }
+  /* Obrázek objektu má fialové pozadí zapečené v sobě a sedí na spodní hraně
+     hero. Bez přechodu se useknul ostrou vodorovnou čarou (DK 2026-08-04).
+     Přechod jde přes celou šířku a končí přesně v barvě stránky, takže
+     hero se do dalšího obsahu napojí místo aby o něj zavadil. */
   .service-hero--with-image { padding-bottom: 0; }
+  /* Vyšší hero jen na desktopu. Na mobilu se obsah smrskne a min-height by
+     pod tlačítky nechalo prázdnou fialovou plochu (DK 2026-08-04). */
+  @media (min-width: 901px) {
+    .service-hero--with-image { min-height: 860px; }
+  }
+  .service-hero--with-image::after {
+    content: '';
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 240px; z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom,
+      rgba(0, 3, 38, 0) 0%,
+      rgba(0, 3, 38, 0.55) 45%,
+      var(--ae-bg-primary) 100%);
+  }
+  /* text a tlačítka musí zůstat nad přechodem */
+  .service-hero-split { z-index: 2; }
   .hero-text { position: relative; text-align: left; }
   .hero-image-wrap {
     display: flex;
@@ -98,6 +120,9 @@ const contactLabel = cta2Label || (lang === 'en' ? 'Find out how' : 'Zjistěte j
     justify-content: center;
     padding-top: 40px;
   }
+  /* Sekce hned za heroem začíná výš — dřív mezi nimi bylo 120 px prázdna
+     a nadpis se propadal pod zlom (DK 2026-08-04). */
+  .service-hero + :global(.section) { padding-top: var(--space-64); }
   .hero-image {
     width: 100%;
     max-width: 540px;
