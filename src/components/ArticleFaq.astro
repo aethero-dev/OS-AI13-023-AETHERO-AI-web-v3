@@ -1,6 +1,11 @@
 ---
 // Časté otázky pod článkem — rozbalovací (nativní <details>, bez JS)
 // + FAQPage JSON-LD, aby se otázky mohly zobrazit přímo ve výsledcích Googlu.
+//
+// Vzhled je převzatý z FAQ na stránce služeb (cs/co-umime/custom-vyvoj-a-aplikace):
+// linky místo boxů, pořadové číslo v lavenderu. Boxy vypadaly škaredě (DK
+// 2026-08-04). Proti vzoru dvě odchylky, obě na přání DK: čísla jsou větší
+// (13 → 20 px) a místo šipky zůstává naše tyrkysové plus.
 import type { FaqItem } from '../data/article-extras';
 
 export interface Props {
@@ -34,9 +39,10 @@ const faqSchema = {
   <div class="container faq-inner">
     <h2 class="h2-mini">{title}</h2>
     <div class="faq-list">
-      {items.map((it) => (
+      {items.map((it, i) => (
         <details class="faq-item">
           <summary>
+            <span class="faq-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <span class="faq-q">{it.q}</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
@@ -53,9 +59,7 @@ const faqSchema = {
 
 <style>
   .faq-section {
-    /* Sekce jede po TÉŽE ploše jako zbytek čtení; zatmavené jsou bloky
-       s otázkami. Dřív to bylo obráceně — sekce měla vlastní tmavší
-       pozadí a bloky na něm svítily nahoru (DK 2026-08-04). */
+    /* Sekce jede po TÉŽE ploše jako zbytek čtení (DK 2026-08-04). */
     background: var(--cteni-plocha, var(--ae-bg-primary));
     padding: var(--space-80) 0;
   }
@@ -65,96 +69,106 @@ const faqSchema = {
   .faq-inner h2 {
     margin-bottom: var(--space-40);
   }
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+
+  /* Linky místo boxů — otázky drží pohromadě jedním svislým rytmem */
   .faq-item {
-    background: var(--cteni-blok, rgba(0, 0, 0, 0.42));
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    border-bottom: 1px solid var(--cteni-linka, rgba(255, 255, 255, 0.08));
   }
+  .faq-item:first-child {
+    border-top: 1px solid var(--cteni-linka, rgba(255, 255, 255, 0.08));
+  }
+  /* Číslo i plus sedí na PRVNÍM ŘÁDKU otázky, ne na svislém středu bloku.
+     U dvouřádkové otázky by vycentrované číslo plavalo mezi řádky
+     (DK 2026-08-04). */
   .faq-item summary {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-24);
-    padding: 20px 24px;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
     cursor: pointer;
     list-style: none;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.4;
   }
   .faq-item summary::-webkit-details-marker {
     display: none;
   }
-  .faq-item summary:hover .faq-q {
-    color: var(--action);
-  }
   .faq-item summary:focus-visible {
     outline: 2px solid var(--action);
-    outline-offset: -2px;
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
   }
+
+  /* Pořadové číslo. Vzor má 13 px, což se ztrácelo — tady 20 px, aby
+     v řádku obstálo vedle otázky (DK 2026-08-04). */
+  .faq-num {
+    flex: none;
+    min-width: 38px;
+    /* posazení na účaří prvního řádku otázky: (20 × 1,35 − 20) / 2 */
+    padding-top: 4px;
+    font-family: var(--font-primary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: var(--cteni-zvyrazneni, var(--text-secondary));
+    transition: color var(--transition-base);
+  }
+
+  .faq-q {
+    flex: 1;
+    font-family: var(--font-primary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--cteni-nadpis, var(--text-primary));
+    transition: color var(--transition-base);
+  }
+  .faq-item summary:hover .faq-q { color: var(--cteni-odkaz, var(--action)); }
+  .faq-item[open] .faq-num { color: var(--cteni-odkaz, var(--action)); }
+
+  /* Plus zůstává (DK) — po otevření se z něj stane minus */
   .faq-icon {
     position: relative;
-    flex-shrink: 0;
+    flex: none;
     width: 16px;
     height: 16px;
+    margin-top: 6px;
   }
   .faq-icon::before,
   .faq-icon::after {
     content: '';
     position: absolute;
-    background: var(--action);
+    background: var(--cteni-odkaz, var(--action));
     transition: transform 0.2s ease;
   }
-  .faq-icon::before {
-    top: 7px;
-    left: 0;
-    width: 16px;
-    height: 2px;
-  }
-  .faq-icon::after {
-    top: 0;
-    left: 7px;
-    width: 2px;
-    height: 16px;
-  }
-  .faq-item[open] .faq-icon::after {
-    transform: scaleY(0);
-  }
+  .faq-icon::before { top: 7px; left: 0; width: 16px; height: 2px; }
+  .faq-icon::after { top: 0; left: 7px; width: 2px; height: 16px; }
+  .faq-item[open] .faq-icon::after { transform: scaleY(0); }
+
+  /* Odpověď zarovnaná pod otázku, ne pod číslo */
   .faq-a {
-    padding: 0 24px 20px;
+    padding: 0 34px 22px 56px;
   }
   .faq-a p {
     margin: 0 0 12px;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--cteni-text, var(--neutral-300));
   }
-  .faq-a p:last-child {
-    margin-bottom: 0;
-  }
+  .faq-a p:last-child { margin-bottom: 0; }
   .faq-a :global(a) {
-    color: var(--action);
+    color: var(--cteni-odkaz, var(--action));
     text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .faq-icon::before,
-    .faq-icon::after {
-      transition: none;
-    }
+    .faq-icon::before, .faq-icon::after,
+    .faq-num, .faq-q { transition: none; }
   }
 
   @media (max-width: 640px) {
-    .faq-item summary {
-      font-size: 16px;
-      padding: 16px 18px;
-    }
-    .faq-a {
-      padding: 0 18px 16px;
-    }
+    .faq-item summary { gap: 12px; padding: 16px 0; }
+    .faq-num { min-width: 28px; font-size: 16px; padding-top: 3px; }
+    .faq-q { font-size: 17px; }
+    .faq-a { padding: 0 0 18px 40px; }
   }
 </style>
