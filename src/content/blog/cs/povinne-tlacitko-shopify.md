@@ -6,78 +6,90 @@ date: 2026-05-01
 image: "/blog/povinne-tlacitko-odstoupit-od-smlouvy2x.webp"
 ---
 
+Povinné tlačítko pro odstoupení od smlouvy se má od června 2026 týkat e-shopů. Tady je praktický návod, jak se na něj v Shopify připravit bez zbytečné aplikace navíc.
+
 ## E-shopy umí ladit nákupní proces do detailu
 
-Provozovatelé e-shopů optimalizují každý detail — barvu tlačítek, text k dopravě, pořadí platebních metod — aby maximalizovali konverze. Jenže když chce zákazník od nákupu odstoupit, naráží na frustrující pátrání v FAQ, podmínkách, PDF dokumentech a e-mailech na podporu.
+Barva tlačítka v košíku. Text u dopravy. Pořadí platebních metod. Popup na slevu. Každý klik se měří, protože každý klik může znamenat tržbu.
 
-Nová legislativa bude vyžadovat, aby e-shopy poskytly jasný online proces pro odstoupení od smlouvy. Implementace musí být hotová do 19. června 2026, přestože legislativa je stále v procesu — před spuštěním doporučujeme ověřit s právníkem.
+Pak ale zákazník chce odstoupit od smlouvy — a najednou začíná „nákupní archeologie". Kam co napsali? FAQ. Obchodní podmínky. PDF formulář. E-mail na podporu. Čekání.
 
-## Nejde tu o tlačítko. Jde o celý proces
+Nová povinnost pro e-shopy tenhle rozdíl dobře ukáže. Povinné tlačítko pro odstoupení od smlouvy nemá být jen další právní položka na webu — má zákazníkovi dát **jasnou online cestu**, jak odstoupení podat. Podle [Právního prostoru](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy) má být povinnost implementována nejpozději do **19. června 2026**. Novela je v době psaní pořád v legislativním procesu, takže konkrétní znění je dobré před publikací a implementací ještě ověřit s právníkem.
 
-Povinné tlačítko je víc než jen přidat odkaz. Když zákazník klikne na "Odstoupení od smlouvy", musí se stát několik věcí najednou:
+Pro majitele e-shopů v Shopify je ale důležité něco jiného: technický základ můžete řešit už teď.
 
-- Najít správnou objednávku
-- Vybrat zboží
-- Odeslat žádost
-- Obdržet potvrzení
-- Obchodník ví, co dál
+### Nejde tu o tlačítko. Jde o celý proces
 
-Tlačítko je jen vstupní bod. Bez jasného procesu za ním jsme jen udělali kosmetiku. Proto není ideální začínat externími aplikacemi — nejdříve prozkoumat nativní možnosti Shopify.
+Největší omyl je myslet si, že povinné tlačítko znamená „někam přidáme odkaz". Když zákazník klikne na **Odstoupit od smlouvy**, musí se stát několik věcí najednou:
+
+- najde správnou objednávku,
+- vybere položky,
+- odešle žádost,
+- dostane potvrzení,
+- a obchodník ví, co má dál dělat.
+
+Tlačítko je jen vstupní bod. Pokud za ním není srozumitelný proces, problém jste nevyřešili — jen jste mu dali hezčí obal. To je přesně důvod, proč bychom u Shopify e-shopu nezačínali externí aplikací. Pojďme se nejdřív podívat, co umí Shopify samo.
 
 ## Co umí Shopify nativně
 
-Shopify nabízí **Self-serve returns**, které zákazníkům umožňují žádat o vrácení přímo přes jejich účet nebo stránku stavu objednávky. Zákazník se přihlásí, vybere objednávku, zboží a důvod vrácení — obchodník vidí žádosti v administraci.
+Shopify má funkci **Self-serve returns**. Ta umožní zákazníkovi podat žádost o vrácení přímo přes zákaznický účet nebo stavovou stránku objednávky. Zákazník se přihlásí, vybere objednávku, položky a důvod vrácení; obchodník žádost následně vidí v administraci.
 
-Samotné Self-serve returns ale automaticky nesplňují české zákonné požadavky — jsou solidním technickým základem, ale nikoliv kompletním řešením.
+Máme tedy hotovo? Ne. Self-serve returns neznamenají, že automaticky získáváte právně hotové řešení pro českou tlačítkovou povinnost. Je to ale velmi dobrý technický základ.
 
-### Nastavení krok za krokem
+**První krok:** nastavení najdete v Shopify adminu v části **Settings → Customer accounts**, kde zapnete [Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup).
 
-**Krok 1:** V administraci přejděte do Settings → Customer accounts a povolte Self-serve returns.
+> Pozor na starší zákaznické účty. Shopify uvádí, že self-serve returns nefungují s legacy customer accounts. Pokud je používáte, bude potřeba přejít na nové Customer accounts, nebo proces vyřešit jinak.
 
-Pozor: Legacy zákaznické účty tuto funkci nepodporují. Možná bude potřeba přejít na nové Customer accounts.
+**Druhý krok:** [Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules) v **Settings → Policies → Return rules**. Tam nastavíte, jak dlouho může zákazník žádost podat. Shopify nabízí například čtrnáct, třicet nebo devadesát dní, případně vlastní hodnotu. Tady se vyplatí zpomalit: lhůta v Shopify musí sedět s obchodními podmínkami a s tím, co opravdu platí pro vaše zboží.
 
-**Krok 2:** V Settings → Policies → Return rules nastavte lhůty pro odstoupení (14, 30, 90 dní nebo vlastní). Lhůty musí odpovídat vašim obchodním podmínkám a skutečné praxi.
+### Kam tlačítko dát?
 
-## Kam tlačítko dát?
+Povinné tlačítko nesmí být schované tam, kam se nikdo nedívá — nenechávejte ho jen v obchodních podmínkách.
 
-Povinné tlačítko nesmí být ukryté jen v obchodních podmínkách.
+Prakticky dává smysl vytvořit samostatnou stránku typu „Vrácení a odstoupení od smlouvy" a na ni dát jasné tlačítko **Odstoupit od smlouvy**. Tlačítko pak může vést na customer accounts URL, kde zákazník spustí self-serve proces. Stejný odkaz bychom doporučili přidat i do patičky a případně do help centra.
 
-Vytvořte dedikovanou stránku "Vrácení a odstoupení" s jasným tlačítkem "Odstoupit od smlouvy" odkazujícím na URL zákaznických účtů. Stejný odkaz dejte do patičky a helpcenter.
+Minimum, které je potřeba otestovat:
 
-**Checklist před spuštěním:**
+- je tlačítko viditelné na mobilu,
+- zákazník určitě pochopí, že jde o odstoupení od smlouvy,
+- proces funguje pro testovací objednávku,
+- přijde potvrzovací e-mail,
+- tým ví, kde žádost v administraci najde.
 
-- Tlačítko je viditelné na mobilu
-- Texty jasně označují možnost odstoupení
-- Proces funguje na testovacích objednávkách
-- Potvrzovací e-mail přichází
-- Tým ví, kde v administraci žádosti najít
+Tohle není právní kosmetika. Vzniká tak dobrá zákaznická zkušenost v té méně příjemné části nákupu.
 
 ## Potvrzení je důležitější, než vypadá
 
-Právníci zdůrazňují, že **proces musí zahrnovat potvrzení odstoupení**.
+Podle právních expertů má proces počítat s potvrzením odstoupení.
 
-Zkontrolujte Settings → Notifications → Returns. Zákazník by při odeslání žádosti měl vědět, že jste ji přijali, čeho se týká a co se stane dál. Nechejte právníka zkontrolovat text potvrzovacího e-mailu — v případě, že slouží jako oficiální dokument, záleží na každém slově.
+V Shopify dává smysl projít hlavně notifikace v **Settings → Notifications → Returns**. Zákazník by měl po odeslání vědět, že jste žádost přijali, čeho se týká a co bude následovat. Pokud má e-mail fungovat jako právně relevantní potvrzení, text by měl zkontrolovat právník. Tady se často láme rozdíl mezi „máme tlačítko" a „máme funkční proces".
 
-## Kdy nativní Shopify možnosti nemusí stačit
+### Kdy nativní Shopify možnosti nemusí stačit
 
-Self-serve returns fungují dobře pro standardní fyzické zboží, ale nemusí pokrývat:
+Self-serve returns jsou dobrý start pro běžný e-shop s fyzickým zbožím. Neznamená to ale, že pokryjí všechno. Pozor si dejte hlavně na:
 
-- Digitální produkty
-- Služby a předplatné
-- Zboží zhotovené na míru
-- Zboží s výjimkou z práva na odstoupení
+- digitální produkty,
+- služby a předplatné,
+- personalizované zboží,
+- sortiment, kde existují výjimky z odstoupení.
 
-Ověřte, jak proces zvládá nevyřízené, částečně zpracované nebo nestandardní objednávky. Implementace vyžaduje kombinaci nastavení, textů, UX designu a operačních postupů.
+Stejně tak je potřeba ověřit, jak proces funguje u nevyřízených, částečně vyřízených nebo specifických objednávek. Povinné tlačítko v Shopify tedy není otázka „zapnout jednu funkci a jít dál". Je to kombinace nastavení, textů, UX a interního provozu.
 
 ## Co udělat teď?
 
-Nečekejte na termín:
+Nečekejte na poslední chvíli.
 
-1. Zapněte Self-serve returns v testovacím režimu
-2. Nakonfigurujte Return rules
-3. Vytvořte stránku pro odstoupení
-4. Přidejte jasné tlačítko
-5. Otestujte celý proces jako zákazník
-6. Teprve pak rozhodněte, zda potřebujete vlastní šablony, právní revizi nebo doplňkové aplikace
+1. Zapněte Self-serve returns v testovacím režimu.
+2. Nastavte Return rules.
+3. Vytvořte stránku pro odstoupení.
+4. Přidejte jasné tlačítko.
+5. Projděte celý proces očima zákazníka.
+6. A až úplně nakonec řešte, jestli potřebujete vlastní úpravu šablony, právní revizi nebo aplikaci navíc.
 
-Shopify základ poskytuje. Zodpovědnost za to, aby zákazníci našli jasnou cestu k odstoupení, zůstává na vás.
+Shopify nám dá základ. Ale odpovědnost za to, že zákazník opravdu najde srozumitelnou cestu k odstoupení od smlouvy, zůstává na nás.
+
+## Zdroje
+
+- [Právní prostor — Nová „tlačítková" povinnost pro e-shopy](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy)
+- [Shopify Help Center — Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup)
+- [Shopify Help Center — Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules)

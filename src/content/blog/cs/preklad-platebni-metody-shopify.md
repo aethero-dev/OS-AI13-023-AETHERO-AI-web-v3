@@ -6,41 +6,54 @@ date: 2025-10-05
 image: "/blog/platebni-brany-v-shopify-preklad-v2.webp"
 ---
 
-## Situace
+Chcete přeložit platební brány — třeba **Cash on delivery** — a Translate & Adapt vám hodí klacky pod nohy? Žádný strach. Máme řešení, které vám pomůže rychleji, než řeknete „mezinárodní platba".
 
-Potřebujete přeložit názvy platebních bran v Shopify (například "Cash on delivery") do češtiny, ale standardní aplikace Translate & Adapt platební metody nepokrývá nebo překlad nefunguje.
+## Proč se trápit ručně, když to jde chytře
 
-## Řešení krok za krokem
+Když standardní překladové nástroje selžou, nastupuje osvědčený postup přes export a import CSV. Připravte si v klidu kávu — nakonec to bude docela snadné.
+
+## Návod krok za krokem
 
 ### 1. Export jazykových podkladů
 
 - Otevřete administraci Shopify
-- Přejděte do Settings → Languages
-- Klikněte na Export
-- Vyberte "Selected Content"
-- Zaměřte se na "Payment gateways"
+- Přejděte do **Settings → Languages**
+- Klikněte na **Export**
+- Vyberte **Selected Content**
+- Zaměřte se na **Payment gateways**
 - Stáhněte CSV soubor
 
-### 2. Překlad obsahu
+![Dialog exportu jazykových podkladů v Shopify s vybranou volbou Payment gateways](/blog/shopify-export-jazyku.webp)
 
-Otevřete stažený CSV soubor a najděte sloupec "Translated content". Překlady vyplňte přímo zde.
+### 2. Překládáme chytře
 
-**Tip:** Využijte AI modely jako ChatGPT nebo DeepL místo ručního překladu — ušetříte čas a výsledky bývají přesné.
+Otevřete stažený CSV soubor a najděte sloupec **Translated content**. Tady proveďte všechna překladová kouzla.
 
-### 3. Řešení pro macOS
+**Tip pro opravdové chytráky:** proč každou metodu překládat ručně? Nahrajte exportovaný soubor do AI modelu — ChatGPT, Claude nebo DeepL — a nechte ho, ať maká za vás.
 
-Problém: CSV se může exportovat se středníky namísto čárek, což způsobí chyby při importu.
+### 3. Uživatelé macOS, pozor
 
-Řešení: Otevřete soubor v TextEdit, najděte a nahraďte všechny středníky čárkami a soubor uložte.
+Čeká na vás drobná léčka v podobě středníků:
+
+- CSV se může exportovat se zákeřnými středníky místo čárek
+- Řešení: otevřete soubor v TextEditu jako svého tajného agenta
+- Nahraďte středníky čárkami
+- Hotovo
 
 ### 4. Import překladu
 
-- Přejděte zpět do Settings → Languages
-- Zvolte Import
+- Zpět do **Settings → Languages**
+- Zvolte **Import**
 - Nahrajte upravený soubor
+- A je to
 
-## Doporučení
+## Pro ty, co chtějí víc
 
-- Vždy zkontrolujte formátování CSV před importem
-- Uchovávejte kopii původního exportu jako zálohu
-- Po importu otestujte zobrazení platebních metod v checkout procesu
+- Před importem vždycky zkontrolujte formátování
+- Uchovávejte si kopii původního exportu jako zálohu
+- Po importu otestujte zobrazení platebních metod přímo v checkoutu
+- Nebojte se AI — je to váš kamarád, ne nepřítel
+
+## Poznámka na závěr
+
+Všimli jste si? Právě jste sami zvládli něco, co před chvílí vypadalo jako scéna ze sci-fi filmu — a vaše platební brány jsou lokalizované dřív, než jste dopili kávu. Gratulujeme.

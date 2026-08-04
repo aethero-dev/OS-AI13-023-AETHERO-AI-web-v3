@@ -6,41 +6,54 @@ date: 2025-10-05
 image: "/blog/platebni-brany-v-shopify-preklad-v2.webp"
 ---
 
-## The situation
+Want to translate your payment gateways — say **Cash on delivery** — and Translate & Adapt keeps getting in your way? Don't worry. We have a fix that works faster than you can say "international payment".
 
-You need to translate payment gateway names in Shopify (e.g., "Cash on delivery") into your local language, but the standard Translate & Adapt app doesn't cover payment methods or the translation isn't working.
+## Why struggle by hand when there's a smarter way
 
-## Step-by-step solution
+When the standard translation tools fall short, the proven route is CSV export and import. Go make yourself a coffee — this turns out to be pretty easy.
 
-### 1. Export language files
+## Step by step
+
+### 1. Export the language files
 
 - Open your Shopify admin
-- Go to Settings -> Languages
-- Click Export
-- Select 'Selected Content'
-- Focus on 'Payment gateways'
+- Go to **Settings → Languages**
+- Click **Export**
+- Choose **Selected Content**
+- Focus on **Payment gateways**
 - Download the CSV file
 
-### 2. Translate the content
+![Shopify language export dialog with Payment gateways selected](/blog/shopify-export-jazyku.webp)
 
-Open the downloaded CSV file and find the 'Translated content' column. Fill in your translations directly here.
+### 2. Translate the smart way
 
-**Tip:** Use AI models like ChatGPT or DeepL instead of translating manually — it saves time and the results are accurate.
+Open the downloaded CSV and find the **Translated content** column. That's where all the translation magic happens.
 
-### 3. Fix for macOS users
+**Tip for the genuinely smart:** why translate every method by hand? Upload the exported file to an AI model — ChatGPT, Claude or DeepL — and let it do the work for you.
 
-Problem: The CSV may be exported with semicolons instead of commas, which causes import errors.
+### 3. macOS users, watch out
 
-Solution: Open the file in TextEdit, find and replace all semicolons with commas, and save the file.
+There's a small trap waiting, and it's called semicolons:
+
+- The CSV may export with sneaky semicolons instead of commas
+- The fix: open the file in TextEdit, your secret agent
+- Replace the semicolons with commas
+- Done
 
 ### 4. Import the translation
 
-- Go back to Settings -> Languages
-- Select Import
-- Upload the modified file
+- Back to **Settings → Languages**
+- Choose **Import**
+- Upload the edited file
+- That's it
 
-## Recommendations
+## For those who want more
 
-- Always check CSV formatting before importing
+- Always check the CSV formatting before importing
 - Keep a copy of the original export as a backup
-- After importing, test how payment methods display in the checkout process
+- After importing, test how the payment methods display in checkout
+- Don't be afraid of AI — it's your friend, not your enemy
+
+## One last note
+
+Notice what just happened? You pulled off something that looked like a scene from a sci-fi film a moment ago — and your payment gateways are localised before your coffee went cold. Congratulations.
