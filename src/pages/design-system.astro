@@ -6,8 +6,8 @@ import ArticleFaq from '../components/ArticleFaq.astro';
 // skutečná věc, včetně rozbalování (DK 2026-08-04).
 const faqUkazka = [
   { q: 'Kolik to stojí?', a: ['To záleží. Jedna drobná úprava může být rychlovka, aplikace je už ale projekt.'] },
-  { q: 'Děláte i „jen“ konzultaci?', a: ['Ano. Někdy stačí 60–90 minut a máme všichni jasno, co stavět a čemu se vyhnout.'] },
-  { q: 'Umíte napojit i něco, co „nemá integraci“?', a: ['Pokud má služba API nebo aspoň rozumný export a import, většinou se cesta najde.'] },
+  { q: 'Děláte i „jen“ konzultaci?', a: ['Ano. Někdy stačí 60–90 minut a máme všichni jasno, co stavět a čemu se vyhnout.'] },
+  { q: 'Umíte napojit i něco, co „nemá integraci“?', a: ['Pokud má služba API nebo aspoň rozumný export a import, většinou se cesta najde.'] },
 ];
 ---
 
@@ -130,7 +130,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#2F324D</span>
               </div>
               <strong class="ds-chip2-name">Card / Button</strong>
-              <p class="ds-chip2-desc">Šedomodrá — pozadí karet, tlačítek a interaktivních prvků.</p>
+              <p class="ds-chip2-desc">Šedomodrá — pozadí karet, tlačítek a interaktivních prvků.</p>
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#0DD4CD</span>
               </div>
               <strong class="ds-chip2-name">Action hover / Footer CTA bg</strong>
-              <p class="ds-chip2-desc">Hover stav action barvy. Zároveň pozadí footer CTA sekce (Máme spolu co probrat?) a teal tlačítek.</p>
+              <p class="ds-chip2-desc">Hover stav action barvy. Zároveň pozadí footer CTA sekce (Máme spolu co probrat?) a teal tlačítek.</p>
             </div>
           </div>
           <div class="ds-chip2 ds-chip2-accent">
@@ -168,7 +168,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#A081D1</span>
               </div>
               <strong class="ds-chip2-name">Zvýraznění textu / Stats bar</strong>
-              <p class="ds-chip2-desc">Tučné zvýraznění klíčových frází v popisech sekcí (třída .ac, font-weight 900). Pozadí stats baru na homepage. Nikdy odkaz.</p>
+              <p class="ds-chip2-desc">Tučné zvýraznění klíčových frází v popisech sekcí (třída .ac, font-weight 900). Pozadí stats baru na homepage. Nikdy odkaz.</p>
               <span class="ds-chip2-rule ds-rule-nolink">🚫 Fialová = nikdy odkaz</span>
             </div>
           </div>
@@ -180,7 +180,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#552A9F</span>
               </div>
               <strong class="ds-chip2-name">Gradient čísel SVG</strong>
-              <p class="ds-chip2-desc">Výhradně v gradientu číslovacích SVG souborů sekcí (no-01.svg až no-07.svg). V textu na webu nepoužívat — příliš agresivní.</p>
+              <p class="ds-chip2-desc">Výhradně v gradientu číslovacích SVG souborů sekcí (no-01.svg až no-07.svg). V textu na webu nepoužívat — příliš agresivní.</p>
             </div>
           </div>
           <div class="ds-chip2">
@@ -191,7 +191,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#96BF48</span>
               </div>
               <strong class="ds-chip2-name">Shopify zelená</strong>
-              <p class="ds-chip2-desc">Pouze pro Shopify branding — badge, ikona, explicitní zmínky o Shopify platformě.</p>
+              <p class="ds-chip2-desc">Pouze pro Shopify branding — badge, ikona, explicitní zmínky o Shopify platformě.</p>
             </div>
           </div>
           <div class="ds-chip2" style="--chip-bg: #092066;">
@@ -202,7 +202,7 @@ const faqUkazka = [
                 <span class="ds-chip2-hex">#092066</span>
               </div>
               <strong class="ds-chip2-name">Straight Blue</strong>
-              <p class="ds-chip2-desc">Text na světlém nebo barevném pozadí — čísla ve stats baru, kontaktní info v cyan CTA bloku. Nikdy jako pozadí.</p>
+              <p class="ds-chip2-desc">Text na světlém nebo barevném pozadí — čísla ve stats baru, kontaktní info v cyan CTA bloku. Nikdy jako pozadí.</p>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@ const faqUkazka = [
                 <div class="ds-rule-bad">
                   <span class="ds-rule-badge-bad">✗ špatně</span>
                   <ul>
-                    <li>Zvýraznění klíčového slova v textu</li>
+                    <li>Zvýraznění klíčového slova v textu</li>
                     <li>Dekorativní label nebo badge</li>
                     <li>Čísla sekcí nebo ikonky</li>
                   </ul>
@@ -246,19 +246,19 @@ const faqUkazka = [
             <div class="ds-rule-pill" style="background: #A081D1; color: #000326;">FIALOVÁ</div>
             <div class="ds-rule-body">
               <strong>Fialová je zvýraznění — nikdy odkaz</strong>
-              <p>Fialová (--text-secondary) označuje důležité fráze v body textu. Je to ekvivalent tučného písma, jen s barvou navíc. Nesmí být zaměnitelná za odkaz.</p>
+              <p>Fialová (--text-secondary) označuje důležité fráze v body textu. Je to ekvivalent tučného písma, jen s barvou navíc. Nesmí být zaměnitelná za odkaz.</p>
               <div class="ds-rule-cols">
                 <div class="ds-rule-ok">
                   <span class="ds-rule-badge-ok">✓ správně</span>
                   <ul>
-                    <li>&lt;strong class="ac"&gt; v popisech sekcí Co umíme</li>
+                    <li>&lt;strong class="ac"&gt; v popisech sekcí Co umíme</li>
                     <li>Pozadí stats baru</li>
                   </ul>
                 </div>
                 <div class="ds-rule-bad">
                   <span class="ds-rule-badge-bad">✗ špatně</span>
                   <ul>
-                    <li>&lt;a&gt; tag s fialovou barvou</li>
+                    <li>&lt;a&gt; tag s fialovou barvou</li>
                     <li>Tlačítko nebo CTA</li>
                     <li>Nav položka</li>
                   </ul>
@@ -357,7 +357,7 @@ const faqUkazka = [
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
               Not OK — Chyba:
             </p>
-            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
+            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
           </div>
 
           <!-- success -->
@@ -366,7 +366,7 @@ const faqUkazka = [
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
               OK — Úspěch:
             </p>
-            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
+            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
           </div>
 
           <!-- warning -->
@@ -375,7 +375,7 @@ const faqUkazka = [
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               Upozornění:
             </p>
-            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
+            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
           </div>
 
           <!-- info -->
@@ -384,7 +384,7 @@ const faqUkazka = [
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
               Info — Poznámka:
             </p>
-            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
+            <p style="font-size:var(--fs-18);font-weight:500;color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Zákazníci emaily otvírali, ale přestávali klikat — tím se propad v emailovém výkonu přímo přenášel do obratu. Email přitom tvoří téměř polovinu celkových tržeb.</p>
           </div>
 
           <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:4px">CSS: <code>{"border-left:4px solid var(--semantic-*); background:rgba(*,0.13)"}</code> · ikony Lucide 20px · text font-weight 500</p>
@@ -461,7 +461,7 @@ const faqUkazka = [
 
         <h3 class="ds-subsection-title">Třídy</h3>
         <p style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:24px">
-          Definováno v <code style="color:#0DD4CD">global.css</code>. Nikdy nevytvářej lokální heading třídy — použij jednu z těchto.<br />
+          Definováno v <code style="color:#0DD4CD">global.css</code>. Nikdy nevytvářej lokální heading třídy — použij jednu z těchto.<br />
           Každá třída má 3 varianty: <strong style="color:#fff">-maxi</strong> (větší), <strong style="color:#fff">bez suffixu</strong> (standard), <strong style="color:#fff">-mini</strong> (menší).
         </p>
         <table class="ds-gt-table">
@@ -501,7 +501,7 @@ const faqUkazka = [
               <td class="ds-gt-id ds-locked">T2b</td>
               <td><code class="ds-gt-class">.h2</code></td>
               <td class="ds-gt-meta">Kanit 700<br/>var(--fs-52) · 52px<br/>lh 1.2<br/>color #fff</td>
-              <td class="ds-gt-preview"><span class="h2" style="color:#fff">Reference a případovky</span></td>
+              <td class="ds-gt-preview"><span class="h2" style="color:#fff">Reference a případovky</span></td>
               <td class="ds-gt-use">Standardní<br/>sekce nadpis</td>
             </tr>
             <tr>
@@ -529,8 +529,8 @@ const faqUkazka = [
               <td class="ds-gt-id ds-locked">T3c</td>
               <td><code class="ds-gt-class">.h3-mini</code></td>
               <td class="ds-gt-meta">Kanit 700<br/>var(--fs-30) · 30px<br/>lh 1.2<br/>color #fff</td>
-              <td class="ds-gt-preview"><span class="h3-mini" style="color:#fff">O našem přístupu</span></td>
-              <td class="ds-gt-use">Subheading<br/>v textu</td>
+              <td class="ds-gt-preview"><span class="h3-mini" style="color:#fff">O našem přístupu</span></td>
+              <td class="ds-gt-use">Subheading<br/>v textu</td>
             </tr>
             <tr>
               <td class="ds-gt-id ds-locked">T3d</td>
@@ -553,29 +553,29 @@ const faqUkazka = [
               <td class="ds-gt-id ds-locked">T4b</td>
               <td><code class="ds-gt-class">.body</code></td>
               <td class="ds-gt-meta">Montserrat 400<br/>var(--fs-18) · 18px<br/>lh 1.65<br/>rgba(255,255,255,0.8)</td>
-              <td class="ds-gt-preview"><span class="body" style="color:rgba(255,255,255,0.8)">Brand i název nám dal zabrat. Museli jsme se rozhodnout.</span></td>
+              <td class="ds-gt-preview"><span class="body" style="color:rgba(255,255,255,0.8)">Brand i název nám dal zabrat. Museli jsme se rozhodnout.</span></td>
               <td class="ds-gt-use">Standardní<br/>sekce text</td>
             </tr>
             <tr>
               <td class="ds-gt-id ds-locked">T4c</td>
               <td><code class="ds-gt-class">.body-mini</code></td>
               <td class="ds-gt-meta">Montserrat 500<br/>14px · lh 1.5<br/>rgba(255,255,255,0.8)</td>
-              <td class="ds-gt-preview"><span class="body-mini" style="color:rgba(255,255,255,0.8)">Projekt realizován v Q4 2024 · klient: GROOMO.cz</span></td>
+              <td class="ds-gt-preview"><span class="body-mini" style="color:rgba(255,255,255,0.8)">Projekt realizován v Q4 2024 · klient: GROOMO.cz</span></td>
               <td class="ds-gt-use">Caption, meta,<br/>datum</td>
             </tr>
             <tr>
               <td class="ds-gt-id ds-locked">T4d</td>
               <td><code class="ds-gt-class">.hl</code></td>
               <td class="ds-gt-meta">font-weight 900<br/>color var(--text-secondary)<br/><em style="color:rgba(255,255,255,0.4);font-style:normal">inline &lt;strong class="hl"&gt;</em></td>
-              <td class="ds-gt-preview"><span class="body" style="color:rgba(255,255,255,0.8)">Funkce, které jsou <strong class="hl">u Shopify rovnou v základu</strong>, oceníte.</span></td>
-              <td class="ds-gt-use">Zvýraznění v běžném<br/>textu — tučné + lavender</td>
+              <td class="ds-gt-preview"><span class="body" style="color:rgba(255,255,255,0.8)">Funkce, které jsou <strong class="hl">u Shopify rovnou v základu</strong>, oceníte.</span></td>
+              <td class="ds-gt-use">Zvýraznění v běžném<br/>textu — tučné + lavender</td>
             </tr>
             <tr>
               <td class="ds-gt-id ds-locked">T4e</td>
               <td><code class="ds-gt-class">.text-link</code></td>
               <td class="ds-gt-meta">font-weight 600<br/>(kontext +200: body 400→600)<br/>color var(--action)<br/>podtržení až hover<br/><em style="color:rgba(255,255,255,0.4);font-style:normal">inline &lt;a class="text-link"&gt;</em></td>
               <td class="ds-gt-preview"><span class="body" style="color:rgba(255,255,255,0.8)">Přečti si <a href="#text-link" class="text-link">náš přehled novinek</a> ze Shopify.</span></td>
-              <td class="ds-gt-use">Inline textové<br/>odkazy v textu</td>
+              <td class="ds-gt-use">Inline textové<br/>odkazy v textu</td>
             </tr>
             <tr>
               <td class="ds-gt-id ds-locked">T5</td>
@@ -587,7 +587,7 @@ const faqUkazka = [
           </tbody>
         </table>
         <div class="ds-component-notes" style="margin-top:16px">
-          ⚡ Pravidlo: Lokální CSS smí přepsat <code>max-width</code> nebo <code>grid-template</code>, ale NIKDY nesmí lokálně redefinovat <code>font-size</code> na headinzích ani <code>.hl</code> (bold lavender) — to patří výhradně do globální škály v <code>global.css</code>. Pro zvýraznění v textu vždy <code>&lt;strong class="hl"&gt;</code>, nikdy lokální obarvení.
+          ⚡ Pravidlo: Lokální CSS smí přepsat <code>max-width</code> nebo <code>grid-template</code>, ale NIKDY nesmí lokálně redefinovat <code>font-size</code> na headinzích ani <code>.hl</code> (bold lavender) — to patří výhradně do globální škály v <code>global.css</code>. Pro zvýraznění v textu vždy <code>&lt;strong class="hl"&gt;</code>, nikdy lokální obarvení.
         </div>
       </section>
 
@@ -603,7 +603,7 @@ const faqUkazka = [
             <span class="tr-tag">h2-maxi · margin-bottom: 24px</span>
             <h2 class="h2-maxi tr-heading" style="margin-bottom:0">Chcete e-shop, který prodává?</h2>
             <div class="tr-spacer" style="--sp:24px"><span>24px</span></div>
-            <p class="body tr-body">Pomáháme e-shopům přejít na Shopify a skutečně z toho těžit. Analýza, migrace, rozvoj — vše pod jednou střechou s týmem, který platformě rozumí do hloubky.</p>
+            <p class="body tr-body">Pomáháme e-shopům přejít na Shopify a skutečně z toho těžit. Analýza, migrace, rozvoj — vše pod jednou střechou s týmem, který platformě rozumí do hloubky.</p>
           </div>
           <div class="tr-gap"><span>40px · mezisekční gap</span></div>
 
@@ -612,7 +612,7 @@ const faqUkazka = [
             <span class="tr-tag">h2 · margin-bottom: 20px</span>
             <h2 class="h2 tr-heading" style="margin-bottom:0">Proč Shopify?</h2>
             <div class="tr-spacer" style="--sp:20px"><span>20px</span></div>
-            <p class="body tr-body">Shopify je dnes nejrychleji rostoucí e-commerce platforma na světě. Rychlé nasazení, spolehlivé hostování a tisíce prověřených integrací.</p>
+            <p class="body tr-body">Shopify je dnes nejrychleji rostoucí e-commerce platforma na světě. Rychlé nasazení, spolehlivé hostování a tisíce prověřených integrací.</p>
           </div>
           <div class="tr-gap"><span>40px · mezisekční gap</span></div>
 
@@ -621,14 +621,14 @@ const faqUkazka = [
             <span class="tr-tag">h2-mini · margin-bottom: 16px</span>
             <h2 class="h2-mini tr-heading" style="margin-bottom:0">Migrace bez výpadku</h2>
             <div class="tr-spacer" style="--sp:16px"><span>16px</span></div>
-            <p class="body tr-body">Přechod na Shopify provedeme bez ztráty dat, SEO pozic ani zákazníků. Celý proces je naplánovaný dopředu a probíhá na pozadí.</p>
+            <p class="body tr-body">Přechod na Shopify provedeme bez ztráty dat, SEO pozic ani zákazníků. Celý proces je naplánovaný dopředu a probíhá na pozadí.</p>
           </div>
           <div class="tr-gap"><span>40px · mezisekční gap</span></div>
 
           <!-- H3-MAXI -->
           <div class="tr-block">
             <span class="tr-tag">h3-maxi · margin-bottom: 16px</span>
-            <h3 class="h3-maxi tr-heading" style="margin-bottom:0">Analýza a strategie</h3>
+            <h3 class="h3-maxi tr-heading" style="margin-bottom:0">Analýza a strategie</h3>
             <div class="tr-spacer" style="--sp:16px"><span>16px</span></div>
             <p class="body tr-body">Před každým projektem zjistíme, kde jsou největší příležitosti. Zbytečně neutrácíte za věci, které výsledky nepřinesou.</p>
           </div>
@@ -639,16 +639,16 @@ const faqUkazka = [
             <span class="tr-tag">h3 · margin-bottom: 14px</span>
             <h3 class="h3 tr-heading" style="margin-bottom:0">Shopify rozvoj</h3>
             <div class="tr-spacer" style="--sp:14px"><span>14px</span></div>
-            <p class="body tr-body">Kontinuální optimalizace, A/B testování a nové funkce — e-shop roste s vaším businessem, nestagnuje.</p>
+            <p class="body tr-body">Kontinuální optimalizace, A/B testování a nové funkce — e-shop roste s vaším businessem, nestagnuje.</p>
           </div>
           <div class="tr-gap"><span>40px · mezisekční gap</span></div>
 
           <!-- H3-MINI -->
           <div class="tr-block">
             <span class="tr-tag">h3-mini · margin-bottom: 12px</span>
-            <h3 class="h3-mini tr-heading" style="margin-bottom:0">Podpora a správa</h3>
+            <h3 class="h3-mini tr-heading" style="margin-bottom:0">Podpora a správa</h3>
             <div class="tr-spacer" style="--sp:12px"><span>12px</span></div>
-            <p class="body tr-body">Technická podpora, aktualizace a monitoring — o provoz se staráme my, vy se soustředíte na byznys.</p>
+            <p class="body tr-body">Technická podpora, aktualizace a monitoring — o provoz se staráme my, vy se soustředíte na byznys.</p>
           </div>
 
         </div>
@@ -679,7 +679,7 @@ const faqUkazka = [
         <p class="ds-incon-note">Dvě úrovně jsou záměrné — velké hero stránky vs. menší servisní hero. Větší varianta sjednocena na jednu hodnotu.</p>
 
         <!-- 2: Font-size tokeny nepoužívány -->
-        <h3 class="ds-subsection-title">2 · Font-size tokeny v tokens.css — nikde se nepoužívají</h3>
+        <h3 class="ds-subsection-title">2 · Font-size tokeny v tokens.css — nikde se nepoužívají</h3>
         <div class="ds-token-unused-grid">
           {[
             { token: '--text-h1', val: '100px' },
@@ -698,7 +698,7 @@ const faqUkazka = [
             </div>
           ))}
         </div>
-        <p class="ds-incon-note">Font tokeny jsou definovány v <code>tokens.css</code> jako <code>--fs-N</code> (desktop value) a override v <code>@media (max-width: 768px)</code> (mobile = desktop × 0.8, min 16px). <code>clamp()</code> je odstraněno.</p>
+        <p class="ds-incon-note">Font tokeny jsou definovány v <code>tokens.css</code> jako <code>--fs-N</code> (desktop value) a override v <code>@media (max-width: 768px)</code> (mobile = desktop × 0.8, min 16px). <code>clamp()</code> je odstraněno.</p>
 
         <!-- 3: font-weight outlier — VYŘEŠENO -->
         <h3 class="ds-subsection-title">3 · font-weight 900 — osamocený outlier ✓ vyřešeno</h3>
@@ -732,14 +732,14 @@ const faqUkazka = [
           <div class="ds-incon-card ds-incon-ok">
             <div class="ds-incon-label">Body text — všechny soubory <span class="ds-incon-file">✓ sjednoceno na 1.6</span></div>
             <div class="ds-incon-preview">
-              <span style="font-family: var(--font-secondary); font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.6;">Od výběru projektu přes design<br />a vývoj až po první objednávku<br />a dál.</span>
+              <span style="font-family: var(--font-secondary); font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.6;">Od výběru projektu přes design<br />a vývoj až po první objednávku<br />a dál.</span>
             </div>
             <code>line-height: 1.6 ← standard</code>
           </div>
         </div>
 
         <!-- 5: hardcoded font-family v design-system -->
-        <h3 class="ds-subsection-title">5 · Hardcoded font-family místo tokenů — jen v tomto souboru</h3>
+        <h3 class="ds-subsection-title">5 · Hardcoded font-family místo tokenů — jen v tomto souboru</h3>
         <div class="ds-code-diff">
           <div class="ds-diff-bad">
             <span class="ds-diff-label">❌ Co tu je (11× výskyt)</span>
@@ -752,17 +752,17 @@ font-family: 'Montserrat', sans-serif;</code></pre>
 font-family: var(--font-secondary);</code></pre>
           </div>
         </div>
-        <p class="ds-incon-note">V komponentách (Header, Footer, ServiceHero) a pages se tokeny používají správně. Tento soubor je výjimka.</p>
+        <p class="ds-incon-note">V komponentách (Header, Footer, ServiceHero) a pages se tokeny používají správně. Tento soubor je výjimka.</p>
 
       </section>
 
       <!-- ZVÝRAZNĚNÍ TEXTU -->
       <section class="ds-section ds-section--text-demo">
-        <h2 class="ds-section-title">Zvýraznění v textu</h2>
+        <h2 class="ds-section-title">Zvýraznění v textu</h2>
         <p class="ds-text-demo-note">Fialová <code>--text-secondary</code> · <code>#A081D1</code> · weight +2 úrovně (400 → 600) · třída <code>.ac</code></p>
         <div class="ds-text-demo-block">
           <p class="ds-text-demo">
-            Vybrali jsme Shopify, protože je to <strong class="ds-ac">ten nejlepší nástroj na trhu.</strong> Bez omezení toho, kde prodáváte a v kolika měnách. <strong class="ds-ac">Platformu s neskutečnou škálovatelností,</strong> podporou a drivem. Shopify je nastaveno tak, aby s vámi rostlo od&nbsp;StartUpu až po mezinárodní mega projekt.
+            Vybrali jsme Shopify, protože je to <strong class="ds-ac">ten nejlepší nástroj na trhu.</strong> Bez omezení toho, kde prodáváte a v kolika měnách. <strong class="ds-ac">Platformu s neskutečnou škálovatelností,</strong> podporou a drivem. Shopify je nastaveno tak, aby s vámi rostlo od&nbsp;StartUpu až po mezinárodní mega projekt.
           </p>
         </div>
       </section>
@@ -806,17 +806,17 @@ font-family: var(--font-secondary);</code></pre>
         </div>
 
         <!-- GROUP 2: Service hero — dark blob bg (#000326) -->
-        <div class="ds-btn-group-label">BG: Service Hero — #000326 s blob gradientem</div>
+        <div class="ds-btn-group-label">BG: Service Hero — #000326 s blob gradientem</div>
         <div class="ds-btn-row" style="background: #000326;">
           <div class="ds-btn-item">
             <a href="#" class="btn-primary">ZAVOLEJME SI</a>
             <span class="ds-btn-tag">.btn-primary</span>
-            <span class="ds-btn-note">22px · weight 500 · glass silnější · Primární CTA v ServiceHero</span>
+            <span class="ds-btn-note">22px · weight 500 · glass silnější · Primární CTA v ServiceHero</span>
           </div>
           <div class="ds-btn-item">
             <a href="#" class="btn-ghost">ZJISTĚTE JAK</a>
             <span class="ds-btn-tag">.btn-ghost</span>
-            <span class="ds-btn-note">22px · weight 500 · transparent → glass on hover · Sekundární CTA v ServiceHero</span>
+            <span class="ds-btn-note">22px · weight 500 · transparent → glass on hover · Sekundární CTA v ServiceHero</span>
           </div>
         </div>
 
@@ -844,19 +844,19 @@ font-family: var(--font-secondary);</code></pre>
         <div class="ds-btn-group-label ds-locked">BG: varianty .btn-action — velká (--lg) + ghost/skeleton (--ghost) · custom-vyvoj</div>
         <div class="ds-btn-row" style="background: #000326;">
           <div class="ds-btn-item">
-            <a href="#" class="btn-action btn-action--lg">Super, sem s tím.</a>
+            <a href="#" class="btn-action btn-action--lg">Super, sem s tím.</a>
             <span class="ds-btn-tag">.btn-action--lg</span>
             <span class="ds-btn-note">18px · weight 700 · solid cyan · padding 16/56px · hover: bílé pozadí + černý text · větší varianta .btn-action</span>
           </div>
           <div class="ds-btn-item">
-            <a href="#" class="btn-action btn-action--lg btn-action--ghost">Super, sem s tím.</a>
+            <a href="#" class="btn-action btn-action--lg btn-action--ghost">Super, sem s tím.</a>
             <span class="ds-btn-tag">.btn-action--ghost</span>
-            <span class="ds-btn-note">skeleton / outline · průhledné pozadí · cyan border 1px + cyan text · hover: bílé pozadí + černý text · kombinuje se s --lg i samostatně</span>
+            <span class="ds-btn-note">skeleton / outline · průhledné pozadí · cyan border 1px + cyan text · hover: bílé pozadí + černý text · kombinuje se s --lg i samostatně</span>
           </div>
         </div>
 
         <!-- GROUP 5: ref-card overlay — foto BG -->
-        <div class="ds-btn-group-label">BG: foto (ref-card) — glass overlay s tmavým textem</div>
+        <div class="ds-btn-group-label">BG: foto (ref-card) — glass overlay s tmavým textem</div>
         <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
           <div style="background: url('/groomo-ref-na-vysku.webp') center 30%/cover; border-radius: 8px; padding: 16px 16px 56px; width: 240px; flex-shrink:0; display: flex; flex-direction: column; align-items: stretch; gap: 10px;">
             <a href="#" style="display:flex;align-items:center;justify-content:center;padding:12px 20px;background:rgba(255,255,255,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.45);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2),0 4px 24px rgba(0,0,0,0.2);color:#000326;font-family:var(--font-primary);font-size:22px;font-weight:700;text-transform:none;text-align:center;line-height:1.4;text-decoration:none;border-radius:6px;">Přečtěte si<br/>případovou studii</a>
@@ -982,8 +982,8 @@ font-family: var(--font-secondary);</code></pre>
 
         <!-- Textové odkazy -->
         <h3 class="ds-subsection-title">Textové odkazy</h3>
-        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:8px">Globální reset: <code style="color:#0DD4CD">{"a { color: inherit; text-decoration: none; }"}</code> — každý odkaz začíná bez barvy a bez podtržení.</p>
-        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:24px">Všechny inline textové odkazy sdílejí třídu <code style="color:#0DD4CD">.text-link</code> — barva <code>var(--action)</code>, <strong>font-weight 500</strong> (o řez silnější než text), podtržení až na hover (offset 3px). Velikost se dědí z kontextu.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:8px">Globální reset: <code style="color:#0DD4CD">{"a { color: inherit; text-decoration: none; }"}</code> — každý odkaz začíná bez barvy a bez podtržení.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:24px">Všechny inline textové odkazy sdílejí třídu <code style="color:#0DD4CD">.text-link</code> — barva <code>var(--action)</code>, <strong>font-weight 500</strong> (o řez silnější než text), podtržení až na hover (offset 3px). Velikost se dědí z kontextu.</p>
 
         <div style="display:flex;flex-direction:column;gap:3px">
 
@@ -1011,16 +1011,16 @@ font-family: var(--font-secondary);</code></pre>
             <div style="padding:0 16px">
               <span style="font-family:var(--font-primary);font-size:22px;font-weight:700;color:rgba(255,255,255,0.9)">Strategie <a href="#" class="text-link">fleppi.cz</a> × Leadhub</span>
             </div>
-            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v nadpisu — dědí 22px/700 z rodiče · hover: underline</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v nadpisu — dědí 22px/700 z rodiče · hover: underline</span>
           </div>
 
           <!-- .text-link inline v body -->
           <div style="display:grid;grid-template-columns:160px 1fr 1fr;align-items:center;gap:0;background:#000326;padding:20px 24px">
             <span style="font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em">.text-link</span>
             <div style="padding:0 16px">
-              <span style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.6">Přinášíme novinky z <a href="#" class="text-link">Shopify Editions Winter 2026</a> přímo do vašeho projektu.</span>
+              <span style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.6">Přinášíme novinky z <a href="#" class="text-link">Shopify Editions Winter 2026</a> přímo do vašeho projektu.</span>
             </div>
-            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v odstavci — dědí 16px z rodiče · hover: underline</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v odstavci — dědí 16px z rodiče · hover: underline</span>
           </div>
 
           <!-- .text-link v referenci -->
@@ -1029,7 +1029,7 @@ font-family: var(--font-secondary);</code></pre>
             <div style="padding:0 16px">
               <span style="font-size:15px;color:rgba(255,255,255,0.65)">Majitel · <a href="#" class="text-link">BU1.cz</a></span>
             </div>
-            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v referenci — dědí 15px z rodiče · hover: underline</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.4)">Inline v referenci — dědí 15px z rodiče · hover: underline</span>
           </div>
 
           <!-- .text-link--arrow — šipkový -->
@@ -1037,7 +1037,7 @@ font-family: var(--font-secondary);</code></pre>
             <span style="font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em">.text-link--arrow</span>
             <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px">
               <a href="#" class="text-link--arrow" style="font-size:15px;font-weight:500"><span>Zjistit více</span> →</a>
-              <a href="#" class="text-link--arrow" style="font-size:14px"><span>Více o eSyncer</span> →</a>
+              <a href="#" class="text-link--arrow" style="font-size:14px"><span>Více o eSyncer</span> →</a>
             </div>
             <span style="font-size:12px;color:rgba(255,255,255,0.4)">Šipka se nepodtrhuje · hover: underline jen na <code>{"<span>"}</code> · šipka vně spanu</span>
           </div>
@@ -1143,7 +1143,7 @@ font-family: var(--font-secondary);</code></pre>
           </div>
           <div class="ds-vp-bp-desc">
             <span><b>Tablet ≤768px</b> — 1 sloupec, nav collapse, skrytí dekorativních obrázků</span>
-            <span><b>Mobil ≤480px</b> — padding 16px, zmenšení fontů přes <code>--fs-*</code> token override v media query</span>
+            <span><b>Mobil ≤480px</b> — padding 16px, zmenšení fontů přes <code>--fs-*</code> token override v media query</span>
           </div>
         </div>
       </section>
@@ -1193,7 +1193,7 @@ font-family: var(--font-secondary);</code></pre>
         <h2 class="ds-section-title">Číslovaná knihovna bloků</h2>
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:24px;line-height:1.6">
           Každý typ bloku má číslo. Říkej "blok 03a" nebo "hero 01b" — vždy víme oba co to znamená.<br />
-          Nová varianta = diskuse → přidání do katalogu s novým číslem.
+          Nová varianta = diskuse → přidání do katalogu s novým číslem.
         </p>
         <div class="ds-blocks-grid">
 
@@ -1436,7 +1436,7 @@ font-family: var(--font-secondary);</code></pre>
                   </div>
                 </div>
               </div>
-              <div class="ds-block-meta"><b>1fr 1fr</b> · H3 + popis + obrázek s overlay + CTA inset 30px · border-radius 16px</div>
+              <div class="ds-block-meta"><b>1fr 1fr</b> · H3 + popis + obrázek s overlay + CTA inset 30px · border-radius 16px</div>
             </div>
           </div>
 
@@ -1521,7 +1521,7 @@ font-family: var(--font-secondary);</code></pre>
 
           <!-- 05b CTA Ref card -->
           <div class="ds-block-card">
-            <div class="ds-block-hd"><span class="ds-block-num">05b</span><span class="ds-block-ttl">CTA — Ref card (s obrázkem)</span><span class="ds-block-file">.ref-card-cta</span></div>
+            <div class="ds-block-hd"><span class="ds-block-num">05b</span><span class="ds-block-ttl">CTA — Ref card (s obrázkem)</span><span class="ds-block-file">.ref-card-cta</span></div>
             <div class="ds-block-bd">
               <div class="ds-block-thumb" style="height:100px;background:rgba(255,255,255,0.06);border-radius:6px;border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden">
                 <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.02) 0px,rgba(255,255,255,0.02) 1px,transparent 1px,transparent 8px)"></div>
@@ -1654,12 +1654,12 @@ font-family: var(--font-secondary);</code></pre>
               </div>
               <div class="ds-block-meta">
                 <b>Živá komponenta — rozbal si ji.</b> Linky místo boxů · pořadové číslo
-                20&nbsp;px v lavenderu (<code>--cteni-zvyrazneni</code>) · tyrkysové plus,
-                po otevření minus · číslo i plus sedí na PRVNÍM řádku otázky, ne na svislém
+                20&nbsp;px v lavenderu (<code>--cteni-zvyrazneni</code>) · tyrkysové plus,
+                po otevření minus · číslo i plus sedí na PRVNÍM řádku otázky, ne na svislém
                 středu · nativní <code>&lt;details&gt;</code>, funguje bez JS ·
                 přidává <b>FAQPage JSON-LD</b>.<br />
                 Barvy jdou přes <code>--cteni-*</code>, takže se blok přebarvuje se čtecím
-                režimem (B-26). Používá se na článcích i na stránkách služeb — <b>jedna
+                režimem (B-26). Používá se na článcích i na stránkách služeb — <b>jedna
                 podoba, jedna komponenta</b>.
               </div>
             </div>
@@ -1832,7 +1832,7 @@ font-family: var(--font-secondary);</code></pre>
 
       <!-- CARDS CATALOG -->
       <section class="ds-section" id="cards">
-        <h2 class="ds-section-title">K — Typy karet</h2>
+        <h2 class="ds-section-title">K — Typy karet</h2>
         <div class="ds-incon-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
 
           <div class="ds-incon-card ds-incon-ok">
@@ -1928,7 +1928,7 @@ font-family: var(--font-secondary);</code></pre>
         <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
           <!-- Live demo -->
           <div class="ds-tc-card">
-            <p class="ds-tc-text">„Výstup byl kvalitně zpracovaný, přehledný a hlavně plný konkrétních podnětů, které můžeme rovnou využít pro další růst e-shopu."</p>
+            <p class="ds-tc-text">„Výstup byl kvalitně zpracovaný, přehledný a hlavně plný konkrétních podnětů, které můžeme rovnou využít pro další růst e-shopu."</p>
             <div class="ds-tc-google">
               <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -1974,7 +1974,7 @@ font-family: var(--font-secondary);</code></pre>
         <h2 class="ds-section-title ds-locked">Citát / Citace</h2>
 
         <!-- Varianta A: .quote — vlevo, dekorativní glyf „ + Lora kurzíva (bez rámečku) -->
-        <div class="ds-block-label">A — <code>.quote</code> · vlevo · glyf „ + Lora italic</div>
+        <div class="ds-block-label">A — <code>.quote</code> · vlevo · glyf „ + Lora italic</div>
         <div class="ds-bg-dark" style="padding:40px 48px;margin-bottom:24px">
           <blockquote class="quote">
             <p>„Brand je to, co vám zůstane, když vám shoří továrna."</p>
@@ -1986,7 +1986,7 @@ font-family: var(--font-secondary);</code></pre>
         <div class="ds-block-label">B — <code>.quote.quote--center</code> · vycentrovaná · Lora italic</div>
         <div class="ds-bg-dark" style="padding:64px 48px;margin-bottom:24px">
           <blockquote class="quote quote--center">
-            <p>„Značka je slib. A dobrá značka je slib, který je vždy dodržen."</p>
+            <p>„Značka je slib. A dobrá značka je slib, který je vždy dodržen."</p>
             <cite>— Muhtar Kent</cite>
           </blockquote>
         </div>
@@ -1994,13 +1994,13 @@ font-family: var(--font-secondary);</code></pre>
         <!-- Varianta C: .quote-display — kontrastní (Kanit, vlevo, těsné řádky) -->
         <div class="ds-block-label">C — <code>.quote-display</code> · kontrastní · Kanit bold, vlevo, těsné řádky</div>
         <div class="ds-bg-dark" style="padding:48px;margin-bottom:24px">
-          <blockquote class="quote-display">„Značka je slib.<br />A dobrá značka je slib,<br />který je vždy dodržen"<cite>— Muhtar Kent</cite></blockquote>
+          <blockquote class="quote-display">„Značka je slib.<br />A dobrá značka je slib,<br />který je vždy dodržen"<cite>— Muhtar Kent</cite></blockquote>
         </div>
 
         <div class="ds-spec-grid" style="margin-top:8px">
           <div class="ds-spec-item"><code>.quote</code><span>Lora italic 24px · dekorativní glyf „ (Lora italic 100px, levandulová + glow) · bez rámečku · vlevo</span></div>
           <div class="ds-spec-item"><code>.quote--center</code><span>vycentrovaná · Lora italic 32px · bez glyfu · max-width 760px</span></div>
-          <div class="ds-spec-item"><code>.quote-display</code><span>kontrastní · Kanit 700 · fs-44 · line-height 1.15 · vlevo (úderný protiklad k Lora variantám)</span></div>
+          <div class="ds-spec-item"><code>.quote-display</code><span>kontrastní · Kanit 700 · fs-44 · line-height 1.15 · vlevo (úderný protiklad k Lora variantám)</span></div>
           <div class="ds-spec-item"><code>--font-serif</code><span>'Lora', Georgia, serif · načítá se jen italic 400 (latin + latin-ext)</span></div>
         </div>
       </section>
@@ -2016,23 +2016,23 @@ font-family: var(--font-secondary);</code></pre>
             <div class="work-list">
               <div class="work-item">
                 <div class="work-item-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                <div class="work-item-text"><h3 class="work-item-title">Brand, Identita, DX</h3><p class="work-item-desc">Značka, barvy, fonty, celá digitální zkušenost, souhra která dává smysl lidem i e-shopu.</p></div>
+                <div class="work-item-text"><h3 class="work-item-title">Brand, Identita, DX</h3><p class="work-item-desc">Značka, barvy, fonty, celá digitální zkušenost, souhra která dává smysl lidem i e-shopu.</p></div>
               </div>
               <div class="work-item">
                 <div class="work-item-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-                <div class="work-item-text"><h3 class="work-item-title">Šablona — Theme</h3><p class="work-item-desc">Profesionální výběr a nastavení Shopify šablony. Rychlost, CTA, layouty, bloky, varianty a propojení s brandem.</p></div>
+                <div class="work-item-text"><h3 class="work-item-title">Šablona — Theme</h3><p class="work-item-desc">Profesionální výběr a nastavení Shopify šablony. Rychlost, CTA, layouty, bloky, varianty a propojení s brandem.</p></div>
               </div>
               <div class="work-item">
                 <div class="work-item-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-                <div class="work-item-text"><h3 class="work-item-title">Obsah & prezentace</h3><p class="work-item-desc">Vizuální a obsahové podklady. Brandové šablony, produktový obsah, launch vizuály s návazností na e-shop.</p></div>
+                <div class="work-item-text"><h3 class="work-item-title">Obsah & prezentace</h3><p class="work-item-desc">Vizuální a obsahové podklady. Brandové šablony, produktový obsah, launch vizuály s návazností na e-shop.</p></div>
               </div>
               <div class="work-item">
                 <div class="work-item-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-                <div class="work-item-text"><h3 class="work-item-title">Funkčnost & konverze</h3><p class="work-item-desc">Produktové stránky, kolekce, upsell, cross-sell a UX logika. Navrhujeme Shopify tak, aby prodával, ne jen vypadal dobře.</p></div>
+                <div class="work-item-text"><h3 class="work-item-title">Funkčnost & konverze</h3><p class="work-item-desc">Produktové stránky, kolekce, upsell, cross-sell a UX logika. Navrhujeme Shopify tak, aby prodával, ne jen vypadal dobře.</p></div>
               </div>
               <div class="work-item">
                 <div class="work-item-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
-                <div class="work-item-text"><h3 class="work-item-title">Růst skrze marketing</h3><p class="work-item-desc">Příprava pro výkonové kampaně a expanzi. SEO, analytika, lokalizace, napojení na marketingové nástroje a další růst.</p></div>
+                <div class="work-item-text"><h3 class="work-item-title">Růst skrze marketing</h3><p class="work-item-desc">Příprava pro výkonové kampaně a expanzi. SEO, analytika, lokalizace, napojení na marketingové nástroje a další růst.</p></div>
               </div>
             </div>
           </aside>
@@ -2050,16 +2050,16 @@ font-family: var(--font-secondary);</code></pre>
       <!-- EDGE GLOW -->
       <section class="ds-section" id="edge-glow">
         <h2 class="ds-section-title">Edge glow — světelný přejezd po hraně</h2>
-        <div class="ds-block-label">Původní tlumený okraj karty + malý „zmrazený" svítící kousek hrany na rohu (zůstává pořád) · odtud se rozbíhá přejezd po celé hraně · přejezd jen když je karta ve viewportu, poprvé s malým zpožděním, pak nepravidelně (8–30 s) · respektuje prefers-reduced-motion</div>
+        <div class="ds-block-label">Původní tlumený okraj karty + malý „zmrazený" svítící kousek hrany na rohu (zůstává pořád) · odtud se rozbíhá přejezd po celé hraně · přejezd jen když je karta ve viewportu, poprvé s malým zpožděním, pak nepravidelně (8–30 s) · respektuje prefers-reduced-motion</div>
         <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin-bottom:24px">
           <div class="edge-glow" style="background:var(--ae-bg-deep);border:1px solid rgba(255,255,255,0.10);border-radius:var(--radius-md);padding:var(--space-32);max-width:320px">
-            <p class="body" style="color:rgba(255,255,255,0.8);margin:0">Karta s efektem <code style="color:#A081D1">.edge-glow</code>. Přejezd naskočí sám — počkej chvíli a sleduj hranu.</p>
+            <p class="body" style="color:rgba(255,255,255,0.8);margin:0">Karta s efektem <code style="color:#A081D1">.edge-glow</code>. Přejezd naskočí sám — počkej chvíli a sleduj hranu.</p>
           </div>
           <div style="flex:1;min-width:220px;padding-top:4px">
             <div class="ds-spec-grid">
-              <div class="ds-spec-item"><code>.edge-glow</code><span>reusable class · přidej na prvek s border-radius · JS v BaseLayout</span></div>
+              <div class="ds-spec-item"><code>.edge-glow</code><span>reusable class · přidej na prvek s border-radius · JS v BaseLayout</span></div>
               <div class="ds-spec-item"><code>barva</code><span>conic-gradient lavender rgba(160,129,209) · maskováno na 1px border</span></div>
-              <div class="ds-spec-item"><code>rytmus</code><span>IntersectionObserver · 1. přejezd 1,5–3,5 s · pak náhodně 8–30 s</span></div>
+              <div class="ds-spec-item"><code>rytmus</code><span>IntersectionObserver · 1. přejezd 1,5–3,5 s · pak náhodně 8–30 s</span></div>
               <div class="ds-spec-item"><code>použití</code><span>plus-list (nový e-shop) · lze přidat na jakoukoli kartu</span></div>
             </div>
           </div>
@@ -2073,7 +2073,7 @@ font-family: var(--font-secondary);</code></pre>
         <div class="ds-block-label">Šipkový seznam · ➔ levandulová + text · service stránky (CO ANALYZUJEME, výstupy, pro koho…)</div>
         <div class="ds-bg-dark" style="padding:40px 48px;margin-bottom:24px">
           <ul class="arrow-list">
-            <li>E-mail marketing — Leadhub, Klaviyo, Mailchimp, Ecomail a další.</li>
+            <li>E-mail marketing — Leadhub, Klaviyo, Mailchimp, Ecomail a další.</li>
             <li>E-shopová platforma — Shoptet, Shopify, WooCommerce.</li>
             <li>Google Analytics / GA4 — zdroje návštěvnosti, konverzní cesty.</li>
             <li>Google Ads — výkon kampaní, ROAS, search terms.</li>
@@ -2092,9 +2092,9 @@ font-family: var(--font-secondary);</code></pre>
         <div class="ds-block-label">Checklist · ✓ teal + text · feature / capability seznamy na service stránkách</div>
         <div class="ds-bg-dark" style="padding:40px 48px;margin-bottom:24px">
           <ul class="check-list">
-            <li>Multi-měna a vícejazyčnost bez pluginů</li>
-            <li>Integrace ERP, CRM a logistiky</li>
-            <li>Zachování SEO a URL struktury</li>
+            <li>Multi-měna a vícejazyčnost bez pluginů</li>
+            <li>Integrace ERP, CRM a logistiky</li>
+            <li>Zachování SEO a URL struktury</li>
             <li>Automatizace procesů přes Shopify Flow</li>
           </ul>
         </div>
@@ -2114,7 +2114,7 @@ font-family: var(--font-secondary);</code></pre>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;max-width:560px">
             <li style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);line-height:1.55;padding-left:24px;position:relative">
               <span style="position:absolute;left:0;top:0;font-size:18px;color:var(--text-secondary);line-height:1.55">➔</span>
-              Uvítací sekvence s vysokým open rate a konverzí.
+              Uvítací sekvence s vysokým open rate a konverzí.
             </li>
             <li style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);line-height:1.55;padding-left:24px;position:relative">
               <span style="position:absolute;left:0;top:0;font-size:18px;color:var(--text-secondary);line-height:1.55">➔</span>
@@ -2122,7 +2122,7 @@ font-family: var(--font-secondary);</code></pre>
             </li>
             <li style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);line-height:1.55;padding-left:24px;position:relative">
               <span style="position:absolute;left:0;top:0;font-size:18px;color:var(--text-secondary);line-height:1.55">➔</span>
-              Sezónní kampaně v Q4.
+              Sezónní kampaně v Q4.
             </li>
           </ul>
           <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:20px">CSS: <code>content:'➔'; color:var(--text-secondary); font-size:18px; line-height:1.55</code></p>
@@ -2134,11 +2134,11 @@ font-family: var(--font-secondary);</code></pre>
           <div style="display:flex;flex-direction:column;gap:20px;max-width:560px">
             <div style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.6;padding-left:24px;position:relative">
               <span style="position:absolute;left:0;top:0;font-size:18px;color:var(--text-secondary);line-height:1.6">➔</span>
-              <strong style="color:#fff">Dvouletá analýza s meziročním srovnáním:</strong> Každý měsíc, každá kampaň.
+              <strong style="color:#fff">Dvouletá analýza s meziročním srovnáním:</strong> Každý měsíc, každá kampaň.
             </div>
             <div style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.6;padding-left:24px;position:relative">
               <span style="position:absolute;left:0;top:0;font-size:18px;color:var(--text-secondary);line-height:1.6">➔</span>
-              <strong style="color:#fff">365denní akční plán:</strong> 40+ konkrétních úkolů s prioritou a odůvodněním přínosu.
+              <strong style="color:#fff">365denní akční plán:</strong> 40+ konkrétních úkolů s prioritou a odůvodněním přínosu.
             </div>
           </div>
           <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:20px">CSS: <code>content:'➔'; color:var(--text-secondary); font-weight:400; line-height:1.6</code></p>
@@ -2151,8 +2151,8 @@ font-family: var(--font-secondary);</code></pre>
             <div style="display:flex;gap:20px;align-items:flex-start">
               <div style="flex-shrink:0;width:40px;font-family:var(--font-primary);font-weight:900;font-size:26px;letter-spacing:0.02em;color:var(--text-secondary);line-height:1;padding-top:4px">01</div>
               <div>
-                <strong style="display:block;color:#fff;margin-bottom:6px">Import a validace dat</strong>
-                <p style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);margin:0;line-height:1.65">CSV exporty ze Shoptetu a z Leadhub — kampaně, automations i objednávky za dvouletý horizont.</p>
+                <strong style="display:block;color:#fff;margin-bottom:6px">Import a validace dat</strong>
+                <p style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);margin:0;line-height:1.65">CSV exporty ze Shoptetu a z Leadhub — kampaně, automations i objednávky za dvouletý horizont.</p>
               </div>
             </div>
             <div style="display:flex;gap:20px;align-items:flex-start">
@@ -2166,7 +2166,7 @@ font-family: var(--font-secondary);</code></pre>
               <div style="flex-shrink:0;width:40px;font-family:var(--font-primary);font-weight:900;font-size:26px;letter-spacing:0.02em;color:var(--text-secondary);line-height:1;padding-top:4px">03</div>
               <div>
                 <strong style="display:block;color:#fff;margin-bottom:6px">Analýza emailových kampaní</strong>
-                <p style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Stovky kampaní a automations za dva roky — open rate, CTR, revenue. Identifikace top performers.</p>
+                <p style="font-size:var(--fs-18);color:rgba(255,255,255,0.8);margin:0;line-height:1.65">Stovky kampaní a automations za dva roky — open rate, CTR, revenue. Identifikace top performers.</p>
               </div>
             </div>
           </div>
@@ -2182,7 +2182,7 @@ font-family: var(--font-secondary);</code></pre>
               <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:rgba(255,100,100,0.9);line-height:1.35">➔</span>
-                  Meziroční pohled na výkon — nebylo vidět kde a proč klesá.
+                  Meziroční pohled na výkon — nebylo vidět kde a proč klesá.
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:rgba(255,100,100,0.9);line-height:1.35">➔</span>
@@ -2190,7 +2190,7 @@ font-family: var(--font-secondary);</code></pre>
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:rgba(255,100,100,0.9);line-height:1.35">➔</span>
-                  Cross-sell příležitosti z dat objednávek.
+                  Cross-sell příležitosti z dat objednávek.
                 </li>
               </ul>
             </div>
@@ -2199,7 +2199,7 @@ font-family: var(--font-secondary);</code></pre>
               <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:var(--semantic-success);line-height:1.35">➔</span>
-                  Uvítací sekvence s vysokým open rate a konverzí.
+                  Uvítací sekvence s vysokým open rate a konverzí.
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:var(--semantic-success);line-height:1.35">➔</span>
@@ -2207,7 +2207,7 @@ font-family: var(--font-secondary);</code></pre>
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:30px;position:relative">
                   <span style="position:absolute;left:0;top:-1px;font-size:24px;color:var(--semantic-success);line-height:1.35">➔</span>
-                  Sezónní kampaně v Q4.
+                  Sezónní kampaně v Q4.
                 </li>
               </ul>
             </div>
@@ -2224,7 +2224,7 @@ font-family: var(--font-secondary);</code></pre>
               <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;font-weight:700;color:rgba(255,100,100,0.9);line-height:1.35">×</span>
-                  Meziroční pohled na výkon — nebylo vidět kde a proč klesá.
+                  Meziroční pohled na výkon — nebylo vidět kde a proč klesá.
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;font-weight:700;color:rgba(255,100,100,0.9);line-height:1.35">×</span>
@@ -2232,7 +2232,7 @@ font-family: var(--font-secondary);</code></pre>
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;font-weight:700;color:rgba(255,100,100,0.9);line-height:1.35">×</span>
-                  Cross-sell příležitosti z dat objednávek.
+                  Cross-sell příležitosti z dat objednávek.
                 </li>
               </ul>
             </div>
@@ -2241,7 +2241,7 @@ font-family: var(--font-secondary);</code></pre>
               <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;color:var(--semantic-success);line-height:1.35">✓</span>
-                  Uvítací sekvence s vysokým open rate a konverzí.
+                  Uvítací sekvence s vysokým open rate a konverzí.
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;color:var(--semantic-success);line-height:1.35">✓</span>
@@ -2249,7 +2249,7 @@ font-family: var(--font-secondary);</code></pre>
                 </li>
                 <li style="font-size:16px;color:rgba(255,255,255,0.8);line-height:1.55;padding-left:26px;position:relative">
                   <span style="position:absolute;left:0;top:0;font-size:22px;color:var(--semantic-success);line-height:1.35">✓</span>
-                  Sezónní kampaně v Q4.
+                  Sezónní kampaně v Q4.
                 </li>
               </ul>
             </div>
@@ -2306,7 +2306,7 @@ font-family: var(--font-secondary);</code></pre>
       <section class="ds-section" id="gallery">
         <h2 class="ds-section-title">Galerie & Lightbox</h2>
         <p style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:24px">
-          Komponenta s vlastními pravidly. Funkční náhled níže — klikni na obrázek.
+          Komponenta s vlastními pravidly. Funkční náhled níže — klikni na obrázek.
         </p>
 
         <!-- PRAVIDLA -->
@@ -2333,7 +2333,7 @@ font-family: var(--font-secondary);</code></pre>
           </div>
           <div class="ds-rule-card">
             <div class="ds-rule-label">Použití</div>
-            <div class="ds-rule-body">esyncer.astro · ae-translator.astro · groomo-cz-na-shopify.astro<br />Vždy s JS lightboxem — bez něj nefunguje</div>
+            <div class="ds-rule-body">esyncer.astro · ae-translator.astro · groomo-cz-na-shopify.astro<br />Vždy s JS lightboxem — bez něj nefunguje</div>
           </div>
         </div>
 
@@ -2377,7 +2377,7 @@ font-family: var(--font-secondary);</code></pre>
         </div>
 
         <div class="ds-component-notes" style="margin-top:24px">
-          ⚡ Pravidlo: Lightbox JS vždy lokální v příslušné stránce (ne shared component) — každá stránka má svůj vlastní <code>#lightbox</code> overlay s unikátním ID. Galerie bez JS = jen grid bez zoom efektu.
+          ⚡ Pravidlo: Lightbox JS vždy lokální v příslušné stránce (ne shared component) — každá stránka má svůj vlastní <code>#lightbox</code> overlay s unikátním ID. Galerie bez JS = jen grid bez zoom efektu.
         </div>
       </section>
 
