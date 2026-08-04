@@ -1,6 +1,78 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
+import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// Čtyři kroky, jak u nás začíná spolupráce na podpoře. Nahradily zástupné
+// „Doplnit / Obsah doplníme", které stálo na ostrém webu (DK 2026-08-04).
+const startSteps = [
+  { icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', title: 'Napište, co vás pálí', desc: 'Stačí pár vět nebo odkaz na e-shop. Nepotřebujeme zadání na tři strany — potřebujeme vědět, co vás brzdí.' },
+  { icon: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>', title: 'Podíváme se pod kapotu', desc: 'Projdeme šablonu, aplikace a napojené systémy. Řekneme, co je příčina a co jen příznak — i&nbsp;když to znamená, že problém není tam, kde jste čekali.' },
+  { icon: '<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>', title: 'Dostanete varianty', desc: 'Co se dá vyřešit hned, co si zaslouží projekt a&nbsp;čemu se vyplatí se vyhnout. Vždycky s&nbsp;odhadem času a&nbsp;ceny.' },
+  { icon: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>', title: 'Jedeme dál', desc: 'Jednorázová oprava, nebo dlouhodobá podpora — obojí je v&nbsp;pořádku. Nikoho neuvazujeme na smlouvu, kterou by nechtěl.' },
+];
+
+// FAQ postavené na tom, co se lidi o agenturní podpoře Shopify opravdu ptají
+// (rešerše 2026-08-04: xgentech, Shopify Partners blog, retainer stránky
+// agentur). Vybráno sedm otázek, které dávají smysl pro český trh a na které
+// umíme odpovědět konkrétně — ne obecná omáčka.
+//
+// Psáno pro AI SEO podle vlastního článku: odpověď hned v prvních větách,
+// konkrétní čísla, žádné marketingové výplně. Komponenta ArticleFaq k tomu
+// přidá FAQPage schema, takže se otázky mohou zobrazit přímo ve vyhledávání
+// i v AI odpovědích.
+const faq = [
+  {
+    q: 'Musím mít smlouvu na dlouhodobou podporu, nebo stačí jednorázová oprava?',
+    a: [
+      'Stačí jednorázová oprava. Spousta spoluprací u&nbsp;nás začíná jedním problémem, který nikdo jiný nevyřešil, a&nbsp;pak už pokračuje sama.',
+      'Dlouhodobá podpora dává smysl, když se úpravy opakují, e-shop roste, nebo potřebujete mít jistotu, že o&nbsp;víkendu někdo zvedne telefon. Nikoho do ní netlačíme.',
+    ],
+  },
+  {
+    q: 'Kolik podpora stojí?',
+    a: [
+      'Záleží na tom, jestli jde o&nbsp;jednu úpravu, nebo o&nbsp;průběžnou péči. Drobnost může být na pár hodin, custom aplikace je projekt.',
+      'Po krátkém ujasnění zadání dostanete varianty s&nbsp;odhadem času a&nbsp;ceny — a&nbsp;doporučení, co má nejlepší poměr cena/výkon. Bez toho by každé číslo bylo vymyšlené.',
+    ],
+  },
+  {
+    q: 'Převezmete e-shop, který stavěl někdo jiný?',
+    a: [
+      'Ano, a&nbsp;děláme to často. Začneme tím, že projdeme šablonu, aplikace a&nbsp;napojené systémy a&nbsp;řekneme vám, v&nbsp;jakém stavu to je.',
+      'Nepřepisujeme cizí práci ze zásady. Pokud něco funguje, necháme to být; měníme to, co brzdí nebo hrozí, že se rozbije.',
+    ],
+  },
+  {
+    q: 'Jak rychle reagujete, když se něco rozbije?',
+    a: [
+      'U&nbsp;výpadku prodeje jdeme na to okamžitě — to je jediná věc, která má u&nbsp;e-shopu absolutní přednost.',
+      'U&nbsp;běžných úprav se domlouváme na termínu předem, ať víte, s&nbsp;čím počítat. Nesnažíme se tvářit, že všechno je hotové do hodiny.',
+    ],
+  },
+  {
+    q: 'Co když má můj problém řešení jen přes aplikaci z&nbsp;App Store?',
+    a: [
+      'Pak vám ji doporučíme. Nemáme důvod stavět na míru něco, co za pár set korun měsíčně umí hotová appka od někoho, kdo ji vyvíjí naplno.',
+      'Custom vývoj dává smysl tam, kde appka neexistuje, kde by jich bylo potřeba pět najednou, nebo kde by měsíční poplatky za dva roky přerostly cenu vlastního řešení.',
+    ],
+  },
+  {
+    q: 'Umíte pomoct s&nbsp;výkonem a&nbsp;Core Web Vitals?',
+    a: [
+      'Ano. Řešíme rychlost šablony, zátěž od aplikací i&nbsp;stabilitu při špičkách v&nbsp;prodeji.',
+      'Většina pomalých Shopify e-shopů je pomalá kvůli nakupeným aplikacím a&nbsp;skriptům třetích stran, ne kvůli Shopify samotnému. Začínáme tím, že změříme, co který skript stojí.',
+    ],
+  },
+  {
+    q: 'Poradíte si s&nbsp;mezinárodním prodejem přes Shopify Markets?',
+    a: [
+      'Ano. Nastavíme trhy, měny, jazyky, domény, daňová pravidla, dopravu i&nbsp;lokální platby tak, aby to fungovalo bez duplikace e-shopu.',
+      'Nejčastější chyba je rozjet druhý samostatný e-shop pro zahraničí. Skoro vždycky se to vrátí jako dvojnásobná práce s&nbsp;produkty i&nbsp;obsahem.',
+    ],
+  },
+];
 
 const features = [
   { title: 'Technický support & troubleshooting', desc: 'Řešíme komplexní technické problémy v Liquid šablonách, custom aplikacích, Shopify Functions, checkoutu i napojených službách. Identifikujeme příčiny chyb, ne jen jejich symptomy.', img: '/support.jpg', reverse: false },
@@ -27,7 +99,7 @@ const features = [
     imageAlt="Rozvoj a podpora Shopify"
   />
 
-  <!-- Intro -->
+  <!-- Intro + panel JAK ZAČNEME -->
   <section class="section bg-primary">
     <div class="container intro-layout">
       <div class="intro-main">
@@ -38,6 +110,7 @@ const features = [
         <p class="intro-text">Jsme tu jako partner pro další rozvoj vašeho Shopify řešení, ať už jde o&nbsp;optimalizace výkonu, nové funkce, integrace nebo strategická rozhodnutí. I&nbsp;po letech práce se Shopify přistupujeme ke&nbsp;každému projektu s&nbsp;pokorou a&nbsp;otevřeností — pokud to půjde, pomůžeme vám najít funkční a&nbsp;udržitelné řešení.</p>
         <a href="#cta" class="btn-action btn-action--lg">Tak pojďme na to</a>
       </div>
+      <WorkSidebar heading="JAK ZAČNEME" items={startSteps} />
     </div>
   </section>
 
@@ -63,6 +136,8 @@ const features = [
     </section>
   ))}
 
+  <ArticleFaq title="Časté otázky k podpoře a rozvoji Shopify" items={faq} />
+
   <!-- CTA -->
   <section class="cta-section" id="cta">
     <div class="container cta-inner">
@@ -76,10 +151,10 @@ const features = [
 </PageLayout>
 
 <style>
-  /* Jeden sloupec — postranní panel „JAK ZAČNEME" byl jen zástupný
-     (4× „Obsah doplníme" na ostrém webu) a na .cz neexistuje. Text drží
-     čtenářskou šířku, nerozlévá se přes celý container. */
-  .intro-main { max-width: 840px; }
+  /* Intro + panel = 2 sloupce. Panel měl do 2026-08-04 zástupný obsah
+     („Obsah doplníme" 4×); teď nese skutečné kroky. */
+  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
+  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
   /* .hl (bold lavender) — globální utilita v global.css */
   .section-title { text-align: center; }
 
