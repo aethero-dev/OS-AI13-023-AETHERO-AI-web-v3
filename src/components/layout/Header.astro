@@ -251,6 +251,17 @@ const navItems = lang === 'en'
     transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
   }
 
+  /* Ve světlém a sepia čtecím režimu je lišta ze 7% bílé nad světlou stránkou
+     neviditelná — bílý text na bílém skle. Necháváme bílý text a měníme
+     podklad na tmavý frost; lišta se tím čte jako záměrný tmavý pruh nad
+     světlou stránkou a nemusí se přebarvovat jediný odkaz (DK 2026-08-04). */
+  :global(html[data-cteni-motiv="svetly"]) header.scrolled .header-inner,
+  :global(html[data-cteni-motiv="sepia"]) header.scrolled .header-inner {
+    background: rgba(0, 3, 38, 0.86);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.28);
+  }
+
   /* Plovoucí glassmorphism lišta (à la open-design, ale náš rounding + tmavý frost) */
   header.scrolled .header-inner {
     background: rgba(255, 255, 255, 0.07);

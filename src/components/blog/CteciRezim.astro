@@ -134,16 +134,30 @@ const t = lang === 'en'
      obrázkem nemá co dělat. Sleduje se přímo prvek, ne počet odscrollovaných
      pixelů: hero má na každé stránce jinou výšku a na 14" notebooku jinou
      než na velkém monitoru. */
-  const telo = document.querySelector('article.section');
-  if (telo) {
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(
-        ([zaznam]) => H.toggleAttribute('data-cteni-ctu', zaznam.isIntersecting),
-        { rootMargin: '-10% 0px -55% 0px' },
-      ).observe(telo);
-    } else {
-      H.setAttribute('data-cteni-ctu', '1');  // starý prohlížeč — ať je panel aspoň dostupný
-    }
+  /* Panel se drží HORNÍ HRANY ČTENÍ, tedy místa, kde začíná nadpis. Dokud
+     je hrana v okně, jede s ní; jakmile vyjede nahoru, panel se zastaví pod
+     hlavičkou webu. Počítá se to za běhu, protože hero má na každé stránce
+     i každém monitoru jinou výšku — pevné číslo by lhalo (DK 2026-08-04).
+     Nad hero obrázkem se panel neukazuje vůbec. */
+  const zacatekCteni = document.querySelector('.blog-hero-inner');
+  if (zacatekCteni) {
+    const STROP = 111;               // hlavička webu (87 px) + mezera
+    let ceka = false;
+    const uprav = () => {
+      ceka = false;
+      const hrana = Math.round(zacatekCteni.getBoundingClientRect().top);
+      H.style.setProperty('--cteni-top', Math.max(STROP, hrana) + 'px');
+      /* Jakmile se panel jednou ukáže, zůstává. Dřív mizel při návratu
+         nahoru, takže kdo si dole zvětšil písmo a vyjel na začátek, neměl
+         jak to vrátit (DK 2026-08-04). Ovládání se čtenáři nebere z ruky. */
+      if (!H.hasAttribute('data-cteni-ctu') && hrana < window.innerHeight * 0.85) {
+        H.setAttribute('data-cteni-ctu', '1');
+      }
+    };
+    const naplanuj = () => { if (!ceka) { ceka = true; requestAnimationFrame(uprav); } };
+    window.addEventListener('scroll', naplanuj, { passive: true });
+    window.addEventListener('resize', naplanuj);
+    uprav();
   }
 
   // ukazatel postupu čtení

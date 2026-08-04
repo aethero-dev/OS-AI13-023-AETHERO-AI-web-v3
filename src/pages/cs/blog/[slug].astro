@@ -182,7 +182,8 @@ const articleSchema = {
 <style>
   /* ── Velké CTA hned pod perexem ── */
   .article-cta {
-    background: var(--ae-bg-primary);
+    /* plochu řídí čtecí režim — ve světlém motivu tu jinak zůstal černý pruh */
+    background: var(--cteni-plocha, var(--ae-bg-primary));
     padding: var(--space-40) 0 0;
   }
   .article-cta-inner {
