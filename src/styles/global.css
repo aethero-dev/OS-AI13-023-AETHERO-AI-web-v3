@@ -598,15 +598,20 @@ img { max-width: 100%; height: auto; }
   padding: 160px var(--space-24) 80px;
 }
 .cs-hero-head { grid-area: hero-head; padding-bottom: var(--space-32); }
-.cs-aside { grid-area: aside; position: sticky; top: 88px; align-self: start; }
+/* Bez sticky — obsah stojí nahoře v textu; po odscrollování ho nahrazuje
+   plovoucí kolečko komponenty CaseStudyNav (pojízdné okno, DK 2026-08-04). */
+.cs-aside { grid-area: aside; align-self: start; }
 .cs-main  { grid-area: main; min-width: 0; }
 @media (max-width: 900px) {
   .cs-layout {
     grid-template-columns: 1fr;
-    grid-template-areas: "hero-head" "main";
+    grid-template-areas: "hero-head" "aside" "main";
     padding-top: 120px;
   }
   .cs-aside { display: none; }
+  /* S pojízdným oknem (CaseStudyNav) se obsah na mobilu ukazuje — seznam
+     nahoře + plovoucí kolečko vlevo dole. Staré .page-nav zůstává skryté. */
+  .cs-aside:has([data-csnav]) { display: block; margin-bottom: var(--space-32); }
 }
 
 /* ─── LIGHTBOX — fullscreen image overlay (galerie) ─── */

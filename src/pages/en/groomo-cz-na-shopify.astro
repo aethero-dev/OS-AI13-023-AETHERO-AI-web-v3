@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import CaseStudyNav from '../../components/CaseStudyNav.astro';
 ---
 
 <PageLayout
@@ -17,18 +18,18 @@ import PageLayout from '../../layouts/PageLayout.astro';
       <h1 class="cs-h1">How we built <br /><span class="hl-name">GROOMO.cz</span></h1>
     </div>
 
-    <!-- ROW 2 LEFT: sticky nav -->
+    <!-- ROW 2 LEFT: page contents (floating nav) -->
     <aside class="cs-aside">
-      <nav class="page-nav">
-        <a href="#s01" class="page-nav-item">01. NAME</a>
-        <a href="#s02" class="page-nav-item">02. BRAND</a>
-        <a href="#s03" class="page-nav-item">03. E-SHOP</a>
-        <a href="#s04" class="page-nav-item">04. INSTITUTE</a>
-        <a href="#s05" class="page-nav-item">05. SHOPIFY</a>
-        <a href="#s06" class="page-nav-item">06. CONTENT</a>
-        <a href="#s07" class="page-nav-item">07. RESULTS</a>
-        <a href="#s08" class="page-nav-item">08. GALLERY</a>
-      </nav>
+      <CaseStudyNav lang="en" kapitoly={[
+        { id: 's01', text: '01. Name' },
+        { id: 's02', text: '02. Brand' },
+        { id: 's03', text: '03. E-shop' },
+        { id: 's04', text: '04. Institute' },
+        { id: 's05', text: '05. Shopify' },
+        { id: 's06', text: '06. Content' },
+        { id: 's07', text: '07. Results' },
+        { id: 's08', text: '08. Gallery' },
+      ]} />
     </aside>
 
     <!-- ROW 2 RIGHT: content -->
@@ -221,22 +222,6 @@ import PageLayout from '../../layouts/PageLayout.astro';
     color: #fff; margin-bottom: 0;
   }
   .cs-h1 .hl-name { color: var(--text-secondary); }
-
-  /* Page nav (sticky TOC) */
-  .page-nav {
-    background: var(--card-button);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .page-nav-item {
-    font-family: var(--font-primary);
-    font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.7); text-transform: uppercase;
-    text-decoration: none; padding: 4px 0;
-    transition: color 0.2s;
-  }
-  .page-nav-item:hover { color: var(--action); }
 
   /* Perex */
   .cs-perex {
