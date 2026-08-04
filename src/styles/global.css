@@ -539,8 +539,8 @@ img { max-width: 100%; height: auto; }
      Bez ní text ležel přímo na motivu a pral se s ním (srovnání se starým
      webem, DK 2026-08-04). */
   background:
-    linear-gradient(to right, rgba(0,3,38,0.88) 0%, rgba(0,3,38,0.55) 45%, rgba(0,3,38,0.15) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,3,38,0.75) 100%);
+    linear-gradient(to right, rgba(0,3,38,0.80) 0%, rgba(0,3,38,0.18) 45%, rgba(0,3,38,0) 70%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,3,38,0.50) 100%);
 }
 .app-hero-inner {
   position: relative; z-index: 1;
@@ -553,10 +553,12 @@ img { max-width: 100%; height: auto; }
   font-weight: 700; line-height: 1.2; color: #fff; margin: 0;
 }
 .app-hero-sub {
-  /* Plná bílá a větší řez — na 85 % působil podtitul potlačeně proti
-     starému webu, kde je 40px/600 v plné bílé (změřeno 2026-08-04). */
-  font-size: var(--fs-40); font-weight: 600; color: #fff;
-  line-height: 1.35; max-width: 780px; margin: 0;
+  /* Plná bílá a silnější řez — na 85 % působil podtitul potlačeně.
+     Velikost je proti .cz (40px/600 v H3) o stupeň dolů: tam se text vejde
+     do 1232px na dva řádky, u nás by se na stejných 40px lámal na čtyři
+     a působil jako blok. 32px/920px drží stejné dva řádky (DK 2026-08-04). */
+  font-size: var(--fs-32); font-weight: 600; color: #fff;
+  line-height: 1.35; max-width: 920px; margin: 0;
 }
 /* Zvýrazněná první část podtitulu. Třída byla v markupu app stránek od začátku,
    ale styl k ní nikdy nevznikl — proto podtitul vypadal ploše.
