@@ -262,11 +262,11 @@ const articleSchema = {
   }
 
   .blog-hero-inner--no-img {
-    max-width: 760px;
+    max-width: 840px;
     padding-top: var(--space-48);
   }
   .blog-hero-inner {
-    max-width: 760px;
+    max-width: 840px;
     /* jen horní padding — `padding: X 0 0` by přepsalo boční odsazení
        .containeru a nadpis by na mobilu dosedl na okraj displeje */
     padding-top: var(--space-32);
@@ -293,8 +293,11 @@ const articleSchema = {
     line-height: 1.6;
   }
 
-  .article-inner { max-width: 760px; }
-  .article-body { font-size: 18px; color: var(--neutral-300); line-height: 1.7; }
+  /* Šířka i velikost písma: měřítkem je počet znaků na řádek, ne pixely.
+     18px/760px dávalo 62–68 znaků a působilo stísněně; starý web má 22px/811px.
+     20px/840px drží ~68 znaků — uvnitř optima 65–75 (Bringhurst 66). */
+  .article-inner { max-width: 840px; }
+  .article-body { font-size: 20px; color: var(--neutral-300); line-height: 1.7; }
 
   .article-body.sb-content :global(h2) { font-size: var(--fs-36); font-weight: 700; margin: 2em 0 0.75em; color: var(--text-primary); }
   .article-body.sb-content :global(h3) { font-size: var(--fs-28); font-weight: 600; margin: 1.75em 0 0.6em; color: var(--text-primary); }
