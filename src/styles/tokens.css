@@ -1,6 +1,10 @@
 :root {
   --ae-bg-deep: #00021A;
   --ae-bg-primary: #000326;
+  /* Hero kontaktu, o-nás a case-study šablony. Deklarace s -alt nikdy
+     nefungovala (token nevznikl) → vždy se vykreslovalo tělo = primary.
+     Alias to jen přiznává; jiný odstín = rozhodnutí DK, změna jednoho řádku. */
+  --ae-bg-primary-alt: var(--ae-bg-primary);
   --ae-bg-raised: #0C0C42;
   --action: #16BECF;
   --action-hover: #0DD4CD;
