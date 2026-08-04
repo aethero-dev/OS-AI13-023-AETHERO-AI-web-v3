@@ -750,14 +750,25 @@ img { max-width: 100%; height: auto; }
 .article-body.sb-content img.znak + h3 { margin-top: 0.25em; }
 
 /* ─── TABULKY V ČLÁNKU ───────────────────────────────────────────────────
-   Srovnávací tabulky se do sloupce 792 px nevejdou (ta největší má pět
-   sloupců), proto se posouvají vodorovně ve vlastním rámu — stránka sama
-   se nikdy neposouvá do stran. Přidáno se srovnávacím článkem
-   Shopify vs Shoptet (DK 2026-08-04). */
+   Sloupec je úzký kvůli ČTENÍ (~64 znaků na řádek), ne kvůli tabulkám.
+   Srovnávací tabulka potřebuje 948 px a do 792 px se nevejde — jenže na
+   desktopu vedle ní zbývá přes 300 px prázdna, takže není důvod ji
+   posouvat. Proto na širokých obrazovkách VYSTOUPÍ ze sloupce a roztáhne
+   se na svou přirozenou šířku, nejvýš na --container-max. Posuv zůstává
+   jen jako pojistka pro úzké displeje. (DK 2026-08-04) */
 .article-body table {
   width: 100%; border-collapse: collapse; margin: 2em 0;
   font-size: 0.85em; line-height: 1.5; display: block; overflow-x: auto;
   white-space: normal;
+}
+@media (min-width: 1000px) {
+  .article-body table {
+    width: max-content;
+    max-width: min(var(--container-max), calc(100vw - var(--space-48)));
+    /* vystoupení ze sloupce: levý okraj na střed sloupce, pak zpět o půl
+       vlastní šířky — tabulka tím zůstane vycentrovaná na tutéž osu */
+    position: relative; left: 50%; transform: translateX(-50%);
+  }
 }
 .article-body table th,
 .article-body table td {

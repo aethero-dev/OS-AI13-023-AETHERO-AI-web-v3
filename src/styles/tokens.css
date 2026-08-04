@@ -62,11 +62,17 @@
   --text-section-body: var(--fs-22);
   --text-label: var(--fs-18);
 
+  /* --space-12, -20 a -48 se v projektu používaly na 18 místech, ale nikdy
+     nebyly definované. Neplatná var() shodí celou deklaraci, takže těch 18
+     odsazení tiše nedělalo nic (nalezeno 2026-08-04 při ladění tabulek). */
   --space-8: 8px;
+  --space-12: 12px;
   --space-16: 16px;
+  --space-20: 20px;
   --space-24: 24px;
   --space-32: 32px;
   --space-40: 40px;
+  --space-48: 48px;
   --space-64: 64px;
   --space-80: 80px;
   --space-120: 120px;
