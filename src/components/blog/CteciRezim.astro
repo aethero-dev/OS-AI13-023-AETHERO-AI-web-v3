@@ -80,12 +80,11 @@ const t = lang === 'en'
   if (panel && spust) {
     // Panel je v markupu skrytý — bez JS by byl k ničemu. Odkryjeme až tady.
     const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; uloz('panel', ano ? '1' : '0'); };
-    /* Otevřený panel dává smysl jen tam, kde vedle sloupce zbývá místo.
-       Na užších obrazovkách by ukrajoval z textu, takže začíná zavřený —
-       ledaže si ho čtenář sám otevřel a máme to uložené (DK 2026-08-04). */
-    const ulozenyStav = nacti('panel');
-    const dostVedleSloupce = window.matchMedia('(min-width: 1200px)').matches;
-    zobrazPanel(ulozenyStav === null ? dostVedleSloupce : ulozenyStav === '1');
+    /* Panel začíná ZAVŘENÝ na všech šířkách — vidět je jen kolečko „Aa“.
+       Otevřený se plete do čtení, i když je vedle sloupce místo
+       (DK 2026-08-04). Kdo si ho jednou otevře, má ho uložený a otevře
+       se mu i u dalšího článku. */
+    zobrazPanel(nacti('panel') === '1');
     document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
     spust.onclick = () => zobrazPanel(true);
 
