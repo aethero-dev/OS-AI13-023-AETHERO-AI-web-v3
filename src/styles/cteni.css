@@ -115,11 +115,12 @@ html[data-cteni-klid] .blog-hero { padding-top: var(--space-48); }
 /* ══ PANEL ═══════════════════════════════════════════════════════════ */
 /* Panel visí u HORNÍ HRANY ČTENÍ — tedy tam, kde na stránce začíná nadpis,
    ne u stropu okna a ne u spodku. Dokud je hrana vidět, drží se jí; jakmile
-   vyjede nahoru, panel se zastaví pod hlavičkou webu (ta je fixed, 87 px,
-   proto strop 111 px). Hodnotu počítá skript do --cteni-top, protože hero
-   má na každé stránce a každém monitoru jinou výšku (DK 2026-08-04). */
+   vyjede nahoru, panel se zastaví pod hlavičkou webu. Strop 141 px = hlavička
+   (87 px) + mezera, posunuto o 30 px níž na přání DK (2026-08-04). Hodnotu
+   počítá skript do --cteni-top, protože hero má na každé stránce a každém
+   monitoru jinou výšku. */
 .cteni {
-  position: fixed; z-index: 50; right: 24px; top: var(--cteni-top, 111px);
+  position: fixed; z-index: 50; right: 24px; top: var(--cteni-top, 141px);
   width: 230px; padding: 18px; border-radius: 14px;
   background: rgba(10, 14, 46, 0.86);
   backdrop-filter: blur(14px) saturate(1.3);
@@ -230,7 +231,7 @@ html[data-cteni-ctu] .cteni-spust {
    Dvě velikosti písmene jsou pro nastavení textu ta nejsrozumitelnější
    značka, jakou lze dát; ikonu knihy si každý vyloží jinak. */
 .cteni-spust {
-  position: fixed; z-index: 49; right: 24px; top: var(--cteni-top, 111px);
+  position: fixed; z-index: 49; right: 24px; top: var(--cteni-top, 141px);
   width: 54px; height: 54px; border-radius: 50%;
   border: 0; background: var(--action); color: #00121a;
   font-family: var(--font-primary); font-weight: 700; font-size: 20px;
