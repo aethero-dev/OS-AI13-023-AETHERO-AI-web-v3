@@ -146,6 +146,35 @@ const articleSchema = {
 
 </PageLayout>
 
+<script>
+  // Fasáda videa: náhled leží u nás, s Googlem se stránka spojí teprve po
+  // kliknutí. Viz komentář u .video v CSS (GDPR, DK 2026-08-04).
+  document.querySelectorAll('.video[data-yt]').forEach((box) => {
+    const id = box.dataset.yt;
+    const titulek = box.dataset.titulek || '';
+    const jeEn = document.documentElement.lang === 'en';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', (jeEn ? 'Play video: ' : 'Přehrát video: ') + titulek);
+    btn.innerHTML =
+      '<img src="' + box.dataset.nahled + '" alt="" loading="lazy" width="1280" height="720">'
+      + '<span class="video-hrat"></span>'
+      + (titulek ? '<span class="video-popis"></span>' : '');
+    const popis = btn.querySelector('.video-popis');
+    if (popis) popis.textContent = titulek;
+    btn.addEventListener('click', () => {
+      const ramec = document.createElement('iframe');
+      ramec.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      ramec.title = titulek;
+      ramec.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+      ramec.allowFullscreen = true;
+      box.replaceChildren(ramec);
+    });
+    box.replaceChildren(btn);
+  });
+</script>
+
+
 <style>
   /* ── Velké CTA hned pod perexem ── */
   .article-cta {
@@ -338,15 +367,8 @@ const articleSchema = {
   .article-body.sb-content :global(img.znak) {
     max-width: 120px; border: none; border-radius: 0; margin: 2.5em auto 0.5em;
   }
-  /* Video v textu — poměr 16:9, přes youtube-nocookie kvůli souhlasu. */
-  .article-body.sb-content :global(.video) {
-    position: relative; aspect-ratio: 16 / 9; margin: 2em 0;
-    border-radius: var(--radius-sm); overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03);
-  }
-  .article-body.sb-content :global(.video iframe) {
-    position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
-  }
+  /* Styly videa žijí v global.css — vznikají skriptem až v prohlížeči
+     a scoped styl Astro na ně nedosáhne. */
   .article-body.sb-content :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 2.5em 0; }
 
   .coming-soon { color: var(--neutral-500); font-style: italic; }

@@ -22,7 +22,7 @@ If the topic interests you in detail, we recommend watching the [edition launch 
 
 This is what caught our attention most. Not long ago we were cheering that an app could write product copy on its own thanks to "Shopify Magic". Now it goes further — many of you have already found that Sidekick can do surprisingly much: advise you, find data, create a discount. And now comes the proactive **Sidekick Pulse**.
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/LU4tghjdnG8" title="20+ updates to Sidekick" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="LU4tghjdnG8" data-nahled="/blog/yt-sidekick.webp" data-titulek="20+ updates to Sidekick"><a href="https://www.youtube.com/watch?v=LU4tghjdnG8" rel="noopener">Watch on YouTube: 20+ updates to Sidekick</a></div>
 
 ### Meet Sidekick Pulse
 
@@ -38,7 +38,7 @@ Many users already find it demonstrably useful to talk to Sidekick directly, giv
 
 Shopify is preparing a new app where you can try out the latest AI tools for e-commerce. If you run a store, it looks like a great addition. Want to be among the first? Go to the edition page, scroll to the end of the **Online** section, and click "Get notified".
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/k7XydEQQniY" title="Tinker: Your AI playground" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="k7XydEQQniY" data-nahled="/blog/yt-tinker.webp" data-titulek="Tinker: Your AI playground"><a href="https://www.youtube.com/watch?v=k7XydEQQniY" rel="noopener">Watch on YouTube: Tinker: Your AI playground</a></div>
 
 ## Agentic Commerce
 
@@ -48,7 +48,7 @@ The changes presented in the Winter '26 Edition significantly widen the notion o
 
 That means a new sales channel operating outside the classic website.
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/22NqvJyppt8" title="Agentic Storefronts: reach buyers in AI" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="22NqvJyppt8" data-nahled="/blog/yt-agentic.webp" data-titulek="Agentic Storefronts: reach buyers in AI"><a href="https://www.youtube.com/watch?v=22NqvJyppt8" rel="noopener">Watch on YouTube: Agentic Storefronts: reach buyers in AI</a></div>
 
 ## Rollouts & SimGym
 

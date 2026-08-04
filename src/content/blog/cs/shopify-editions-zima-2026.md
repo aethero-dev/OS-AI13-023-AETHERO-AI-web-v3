@@ -22,7 +22,7 @@ Pokud vás tohle téma zajímá do detailu, doporučujeme zhlédnout [záznam z 
 
 Tohle nás zaujalo úplně nejvíc. Ještě nedávno jsme jásali, že nám aplikace umí sama napsat textík k produktu díky „Shopify Magic". Jde se dál — mnoho z vás už si určitě vyzkoušelo, že Sidekick toho umí nečekaně dost: poradit, najít data, vytvořit slevu. Teď ale přichází **proaktivní Sidekick Pulse**.
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/LU4tghjdnG8" title="20+ updates to Sidekick" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="LU4tghjdnG8" data-nahled="/blog/yt-sidekick.webp" data-titulek="20+ updates to Sidekick"><a href="https://www.youtube.com/watch?v=LU4tghjdnG8" rel="noopener">Přehrát na YouTube: 20+ updates to Sidekick</a></div>
 
 ### Přivítejte Sidekick Pulse
 
@@ -38,7 +38,7 @@ Mnoho uživatelů už považuje za prokazatelně přínosné komunikovat se Side
 
 Shopify připravuje novou appku, ve které si vyzkoušíte nejnovější AI nástroje pro e-commerce. Pokud máte e-shop, vypadá to na skvělou pomůcku. Chcete být mezi prvními? Jděte na stránku edice, na konec sekce **Online**, a klikněte na „Get notified".
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/k7XydEQQniY" title="Tinker: Your AI playground" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="k7XydEQQniY" data-nahled="/blog/yt-tinker.webp" data-titulek="Tinker: Your AI playground"><a href="https://www.youtube.com/watch?v=k7XydEQQniY" rel="noopener">Přehrát na YouTube: Tinker: Your AI playground</a></div>
 
 ## Agentic Commerce
 
@@ -48,7 +48,7 @@ Změny prezentované ve Winter '26 Edition výrazně rozšiřují pojem agentní
 
 To znamená nový prodejní kanál, který funguje mimo klasický web.
 
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/22NqvJyppt8" title="Agentic Storefronts: reach buyers in AI" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video" data-yt="22NqvJyppt8" data-nahled="/blog/yt-agentic.webp" data-titulek="Agentic Storefronts: reach buyers in AI"><a href="https://www.youtube.com/watch?v=22NqvJyppt8" rel="noopener">Přehrát na YouTube: Agentic Storefronts: reach buyers in AI</a></div>
 
 ## Rollouts & SimGym
 
