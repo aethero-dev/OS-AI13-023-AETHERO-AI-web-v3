@@ -22,7 +22,7 @@ This is what caught our attention most. Not long ago we were cheering that an ap
 
 ### Meet Sidekick Pulse
 
-A new, proactive phase of AI help in your store is here. Let's quote Carlo Rivera, the new Chief Design Officer, directly:
+A new, proactive phase of AI help in your store is here. Let's quote Carl Rivera, the new Chief Design Officer, directly:
 
 > I really think this is a fundamental change in how software gets made. Until now software only reacted. Before you build software you need a plan, you have to give it clear instructions. You need all the ideas up front and tell it what to do, and only then does it start doing the clever things. With Sidekick Pulse, Shopify now becomes proactive. It's as if it anticipates the things that are right for you, suggests them, and then goes and does them — it actually carries them out for you.
 

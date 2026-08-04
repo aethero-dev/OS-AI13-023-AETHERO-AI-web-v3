@@ -29,7 +29,7 @@ Když standardní překladové nástroje selžou, nastupuje osvědčený postup 
 
 Otevřete stažený CSV soubor a najděte sloupec **Translated content**. Tady proveďte všechna překladová kouzla.
 
-**Tip pro opravdové chytráky:** proč každou metodu překládat ručně? Nahrajte exportovaný soubor do AI modelu — ChatGPT, Claude nebo DeepL — a nechte ho, ať maká za vás.
+**Tip pro opravdové chytráky:** proč každou metodu překládat ručně? Nahrajte exportovaný soubor do AI modelu — ChatGPT nebo DeepL — a nechte ho, ať maká za vás.
 
 ### 3. Uživatelé macOS, pozor
 

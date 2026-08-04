@@ -29,7 +29,7 @@ When the standard translation tools fall short, the proven route is CSV export a
 
 Open the downloaded CSV and find the **Translated content** column. That's where all the translation magic happens.
 
-**Tip for the genuinely smart:** why translate every method by hand? Upload the exported file to an AI model — ChatGPT, Claude or DeepL — and let it do the work for you.
+**Tip for the genuinely smart:** why translate every method by hand? Upload the exported file to an AI model — ChatGPT or DeepL — and let it do the work for you.
 
 ### 3. macOS users, watch out
 
