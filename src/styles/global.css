@@ -776,3 +776,15 @@ img { max-width: 100%; height: auto; }
 }
 .article-body table tbody tr:last-child td { border-bottom: none; }
 .article-body table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.025); }
+
+/* ─── ODZNAK OBCHODU S APLIKACEMI ────────────────────────────────────────
+   Oficiální odznak Applu (stažený z tools.applemediaservices.com, lokalizovaný).
+   Nesmí dostat rámeček ani vycentrování jako ostatní obrázky v textu —
+   Apple zakazuje odznak upravovat. Drží se vlevo jako každá jiná akce. */
+.article-body a.odznak { display: inline-block; margin: 1.6em 0 2.2em; }
+.article-body a.odznak img {
+  margin: 0; border: none; border-radius: 0;
+  width: 180px; height: auto; display: block;
+  transition: opacity var(--transition-base);
+}
+.article-body a.odznak:hover img { opacity: .82; }

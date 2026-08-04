@@ -36,7 +36,11 @@ Many users already find it demonstrably useful to talk to Sidekick directly, giv
 
 ### Tinker app
 
-Shopify is preparing a new app where you can try out the latest AI tools for e-commerce. If you run a store, it looks like a great addition. Want to be among the first? Go to the edition page, scroll to the end of the **Online** section, and click "Get notified".
+The app Shopify was still only announcing at the edition has since shipped. **Tinker by Shopify** brings together **over 100 AI tools** for creating images, videos and brand assets — product photography, logo design, social media video. Under the hood it runs models from OpenAI, Google and Anthropic, but you don't pick by model: you pick what you want to make, describe it in a few words, and the app handles the rest.
+
+It's **free** (with monthly usage limits), needs iOS 16.4 or later and weighs 82 MB. You sign in with your email or straight through your Shopify account. It's also available [for Android on Google Play](https://play.google.com/store/apps/details?id=com.shopify.tinker).
+
+<a class="odznak" href="https://apps.apple.com/us/app/tinker-by-shopify/id6758963519" rel="noopener"><img src="/blog/app-store-en.svg" alt="Download Tinker by Shopify on the App Store" width="180" height="60"></a>
 
 <div class="video" data-yt="k7XydEQQniY" data-nahled="/blog/yt-tinker.webp" data-titulek="Tinker: Your AI playground"><a href="https://www.youtube.com/watch?v=k7XydEQQniY" rel="noopener">Watch on YouTube: Tinker: Your AI playground</a></div>
 

@@ -36,7 +36,11 @@ Mnoho uživatelů už považuje za prokazatelně přínosné komunikovat se Side
 
 ### Tinker app
 
-Shopify připravuje novou appku, ve které si vyzkoušíte nejnovější AI nástroje pro e-commerce. Pokud máte e-shop, vypadá to na skvělou pomůcku. Chcete být mezi prvními? Jděte na stránku edice, na konec sekce **Online**, a klikněte na „Get notified".
+Appka, kterou Shopify na edici teprve ohlašoval, už je venku. **Tinker by Shopify** sdružuje **přes 100 AI nástrojů** na tvorbu obrázků, videí a značkových podkladů — produktová fotka, logo, video na sociální sítě. Pod kapotou běží modely od OpenAI, Googlu a Anthropicu, ale nevybíráte podle modelu: vyberete si, co chcete vytvořit, popíšete to pár slovy a o zbytek se appka postará sama.
+
+Je **zdarma** (s měsíčním limitem využití), vyžaduje iOS 16.4 nebo novější a váží 82 MB. Přihlásíte se e-mailem nebo rovnou svým Shopify účtem. K dispozici je i [pro Android na Google Play](https://play.google.com/store/apps/details?id=com.shopify.tinker).
+
+<a class="odznak" href="https://apps.apple.com/cz/app/tinker-by-shopify/id6758963519" rel="noopener"><img src="/blog/app-store-cs.svg" alt="Stáhnout Tinker by Shopify v App Store" width="180" height="60"></a>
 
 <div class="video" data-yt="k7XydEQQniY" data-nahled="/blog/yt-tinker.webp" data-titulek="Tinker: Your AI playground"><a href="https://www.youtube.com/watch?v=k7XydEQQniY" rel="noopener">Přehrát na YouTube: Tinker: Your AI playground</a></div>
 
