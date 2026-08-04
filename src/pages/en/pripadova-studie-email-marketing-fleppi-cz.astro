@@ -1,9 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import CaseStudyNav from '../../components/CaseStudyNav.astro';
 ---
 
 <PageLayout
-  title="Case Study: Email Marketing Analysis fleppi.cz | aethero"
+  title="Case Study: Email Marketing Analysis fleppi.cz"
   description="How we helped a Czech stationery e-shop identify the causes of declining email marketing performance and build a concrete recovery plan."
   lang="en"
 >
@@ -17,17 +18,17 @@ import PageLayout from '../../layouts/PageLayout.astro';
       <h1 class="cs-h1">Mailing strategy <br /><span class="hl-link">fleppi.cz</span> × <span class="hl-link">Leadhub</span> × <span class="hl-link">Shoptet</span></h1>
     </div>
 
-    <!-- ROW 2 LEFT: sticky nav (aligned with perex) -->
+    <!-- ROW 2 LEFT: page contents (floating nav) -->
     <aside class="cs-aside">
-      <nav class="page-nav">
-        <a href="#s01" class="page-nav-item">01. CLIENT</a>
-        <a href="#s02" class="page-nav-item">02. BASELINE</a>
-        <a href="#s03" class="page-nav-item">03. PROCESS</a>
-        <a href="#s04" class="page-nav-item">04. FINDINGS</a>
-        <a href="#s05" class="page-nav-item">05. RECOMMENDATIONS</a>
-        <a href="#s06" class="page-nav-item">06. OUTPUT</a>
-        <a href="#s07" class="page-nav-item">07. REFERENCE</a>
-      </nav>
+      <CaseStudyNav lang="en" kapitoly={[
+        { id: 's01', text: '01. Client' },
+        { id: 's02', text: '02. Baseline' },
+        { id: 's03', text: '03. Process' },
+        { id: 's04', text: '04. Findings' },
+        { id: 's05', text: '05. Recommendations' },
+        { id: 's06', text: '06. Output' },
+        { id: 's07', text: '07. Reference' },
+      ]} />
     </aside>
 
     <!-- ROW 2 RIGHT: perex + content -->
@@ -39,6 +40,10 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
         <!-- Client info row -->
         <div class="client-row">
+          <div class="client-cell">
+            <span class="body-mini client-key">Client:</span>
+            <span class="label client-val">fleppi.cz</span>
+          </div>
           <div class="client-cell">
             <span class="body-mini client-key">Market segment:</span>
             <span class="label client-val">Stationery / Planning</span>
@@ -378,22 +383,6 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   .sec-h2 { font-weight: 700; color: #fff; margin-bottom: var(--space-32); }
   .sec-text { margin-bottom: var(--space-24); max-width: 720px; }
-
-  /* Page nav (hero TOC) */
-  .page-nav {
-    background: var(--card-button);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .page-nav-item {
-    font-family: var(--font-primary);
-    font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.7); text-transform: uppercase;
-    text-decoration: none; padding: 4px 0;
-    transition: color 0.2s;
-  }
-  .page-nav-item:hover { color: var(--action); }
 
   /* 01 Client grid */
   .klient-grid {
