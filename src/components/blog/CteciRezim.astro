@@ -79,12 +79,13 @@ const t = lang === 'en'
   const spust = document.getElementById('cteni-spust');
   if (panel && spust) {
     // Panel je v markupu skrytý — bez JS by byl k ničemu. Odkryjeme až tady.
-    const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; uloz('panel', ano ? '1' : '0'); };
-    /* Panel začíná ZAVŘENÝ na všech šířkách — vidět je jen kolečko „Aa“.
-       Otevřený se plete do čtení, i když je vedle sloupce místo
-       (DK 2026-08-04). Kdo si ho jednou otevře, má ho uložený a otevře
-       se mu i u dalšího článku. */
-    zobrazPanel(nacti('panel') === '1');
+    const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; };
+    /* Panel je při načtení ZAVŘENÝ na všech šířkách a VŽDY — vidět je jen
+       kolečko „Aa“. Stav se schválně nepamatuje: uložený otevřený panel by
+       čtenáře překvapil na dalším článku a na malém monitoru by ukrajoval
+       z textu (DK 2026-08-04, dvakrát). Pamatuje se jen NASTAVENÍ čtení
+       (velikost, řez, motiv) — to je to, co má hodnotu. */
+    zobrazPanel(false);
     document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
     spust.onclick = () => zobrazPanel(true);
 
