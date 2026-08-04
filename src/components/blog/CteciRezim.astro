@@ -141,12 +141,13 @@ const t = lang === 'en'
      Nad hero obrázkem se panel neukazuje vůbec. */
   const zacatekCteni = document.querySelector('.blog-hero-inner');
   if (zacatekCteni) {
-    const STROP = 141;               // hlavička webu (87 px) + mezera, +30 px dle DK
+    const STROP = 141;    // hlavička webu (87 px) + mezera
+    const ODSTUP = 30;    // od hrany čtení dolů — nalepená na šev vypadala nepřirozeně (DK)
     let ceka = false;
     const uprav = () => {
       ceka = false;
       const hrana = Math.round(zacatekCteni.getBoundingClientRect().top);
-      H.style.setProperty('--cteni-top', Math.max(STROP, hrana) + 'px');
+      H.style.setProperty('--cteni-top', Math.max(STROP, hrana + ODSTUP) + 'px');
       /* Jakmile se panel jednou ukáže, zůstává. Dřív mizel při návratu
          nahoru, takže kdo si dole zvětšil písmo a vyjel na začátek, neměl
          jak to vrátit (DK 2026-08-04). Ovládání se čtenáři nebere z ruky. */
