@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ArticleFaq from '../../../components/ArticleFaq.astro';
+import CteciRezim from '../../../components/blog/CteciRezim.astro';
+import '../../../styles/cteni.css';
 import { articleExtras } from '../../../data/article-extras';
 import { getCollection, render } from 'astro:content';
 
@@ -67,6 +69,8 @@ const articleSchema = {
 
 
 <PageLayout {title} description={perex} lang="cs" jsonLd={articleSchema}>
+
+  <CteciRezim lang="cs" />
 
   <section class="blog-hero">
     {featuredImage && (
@@ -253,9 +257,7 @@ const articleSchema = {
     }
   }
 
-  .blog-hero {
-    background: var(--ae-bg-primary);
-  }
+  /* pozadí řídí čtecí režim (cteni.css) */
 
   .hero-img-wrap {
     width: 100%;
@@ -296,10 +298,9 @@ const articleSchema = {
     flex-wrap: wrap;
     gap: var(--space-8);
     font-size: 16px;
-    color: var(--neutral-300);
     margin-top: var(--space-24);
   }
-  .blog-meta .blog-author { font-weight: 600; color: var(--text-primary); }
+  .blog-meta .blog-author { font-weight: 600; }
   .dot { opacity: 0.4; }
   .blog-hero h1 {
     font-size: var(--fs-72);
@@ -309,25 +310,26 @@ const articleSchema = {
   }
   .blog-perex {
     font-size: var(--fs-24);
-    color: var(--neutral-300);
     line-height: 1.6;
   }
 
-  /* Šířka i velikost písma: měřítkem je počet znaků na řádek, ne pixely.
-     18px/760px dávalo 62–68 znaků a působilo stísněně; starý web má 22px/811px.
-     20px/840px drží ~68 znaků — uvnitř optima 65–75 (Bringhurst 66). */
+  /* Šířka: měřítkem je počet znaků na řádek, ne pixely. 840px při výchozích
+     20px drží ~64 znaků — uvnitř optima 65–75 (Bringhurst 66).
+     VELIKOST, ŘEZ A BARVY textu si řídí čtenář přes čtecí režim,
+     hodnoty jsou v styles/cteni.css. Tady zůstává jen to, co nemění. */
   .article-inner { max-width: 840px; }
-  .article-body { font-size: 20px; color: var(--neutral-300); line-height: 1.7; }
+  .article-body { line-height: 1.7; }
 
-  .article-body.sb-content :global(h2) { font-size: var(--fs-36); font-weight: 700; margin: 2em 0 0.75em; color: var(--text-primary); }
-  .article-body.sb-content :global(h3) { font-size: var(--fs-28); font-weight: 600; margin: 1.75em 0 0.6em; color: var(--text-primary); }
+  /* velikost i barva nadpisů jde z cteni.css (odvozeno od --cteni-px) */
+  .article-body.sb-content :global(h2) { font-weight: 700; margin: 2em 0 0.75em; }
+  .article-body.sb-content :global(h3) { font-weight: 600; margin: 1.75em 0 0.6em; }
   .article-body.sb-content :global(p) { margin-bottom: 1.4em; }
   .article-body.sb-content :global(ul), .article-body.sb-content :global(ol) { padding-left: 1.5em; margin-bottom: 1.4em; }
   .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.7; }
-  .article-body.sb-content :global(a) { color: var(--action); text-decoration: underline; text-underline-offset: 3px; }
-  .article-body.sb-content :global(strong) { font-weight: 700; color: var(--text-primary); }
+  .article-body.sb-content :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  .article-body.sb-content :global(strong) { font-weight: 700; }
   .article-body.sb-content :global(em) { font-style: italic; }
-  .article-body.sb-content :global(blockquote) { border-left: 3px solid var(--action); padding-left: 1.5em; margin: 1.5em 0; font-style: italic; color: var(--neutral-400); }
+  .article-body.sb-content :global(blockquote) { border-left: 3px solid; padding-left: 1.5em; margin: 1.5em 0; font-style: italic; }
   .article-body.sb-content :global(code) { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; }
   .article-body.sb-content :global(pre) { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5em; overflow-x: auto; margin-bottom: 1.4em; }
   /* Obrázky v textu se necentrují přes width:100% — část podkladů z původního

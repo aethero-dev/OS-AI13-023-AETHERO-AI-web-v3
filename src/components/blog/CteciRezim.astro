@@ -1,0 +1,141 @@
+---
+/**
+ * Čtecí režim — panel s nastavením čtení u článku (AE-53, DK 2026-08-04).
+ *
+ * Panel nesahá na žádný prvek přímo. Přepíná atributy na <html>, ty mění
+ * proměnné --cteni-* a o zbytek se stará src/styles/cteni.css.
+ * Volba se pamatuje v localStorage, takže kdo si jednou zvětší písmo,
+ * má ho zvětšené i u dalšího článku.
+ *
+ * Bez JS zůstane stránka ve výchozím (tmavém) nastavení a panel se vůbec
+ * nezobrazí — proto je v markupu skrytý a odkrývá ho až skript.
+ */
+interface Props { lang?: 'cs' | 'en' }
+const { lang = 'cs' } = Astro.props;
+
+const t = lang === 'en'
+  ? { titulek: 'Reading', velikost: 'Text size', mensi: 'Decrease text size', vetsi: 'Increase text size',
+      rez: 'Typeface', bez: 'Sans serif', patky: 'Serif', motiv: 'Theme',
+      tmavy: 'Dark', svetly: 'Light', sepia: 'Sepia',
+      klid: 'Text only', klidPopis: 'Hides the menu and footer. Leaves the title and article.',
+      otevri: 'Open reading settings', zavri: 'Hide reading settings' }
+  : { titulek: 'Čtecí režim', velikost: 'Velikost písma', mensi: 'Zmenšit písmo', vetsi: 'Zvětšit písmo',
+      rez: 'Řez písma', bez: 'Bezpatkové', patky: 'Patkové', motiv: 'Motiv',
+      tmavy: 'Tmavý', svetly: 'Světlý', sepia: 'Sepia',
+      klid: 'Jen text', klidPopis: 'Schová menu i patičku. Zůstane nadpis a článek.',
+      otevri: 'Otevřít čtecí režim', zavri: 'Skrýt čtecí režim' };
+---
+
+<div class="cteni-postup" id="cteni-postup" aria-hidden="true"></div>
+
+<button class="cteni-spust" id="cteni-spust" hidden aria-label={t.otevri} title={t.titulek}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a1.5 1.5 0 0 0-1.5-1.5h-5A1.5 1.5 0 0 1 4 16z"/>
+    <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 0 20 16z"/>
+  </svg>
+</button>
+
+<aside class="cteni" id="cteni-panel" hidden aria-label={t.titulek}>
+  <div class="cteni-hlava">
+    <span>{t.titulek}</span>
+    <button class="cteni-zavri" id="cteni-zavri" aria-label={t.zavri}>✕</button>
+  </div>
+
+  <div class="cteni-skupina">
+    <label id="cteni-l-vel">{t.velikost}</label>
+    <div class="cteni-prep velikost" role="group" aria-labelledby="cteni-l-vel">
+      <button class="krok" id="cteni-mensi" aria-label={t.mensi}>A&#8722;</button>
+      <span class="cteni-stupnice" id="cteni-stupnice" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <button class="krok" id="cteni-vetsi" aria-label={t.vetsi}>A+</button>
+    </div>
+  </div>
+
+  <div class="cteni-skupina">
+    <label id="cteni-l-rez">{t.rez}</label>
+    <div class="cteni-prep" role="group" aria-labelledby="cteni-l-rez">
+      <button data-rez="bez" aria-pressed="true">{t.bez}</button>
+      <button data-rez="patky" aria-pressed="false" style="font-family: var(--font-serif)">{t.patky}</button>
+    </div>
+  </div>
+
+  <div class="cteni-skupina">
+    <label id="cteni-l-mot">{t.motiv}</label>
+    <div class="cteni-prep motiv" role="group" aria-labelledby="cteni-l-mot">
+      <button data-motiv="tmavy" aria-pressed="true">{t.tmavy}</button>
+      <button data-motiv="svetly" aria-pressed="false">{t.svetly}</button>
+      <button data-motiv="sepia" aria-pressed="false">{t.sepia}</button>
+    </div>
+  </div>
+
+  <div class="cteni-skupina">
+    <button class="cteni-klid" id="cteni-klid" aria-pressed="false">{t.klid}</button>
+    <p class="cteni-klid-popis">{t.klidPopis}</p>
+  </div>
+</aside>
+
+<script>
+  const H = document.documentElement;
+  const uloz = (k, v) => { try { localStorage.setItem('ae-cteni-' + k, v); } catch (e) { /* soukromý režim */ } };
+  const nacti = (k) => { try { return localStorage.getItem('ae-cteni-' + k); } catch (e) { return null; } };
+
+  const panel = document.getElementById('cteni-panel');
+  const spust = document.getElementById('cteni-spust');
+  if (panel && spust) {
+    // Panel je v markupu skrytý — bez JS by byl k ničemu. Odkryjeme až tady.
+    const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; uloz('panel', ano ? '1' : '0'); };
+    zobrazPanel(nacti('panel') !== '0');
+    document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
+    spust.onclick = () => zobrazPanel(true);
+
+    const nastav = (klic, hodnota) => {
+      H.setAttribute('data-cteni-' + klic, hodnota);
+      panel.querySelectorAll('[data-' + klic + ']').forEach((b) =>
+        b.setAttribute('aria-pressed', String(b.dataset[klic] === hodnota)));
+      uloz(klic, hodnota);
+    };
+    panel.querySelectorAll('[data-rez]').forEach((b) => { b.onclick = () => nastav('rez', b.dataset.rez); });
+    panel.querySelectorAll('[data-motiv]').forEach((b) => { b.onclick = () => nastav('motiv', b.dataset.motiv); });
+
+    const POLOH = 6;
+    const mensi = document.getElementById('cteni-mensi');
+    const vetsi = document.getElementById('cteni-vetsi');
+    const tecky = Array.from(document.getElementById('cteni-stupnice').children);
+    const popisVel = document.getElementById('cteni-l-vel');
+    const nastavVelikost = (n) => {
+      n = Math.min(POLOH, Math.max(1, n));
+      H.setAttribute('data-cteni-px', String(n));
+      tecky.forEach((t, i) => t.classList.toggle('aktivni', i < n));
+      mensi.disabled = n === 1;
+      vetsi.disabled = n === POLOH;
+      popisVel.dataset.stav = n + '/' + POLOH;
+      uloz('px', String(n));
+    };
+    mensi.onclick = () => nastavVelikost(Number(H.getAttribute('data-cteni-px')) - 1);
+    vetsi.onclick = () => nastavVelikost(Number(H.getAttribute('data-cteni-px')) + 1);
+
+    const klid = document.getElementById('cteni-klid');
+    klid.onclick = () => {
+      const zapnuto = H.hasAttribute('data-cteni-klid');
+      if (zapnuto) H.removeAttribute('data-cteni-klid'); else H.setAttribute('data-cteni-klid', '1');
+      klid.setAttribute('aria-pressed', String(!zapnuto));
+      uloz('klid', zapnuto ? '' : '1');
+    };
+
+    // obnovit, co si čtenář nastavil minule
+    nastav('rez', nacti('rez') || 'bez');
+    nastav('motiv', nacti('motiv') || 'tmavy');
+    nastavVelikost(Number(nacti('px')) || 3);
+    if (nacti('klid') === '1') klid.click();
+  }
+
+  // ukazatel postupu čtení
+  const postup = document.getElementById('cteni-postup');
+  if (postup) {
+    const prekresli = () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      postup.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', prekresli, { passive: true });
+    prekresli();
+  }
+</script>
