@@ -563,6 +563,9 @@ img { max-width: 100%; height: auto; }
    Fialová je světlá varianta pro tmavé pozadí; --accent-purple z tokenů je
    tmavý odstín pro světlé plochy a tady by nebyl čitelný. */
 .app-hero-sub-hi { color: #a081d1; }
+/* Podtitul má už sám váhu 600; vnořený <strong> by ji vyhnal na 700 a rozbil
+   jednotný řez, který má vzorová stránka (AE Translator na aethero.cz). */
+.app-hero-sub strong { font-weight: inherit; }
 @media (max-width: 768px) {
   .app-hero { min-height: auto; }
   .app-hero-logo { width: 120px; }
