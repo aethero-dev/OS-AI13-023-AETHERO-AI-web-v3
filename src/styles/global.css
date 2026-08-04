@@ -578,7 +578,10 @@ img { max-width: 100%; height: auto; }
    jednotný řez, který má vzorová stránka (AE Translator na aethero.cz). */
 .app-hero-sub strong { font-weight: inherit; }
 @media (max-width: 768px) {
+  /* Hero se tu smrskne na výšku obsahu, takže ukotvení ke spodku nemá co
+     vyrovnávat a 164px zespodu je jen díra před další sekcí (DK 2026-08-04). */
   .app-hero { min-height: auto; }
+  .app-hero-inner { padding-bottom: 48px; }
   .app-hero-logo { width: 120px; }
 }
 @media (max-width: 480px) {
