@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleFaq from '../components/ArticleFaq.astro';
+
+// Ukázka pro blok 10g — živá komponenta, ne obrázek. Ať je v DS vidět
+// skutečná věc, včetně rozbalování (DK 2026-08-04).
+const faqUkazka = [
+  { q: 'Kolik to stojí?', a: ['To záleží. Jedna drobná úprava může být rychlovka, aplikace je už ale projekt.'] },
+  { q: 'Děláte i „jen“ konzultaci?', a: ['Ano. Někdy stačí 60–90 minut a máme všichni jasno, co stavět a čemu se vyhnout.'] },
+  { q: 'Umíte napojit i něco, co „nemá integraci“?', a: ['Pokud má služba API nebo aspoň rozumný export a import, většinou se cesta najde.'] },
+];
 ---
 
 <BaseLayout title="Design System — aethero web v3.1" lang="cs">
@@ -1636,38 +1645,23 @@ font-family: var(--font-secondary);</code></pre>
             </div>
           </div>
 
-          <!-- 10g FAQ Accordion -->
-          <div class="ds-block-card">
-            <div class="ds-block-hd"><span class="ds-block-num">10g</span><span class="ds-block-ttl">FAQ — Číslovaný accordion</span><span class="ds-block-file">.faq-accordion</span></div>
+          <!-- 10g FAQ — živá komponenta, ne schéma -->
+          <div class="ds-block-card ds-block-card--siroka">
+            <div class="ds-block-hd"><span class="ds-block-num">10g</span><span class="ds-block-ttl">FAQ — číslovaný seznam</span><span class="ds-block-file">components/ArticleFaq.astro</span></div>
             <div class="ds-block-bd">
-              <div class="ds-block-thumb" style="height:100px;background:#000326;border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:5px;max-width:66%">
-                <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:5px;display:flex;justify-content:space-between;align-items:center;gap:6px">
-                  <div style="display:flex;gap:5px;align-items:center">
-                    <div style="height:4px;background:rgba(160,129,209,0.6);border-radius:1px;width:12px"></div>
-                    <div style="height:4px;background:rgba(255,255,255,0.5);border-radius:1px;width:60px"></div>
-                  </div>
-                  <div style="width:10px;height:10px;border:1px solid rgba(255,255,255,0.3);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(22,190,207,0.8)">+</div>
-                </div>
-                <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:5px;display:flex;justify-content:space-between;align-items:center;gap:6px;background:rgba(255,255,255,0.02);padding:4px 6px;border-radius:3px">
-                  <div style="display:flex;gap:5px;align-items:center">
-                    <div style="height:4px;background:rgba(160,129,209,0.6);border-radius:1px;width:12px"></div>
-                    <div style="height:4px;background:rgba(255,255,255,0.6);border-radius:1px;width:75px"></div>
-                  </div>
-                  <div style="width:10px;height:10px;border:1px solid rgba(22,190,207,0.5);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(22,190,207,0.9)">−</div>
-                </div>
-                <div style="padding:0 6px;display:flex;flex-direction:column;gap:2px">
-                  <div style="height:3px;background:rgba(255,255,255,0.15);border-radius:1px;width:95%"></div>
-                  <div style="height:3px;background:rgba(255,255,255,0.15);border-radius:1px;width:80%"></div>
-                </div>
-                <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:5px;display:flex;justify-content:space-between;align-items:center;gap:6px">
-                  <div style="display:flex;gap:5px;align-items:center">
-                    <div style="height:4px;background:rgba(160,129,209,0.6);border-radius:1px;width:12px"></div>
-                    <div style="height:4px;background:rgba(255,255,255,0.5);border-radius:1px;width:55px"></div>
-                  </div>
-                  <div style="width:10px;height:10px;border:1px solid rgba(255,255,255,0.3);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(22,190,207,0.8)">+</div>
-                </div>
+              <div class="ds-block-thumb ds-faq-zivy">
+                <ArticleFaq title="FAQ (rychle a bez omáčky)" items={faqUkazka} />
               </div>
-              <div class="ds-block-meta"><b>max-width 66.67%</b> · Položka: číslo lavender + otázka + toggle ± · .open → max-height animace · Border-bottom oddělení · JS vanilla</div>
+              <div class="ds-block-meta">
+                <b>Živá komponenta — rozbal si ji.</b> Linky místo boxů · pořadové číslo
+                20&nbsp;px v lavenderu (<code>--cteni-zvyrazneni</code>) · tyrkysové plus,
+                po otevření minus · číslo i plus sedí na PRVNÍM řádku otázky, ne na svislém
+                středu · nativní <code>&lt;details&gt;</code>, funguje bez JS ·
+                přidává <b>FAQPage JSON-LD</b>.<br />
+                Barvy jdou přes <code>--cteni-*</code>, takže se blok přebarvuje se čtecím
+                režimem (B-26). Používá se na článcích i na stránkách služeb — <b>jedna
+                podoba, jedna komponenta</b>.
+              </div>
             </div>
           </div>
 
@@ -3266,6 +3260,13 @@ font-family: var(--font-secondary);</code></pre>
   .ds-block-file { font-family: monospace; font-size: 13px; color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
   .ds-block-bd { padding: 12px 14px; }
   .ds-block-thumb { background: rgba(0,3,38,0.6); border-radius: 6px; margin-bottom: 10px; }
+  /* Živá ukázka bloku v DS: komponenta si nese sekční padding a container,
+     tady jí obojí zkrotíme, ať se vejde do karty. */
+  .ds-block-card--siroka { grid-column: 1 / -1; }
+  .ds-faq-zivy { padding: 4px 20px 12px; }
+  .ds-faq-zivy :global(.faq-section) { padding: 0; background: transparent; }
+  .ds-faq-zivy :global(.faq-inner) { padding: 0; max-width: 100%; }
+  .ds-faq-zivy :global(.faq-inner h2) { font-size: 24px; margin-bottom: 20px; }
   .ds-block-meta { font-family: 'Montserrat', sans-serif; font-size: 14px; color: rgba(255,255,255,0.3); line-height: 1.6; }
   .ds-block-meta b { color: rgba(255,255,255,0.55); font-weight: 600; }
 
