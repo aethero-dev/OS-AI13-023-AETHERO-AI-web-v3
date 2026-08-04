@@ -29,10 +29,7 @@ const t = lang === 'en'
 <div class="cteni-postup" id="cteni-postup" aria-hidden="true"></div>
 
 <button class="cteni-spust" id="cteni-spust" hidden aria-label={t.otevri} title={t.titulek}>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a1.5 1.5 0 0 0-1.5-1.5h-5A1.5 1.5 0 0 1 4 16z"/>
-    <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 0 20 16z"/>
-  </svg>
+  <span aria-hidden="true">Aa</span>
 </button>
 
 <aside class="cteni" id="cteni-panel" hidden aria-label={t.titulek}>
@@ -83,7 +80,12 @@ const t = lang === 'en'
   if (panel && spust) {
     // Panel je v markupu skrytý — bez JS by byl k ničemu. Odkryjeme až tady.
     const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; uloz('panel', ano ? '1' : '0'); };
-    zobrazPanel(nacti('panel') !== '0');
+    /* Otevřený panel dává smysl jen tam, kde vedle sloupce zbývá místo.
+       Na užších obrazovkách by ukrajoval z textu, takže začíná zavřený —
+       ledaže si ho čtenář sám otevřel a máme to uložené (DK 2026-08-04). */
+    const ulozenyStav = nacti('panel');
+    const dostVedleSloupce = window.matchMedia('(min-width: 1200px)').matches;
+    zobrazPanel(ulozenyStav === null ? dostVedleSloupce : ulozenyStav === '1');
     document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
     spust.onclick = () => zobrazPanel(true);
 
@@ -126,6 +128,22 @@ const t = lang === 'en'
     nastav('motiv', nacti('motiv') || 'tmavy');
     nastavVelikost(Number(nacti('px')) || 3);
     if (nacti('klid') === '1') klid.click();
+  }
+
+  /* Panel se odkryje, teprve když se do okna dostane tělo článku — nad hero
+     obrázkem nemá co dělat. Sleduje se přímo prvek, ne počet odscrollovaných
+     pixelů: hero má na každé stránce jinou výšku a na 14" notebooku jinou
+     než na velkém monitoru. */
+  const telo = document.querySelector('article.section');
+  if (telo) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(
+        ([zaznam]) => H.toggleAttribute('data-cteni-ctu', zaznam.isIntersecting),
+        { rootMargin: '-10% 0px -55% 0px' },
+      ).observe(telo);
+    } else {
+      H.setAttribute('data-cteni-ctu', '1');  // starý prohlížeč — ať je panel aspoň dostupný
+    }
   }
 
   // ukazatel postupu čtení
