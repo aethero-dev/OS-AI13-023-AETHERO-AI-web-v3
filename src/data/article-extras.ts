@@ -1,9 +1,8 @@
 // Doplňky k článkům: velké CTA pod perexem + blok Časté otázky (FAQ).
 //
-// PROČ TADY A NE V CMS: v době vzniku měl projekt jen read-only Storyblok token.
-// Token se zápisem už existuje a pole (cta_label, cta_url, cta_note, faq_title,
-// faq + komponenta faq_item) jsou ve Storybloku založená — přesun je AE-39,
-// pak tenhle soubor zanikne. Do té doby se edituje tady.
+// PROČ TADY A NE V CMS: Storyblok byl 2026-08-02 odstraněn (AE-49, přesun
+// AE-39 tím padl) — tenhle soubor je trvalý domov FAQ a CTA. Edituje ho
+// DK/CC; Bára posílá otázky a odpovědi textem (viz docs/NAVOD-CLANKY.md).
 //
 // FAQ NENÍ OZDOBA: generuje FAQPage schema, což je nejsilnější formát pro
 // citace v odpovědích AI vyhledávačů. Odpovědi proto musí být věcné a krátké
