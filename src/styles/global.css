@@ -725,3 +725,26 @@ img { max-width: 100%; height: auto; }
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.78));
   color: #fff; font-size: 14px; line-height: 1.4; text-align: left; pointer-events: none;
 }
+
+/* ─── OBRÁZKY V ČLÁNKU ───────────────────────────────────────────────────
+   Přirozená velikost, na střed. Nikdy se neroztahují přes width:100% —
+   část podkladů z původního webu je malá (screenshot exportu má 320 px)
+   a roztažení by je rozmazalo. Všechno v global.css, ne scoped v šabloně,
+   ať se pravidla nepřebíjejí specificitou. */
+.article-body img {
+  border-radius: var(--radius-sm); max-width: 100%; height: auto;
+  display: block; margin: 2em auto;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+/* Značka / logo v textu. Bez třídy by se 648x628 logo roztáhlo přes celý
+   sloupec a zabralo půl obrazovky. Patří k nadpisu, který za ním následuje —
+   proto doleva a těsně nad něj, ne doprostřed sloupce (DK 2026-08-04). */
+.article-body img.znak {
+  max-width: 120px;
+  margin: 2.5em 0 0;
+  border: none; border-radius: 0;
+}
+/* .sb-content navíc kvůli specificitě — nadpisy mají v šabloně margin-top 2em
+   a bez toho by mezi značkou a nadpisem zůstalo 72 px. */
+.article-body.sb-content img.znak + h2,
+.article-body.sb-content img.znak + h3 { margin-top: 0.25em; }
