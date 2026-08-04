@@ -534,7 +534,13 @@ img { max-width: 100%; height: auto; }
 .app-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center bottom; }
 .app-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,3,38,0.75) 100%);
+  /* Dvě vrstvy: svislá sjednocuje spodek se stránkou, VODOROVNÁ dělá vlevo
+     klidnou tmavou plochu pro text a nechává obrázek dýchat vpravo.
+     Bez ní text ležel přímo na motivu a pral se s ním (srovnání se starým
+     webem, DK 2026-08-04). */
+  background:
+    linear-gradient(to right, rgba(0,3,38,0.88) 0%, rgba(0,3,38,0.55) 45%, rgba(0,3,38,0.15) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,3,38,0.75) 100%);
 }
 .app-hero-inner {
   position: relative; z-index: 1;
@@ -547,9 +553,16 @@ img { max-width: 100%; height: auto; }
   font-weight: 700; line-height: 1.2; color: #fff; margin: 0;
 }
 .app-hero-sub {
-  font-size: var(--fs-28); color: rgba(255,255,255,0.85);
-  line-height: 1.4; max-width: 680px; margin: 0;
+  /* Plná bílá a větší řez — na 85 % působil podtitul potlačeně proti
+     starému webu, kde je 40px/600 v plné bílé (změřeno 2026-08-04). */
+  font-size: var(--fs-40); font-weight: 600; color: #fff;
+  line-height: 1.35; max-width: 780px; margin: 0;
 }
+/* Zvýrazněná první část podtitulu. Třída byla v markupu app stránek od začátku,
+   ale styl k ní nikdy nevznikl — proto podtitul vypadal ploše.
+   Fialová je světlá varianta pro tmavé pozadí; --accent-purple z tokenů je
+   tmavý odstín pro světlé plochy a tady by nebyl čitelný. */
+.app-hero-sub-hi { color: #a081d1; }
 @media (max-width: 768px) {
   .app-hero { min-height: auto; }
   .app-hero-logo { width: 120px; }
