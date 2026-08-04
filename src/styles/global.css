@@ -748,3 +748,31 @@ img { max-width: 100%; height: auto; }
    a bez toho by mezi značkou a nadpisem zůstalo 72 px. */
 .article-body.sb-content img.znak + h2,
 .article-body.sb-content img.znak + h3 { margin-top: 0.25em; }
+
+/* ─── TABULKY V ČLÁNKU ───────────────────────────────────────────────────
+   Srovnávací tabulky se do sloupce 792 px nevejdou (ta největší má pět
+   sloupců), proto se posouvají vodorovně ve vlastním rámu — stránka sama
+   se nikdy neposouvá do stran. Přidáno se srovnávacím článkem
+   Shopify vs Shoptet (DK 2026-08-04). */
+.article-body table {
+  width: 100%; border-collapse: collapse; margin: 2em 0;
+  font-size: 0.85em; line-height: 1.5; display: block; overflow-x: auto;
+  white-space: normal;
+}
+.article-body table th,
+.article-body table td {
+  padding: 0.7em 0.9em; text-align: left; vertical-align: top;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  min-width: 150px;
+}
+.article-body table thead th {
+  color: var(--text-primary); font-weight: 700;
+  border-bottom: 2px solid rgba(255,255,255,0.22);
+  white-space: nowrap;
+}
+/* první sloupec je popiska řádku — drží se vlevo a nese váhu */
+.article-body table tbody td:first-child {
+  color: var(--text-primary); font-weight: 600; min-width: 180px;
+}
+.article-body table tbody tr:last-child td { border-bottom: none; }
+.article-body table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.025); }
