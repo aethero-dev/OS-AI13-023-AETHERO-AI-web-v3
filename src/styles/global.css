@@ -530,22 +530,28 @@ img { max-width: 100%; height: auto; }
 .intro-main .intro-text { max-width: none; }
 
 /* ─── APP HERO — hero sekce pro vlastní aplikace (esyncer, ae-translator) ─── */
-.app-hero { position: relative; display: block; overflow: hidden; min-height: 700px; }
-.app-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center bottom; }
+/* Výška je převzatá z modelu na aethero.cz: tam má hero 1038 px a fotku
+   1440×810 roztaženou přes cover, tedy přiblíženou ~1,28×. Naše fotka je
+   stejný motiv v 1280×720 — shodný poměr 16:9, takže na 1040 px vyjde
+   úplně stejný výřez. Na 700 px byla scéna oddálená a „nesedla" (DK 2026-08-04). */
+.app-hero { position: relative; display: block; overflow: hidden; min-height: 1040px; }
+.app-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center center; }
 .app-hero-overlay {
   position: absolute; inset: 0;
-  /* Dvě vrstvy: svislá sjednocuje spodek se stránkou, VODOROVNÁ dělá vlevo
-     klidnou tmavou plochu pro text a nechává obrázek dýchat vpravo.
-     Bez ní text ležel přímo na motivu a pral se s ním (srovnání se starým
-     webem, DK 2026-08-04). */
+  /* Vzor na .cz nemá na fotce žádný překryv (opacity 1, filter none) — text
+     je čitelný proto, že leží v přirozeně tmavém levém dolním rohu scény.
+     U nás to samo nestačí: na eSyncer padl fialový podtitul na rozsvícenou
+     klávesnici a kontrast klesl na 1,64:1. Proto elipsa jen POD textovým
+     blokem — zbytek fotky zůstává světlý, na rozdíl od plošného ztmavení. */
   background:
-    linear-gradient(to right, rgba(0,3,38,0.80) 0%, rgba(0,3,38,0.18) 45%, rgba(0,3,38,0) 70%),
-    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,3,38,0.50) 100%);
+    radial-gradient(ellipse 1050px 460px at 26% 62%, rgba(0,3,38,0.80) 0%, rgba(0,3,38,0.45) 55%, rgba(0,3,38,0) 100%),
+    linear-gradient(to right, rgba(0,3,38,0.34) 0%, rgba(0,3,38,0.08) 40%, rgba(0,3,38,0) 62%),
+    linear-gradient(to bottom, rgba(0,3,38,0) 55%, rgba(0,3,38,0.55) 100%);
 }
 .app-hero-inner {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: flex-start;
-  gap: 24px; padding-top: 150px; padding-bottom: 48px;
+  gap: 24px; padding-top: 210px; padding-bottom: 64px;
 }
 .app-hero-logo { width: 220px; height: auto; object-fit: contain; }
 .app-hero h1 {
