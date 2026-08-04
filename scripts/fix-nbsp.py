@@ -27,9 +27,19 @@ NBSP = " "
 
 _re_word = re.compile(r'(^|[\s(„])([%s])[ \t\r\n]+' % re.escape(SINGLE))
 
+def _do_ustaleni(rx, text):
+    # Zřetězené jednoznakovky („i v AI", „a s tím"): regex spotřebuje mezeru,
+    # takže další v řadě přeskočí — opakovat, dokud se něco mění (DK našel
+    # 2026-08-04 večer v článcích).
+    while True:
+        novy = rx.sub(lambda m: m.group(1) + m.group(2) + NBSP, text)
+        if novy == text:
+            return text
+        text = novy
+
 def add_nbsp(text):
     # mezera/zalomení za samostatnou jednoznakovkou → pevná mezera (sváže s dalším slovem)
-    return _re_word.sub(lambda m: m.group(1) + m.group(2) + NBSP, text)
+    return _do_ustaleni(_re_word, text)
 
 # Textová pole v datech. Schválně jmenovitě — vyhne se to `icon` (SVG cesty
 # obsahují samostatná písmena a mezery, sweep by je rozbil) i cestám k obrázkům.
@@ -60,9 +70,39 @@ def process(s):
     s = re.sub(r'\x00(\d+)\x00', lambda m: blocks[int(m.group(1))], s)        # bloky zpět
     return head + s
 
+# ── Markdown (články v content collections) ─────────────────────────────
+# ⚠️ Do 2026-08-04 večer sweep bral jen *.astro — články blogu v .md tedy
+# jednoznakovky nikdy nedostaly (našel DK). Markdown potřebuje vlastní
+# logiku: text není mezi > a <, newline je významný (nesmí se slepit
+# odstavce ani odrážky) a nesahá se na kód, URL odkazů a vložené HTML.
+_re_word_md = re.compile(r'(^|[\s(„])([%s])[ \t]+(?=\S)' % re.escape(SINGLE))
+# jednoznakovka na KONCI zdrojového řádku uvnitř odstavce: jediný \n se
+# nahradí nbsp (md ho stejně vykresluje jako mezeru) — ale jen když další
+# řádek je běžný text, ne odrážka/nadpis/tabulka/citace/kód/číslo/odkaz
+_re_word_md_nl = re.compile(r'([ („])([%s])\n(?=[^\s#\-*>|\d`!\[])' % re.escape(SINGLE))
+
+def add_nbsp_md(text):
+    text = _do_ustaleni(_re_word_md, text)
+    text = _do_ustaleni(_re_word_md_nl, text)
+    return text
+
+def process_md(s):
+    head = ""
+    fm = re.match(r'^---\n[\s\S]*?\n---\n', s)          # frontmatter zvlášť
+    if fm:
+        head, s = frontmatter_nbsp(fm.group(0)), s[fm.end():]
+    blocks = []                     # schovat kód, URL odkazů a vložené HTML
+    def stash(m):
+        blocks.append(m.group(0)); return "\x00%d\x00" % (len(blocks) - 1)
+    s = re.sub(r'```[\s\S]*?```|`[^`\n]+`|<[^>\n]+>|\]\([^)\n]+\)', stash, s)
+    s = add_nbsp_md(s)
+    s = re.sub(r'\x00(\d+)\x00', lambda m: blocks[int(m.group(1))], s)
+    return head + s
+
 def main():
     root = sys.argv[1] if len(sys.argv) > 1 else "src"
     files = glob.glob(os.path.join(root, "**", "*.astro"), recursive=True)
+    files += glob.glob(os.path.join(root, "content", "**", "*.md"), recursive=True)
     # POUZE ČESKÝ OBSAH. Pravidlo o jednoznakovkách je české; v angličtině by
     # sweep svázal každé „a" („a rock-solid brand") a „I", což je typograficky
     # špatně. Zjištěno při plošném nasazení na AE 2026-08-04.
@@ -83,7 +123,7 @@ def main():
     changed = 0
     for f in files:
         s = open(f, encoding="utf-8").read()
-        s2 = process(s)
+        s2 = process_md(s) if f.endswith(".md") else process(s)
         if s2 != s:
             open(f, "w", encoding="utf-8").write(s2); changed += 1
             print("nbsp:", f)

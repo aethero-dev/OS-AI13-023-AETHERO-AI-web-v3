@@ -37,8 +37,22 @@ html[data-cteni-px="4"] { --cteni-px: 23px; }
 html[data-cteni-px="5"] { --cteni-px: 27px; }
 html[data-cteni-px="6"] { --cteni-px: 32px; }
 
-/* ── řez: Lora je v projektu self-hostovaná jako --font-serif ───────── */
+/* ── řez: Lora je v projektu self-hostovaná jako --font-serif ─────────
+   Patky jdou na VŠECHNO, co je čtecí plocha — nadpisy, perex, meta i FAQ,
+   ne jen tělo (DK 2026-08-04 večer: „patkový font — dej ho na všechno").
+   Bezpatková volba nechává výchozí vzhled (nadpisy --font-primary), proto
+   se nadpisy přepínají až atributem, ne proměnnou --cteni-rodina. */
 html[data-cteni-rez="patky"] { --cteni-rodina: var(--font-serif); }
+html[data-cteni-rez="patky"] .blog-hero h1,
+html[data-cteni-rez="patky"] .blog-perex,
+html[data-cteni-rez="patky"] .blog-meta,
+html[data-cteni-rez="patky"] .article-body h2,
+html[data-cteni-rez="patky"] .article-body h3,
+html[data-cteni-rez="patky"] .article-body h4,
+html[data-cteni-rez="patky"] .article-body table,
+html[data-cteni-rez="patky"] .faq-section h2,
+html[data-cteni-rez="patky"] .faq-q,
+html[data-cteni-rez="patky"] .faq-a { font-family: var(--font-serif); }
 
 /* ── motivy ─────────────────────────────────────────────────────────────
    Světlý a sepia si drží NAŠE barvy, jen v odstínu, který na světlém
@@ -106,6 +120,7 @@ html[data-cteni-klid] #site-header,
 html[data-cteni-klid] footer,
 html[data-cteni-klid] .article-cta,
 html[data-cteni-klid] .cta-section,
+html[data-cteni-klid] .hero-img-wrap,
 html[data-cteni-klid] .more-articles { display: none; }
 html[data-cteni-klid] .blog-hero { padding-top: var(--space-48); }
 
