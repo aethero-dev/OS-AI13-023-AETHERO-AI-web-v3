@@ -1,7 +1,55 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// Research 2026-08-04: Shopify Markets docs and agency guides to selling
+// internationally. The most expensive mistake is the very first question.
+const faq = [
+  {
+    q: 'Should I build a separate store for each country?',
+    a: [
+      'Almost never. <strong>Shopify Markets</strong> handles currencies, languages, pricing, domains and tax rules from a single admin — separate stores only make sense with a fundamentally different range, or to separate B2B from B2C.',
+      'Two stores mean double the work on products, content and orders. It\'s the most expensive mistake we see in expansion, and it only shows up a year later.',
+    ],
+  },
+  {
+    q: 'Domain, subfolder or subdomain?',
+    a: [
+      'For most brands starting out, the pragmatic choice is a <strong>subfolder</strong> — it consolidates SEO authority on one domain and Shopify generates hreflang for it automatically.',
+      'A dedicated domain per market makes sense once the brand holds a different position there, or where local trust demands it. Moving between the two is possible, but costs redirects and time.',
+    ],
+  },
+  {
+    q: 'How does VAT work when selling into the EU?',
+    a: [
+      'Selling to EU consumers above the <strong>€10,000 a year</strong> threshold, you register for <strong>OSS</strong> and pay VAT by the customer\'s country. Below the threshold you pay at home.',
+      'Shopify can calculate and collect VAT and provides the data for OSS filings. Registration and the filings themselves are your accountant\'s job — we set up the system, not the taxes.',
+    ],
+  },
+  {
+    q: 'Do I need the store translated into every language?',
+    a: [
+      'Not necessarily. English covers a large part of Europe and it\'s reasonable to start there, before you know which markets actually pull.',
+      'Translation pays off where you\'re already selling. Only then can you see whether it returns — which is also why we built [our own app](/en/ae-translator/) for bulk translation.',
+    ],
+  },
+  {
+    q: 'What about shipping and duties outside the EU?',
+    a: [
+      'Shopify can calculate duties and taxes at checkout, so the customer sees the final landed price rather than hearing it from the courier.',
+      'It\'s worth switching on. An unpleasant surprise on delivery is one of the main reasons parcels get refused when selling outside the EU.',
+    ],
+  },
+  {
+    q: 'When does expansion make sense?',
+    a: [
+      'When you\'re hitting a ceiling of demand at home, your product isn\'t tied to local context, and you can handle customer support in another language.',
+      'That last point is the most underestimated. Technically expansion is configuration; operationally it\'s a commitment to answer people writing in another language and another time zone.',
+    ],
+  },
+];
 
 const startSteps = [
   { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Market entry strategy', desc: 'Selection of priority countries, validation of potential, pricing and commercial strategy.' },
@@ -110,6 +158,8 @@ const features = [
       <p class="body">When it comes to global expansion, the question is not whether — but when. Shopify gives you the technological foundation so you can focus on growth instead of working around platform limitations. Is now the right time, and do you want to take your store further with us?</p>
     </div>
   </section>
+
+  <ArticleFaq title="International expansion — frequently asked questions" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">

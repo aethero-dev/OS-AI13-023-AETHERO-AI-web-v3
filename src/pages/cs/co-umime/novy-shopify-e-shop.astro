@@ -1,7 +1,56 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// Otázky, které padnou na první schůzce k novému e-shopu. Odpovědi jsou
+// schválně konkrétní tam, kde konkrétní být můžeme, a schválně říkají
+// „záleží", kde by číslo bylo vymyšlené.
+const faq = [
+  {
+    q: 'Kolik nový e-shop na Shopify stojí?',
+    a: [
+      'Cena má dvě části, které je dobré nemíchat: <strong>provoz platformy</strong> (tarif Shopify od zhruba 600 Kč měsíčně plus aplikace) a <strong>postavení e-shopu</strong>, tedy jednorázová práce.',
+      'Tu druhou nelze odhadnout bez zadání. Po krátkém ujasnění dostanete varianty s rozsahem a cenou u každé — a doporučení, co má nejlepší poměr cena/výkon.',
+    ],
+  },
+  {
+    q: 'Jak dlouho to trvá?',
+    a: [
+      'Záleží hlavně na obsahu, ne na technice. E-shop se dá postavit rychle; co projekty brzdí, jsou fotky, texty a rozhodnutí o sortimentu.',
+      'Proto v harmonogramu vždycky říkáme, co potřebujeme od vás a kdy. Bez toho by termín byl jen zbožné přání.',
+    ],
+  },
+  {
+    q: 'Musím používat hotovou šablonu, nebo se dělá design na míru?',
+    a: [
+      'Obojí je legitimní. Hotová šablona je rychlá a levná a u prvního e-shopu dává často největší smysl.',
+      'Design na míru se vyplatí, když má značka nést sama sebe, sortiment vyžaduje nestandardní prezentaci, nebo když šablona brzdí konverzi. Poznáte to většinou až na datech — proto se dá začít šablonou a předělat později.',
+    ],
+  },
+  {
+    q: 'Budu si e-shop umět spravovat sám?',
+    a: [
+      'Ano. Shopify je administrace stavěná pro obchodníky, ne pro vývojáře — produkty, ceny, stránky, blog i objednávky zvládnete bez nás.',
+      'Předáváme e-shop tak, aby se dal spravovat: s vysvětlením, kde se co mění. Nemáme zájem být úzké hrdlo u každé změny textu.',
+    ],
+  },
+  {
+    q: 'Který tarif Shopify si mám vzít?',
+    a: [
+      'Na začátku skoro vždycky ten základní. Vyšší tarify se vyplatí až u objemu, kde nižší sazba za transakce pokryje rozdíl v ceně — to je počítání, ne dojem.',
+      'Shopify Plus řešte, teprve když narazíte na strop: vlastní checkout, B2B, velké objemy nebo více obchodů pod jednou správou.',
+    ],
+  },
+  {
+    q: 'Co když budu chtít později prodávat i do zahraničí?',
+    a: [
+      'S tím počítejte rovnou, i když expanzi zatím neplánujete. Shopify má na to [Markets](/cs/co-umime/expanze-do-zahranici/) a stojí to pár rozhodnutí na začátku — struktura URL, měny, jazyky.',
+      'Dodělat to jde kdykoliv. Jen je levnější strukturu neřešit dvakrát.',
+    ],
+  },
+];
 
 const startSteps = [
   { icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>', title: 'Vaše plány a požadavky', desc: 'Řekněte nám, jak si projekt představujete a jaké máte potřeby.' },
@@ -198,6 +247,8 @@ const capabilities = [
       </div>
     </div>
   </section>
+
+  <ArticleFaq title="Časté otázky k novému e-shopu na Shopify" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">

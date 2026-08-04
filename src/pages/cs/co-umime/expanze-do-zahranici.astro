@@ -1,7 +1,55 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// Rešerše 2026-08-04: Shopify Markets dokumentace a agenturní průvodce
+// mezinárodním prodejem. Nejčastější drahá chyba je hned první otázka.
+const faq = [
+  {
+    q: 'Mám pro každou zemi udělat samostatný e-shop?',
+    a: [
+      'Skoro nikdy. <strong>Shopify Markets</strong> zvládne měny, jazyky, ceny, domény i daňová pravidla z jedné administrace — samostatné obchody dávají smysl jen při zásadně jiném sortimentu nebo oddělení B2B a B2C.',
+      'Dva e-shopy znamenají dvojí práci s produkty, obsahem i objednávkami. Je to nejdražší chyba, kterou u expanze vidíme, a projeví se až po roce.',
+    ],
+  },
+  {
+    q: 'Doména, podsložka, nebo subdoména?',
+    a: [
+      'Pro většinu značek začínajících s expanzí je pragmatická volba <strong>podsložka</strong> — sjednocuje SEO autoritu na jedné doméně a Shopify k ní generuje hreflang sám.',
+      'Vlastní doména pro trh dává smysl, až když má značka v té zemi jinou pozici nebo to vyžaduje lokální důvěra. Přechod mezi tím jde, ale stojí přesměrování a čas.',
+    ],
+  },
+  {
+    q: 'Jak je to s DPH při prodeji do EU?',
+    a: [
+      'Při prodeji koncovým zákazníkům v EU nad prahem <strong>10 000 € ročně</strong> se registrujete do režimu <strong>OSS</strong> a odvádíte DPH podle země zákazníka. Pod prahem odvádíte doma.',
+      'Shopify umí DPH počítat i vybírat a dává podklady pro OSS přiznání. Registraci a přiznání ale řeší účetní — my nastavíme systém, ne daně.',
+    ],
+  },
+  {
+    q: 'Musím mít e-shop přeložený do každého jazyka?',
+    a: [
+      'Ne nutně. Angličtina pokryje velkou část Evropy a je rozumné s ní začít, než se ověří, které trhy táhnou.',
+      'Překlad se vyplatí tam, kde už prodáváte. Až tehdy je vidět, jestli se vrátí — a to je taky důvod, proč jsme si na hromadný překlad postavili [vlastní aplikaci](/cs/ae-translator/).',
+    ],
+  },
+  {
+    q: 'Co s dopravou a cly mimo EU?',
+    a: [
+      'Shopify umí spočítat clo a daně už v košíku, takže zákazník vidí konečnou cenu včetně poplatků, ne až od kurýra.',
+      'Vyplatí se to zapnout. Nemilé překvapení při doručení je jeden z hlavních důvodů odmítnutých zásilek při prodeji mimo EU.',
+    ],
+  },
+  {
+    q: 'Kdy má expanze smysl?',
+    a: [
+      'Když doma narážíte na strop poptávky, máte produkt, který není vázaný na lokální kontext, a zvládnete zákaznickou podporu v cizím jazyce.',
+      'Poslední bod se podceňuje nejčastěji. Technicky je expanze nastavení; provozně je to závazek odpovídat lidem, kteří píšou v jiném jazyce a jiném časovém pásmu.',
+    ],
+  },
+];
 
 const startSteps = [
   { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: 'Strategie vstupu na trh', desc: 'Výběr prioritních zemí, validace potenciálu, cenová a obchodní strategie.' },
@@ -143,6 +191,8 @@ const features = [
       <p class="body">U globální expanze není otázkou jestli, ale spíše kdy. Shopify vám dodá technologický základ, díky kterému se budete moci soustředit na růst místo řešení limitů platformy. Je teď ten správný čas a chcete s námi posunout svůj e-shop dál?</p>
     </div>
   </section>
+
+  <ArticleFaq title="Časté otázky k expanzi do zahraničí" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">

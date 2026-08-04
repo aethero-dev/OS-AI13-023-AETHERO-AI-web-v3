@@ -1,7 +1,54 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// Questions that come up in the first meeting about a new store.
+const faq = [
+  {
+    q: 'How much does a new Shopify store cost?',
+    a: [
+      'The price has two parts worth keeping separate: <strong>running the platform</strong> (a Shopify plan from roughly €25 a month plus apps) and <strong>building the store</strong>, which is one-off work.',
+      'The second can\'t be estimated without a brief. After a short conversation you get options with the scope and price of each — plus a recommendation on what gives the best value.',
+    ],
+  },
+  {
+    q: 'How long does it take?',
+    a: [
+      'It depends mostly on content, not on technology. A store can be built quickly; what slows projects down is photography, copy and decisions about the range.',
+      'That\'s why our schedule always states what we need from you and when. Without that, a deadline would be wishful thinking.',
+    ],
+  },
+  {
+    q: 'Do I have to use a ready-made theme, or is the design custom?',
+    a: [
+      'Both are legitimate. A ready-made theme is fast and cheap, and for a first store it often makes the most sense.',
+      'Custom design pays off when the brand has to carry itself, when the range needs unusual presentation, or when the theme is holding conversion back. You usually see that in the data — which is why starting with a theme and rebuilding later is a valid plan.',
+    ],
+  },
+  {
+    q: 'Will I be able to run the store myself?',
+    a: [
+      'Yes. Shopify\'s admin is built for merchants, not developers — products, prices, pages, blog and orders are all yours to manage.',
+      'We hand the store over so it can be run: with an explanation of where things are changed. We have no interest in being the bottleneck for every copy tweak.',
+    ],
+  },
+  {
+    q: 'Which Shopify plan should I take?',
+    a: [
+      'At the start, almost always the basic one. Higher plans pay off at the volume where the lower transaction rate covers the price difference — that\'s arithmetic, not a hunch.',
+      'Consider Shopify Plus only when you hit a ceiling: custom checkout, B2B, high volume, or several stores under one roof.',
+    ],
+  },
+  {
+    q: 'What if I want to sell abroad later?',
+    a: [
+      'Plan for it now, even if expansion isn\'t on the table. Shopify has [Markets](/en/co-umime/expanze-do-zahranici/) for it, and it comes down to a few early decisions — URL structure, currencies, languages.',
+      'It can be added at any time. It\'s just cheaper not to solve the structure twice.',
+    ],
+  },
+];
 
 const startSteps = [
   { icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>', title: 'Your plans & requirements', desc: 'Tell us how you envision the project and what you need.' },
@@ -199,6 +246,8 @@ const capabilities = [
       </div>
     </div>
   </section>
+
+  <ArticleFaq title="A new Shopify store — frequently asked questions" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">

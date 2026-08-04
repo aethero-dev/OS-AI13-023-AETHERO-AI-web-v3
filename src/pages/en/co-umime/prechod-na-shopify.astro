@@ -1,7 +1,54 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// FAQ based on what merchants actually fear about migration (research 2026-08-04).
+const faq = [
+  {
+    q: 'Will migration cost me my search rankings?',
+    a: [
+      'Not if a map of old URLs to new ones is built and <strong>301 redirects</strong> are deployed. That\'s the one measure that genuinely holds rankings; without it Google finds the old URLs as 404s and drops them.',
+      'We build the map before launch and check indexing after the switch. Short-term movement in rankings is normal. A real drop is usually the result of missing redirects, not of the migration itself.',
+    ],
+  },
+  {
+    q: 'How long will my store be down?',
+    a: [
+      'With a properly run migration there is <strong>no loss of trading time</strong>. The new store is built alongside the existing one on a test domain and only switched over after full testing, by changing DNS.',
+      'We schedule the switch for the night. The real window where anything might show is a few hours — and even that is DNS propagation rather than downtime.',
+    ],
+  },
+  {
+    q: 'What can be transferred?',
+    a: [
+      'Products, variants, collections, customers, orders, page and blog content. We move order history too, so customer support and analytics carry on where they left off.',
+      'What doesn\'t move by itself: app settings, loyalty points and email lists. Those are handled separately and are worth planning for early — losing a subscriber list hurts more than anything else.',
+    ],
+  },
+  {
+    q: 'Can I convert the products myself?',
+    a: [
+      'If you\'re coming from Shoptet, yes. We built a [free tool](/en/migrace-shoptet-na-shopify/) for exactly that, running right in your browser: upload the export, download a file in the format Shopify accepts.',
+      'For more complex catalogues — many variants, metafields, warehouse links — it\'s worth talking the migration through. Not because it can\'t be done, but because cleaning the data usually costs more than moving it.',
+    ],
+  },
+  {
+    q: 'When is migration not worth it?',
+    a: [
+      'When you sell locally only, have no expansion plans, are happy with support in your own language and nothing on your current platform is holding you back. Then changing platform is a cost without a return.',
+      'We\'ll tell you so. We have no reason to push anyone into a migration they gain nothing from — we wrote a [comparison of Shopify and Shoptet](/en/blog/shopify-vs-shoptet/) that goes through it in detail.',
+    ],
+  },
+  {
+    q: 'Can Shopify handle local payments and carriers?',
+    a: [
+      'Yes, but not out of the box — unlike a local platform, it has to be set up. Language is handled by translating the theme, payments through gateways like Comgate or GoPay, carriers through apps.',
+      'It\'s one-off work at setup. Budget for it, so it doesn\'t come as a surprise that "Shopify can\'t do it". It can — it just isn\'t switched on overnight.',
+    ],
+  },
+];
 
 const migrationSteps = [
   { icon: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/>', title: 'Start', desc: 'You have decided to migrate to Shopify with us.' },
@@ -83,6 +130,8 @@ const features = [
       </div>
     </section>
   ))}
+
+  <ArticleFaq title="Migrating to Shopify — frequently asked questions" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">

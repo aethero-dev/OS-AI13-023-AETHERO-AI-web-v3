@@ -1,7 +1,56 @@
 ---
+import ArticleFaq from '../../../components/ArticleFaq.astro';
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
+
+// FAQ podle toho, čeho se lidi u migrace opravdu bojí (rešerše 2026-08-04:
+// české průvodce migrací + Shopify replatforming guide). Pořadí podle toho,
+// co v rozhovorech přijde jako první — ne podle toho, co se nám hodí říct.
+const faq = [
+  {
+    q: 'Přijdu migrací o pozice ve vyhledávání?',
+    a: [
+      'Nemusíte — pokud vznikne mapa starých adres na nové a nasadí se <strong>301 přesměrování</strong>. To je jediné opatření, které pozice skutečně drží; bez něj Google staré adresy najde jako 404 a odepíše je.',
+      'Mapu děláme ještě před spuštěním a po přepnutí kontrolujeme indexaci. Krátkodobý pohyb v pozicích je normální. Propad bývá výsledkem chybějících přesměrování, ne migrace samotné.',
+    ],
+  },
+  {
+    q: 'Jak dlouho bude e-shop mimo provoz?',
+    a: [
+      'Při správně vedené migraci <strong>žádný výpadek prodeje není</strong>. Nový e-shop se staví vedle stávajícího na testovací doméně a přepíná se až po kompletním otestování, změnou DNS.',
+      'Přepnutí plánujeme na noční hodiny. Reálné okno, kdy se může něco projevit, jsou jednotky hodin — a i to je spíš propagace DNS než nedostupnost.',
+    ],
+  },
+  {
+    q: 'Co všechno se dá přenést?',
+    a: [
+      'Produkty, varianty, kolekce, zákazníky, objednávky, obsah stránek i blogu. Historii objednávek přenášíme taky, aby na ni navazovala zákaznická podpora a analytika.',
+      'Co se nepřenáší samo: nastavení aplikací, věrnostní body a e-mailové seznamy. To se řeší zvlášť a je dobré s tím počítat od začátku — přijít o seznam odběratelů bolí víc než cokoliv jiného.',
+    ],
+  },
+  {
+    q: 'Můžu si produkty převést sám?',
+    a: [
+      'Pokud jdete ze Shoptetu, ano. Připravili jsme na to [nástroj zdarma](/cs/migrace-shoptet-na-shopify/), který běží přímo ve vašem prohlížeči: nahrajete export a stáhnete soubor ve formátu, který Shopify přijme.',
+      'U složitějších katalogů — hodně variant, metapole, vazby na sklad — se vyplatí migraci probrat. Ne proto, že by to nešlo, ale proto, že úklid dat bývá dražší než jejich převod.',
+    ],
+  },
+  {
+    q: 'Kdy se migrace nevyplatí?',
+    a: [
+      'Když prodáváte jen v Česku, neplánujete expanzi, vyhovuje vám podpora v češtině a nic vás na stávající platformě nebrzdí. Pak je změna platformy náklad bez protihodnoty.',
+      'Řekneme vám to. Nemáme důvod tlačit někoho do migrace, ze které nic nezíská — sepsali jsme o tom [srovnání Shopify a Shoptetu](/cs/blog/shopify-vs-shoptet/), kde je to rozebrané do detailu.',
+    ],
+  },
+  {
+    q: 'Zvládne Shopify češtinu, dobírku a české dopravce?',
+    a: [
+      'Ano, ale ne v základu — na rozdíl od Shoptetu se to nastavuje. Čeština se řeší překladem šablony, platby přes brány jako Comgate nebo GoPay, dopravci přes aplikace.',
+      'Je to jednorázová práce při zakládání. Počítejte s ní v rozpočtu, ať vás nepřekvapí, že „to Shopify neumí". Umí — jen to není zapnuté ze dne na den.',
+    ],
+  },
+];
 
 const migrationSteps = [
   { icon: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>', title: 'Start', desc: 'Rozhodli jste se pro přechod na Shopify s námi.' },
@@ -83,6 +132,8 @@ const features = [
       </div>
     </section>
   ))}
+
+  <ArticleFaq title="Časté otázky k přechodu na Shopify" items={faq} />
 
   <!-- CTA -->
   <section class="cta-section" id="cta">
