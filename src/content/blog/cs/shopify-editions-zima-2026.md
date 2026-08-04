@@ -16,9 +16,13 @@ Updaty najdete ve dvanácti oblastech: Sidekick, Agentic, Online, Retail, Market
 
 Pokud vás tohle téma zajímá do detailu, doporučujeme zhlédnout [záznam z představení edice na YouTube](https://www.youtube.com/live/PbqOP1vp9ps?si=BvGG6E91L7-Xkwu1) (video je v angličtině).
 
+<img class="znak" src="/blog/shopify-sidekick-logo.webp" alt="Logo Shopify Sidekick" />
+
 ## Sidekick AI
 
 Tohle nás zaujalo úplně nejvíc. Ještě nedávno jsme jásali, že nám aplikace umí sama napsat textík k produktu díky „Shopify Magic". Jde se dál — mnoho z vás už si určitě vyzkoušelo, že Sidekick toho umí nečekaně dost: poradit, najít data, vytvořit slevu. Teď ale přichází **proaktivní Sidekick Pulse**.
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/LU4tghjdnG8" title="20+ updates to Sidekick" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ### Přivítejte Sidekick Pulse
 
@@ -28,9 +32,13 @@ Nová, proaktivní fáze pomoci od AI v e-shopu je tady. Rovnou ocitujeme Carla 
 
 Mnoho uživatelů už považuje za prokazatelně přínosné komunikovat se Sidekickem přímo a vést s ním rozhovory, vzhledem k tomu, jak je napojený na všechna data. Díky modulu Pulse za vás ale Sidekick nově **přemýšlí sám**: využívá znalosti o vašem obchodě, vaše data, ekonomické trendy i všechno, co Shopify ví o e-commerce v souvislostech, aby vám dal konkrétní návrhy, co zlepšit — a rovnou připraví podklady, jako jsou návrhy automatizací, slevy nebo znění mailů.
 
+![Návrh od Sidekick Pulse přímo v administraci Shopify](/blog/shopify-sidekick-pulse.webp)
+
 ### Tinker app
 
 Shopify připravuje novou appku, ve které si vyzkoušíte nejnovější AI nástroje pro e-commerce. Pokud máte e-shop, vypadá to na skvělou pomůcku. Chcete být mezi prvními? Jděte na stránku edice, na konec sekce **Online**, a klikněte na „Get notified".
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/k7XydEQQniY" title="Tinker: Your AI playground" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Agentic Commerce
 
@@ -39,6 +47,8 @@ Shopify připravuje novou appku, ve které si vyzkoušíte nejnovější AI nás
 Změny prezentované ve Winter '26 Edition výrazně rozšiřují pojem agentního obchodu — vaše produkty lze nyní snadno zpřístupnit a prodat přímo v AI rozhovorech na platformách jako ChatGPT, Microsoft Copilot nebo Perplexity.
 
 To znamená nový prodejní kanál, který funguje mimo klasický web.
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/22NqvJyppt8" title="Agentic Storefronts: reach buyers in AI" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Rollouts & SimGym
 
@@ -50,6 +60,10 @@ Integrované nástroje Rollouts a SimGym umožňují:
 - simulovat chování zákazníků před ostrým nasazením změn.
 
 To otevírá cestu k rychlejšímu a bezpečnějšímu vylepšování obchodů bez externích pluginů.
+
+![Nástroj Rollouts v administraci Shopify](/blog/shopify-rollouts.webp)
+
+![Nástroj SimGym pro simulaci chování zákazníků](/blog/shopify-simgym.webp)
 
 ## B2B a katalogy
 

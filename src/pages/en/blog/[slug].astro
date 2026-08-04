@@ -72,31 +72,20 @@ const articleSchema = {
     {featuredImage && (
       <div class="hero-img-wrap">
         <img src={featuredImage} alt={title} width="1200" height="630" loading="eager" />
-        <div class="hero-meta-bar">
-          <div class="container">
-            <div class="blog-meta">
-              <span class="blog-author">æthero team</span>
-              <span class="dot" aria-hidden="true">·</span>
-              <span>{dateFormatted}</span>
-              <span class="dot" aria-hidden="true">·</span>
-              <span>{readTime} read</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
-    {!featuredImage && (
-      <div class="container blog-hero-inner--no-img">
-        <div class="blog-meta">
-          <span>{dateFormatted}</span>
-          <span class="dot" aria-hidden="true">·</span>
-          <span>{readTime} read</span>
-        </div>
       </div>
     )}
     <div class="container blog-hero-inner">
       <h1>{title}</h1>
       <p class="blog-perex">{perex}</p>
+      <!-- Autor, datum a doba čtení pod nadpisem. Dřív se to tisklo přes spodek
+           hero obrázku, kde to bylo špatně čitelné (DK 2026-08-04). -->
+      <div class="blog-meta">
+        <span class="blog-author">æthero team</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{dateFormatted}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{readTime} read</span>
+      </div>
     </div>
   </section>
 
@@ -295,11 +284,13 @@ const articleSchema = {
   .blog-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: var(--space-8);
-    font-size: 14px;
-    color: var(--neutral-500);
-    margin-bottom: var(--space-24);
+    font-size: 16px;
+    color: var(--neutral-300);
+    margin-top: var(--space-24);
   }
+  .blog-meta .blog-author { font-weight: 600; color: var(--text-primary); }
   .dot { opacity: 0.4; }
   .blog-hero h1 {
     font-size: var(--fs-72);
@@ -333,15 +324,28 @@ const articleSchema = {
   /* Obrázky v textu se necentrují přes width:100% — část podkladů z původního
      webu je malá (screenshot exportu má 320 px) a roztažení na šířku sloupce
      by je rozmazalo. Necháváme přirozenou velikost a středujeme. */
-  /* Obrázky v textu se necentrují přes width:100% — část podkladů z původního
-     webu je malá (screenshot exportu má 320 px) a roztažení by je rozmazalo.
-     max-height je pojistka na druhou stranu: čtvercové logo 648x628 zabralo
-     půl obrazovky a rozbilo čtení (DK 2026-08-04). */
+  /* Obrázky v textu: přirozená velikost, na střed. Nikdy se neroztahují přes
+     width:100% — část podkladů z původního webu je malá (screenshot exportu
+     má 320 px) a roztažení by je rozmazalo. */
   .article-body.sb-content :global(img) {
     border-radius: var(--radius-sm); max-width: 100%; height: auto;
-    max-height: 420px; width: auto;
     display: block; margin: 2em auto;
     border: 1px solid rgba(255,255,255,0.08);
+  }
+  /* Značka / logo v textu. Bez třídy by se 648x628 logo roztáhlo přes celý
+     sloupec a zabralo půl obrazovky — na starém webu se zobrazuje na 120 px
+     (DK 2026-08-04). */
+  .article-body.sb-content :global(img.znak) {
+    max-width: 120px; border: none; border-radius: 0; margin: 2.5em auto 0.5em;
+  }
+  /* Video v textu — poměr 16:9, přes youtube-nocookie kvůli souhlasu. */
+  .article-body.sb-content :global(.video) {
+    position: relative; aspect-ratio: 16 / 9; margin: 2em 0;
+    border-radius: var(--radius-sm); overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03);
+  }
+  .article-body.sb-content :global(.video iframe) {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
   }
   .article-body.sb-content :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 2.5em 0; }
 

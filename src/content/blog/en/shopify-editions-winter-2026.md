@@ -16,9 +16,13 @@ The updates span twelve areas: Sidekick, Agentic, Online, Retail, Marketing, Che
 
 If the topic interests you in detail, we recommend watching the [edition launch recording on YouTube](https://www.youtube.com/live/PbqOP1vp9ps?si=BvGG6E91L7-Xkwu1).
 
+<img class="znak" src="/blog/shopify-sidekick-logo.webp" alt="Shopify Sidekick logo" />
+
 ## Sidekick AI
 
 This is what caught our attention most. Not long ago we were cheering that an app could write product copy on its own thanks to "Shopify Magic". Now it goes further — many of you have already found that Sidekick can do surprisingly much: advise you, find data, create a discount. And now comes the proactive **Sidekick Pulse**.
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/LU4tghjdnG8" title="20+ updates to Sidekick" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ### Meet Sidekick Pulse
 
@@ -28,9 +32,13 @@ A new, proactive phase of AI help in your store is here. Let's quote Carl Rivera
 
 Many users already find it demonstrably useful to talk to Sidekick directly, given how deeply it's wired into all the data. With the Pulse module, Sidekick now **thinks for itself**: it draws on what it knows about your store, your data, economic trends and everything Shopify knows about e-commerce in context, to give you concrete suggestions on what to improve — and it prepares the groundwork straight away, whether that's proposed automations, discounts or email copy.
 
+![A Sidekick Pulse suggestion inside the Shopify admin](/blog/shopify-sidekick-pulse.webp)
+
 ### Tinker app
 
 Shopify is preparing a new app where you can try out the latest AI tools for e-commerce. If you run a store, it looks like a great addition. Want to be among the first? Go to the edition page, scroll to the end of the **Online** section, and click "Get notified".
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/k7XydEQQniY" title="Tinker: Your AI playground" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Agentic Commerce
 
@@ -39,6 +47,8 @@ Shopify is preparing a new app where you can try out the latest AI tools for e-c
 The changes presented in the Winter '26 Edition significantly widen the notion of agentic commerce — your products can now easily be made available and sold directly inside AI conversations on platforms such as ChatGPT, Microsoft Copilot or Perplexity.
 
 That means a new sales channel operating outside the classic website.
+
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/22NqvJyppt8" title="Agentic Storefronts: reach buyers in AI" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Rollouts & SimGym
 
@@ -50,6 +60,10 @@ The integrated Rollouts and SimGym tools let you:
 - simulate customer behaviour before shipping changes live.
 
 That opens the way to faster and safer store improvements without external plugins.
+
+![The Rollouts tool in the Shopify admin](/blog/shopify-rollouts.webp)
+
+![The SimGym tool for simulating customer behaviour](/blog/shopify-simgym.webp)
 
 ## B2B and catalogues
 
