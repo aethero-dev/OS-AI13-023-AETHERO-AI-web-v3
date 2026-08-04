@@ -1,7 +1,6 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
-import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
 const placeholderItems = [
   { icon: '<circle cx="12" cy="12" r="10"/>', title: 'To be added', desc: 'Content coming soon.' },
@@ -42,10 +41,11 @@ const features = [
       <div class="intro-main">
         <h2 class="h1 intro-h2"><span class="accent-purple">WHAT DO YOU NEED HELP WITH</span><br />on your Shopify project?</h2>
         <p class="intro-text"><strong class="hl">Sometimes searching for tutorial videos just isn't enough.</strong> What you need is deeper technical insight, experience from multiple real-world projects, and the ability to connect the dots.</p>
-        <p class="intro-text">We want you to know that even after years in this field, <strong class="hl">we haven't lost our humility</strong> — and when we can help, we will. Developing and supporting a Shopify project doesn't end at launch.</p>
+        <p class="intro-text">We want you to know that even after years in this field, <strong class="hl">we haven't lost our humility</strong> — and when we can help, we will.</p>
+        <p class="intro-text">Developing and supporting a Shopify project doesn't end at launch. We know that not every problem has an answer in a tutorial or a video — often what's needed is deeper technical insight, experience from real projects and the ability to see how things connect.</p>
+        <p class="intro-text">We're here as a partner for the continued development of your Shopify solution, whether that means performance optimisation, new features, integrations or strategic decisions. Even after years of working with Shopify we approach every project with humility and an open mind — if there's a way, we'll help you find a workable and sustainable solution.</p>
         <a href="#cta" class="btn-action btn-action--lg">Let's get to it</a>
       </div>
-      <WorkSidebar heading="HOW WE START" items={placeholderItems} />
     </div>
   </section>
 
@@ -74,7 +74,7 @@ const features = [
   <!-- CTA -->
   <section class="cta-section" id="cta">
     <div class="container cta-inner">
-      <h2>Can we help?<br />Get in touch</h2>
+      <h2>Can we help? Get in touch</h2>
       <div class="cta-contacts">
         <a href="mailto:info@aethero.cz" class="cta-contact">info@aethero.cz</a>
         <a href="tel:+420776067663" class="cta-contact">+420 776 067 663</a>

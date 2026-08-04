@@ -1,15 +1,6 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
-import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
-
-// TODO: placeholder — obsah dovymyslíme
-const placeholderItems = [
-  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'Doplnit', desc: 'Obsah doplníme.' },
-  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'Doplnit', desc: 'Obsah doplníme.' },
-  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'Doplnit', desc: 'Obsah doplníme.' },
-  { icon: '<circle cx="12" cy="12" r="10"/>', title: 'Doplnit', desc: 'Obsah doplníme.' },
-];
 
 const features = [
   { title: 'Technický support & troubleshooting', desc: 'Řešíme komplexní technické problémy v Liquid šablonách, custom aplikacích, Shopify Functions, checkoutu i napojených službách. Identifikujeme příčiny chyb, ne jen jejich symptomy.', img: '/support.jpg', reverse: false },
@@ -36,16 +27,17 @@ const features = [
     imageAlt="Rozvoj a podpora Shopify"
   />
 
-  <!-- Intro + sidebar (placeholder) -->
+  <!-- Intro -->
   <section class="section bg-primary">
     <div class="container intro-layout">
       <div class="intro-main">
         <h2 class="h1 intro-h2"><span class="accent-purple">S ČÍM CHCETE POMOCI</span><br />na Shopify projektu?</h2>
-        <p class="intro-text"><strong class="hl">Někdy hledání videí k řešení problému prostě nestačí</strong> a je potřeba hlubší technický vhled, zkušenost z více reálných projektů a tím možnost najít širší souvislosti.</p>
-        <p class="intro-text">Chceme abyste věděli, že ani po pár letech <strong class="hl">nemáme nos nahoru a když to půjde pomůžeme vám</strong>. Rozvoj a podpora Shopify projektů nekončí spuštěním e-shopu.</p>
+        <p class="intro-text"><strong class="hl">Někdy hledání videí k&nbsp;řešení problému prostě nestačí</strong> a&nbsp;je potřeba hlubší technický vhled, zkušenost z&nbsp;více reálných projektů a&nbsp;tím možnost najít širší souvislosti.</p>
+        <p class="intro-text">Chceme, abyste věděli, že ani po pár letech <strong class="hl">nemáme nos nahoru a&nbsp;když to půjde, pomůžeme vám</strong>.</p>
+        <p class="intro-text">Rozvoj a&nbsp;podpora Shopify projektů nekončí spuštěním e-shopu. Víme, že ne každý problém má řešení v&nbsp;tutoriálu nebo videu — často je potřeba hlubší technický vhled, zkušenost z&nbsp;reálných projektů a&nbsp;schopnost vidět souvislosti.</p>
+        <p class="intro-text">Jsme tu jako partner pro další rozvoj vašeho Shopify řešení, ať už jde o&nbsp;optimalizace výkonu, nové funkce, integrace nebo strategická rozhodnutí. I&nbsp;po letech práce se Shopify přistupujeme ke&nbsp;každému projektu s&nbsp;pokorou a&nbsp;otevřeností — pokud to půjde, pomůžeme vám najít funkční a&nbsp;udržitelné řešení.</p>
         <a href="#cta" class="btn-action btn-action--lg">Tak pojďme na to</a>
       </div>
-      <WorkSidebar heading="JAK ZAČNEME" items={placeholderItems} />
     </div>
   </section>
 
@@ -74,7 +66,7 @@ const features = [
   <!-- CTA -->
   <section class="cta-section" id="cta">
     <div class="container cta-inner">
-      <h2>Pomůžeme?<br />Dejte vědět</h2>
+      <h2>Pomůžeme? Dejte vědět</h2>
       <div class="cta-contacts">
         <a href="mailto:info@aethero.cz" class="cta-contact">info@aethero.cz</a>
         <a href="tel:+420776067663" class="cta-contact">+420 776 067 663</a>
@@ -84,9 +76,10 @@ const features = [
 </PageLayout>
 
 <style>
-  /* Intro + sidebar = 2 sloupce */
-  .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
-  @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
+  /* Jeden sloupec — postranní panel „JAK ZAČNEME" byl jen zástupný
+     (4× „Obsah doplníme" na ostrém webu) a na .cz neexistuje. Text drží
+     čtenářskou šířku, nerozlévá se přes celý container. */
+  .intro-main { max-width: 840px; }
   /* .hl (bold lavender) — globální utilita v global.css */
   .section-title { text-align: center; }
 
