@@ -1,37 +1,56 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 
+// Obsah 1:1 podle ostrého aethero.cz/o-nas (pokyn DK 2026-08-05) — osobní
+// bios se při dřívějším přepisu ztratily a byly to nejoriginálnější texty
+// na stránce. Fotky staženy z .cz (duotone + blob zapečený v PNG);
+// DK je později vymění.
 const team = [
   {
     name: 'David',
-    role: 'Design & Business Development',
-    desc: 'Primární kontakt pro nové projekty. Stará se o design, strategii a rozvoj nových klientských vztahů.',
+    role: 'Design, Business Development',
+    photo: '/team-david.png',
+    desc: 'David dělá pro aethero hlavně design a business development. Takže když k nám budete volat, dovoláte se právě jemu.',
     email: 'david@aethero.cz',
     phone: '+420 776 067 663',
   },
   {
     name: 'Bára',
-    role: 'Coding, UX/UI & Project Management',
-    desc: 'Zajišťuje, aby všechno dávalo smysl. Kombinuje vývoj, uživatelský zážitek a koordinaci projektů s trvale skvělou náladou.',
+    role: 'Kódování, UX/UI, Projekt management',
+    photo: '/team-bara.png',
+    desc: '„Aby vše dávalo smysl", to asi nejlíp vystihuje, co Bára dělá. Je totiž jedna z těch mála neustále se pohybujících bytostí, které umí ovládat čas a prostor. Jak jinak by zvládla všechnu tu práci a rodinu s neustálým úsměvem, si jinak neumíme vysvětlit!',
     email: 'bara@aethero.cz',
   },
   {
     name: 'Tom',
-    role: 'Design, Video & Motion',
-    desc: 'Grafika, video, 3D a motion design. Stará se o vizuální stránku produktů a prémiový estetický zážitek.',
+    role: 'Design',
+    photo: '/team-tom.png',
+    desc: 'Má pod palcem grafiku, video, 3D, motion design a všechno to „zpěkňování" produktů, které děláme pro klienty. Tom je na Cestě, učí jógu, streamuje o zdravém bytí, chová včely a je pohodář.',
   },
+];
+
+// S kým spolupracujeme — doplňuje DK průběžně; prázdné pole = zobrazí se
+// jen úvodní text sekce. Šablona položky:
+// { jmeno: 'Jméno / studio', obor: 'SEO', poznamka: 'Jedna věta o spolupráci.' },
+const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [];
+
+const certifikace = [
+  { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
+  { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, ověřená dovednost' },
+  { img: '/badge-solution.png', alt: 'Shopify — Solution Planning Fundamentals, ověřená dovednost' },
 ];
 ---
 
-<PageLayout title="O nás" description="Jsme malý tým s velkými zkušenostmi. Poznali jsme se na projektech a rozhodli se to zprofesionalizovat." lang="cs">
+<PageLayout title="O nás" description="Potkali jsme se na pár projektech a po chvíli bylo jasné, že má smysl dát dohromady něco oficiálnějšího. Společně máme pár desítek let zkušeností v oboru." lang="cs">
 
   <section class="o-nas-hero">
     <div class="hero-blob" aria-hidden="true"></div>
     <div class="container">
       <h1>O nás</h1>
       <p class="hero-sub">
-        Tým, který se potkal na projektech a rozhodl se to zprofesionalizovat.
-        Přinášíme pár desítek let zkušeností v oboru — a děláme jenom to, co nás baví.
+        Potkali jsme se na pár projektech a po chvíli bylo jasné, že má smysl
+        dát dohromady něco oficiálnějšího. Společně máme pár desítek let
+        zkušeností v oboru a děláme pořádně to, co nás baví.
       </p>
     </div>
   </section>
@@ -42,15 +61,13 @@ const team = [
       <div class="team-grid">
         {team.map((member) => (
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">
-              <span>{member.name[0]}</span>
-            </div>
+            <img src={member.photo} alt={`${member.name} — ${member.role}`} class="team-photo" width="700" height="700" loading="lazy" />
             <h3 class="h3-mini team-name">{member.name}</h3>
             <p class="team-role">{member.role}</p>
             <p class="team-desc">{member.desc}</p>
             <div class="team-contacts">
-              {member.email && <a href={`mailto:${member.email}`} class="contact-pill">{member.email}</a>}
               {member.phone && <a href={`tel:${member.phone.replace(/\s/g, '')}`} class="contact-pill">{member.phone}</a>}
+              {member.email && <a href={`mailto:${member.email}`} class="contact-pill">{member.email}</a>}
             </div>
           </div>
         ))}
@@ -58,21 +75,38 @@ const team = [
     </div>
   </section>
 
+  <!-- S kým spolupracujeme — nová sekce (zadání DK 2026-08-05) -->
   <section class="section bg-primary">
-    <div class="container story-inner">
-      <h2 class="h2 section-title">Jak to u nás funguje</h2>
-      <div class="story-text">
-        <p>
-          Nejsme velká agentura s desítkami zaměstnanců a neosobními procesy.
-          Jsme malý tým, kde každý projekt řeší člověk s reálnými zkušenostmi — ne junior, který se teprve učí.
-        </p>
-        <p>
-          Shopify jsme si zvolili záměrně — věříme, že je to nejlepší platforma pro vážné e-commerce projekty.
-          A protože se specializujeme, víme o ní víc než generalisté.
-        </p>
-        <p>
-          Pracujeme s klienty dlouhodobě. Spuštění e-shopu je začátek spolupráce, ne konec projektu.
-        </p>
+    <div class="container spoluprace-inner">
+      <h2 class="h2 section-title">S kým spolupracujeme</h2>
+      <p class="spoluprace-uvod">
+        Nikdo neumí všechno — a my to ani nepředstíráme. Kolem jádra týmu máme
+        okruh specialistů, které zapojujeme přesně tehdy, když je projekt
+        potřebuje: SEO, foto a video, právo nebo účetnictví. Žádné přeprodávání
+        anonymních juniorů — víte, kdo na vašem projektu pracuje.
+      </p>
+      {spoluprace.length > 0 && (
+        <div class="spoluprace-grid">
+          {spoluprace.map((s) => (
+            <div class="spoluprace-card">
+              <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
+              <p class="spoluprace-obor">{s.obor}</p>
+              {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Certifikace — vědomě až na konci, nenápadně (pokyn DK: badge nejsou důležité) -->
+  <section class="certifikace">
+    <div class="container certifikace-inner">
+      <p class="certifikace-label">Certifikace Shopify</p>
+      <div class="certifikace-badges">
+        {certifikace.map((c) => (
+          <img src={c.img} alt={c.alt} class="certifikace-badge" loading="lazy" />
+        ))}
       </div>
     </div>
   </section>
@@ -103,19 +137,14 @@ const team = [
   .o-nas-hero h1 { font-size: var(--fs-64); font-weight: 700; }
   .hero-sub { font-size: 20px; color: var(--text-secondary); margin-top: var(--space-24); max-width: 600px; line-height: 1.6; }
 
-
   .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-24); }
   .team-card {
     background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-md); padding: var(--space-40);
     display: flex; flex-direction: column; gap: var(--space-16);
   }
-  .team-avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--ae-straight-blue), var(--accent-purple));
-    display: flex; align-items: center; justify-content: center;
-  }
-  .team-avatar span { font-family: var(--font-primary); font-size: 24px; font-weight: 700; color: #fff; }
+  /* Duotone + blob jsou zapečené přímo v PNG z .cz — fotka se jen položí */
+  .team-photo { width: min(240px, 80%); height: auto; align-self: flex-start; }
   .team-name { }
   .team-role { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; }
   .team-desc { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; flex: 1; }
@@ -123,24 +152,43 @@ const team = [
   .contact-pill { font-size: 14px; color: var(--neutral-500); transition: color var(--transition-base); }
   .contact-pill:hover { color: var(--action); }
 
-  .story-inner { max-width: 680px; }
-  .story-text { display: flex; flex-direction: column; gap: var(--space-24); }
-  .story-text p { font-size: 18px; color: var(--neutral-300); line-height: 1.7; }
+  /* S kým spolupracujeme */
+  .spoluprace-inner { max-width: 900px; }
+  .spoluprace-uvod { font-size: 18px; color: var(--neutral-300); line-height: 1.7; max-width: 680px; }
+  .spoluprace-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
+  .spoluprace-card {
+    background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md); padding: var(--space-24);
+  }
+  .spoluprace-jmeno { margin-bottom: 4px; }
+  .spoluprace-obor { font-size: var(--text-small); color: var(--action); font-weight: 600; margin-bottom: 8px; }
+  .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
+
+  /* Certifikace — nenápadný pás na konci */
+  .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
+  .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
+  .certifikace-label {
+    font-family: var(--font-primary); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; color: var(--neutral-500);
+  }
+  .certifikace-badges { display: flex; gap: var(--space-24); align-items: center; flex-wrap: wrap; }
+  .certifikace-badge { height: 96px; width: auto; opacity: 0.85; }
 
   .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
   .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   @media (max-width: 768px) {
     .team-grid { grid-template-columns: 1fr; }
+    .spoluprace-grid { grid-template-columns: 1fr; }
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-sub { font-size: 18px; }
+    .certifikace-badge { height: 72px; }
   }
   @media (max-width: 480px) {
     .o-nas-hero { padding: 70px 0 48px; }
     .o-nas-hero h1 { font-size: var(--fs-48); }
     .hero-sub { font-size: 16px; }
     .section { padding: var(--space-80) 0; }
-    .story-text p { font-size: 16px; }
   }
 </style>

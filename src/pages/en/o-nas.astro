@@ -1,88 +1,112 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 
+// Obsah 1:1 podle ostrého aethero.cz/o-nas (pokyn DK 2026-08-05) — osobní
+// bios se při dřívějším přepisu ztratily a byly to nejoriginálnější texty
+// na stránce. Fotky staženy z .cz (duotone + blob zapečený v PNG);
+// DK je později vymění.
 const team = [
   {
     name: 'David',
-    role: 'Design & Business Development',
-    desc: 'Primary contact for new projects. Handles design, strategy and new client relationships.',
+    role: 'Design, Business Development',
+    photo: '/team-david.png',
+    desc: "David handles mainly design and business development at aethero. So when you call us, he's the one who'll pick up.",
     email: 'david@aethero.cz',
     phone: '+420 776 067 663',
   },
   {
     name: 'Bára',
-    role: 'Coding, UX/UI & Project Management',
-    desc: 'Makes sure everything makes sense. Combines development, user experience and project coordination with a consistently great attitude.',
+    role: 'Coding, UX/UI, Project Management',
+    photo: '/team-bara.png',
+    desc: "“Making sure everything makes sense” probably best describes what Bára does. She's one of those rare, perpetually moving beings who can bend time and space. How else she manages all that work and a family with a constant smile, we simply can't explain!",
     email: 'bara@aethero.cz',
   },
   {
     name: 'Tom',
-    role: 'Design, Video & Motion',
-    desc: 'Graphics, video, 3D and motion design. Responsible for the visual side of products and premium aesthetic experience.',
+    role: 'Design',
+    photo: '/team-tom.png',
+    desc: "He's in charge of graphics, video, 3D, motion design and all the “prettifying” of the products we make for clients. Tom is on the Path — he teaches yoga, streams about healthy living, keeps bees and is an all-round easy-going guy.",
   },
+];
+
+// S kým spolupracujeme — doplňuje DK průběžně; prázdné pole = zobrazí se
+// jen úvodní text sekce. Šablona položky:
+// { jmeno: 'Jméno / studio', obor: 'SEO', poznamka: 'Jedna věta o spolupráci.' },
+const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [];
+
+const certifikace = [
+  { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, verified skill' },
+  { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, verified skill' },
+  { img: '/badge-solution.png', alt: 'Shopify — Solution Planning Fundamentals, verified skill' },
 ];
 ---
 
-<PageLayout title="About Us" description="We are a small team with broad experience. We met on projects and decided to make it official." lang="en">
+<PageLayout title="About Us" description="We met on a few projects and it soon became clear it made sense to put together something more official. Between us, we have a few decades of experience in the field." lang="en">
 
   <section class="o-nas-hero">
     <div class="hero-blob" aria-hidden="true"></div>
     <div class="container">
-      <h1>About Us</h1>
+      <h1>About us</h1>
       <p class="hero-sub">
-        A team that met on projects and decided to make it official.
-        We bring decades of industry experience — and do only what we love.
+        We met on a few projects and it soon became clear it made sense to put
+        together something more official. Between us, we have a few decades of
+        experience in the field — and we do properly what we enjoy.
       </p>
     </div>
   </section>
 
   <section class="section bg-primary">
     <div class="container">
-      <h2 class="h2 section-title">Team</h2>
+      <h2 class="h2 section-title">The team</h2>
       <div class="team-grid">
         {team.map((member) => (
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">
-              <span>{member.name[0]}</span>
-            </div>
-            <h3 class="team-name">{member.name}</h3>
+            <img src={member.photo} alt={`${member.name} — ${member.role}`} class="team-photo" width="700" height="700" loading="lazy" />
+            <h3 class="h3-mini team-name">{member.name}</h3>
             <p class="team-role">{member.role}</p>
             <p class="team-desc">{member.desc}</p>
-            {member.email && (
-              <a href={`mailto:${member.email}`} class="team-contact">{member.email}</a>
-            )}
-            {member.phone && (
-              <a href={`tel:${member.phone.replace(/\s/g,'')}`} class="team-contact">{member.phone}</a>
-            )}
+            <div class="team-contacts">
+              {member.phone && <a href={`tel:${member.phone.replace(/\s/g, '')}`} class="contact-pill">{member.phone}</a>}
+              {member.email && <a href={`mailto:${member.email}`} class="contact-pill">{member.email}</a>}
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- S kým spolupracujeme — nová sekce (zadání DK 2026-08-05) -->
   <section class="section bg-primary">
-    <div class="container mission-inner">
-      <div>
-        <h2 class="h2 section-title">What drives us</h2>
-        <p class="mission-text body">
-          We have been in e-commerce long enough to know what works and what does not.
-          We do not sell hours — we deliver results. Each of us brings a different perspective,
-          but we all share the same goal: your store should grow.
-        </p>
-      </div>
-      <div class="mission-values">
-        <div class="value-item">
-          <h3>Honest</h3>
-          <p>We say what we think, including when something is not a good idea.</p>
+    <div class="container spoluprace-inner">
+      <h2 class="h2 section-title">Who we work with</h2>
+      <p class="spoluprace-uvod">
+        Nobody is good at everything — and we don't pretend to be. Around the
+        core team we keep a circle of specialists we bring in exactly when
+        a project needs them: SEO, photo and video, legal or accounting.
+        No reselling of anonymous juniors — you know who works on your project.
+      </p>
+      {spoluprace.length > 0 && (
+        <div class="spoluprace-grid">
+          {spoluprace.map((s) => (
+            <div class="spoluprace-card">
+              <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
+              <p class="spoluprace-obor">{s.obor}</p>
+              {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
+            </div>
+          ))}
         </div>
-        <div class="value-item">
-          <h3>Long-term</h3>
-          <p>Most of our clients are with us for years, not months.</p>
-        </div>
-        <div class="value-item">
-          <h3>Shopify-first</h3>
-          <p>We focus on one platform and do it properly.</p>
-        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Certifikace — vědomě až na konci, nenápadně (pokyn DK: badge nejsou důležité) -->
+  <section class="certifikace">
+    <div class="container certifikace-inner">
+      <p class="certifikace-label">Shopify certifications</p>
+      <div class="certifikace-badges">
+        {certifikace.map((c) => (
+          <img src={c.img} alt={c.alt} class="certifikace-badge" loading="lazy" />
+        ))}
       </div>
     </div>
   </section>
@@ -100,58 +124,71 @@ const team = [
 </PageLayout>
 
 <style>
-  .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
-  .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-
   .o-nas-hero {
-    position: relative; overflow: hidden;
-    background: var(--ae-bg-primary-alt);
-    padding: 130px 0 80px;
+    position: relative; padding: 130px 0 80px;
+    background: var(--ae-bg-primary-alt); overflow: hidden;
   }
   .hero-blob {
-    position: absolute; top: -20%; right: -5%;
-    width: 500px; height: 500px;
+    position: absolute; top: -20%; right: -5%; width: 500px; height: 500px;
     background: radial-gradient(ellipse, rgba(203,0,215,0.15) 0%, transparent 70%);
-    border-radius: 50%; filter: blur(60px);
-    pointer-events: none;
+    border-radius: 50%; filter: blur(60px); pointer-events: none;
   }
-  .o-nas-hero h1 { font-size: var(--fs-64); font-weight: 700; margin-bottom: 24px; }
-  .hero-sub { font-size: 22px; color: rgba(255,255,255,0.85); max-width: 600px; line-height: 1.5; }
-
+  .o-nas-hero .container { position: relative; }
+  .o-nas-hero h1 { font-size: var(--fs-64); font-weight: 700; }
+  .hero-sub { font-size: 20px; color: var(--text-secondary); margin-top: var(--space-24); max-width: 600px; line-height: 1.6; }
 
   .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-24); }
   .team-card {
     background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-md); padding: var(--space-40);
-    display: flex; flex-direction: column; gap: 8px;
+    display: flex; flex-direction: column; gap: var(--space-16);
   }
-  .team-avatar {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--text-secondary), var(--action));
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: var(--space-16);
-  }
-  .team-avatar span { font-size: 32px; font-weight: 700; color: #fff; }
-  .team-name { font-size: 24px; font-weight: 700; }
-  .team-role { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0; }
-  .team-desc { font-size: 16px; color: var(--neutral-300); line-height: 1.6; flex: 1; }
-  .team-contact { font-size: 14px; color: var(--text-secondary); transition: color var(--transition-base); }
-  .team-contact:hover { color: var(--action); }
+  /* Duotone + blob jsou zapečené přímo v PNG z .cz — fotka se jen položí */
+  .team-photo { width: min(240px, 80%); height: auto; align-self: flex-start; }
+  .team-name { }
+  .team-role { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; }
+  .team-desc { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; flex: 1; }
+  .team-contacts { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+  .contact-pill { font-size: 14px; color: var(--neutral-500); transition: color var(--transition-base); }
+  .contact-pill:hover { color: var(--action); }
 
-  .mission-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-80); align-items: start; }
-  .mission-values { display: flex; flex-direction: column; gap: var(--space-24); }
-  .value-item { padding: var(--space-24); background: rgba(13,212,205,0.08); border: 1px solid rgba(13,212,205,0.22); border-radius: var(--radius-md); }
-  .value-item h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .value-item p { font-size: 16px; color: var(--neutral-300); }
+  /* S kým spolupracujeme */
+  .spoluprace-inner { max-width: 900px; }
+  .spoluprace-uvod { font-size: 18px; color: var(--neutral-300); line-height: 1.7; max-width: 680px; }
+  .spoluprace-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
+  .spoluprace-card {
+    background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md); padding: var(--space-24);
+  }
+  .spoluprace-jmeno { margin-bottom: 4px; }
+  .spoluprace-obor { font-size: var(--text-small); color: var(--action); font-weight: 600; margin-bottom: 8px; }
+  .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
+
+  /* Certifikace — nenápadný pás na konci */
+  .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
+  .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
+  .certifikace-label {
+    font-family: var(--font-primary); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; color: var(--neutral-500);
+  }
+  .certifikace-badges { display: flex; gap: var(--space-24); align-items: center; flex-wrap: wrap; }
+  .certifikace-badge { height: 96px; width: auto; opacity: 0.85; }
+
+  .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
+  .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   @media (max-width: 768px) {
     .team-grid { grid-template-columns: 1fr; }
-    .mission-inner { grid-template-columns: 1fr; }
+    .spoluprace-grid { grid-template-columns: 1fr; }
+    .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
+    .hero-sub { font-size: 18px; }
+    .certifikace-badge { height: 72px; }
   }
   @media (max-width: 480px) {
     .o-nas-hero { padding: 70px 0 48px; }
     .o-nas-hero h1 { font-size: var(--fs-48); }
+    .hero-sub { font-size: 16px; }
     .section { padding: var(--space-80) 0; }
   }
 </style>

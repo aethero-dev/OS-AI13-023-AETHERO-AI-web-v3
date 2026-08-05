@@ -30,7 +30,6 @@ const intentLinks = lang === 'en'
       <a href={`${p}/`} class="logo" aria-label="aethero">
         <img src="/ae-logo.svg" alt="æthero" width="140" height="35" loading="lazy" />
       </a>
-      <img src="/shopify-plus-badge.svg" alt="Shopify Plus Partner" class="shopify-badge" width="130" height="45" loading="lazy" />
     </div>
 
     <div class="footer-intent">
@@ -51,7 +50,10 @@ const intentLinks = lang === 'en'
   </div>
 
   <div class="container footer-legal">
-    <p class="footer-copy">© {new Date().getFullYear()} AETHERO s.r.o.</p>
+    <p class="footer-copy">
+      © {new Date().getFullYear()} AETHERO s.r.o.
+      <img src="/shopify-plus-badge.svg" alt="Shopify Plus Partner" class="shopify-badge-mini" width="78" height="27" loading="lazy" />
+    </p>
     <ul class="footer-legal-links">
       <li>
         <a href={`${p}/gdpr/`}>
@@ -94,7 +96,10 @@ const intentLinks = lang === 'en'
     margin: 0;
     font-size: 13px;
     color: var(--neutral-500);
+    display: flex; align-items: center; gap: var(--space-16);
   }
+  /* Badge vědomě malý a dole — „není to důležité" (DK 2026-08-05) */
+  .shopify-badge-mini { height: 27px; width: auto; opacity: 0.7; }
   .footer-legal-links {
     display: flex;
     /* row EXPLICITNĚ — obecné `ul { flex-direction: column }` níž by jinak
