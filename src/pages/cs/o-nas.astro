@@ -32,10 +32,10 @@ const team = [
 // Externí tým — texty u jmen jsou zatím Lorem ipsum (vědomě, pokyn DK
 // 2026-08-05; web není spuštěný). DK je nahradí skutečnými větami.
 const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [
-  { jmeno: 'Petr', obor: 'AI evangelist, procesní řízení, analytika', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Dominik', obor: 'SEO specialista', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Daniel', obor: 'Právní služby', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Honza', obor: 'Design', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Petr', photo: '/team-placeholder.svg', obor: 'AI evangelist, procesní řízení, analytika', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Dominik', photo: '/team-placeholder.svg', obor: 'SEO specialista', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Daniel', photo: '/team-placeholder.svg', obor: 'Právní služby', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Honza', photo: '/team-placeholder.svg', obor: 'Design', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
 ];
 
 // Tech partneři — blok je PŘIPRAVENÝ, ale zobrazí se až od 4 položek
@@ -88,21 +88,15 @@ const certifikace = [
     </div>
   </section>
 
-  <!-- S kým spolupracujeme — nová sekce (zadání DK 2026-08-05) -->
-  <section class="section bg-primary">
+  <!-- Externí tým — navazuje na Tým jako jeden blok (DK 2026-08-05) -->
+  <section class="section bg-primary externi-sekce">
     <div class="container spoluprace-inner">
-      <p class="label sekce-eyebrow">S kým spolupracujeme</p>
       <h2 class="h2 section-title">Externí tým</h2>
-      <p class="spoluprace-uvod">
-        Nikdo neumí všechno — a my to ani nepředstíráme. Kolem jádra týmu máme
-        okruh specialistů, které zapojujeme přesně tehdy, když je projekt
-        potřebuje: SEO, foto a video, právo nebo účetnictví. Žádné přeprodávání
-        anonymních juniorů — víte, kdo na vašem projektu pracuje.
-      </p>
       {spoluprace.length > 0 && (
         <div class="spoluprace-grid">
           {spoluprace.map((s) => (
             <div class="spoluprace-card">
+              <img src={s.photo} alt={`${s.jmeno} — ${s.obor}`} class="team-photo" width="700" height="700" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
               {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
@@ -116,8 +110,7 @@ const certifikace = [
   {techPartneri.length >= 4 && (
     <section class="section bg-primary">
       <div class="container spoluprace-inner">
-        <p class="label sekce-eyebrow">S kým spolupracujeme</p>
-        <h2 class="h2 section-title">Tech partneři</h2>
+          <h2 class="h2 section-title">Tech partneři</h2>
         <div class="partneri-lista">
           {techPartneri.map((t) => (
             <a href={t.url} class="partner-cell" target="_blank" rel="noopener noreferrer">
@@ -188,17 +181,19 @@ const certifikace = [
 
   /* S kým spolupracujeme */
   .spoluprace-inner { }
-  .spoluprace-uvod { font-size: 18px; color: var(--neutral-300); line-height: 1.7; max-width: 680px; }
   .spoluprace-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
   .spoluprace-card {
     background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-md); padding: var(--space-24);
+    display: flex; flex-direction: column; gap: 10px;
   }
+  .spoluprace-card .team-photo { margin-bottom: 0; }
   .spoluprace-jmeno { margin-bottom: 4px; }
   .spoluprace-obor { font-size: var(--text-small); color: var(--action); font-weight: 600; margin-bottom: 8px; }
   .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
 
-  .sekce-eyebrow { color: var(--neutral-500); margin-bottom: var(--space-16); text-transform: uppercase; }
+  /* Externí tým lepí na Tým — jeden souvislý blok lidí */
+  .externi-sekce { padding-top: 0; }
 
   /* Tech partneři — lišta ve stylu Swanky (mřížka buněk s logy) */
   .partneri-lista {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" role="img" aria-label="Fotografie doplníme">
+  <!-- Placeholder člena externího týmu — blob ve stylu duotone fotek z .cz;
+       nahradí se skutečnou fotkou (stejný soubor 700×700).
+       Silueta je clipnutá do blobu, ať nic nepřetéká ven. -->
+  <defs>
+    <clipPath id="blob">
+      <path d="M350 72c116 0 226 62 254 172 27 106-22 226-114 288-90 61-224 64-314-4C86 460 62 336 104 234 147 130 234 72 350 72Z"/>
+    </clipPath>
+  </defs>
+  <path d="M350 72c116 0 226 62 254 172 27 106-22 226-114 288-90 61-224 64-314-4C86 460 62 336 104 234 147 130 234 72 350 72Z" fill="#2F324D"/>
+  <g fill="#ffffff" opacity="0.22" clip-path="url(#blob)">
+    <circle cx="350" cy="295" r="92"/>
+    <path d="M168 640c20-150 96-215 182-215s162 65 182 215Z"/>
+  </g>
+</svg>
