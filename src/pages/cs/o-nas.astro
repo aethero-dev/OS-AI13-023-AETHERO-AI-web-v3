@@ -169,14 +169,16 @@ const certifikace = [
   .o-nas-hero h1 { font-size: var(--fs-64); font-weight: 700; }
   .hero-sub { font-size: 20px; color: var(--text-secondary); margin-top: var(--space-24); max-width: 600px; line-height: 1.6; }
 
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-24); }
+  /* Stejná mřížka jako Externí tým — všichni mají stejně velkou kartu
+     (pokyn DK 2026-08-05); u jádra zbývá čtvrté pole volné. */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); }
   .team-card {
     background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius-md); padding: var(--space-40);
-    display: flex; flex-direction: column; gap: var(--space-16);
+    border-radius: var(--radius-md); padding: var(--space-24);
+    display: flex; flex-direction: column; gap: 10px;
   }
   /* Duotone + blob jsou zapečené přímo v PNG z .cz — fotka se jen položí */
-  .team-photo { width: min(240px, 80%); height: auto; align-self: flex-start; }
+  .team-photo { width: min(150px, 70%); height: auto; align-self: flex-start; }
   .team-name { }
   .team-role { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; }
   .team-desc { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; flex: 1; }
@@ -185,9 +187,9 @@ const certifikace = [
   .contact-pill:hover { color: var(--action); }
 
   /* S kým spolupracujeme */
-  .spoluprace-inner { max-width: 900px; }
+  .spoluprace-inner { }
   .spoluprace-uvod { font-size: 18px; color: var(--neutral-300); line-height: 1.7; max-width: 680px; }
-  .spoluprace-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
+  .spoluprace-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
   .spoluprace-card {
     background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-md); padding: var(--space-24);
@@ -227,6 +229,10 @@ const certifikace = [
   .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
   .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
+  @media (max-width: 1100px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .spoluprace-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 768px) {
     .team-grid { grid-template-columns: 1fr; }
     .spoluprace-grid { grid-template-columns: 1fr; }
