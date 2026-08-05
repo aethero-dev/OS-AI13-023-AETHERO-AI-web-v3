@@ -29,10 +29,23 @@ const team = [
   },
 ];
 
-// S kým spolupracujeme — doplňuje DK průběžně; prázdné pole = zobrazí se
-// jen úvodní text sekce. Šablona položky:
-// { jmeno: 'Jméno / studio', obor: 'SEO', poznamka: 'Jedna věta o spolupráci.' },
-const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [];
+// Externí tým — texty u jmen jsou zatím Lorem ipsum (vědomě, pokyn DK
+// 2026-08-05; web není spuštěný). DK je nahradí skutečnými větami.
+const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [
+  { jmeno: 'Petr', obor: 'AI evangelist, procesní řízení, analytika', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Dominik', obor: 'SEO specialista', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Daniel', obor: 'Právní služby', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+  { jmeno: 'Honza', obor: 'Design', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+];
+
+// Tech partneři — blok je PŘIPRAVENÝ, ale zobrazí se až od 4 položek
+// (pokyn DK 2026-08-05: „až budou 4, nastal čas"). Logo je nepovinné —
+// bez něj se vykreslí jen název. Kandidáti k doplnění: Packeta/Zásilkovna,
+// Comgate, Make, Gorgias, Judge.me (viz answers/78).
+const techPartneri: { nazev: string; logo?: string; url?: string }[] = [
+  { nazev: 'Klaviyo', url: 'https://www.klaviyo.com' },
+  { nazev: 'Ecomail', url: 'https://ecomail.cz' },
+];
 
 const certifikace = [
   { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
@@ -78,7 +91,8 @@ const certifikace = [
   <!-- S kým spolupracujeme — nová sekce (zadání DK 2026-08-05) -->
   <section class="section bg-primary">
     <div class="container spoluprace-inner">
-      <h2 class="h2 section-title">S kým spolupracujeme</h2>
+      <p class="label sekce-eyebrow">S kým spolupracujeme</p>
+      <h2 class="h2 section-title">Externí tým</h2>
       <p class="spoluprace-uvod">
         Nikdo neumí všechno — a my to ani nepředstíráme. Kolem jádra týmu máme
         okruh specialistů, které zapojujeme přesně tehdy, když je projekt
@@ -98,6 +112,24 @@ const certifikace = [
       )}
     </div>
   </section>
+
+  {techPartneri.length >= 4 && (
+    <section class="section bg-primary">
+      <div class="container spoluprace-inner">
+        <p class="label sekce-eyebrow">S kým spolupracujeme</p>
+        <h2 class="h2 section-title">Tech partneři</h2>
+        <div class="partneri-lista">
+          {techPartneri.map((t) => (
+            <a href={t.url} class="partner-cell" target="_blank" rel="noopener noreferrer">
+              {t.logo
+                ? <img src={t.logo} alt={t.nazev} class="partner-logo" loading="lazy" />
+                : <span class="partner-nazev">{t.nazev}</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Certifikace — vědomě až na konci, nenápadně (pokyn DK: badge nejsou důležité) -->
   <section class="certifikace">
@@ -164,6 +196,24 @@ const certifikace = [
   .spoluprace-obor { font-size: var(--text-small); color: var(--action); font-weight: 600; margin-bottom: 8px; }
   .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
 
+  .sekce-eyebrow { color: var(--neutral-500); margin-bottom: var(--space-16); text-transform: uppercase; }
+
+  /* Tech partneři — lišta ve stylu Swanky (mřížka buněk s logy) */
+  .partneri-lista {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md); overflow: hidden; margin-top: var(--space-40);
+  }
+  .partner-cell {
+    background: var(--ae-bg-primary); min-height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    padding: var(--space-24); text-decoration: none;
+    transition: background var(--transition-base);
+  }
+  .partner-cell:hover { background: rgba(255,255,255,0.04); }
+  .partner-logo { max-height: 40px; max-width: 70%; width: auto; }
+  .partner-nazev { font-family: var(--font-primary); font-size: 20px; font-weight: 700; color: var(--neutral-300); }
+
   /* Certifikace — nenápadný pás na konci */
   .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
   .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
@@ -180,6 +230,7 @@ const certifikace = [
   @media (max-width: 768px) {
     .team-grid { grid-template-columns: 1fr; }
     .spoluprace-grid { grid-template-columns: 1fr; }
+    .partneri-lista { grid-template-columns: repeat(2, 1fr); }
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-sub { font-size: 18px; }
