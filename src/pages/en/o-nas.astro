@@ -92,7 +92,7 @@ const certifikace = [
     </div>
   </section>
 
-  <section class="section bg-primary">
+  <section class="section bg-primary team-sekce">
     <div class="container">
       <h2 class="h2 section-title">The team</h2>
       <div class="team-grid">
@@ -115,7 +115,6 @@ const certifikace = [
   <!-- Externí tým — navazuje na Tým jako jeden blok (DK 2026-08-05) -->
   <section class="section bg-primary externi-sekce">
     <div class="container spoluprace-inner">
-      <h2 class="h2 section-title">External team</h2>
       {spoluprace.length > 0 && (
         <div class="spoluprace-grid">
           {spoluprace.map((s) => (
@@ -242,7 +241,7 @@ const certifikace = [
 
   /* S kým spolupracujeme */
   .spoluprace-inner { }
-  .spoluprace-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); margin-top: var(--space-40); }
+  .spoluprace-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); }
   .spoluprace-card {
     background: var(--ae-bg-primary);
     border-radius: var(--radius-md); padding: var(--space-24);
@@ -250,10 +249,12 @@ const certifikace = [
   }
   .spoluprace-card .team-photo { margin-bottom: 0; }
   .spoluprace-jmeno { margin-bottom: 4px; }
-  .spoluprace-obor { font-size: var(--text-small); color: var(--action); font-weight: 600; margin-bottom: 8px; }
+  .spoluprace-obor { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 8px; }
   .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
 
-  /* Externí tým lepí na Tým — jeden souvislý blok lidí */
+  /* Externí tým lepí na Tým — jeden souvislý blok lidí, bez vlastního
+     nadpisu (DK 2026-08-05); mezera mezi mřížkami = gap mřížky */
+  .team-sekce { padding-bottom: var(--space-16); }
   .externi-sekce { padding-top: 0; }
 
   /* Tech partneři — lišta ve stylu Swanky (mřížka buněk s logy) */
@@ -290,7 +291,7 @@ const certifikace = [
   .delame-list li { position: relative; padding-left: 34px; font-size: 17px; color: var(--neutral-300); line-height: 1.55; }
   .delame-list li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
   .delame-list--ano li::before { content: '✓'; color: var(--action); }
-  .delame-list--ne li::before { content: '✕'; color: var(--neutral-500); }
+  .delame-list--ne li::before { content: '✕'; color: var(--semantic-error); }
 
   /* Certifikace — nenápadný pás na konci */
   .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
