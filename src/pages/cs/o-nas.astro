@@ -47,6 +47,32 @@ const techPartneri: { nazev: string; logo?: string; url?: string }[] = [
   { nazev: 'Ecomail', url: 'https://ecomail.cz' },
 ];
 
+// Čemu věříme — manifest místo frází (formát 37signals, obsah aethero;
+// zadání DK 2026-08-05 „zkus to napsat")
+const principy = [
+  { titulek: 'Senior od začátku do konce', text: 'Váš projekt nikdy nedostane junior na zaučení. Kdo s vámi mluví na první schůzce, ten váš e-shop opravdu staví.' },
+  { titulek: 'Specializace vyhrává', text: 'Děláme Shopify — a proto o něm víme víc než generalisté. Jedna platforma dělaná pořádně je víc než pět platforem napůl.' },
+  { titulek: 'AI je náš nástroj, ne náhrada řemesla', text: 'Automatizujeme všechno, co stroj umí líp, aby na design, strategii a obsah zbylo víc hlavy. Rozhoduje vždycky člověk.' },
+  { titulek: 'Spuštění je začátek, ne konec', text: 'E-shop se nespouští, e-shop se provozuje: měření, iterace, podpora, růst. Proto s námi klienti zůstávají roky.' },
+  { titulek: 'Žádná překvapení', text: 'Víte, co se dělá, proč se to dělá a kolik to stojí — průběžně, ne až na faktuře.' },
+];
+
+// Děláme / Neděláme — kultura humorem (formát Humaan)
+const delame = [
+  'Shopify od brandu po custom aplikace',
+  'vlastní appky v Shopify App Store — testujeme na sobě',
+  'pořádné řemeslo: typografie, rychlost, přístupnost',
+  'dlouhodobé vztahy — spuštěním to u nás začíná',
+  'med — Tom fakt chová včely',
+];
+const nedelame = [
+  'weby za víkend a „nějak to dopadne"',
+  'přeprodávání anonymních juniorů',
+  'projekty, kterým sami nevěříme',
+  'WordPress (promiňte)',
+  'víkendové deadliny — o víkendu jsme s rodinami',
+];
+
 const certifikace = [
   { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
   { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, ověřená dovednost' },
@@ -104,6 +130,43 @@ const certifikace = [
           ))}
         </div>
       )}
+    </div>
+  </section>
+
+  <!-- Čemu věříme + Děláme/Neděláme (formáty 37signals + Humaan, DK 2026-08-05) -->
+  <section class="section bg-primary">
+    <div class="container">
+      <h2 class="h2 section-title">Čemu věříme</h2>
+      <div class="principy">
+        {principy.map((p, i) => (
+          <div class="princip">
+            <span class="princip-num">0{i + 1}</span>
+            <div>
+              <h3 class="h3-mini princip-titulek">{p.titulek}</h3>
+              <p class="princip-text">{p.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary delame-sekce">
+    <div class="container">
+      <div class="delame-grid">
+        <div>
+          <h2 class="h2 section-title">Děláme</h2>
+          <ul class="delame-list delame-list--ano">
+            {delame.map((d) => <li>{d}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="h2 section-title">Neděláme</h2>
+          <ul class="delame-list delame-list--ne">
+            {nedelame.map((n) => <li>{n}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -211,6 +274,26 @@ const certifikace = [
   .partner-logo { max-height: 40px; max-width: 70%; width: auto; }
   .partner-nazev { font-family: var(--font-primary); font-size: 20px; font-weight: 700; color: var(--neutral-300); }
 
+  /* Čemu věříme — číslované principy (gradientová čísla jako na Co umíme) */
+  .principy { display: flex; flex-direction: column; gap: var(--space-40); max-width: 760px; margin-top: var(--space-40); }
+  .princip { display: grid; grid-template-columns: 88px 1fr; gap: var(--space-24); align-items: start; }
+  .princip-num {
+    font-family: var(--font-primary); font-size: var(--fs-56); font-weight: 700; line-height: 1;
+    background: linear-gradient(135deg, var(--accent-purple), var(--action));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .princip-titulek { margin-bottom: 8px; }
+  .princip-text { font-size: 17px; color: var(--neutral-300); line-height: 1.65; max-width: 560px; }
+
+  /* Děláme / Neděláme */
+  .delame-sekce { padding-top: 0; }
+  .delame-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); }
+  .delame-list { list-style: none; padding: 0; margin: var(--space-32) 0 0; display: flex; flex-direction: column; gap: var(--space-16); }
+  .delame-list li { position: relative; padding-left: 34px; font-size: 17px; color: var(--neutral-300); line-height: 1.55; }
+  .delame-list li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+  .delame-list--ano li::before { content: '✓'; color: var(--action); }
+  .delame-list--ne li::before { content: '✕'; color: var(--neutral-500); }
+
   /* Certifikace — nenápadný pás na konci */
   .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
   .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
@@ -232,6 +315,9 @@ const certifikace = [
     .team-grid { grid-template-columns: 1fr; }
     .spoluprace-grid { grid-template-columns: 1fr; }
     .partneri-lista { grid-template-columns: repeat(2, 1fr); }
+    .delame-grid { grid-template-columns: 1fr; gap: var(--space-40); }
+    .princip { grid-template-columns: 64px 1fr; }
+    .princip-num { font-size: var(--fs-40); }
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-sub { font-size: 18px; }
