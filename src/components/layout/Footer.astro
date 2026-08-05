@@ -87,9 +87,8 @@ const intentLinks = lang === 'en'
     align-items: center;
     gap: var(--space-24);
     flex-wrap: wrap;
-    padding: 0 var(--space-24) var(--space-40);
+    padding: var(--space-24) var(--space-24);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: var(--space-24);
   }
   .footer-copy {
     margin: 0;
@@ -98,6 +97,10 @@ const intentLinks = lang === 'en'
   }
   .footer-legal-links {
     display: flex;
+    /* row EXPLICITNĚ — obecné `ul { flex-direction: column }` níž by jinak
+       poslalo právní odkazy pod sebe (DK 2026-08-05: „na jeden řádek") */
+    flex-direction: row;
+    align-items: center;
     gap: var(--space-24);
     list-style: none;
     margin: 0;
