@@ -43,7 +43,13 @@ const navItems = lang === 'en'
         ],
       },
       { label: 'BLOG', href: `${p}/blog` },
-      { label: 'ABOUT', href: `${p}/o-nas` },
+      {
+        label: 'ABOUT',
+        href: `${p}/o-nas`,
+        dropdown: [
+          { label: 'Team', href: `${p}/o-nas#tym` },
+        ],
+      },
       { label: 'CONTACT', href: `${p}/kontakt` },
     ]
   : [
@@ -71,7 +77,13 @@ const navItems = lang === 'en'
         ],
       },
       { label: 'BLOG', href: `${p}/blog` },
-      { label: 'O NÁS', href: `${p}/o-nas` },
+      {
+        label: 'O NÁS',
+        href: `${p}/o-nas`,
+        dropdown: [
+          { label: 'Tým', href: `${p}/o-nas#tym` },
+        ],
+      },
       { label: 'KONTAKT', href: `${p}/kontakt` },
     ];
 ---
