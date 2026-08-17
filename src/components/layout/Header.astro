@@ -1,8 +1,8 @@
 ---
 import { altPath } from '../../lib/i18n-paths';
 
-export interface Props { lang?: string; }
-const { lang = 'cs' } = Astro.props;
+export interface Props { lang?: string; skryjLogo?: boolean; }
+const { skryjLogo = false, lang = 'cs' } = Astro.props;
 const p = lang === 'en' ? '/en' : '/cs';
 
 // Přepínač jazyka — protějšek řeší altPath, ne záměna prefixu.
@@ -78,9 +78,13 @@ const navItems = lang === 'en'
 
 <header id="site-header">
   <div class="header-inner container">
-    <a href={`${p}/`} class="logo" aria-label="aethero">
-      <img src="/ae-logo.svg" alt="æthero" width="140" height="35" loading="eager" />
-    </a>
+    {!skryjLogo ? (
+      <a href={`${p}/`} class="logo" aria-label="aethero">
+        <img src="/ae-logo.svg" alt="æthero" width="140" height="35" loading="eager" />
+      </a>
+    ) : (
+      <div aria-hidden="true"></div>
+    )}
 
     <nav id="nav-menu" role="navigation" aria-label={lang === 'en' ? 'Main navigation' : 'Hlavní navigace'}>
       <button class="nav-close" id="nav-close" aria-label={lang === 'en' ? 'Close menu' : 'Zavřít menu'}>

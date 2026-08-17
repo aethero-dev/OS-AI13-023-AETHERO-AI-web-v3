@@ -13,16 +13,18 @@ export interface Props {
       dokud tady chybělo, články sice schéma posílaly, ale tiše se zahazovalo
       a do HTML se nikdy nedostalo (AE-7, opraveno 2026-08-02). */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** O nás: logo se z menu schová a žije velké v hero (DK 2026-08-05) */
+  skryjLogo?: boolean;
 }
 
-const { title, description, ogImage, lang, jsonLd } = Astro.props;
+const { title, description, ogImage, lang, jsonLd, skryjLogo } = Astro.props;
 ---
 
 <BaseLayout {title} {description} {ogImage} {lang} {jsonLd}>
   <a href="#main-content" class="skip-link">
     {lang === 'en' ? 'Skip to content' : 'Přeskočit na obsah'}
   </a>
-  <Header lang={lang} />
+  <Header lang={lang} skryjLogo={skryjLogo} />
   <main id="main-content">
     <slot />
   </main>
