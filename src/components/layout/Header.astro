@@ -89,13 +89,11 @@ const navItems = lang === 'en'
 ---
 
 <header id="site-header">
-  <div class="header-inner container">
-    {!skryjLogo ? (
+  <div class={`header-inner container${skryjLogo ? " bez-loga" : ""}`}>
+    {!skryjLogo && (
       <a href={`${p}/`} class="logo" aria-label="aethero">
         <img src="/ae-logo.svg" alt="æthero" width="140" height="35" loading="eager" />
       </a>
-    ) : (
-      <div aria-hidden="true"></div>
     )}
 
     <nav id="nav-menu" role="navigation" aria-label={lang === 'en' ? 'Main navigation' : 'Hlavní navigace'}>
@@ -260,6 +258,10 @@ const navItems = lang === 'en'
   .header-inner {
     display: grid;
     grid-template-columns: auto 1fr auto auto;
+  }
+  /* Bez loga (O nás) první sloupec neexistuje - menu pokryje jeho místo */
+  .header-inner.bez-loga { grid-template-columns: 1fr auto auto; }
+  .header-inner {
     align-items: center;
     gap: 0 24px;
     border: 1px solid transparent;
