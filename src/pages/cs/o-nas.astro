@@ -74,9 +74,9 @@ const nedelame = [
 ];
 
 const certifikace = [
-  { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
-  { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, ověřená dovednost' },
-  { img: '/badge-solution.png', alt: 'Shopify — Solution Planning Fundamentals, ověřená dovednost' },
+  { nazev: 'Selling Fundamentals', badge: '/badge-selling.png' },
+  { nazev: 'Development Fundamentals', badge: '/badge-development.png' },
+  { nazev: 'Solution Planning Fundamentals', badge: '/badge-solution.png' },
 ];
 ---
 
@@ -188,13 +188,23 @@ const certifikace = [
     </section>
   )}
 
-  <!-- Certifikace — vědomě až na konci, nenápadně (pokyn DK: badge nejsou důležité) -->
+  <!-- Certifikace Shopify — vlastní karty v našem DS místo jejich badge PNG
+       (barevný svět Shopify badge s naší navy neladí; karty škálují na
+       libovolný počet — DK 2026-08-05) -->
   <section class="certifikace">
-    <div class="container certifikace-inner">
-      <p class="certifikace-label">Certifikace Shopify</p>
-      <div class="certifikace-badges">
+    <div class="container">
+      <h2 class="h2 section-title">Certifikace Shopify</h2>
+      <div class="cert-grid">
         {certifikace.map((c) => (
-          <img src={c.img} alt={c.alt} class="certifikace-badge" loading="lazy" />
+          <div class="cert-karta">
+            <svg class="cert-ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M6 7h12l1.2 13.2a1 1 0 0 1-1 1.1H5.8a1 1 0 0 1-1-1.1L6 7Z"/>
+              <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+              <path d="m9.6 14.4 1.8 1.8 3.4-3.4"/>
+            </svg>
+            <h3 class="h3-mini cert-nazev">{c.nazev}</h3>
+            <p class="cert-podtitul">Ověřená dovednost · Shopify</p>
+          </div>
         ))}
       </div>
     </div>
@@ -301,15 +311,20 @@ const certifikace = [
   .delame-list--ano li::before { content: '✓'; color: var(--action); }
   .delame-list--ne li::before { content: '✕'; color: var(--semantic-error); }
 
-  /* Certifikace — nenápadný pás na konci */
-  .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
-  .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
-  .certifikace-label {
-    font-family: var(--font-primary); font-size: 13px; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase; color: var(--neutral-500);
+  /* Certifikace — vlastní karty v DS, škálují na libovolný počet */
+  .certifikace { background: var(--ae-bg-primary); padding: var(--space-80) 0; }
+  .cert-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: var(--space-16); margin-top: var(--space-40);
   }
-  .certifikace-badges { display: flex; gap: var(--space-32); align-items: center; flex-wrap: wrap; }
-  .certifikace-badge { height: 220px; width: auto; }
+  .cert-karta {
+    background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md); padding: var(--space-32) var(--space-24);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .cert-ikona { width: 40px; height: 40px; color: var(--action); }
+  .cert-nazev { margin-top: 6px; }
+  .cert-podtitul { font-size: var(--text-small); color: var(--neutral-500); }
 
   .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
   .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -328,7 +343,6 @@ const certifikace = [
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-manifest p { font-size: 18px; }
-    .certifikace-badge { height: 150px; }
   }
   @media (max-width: 480px) {
     .o-nas-hero { padding: 70px 0 48px; }
