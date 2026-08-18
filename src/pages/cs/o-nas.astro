@@ -50,7 +50,6 @@ const techPartneri: { nazev: string; logo?: string; url?: string }[] = [
 // Čemu věříme — manifest místo frází (formát 37signals, obsah aethero;
 // zadání DK 2026-08-05 „zkus to napsat")
 const principy = [
-  { titulek: 'Senior od začátku do konce', text: 'Váš projekt nikdy nedostane junior na zaučení. Kdo s vámi mluví na první schůzce, ten váš e-shop opravdu staví.' },
   { titulek: 'Specializace vyhrává', text: 'Děláme Shopify — a proto o něm víme víc než generalisté. Jedna platforma dělaná pořádně je víc než pět platforem napůl.' },
   { titulek: 'AI je náš nástroj, ne náhrada řemesla', text: 'Automatizujeme všechno, co stroj umí líp, aby na design, strategii a obsah zbylo víc hlavy. Rozhoduje vždycky člověk.' },
   { titulek: 'Spuštění je začátek, ne konec', text: 'E-shop se nespouští, e-shop se provozuje: měření, iterace, podpora, růst. Proto s námi klienti zůstávají roky.' },
@@ -74,9 +73,9 @@ const nedelame = [
 ];
 
 const certifikace = [
-  { nazev: 'Selling Fundamentals', badge: '/badge-selling.png' },
-  { nazev: 'Development Fundamentals', badge: '/badge-development.png' },
-  { nazev: 'Solution Planning Fundamentals', badge: '/badge-solution.png' },
+  { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
+  { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, ověřená dovednost' },
+  { img: '/badge-solution.png', alt: 'Shopify — Solution Planning Fundamentals, ověřená dovednost' },
 ];
 ---
 
@@ -134,35 +133,28 @@ const certifikace = [
     </div>
   </section>
 
-  <!-- Čemu věříme + Děláme/Neděláme (formáty 37signals + Humaan, DK 2026-08-05) -->
+  <!-- Naše zásady + Co děláme/neděláme vedle sebe (DK 2026-08-05 večer:
+       bez čísel, bez „Senior od začátku", dva sloupce) -->
   <section class="section bg-primary">
     <div class="container">
-      <h2 class="h2 section-title">Čemu věříme</h2>
-      <div class="principy">
-        {principy.map((p, i) => (
-          <div class="princip">
-            <span class="princip-num">0{i + 1}</span>
-            <div>
-              <h3 class="h3-mini princip-titulek">{p.titulek}</h3>
-              <p class="princip-text">{p.text}</p>
-            </div>
+      <div class="zasady-grid">
+        <div>
+          <h2 class="h2 section-title">Naše zásady</h2>
+          <div class="principy">
+            {principy.map((p) => (
+              <div class="princip">
+                <h3 class="h3-mini princip-titulek">{p.titulek}</h3>
+                <p class="princip-text">{p.text}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-primary delame-sekce">
-    <div class="container">
-      <div class="delame-grid">
+        </div>
         <div>
           <h2 class="h2 section-title">Co děláme,</h2>
           <ul class="delame-list delame-list--ano">
             {delame.map((d) => <li>{d}</li>)}
           </ul>
-        </div>
-        <div>
-          <h2 class="h2 section-title">a co neděláme</h2>
+          <h2 class="h2 section-title nedelame-nadpis">a co neděláme</h2>
           <ul class="delame-list delame-list--ne">
             {nedelame.map((n) => <li>{n}</li>)}
           </ul>
@@ -188,23 +180,14 @@ const certifikace = [
     </section>
   )}
 
-  <!-- Certifikace Shopify — vlastní karty v našem DS místo jejich badge PNG
-       (barevný svět Shopify badge s naší navy neladí; karty škálují na
-       libovolný počet — DK 2026-08-05) -->
+  <!-- Certifikace — originální Shopify badge, NIKDY nepřekreslovat do vlastních
+       karet (DK 2026-08-05: „je to odznak, co jinak nezískáš") -->
   <section class="certifikace">
-    <div class="container">
-      <h2 class="h2 section-title">Certifikace Shopify</h2>
-      <div class="cert-grid">
+    <div class="container certifikace-inner">
+      <p class="certifikace-label">Certifikace Shopify</p>
+      <div class="certifikace-badges">
         {certifikace.map((c) => (
-          <div class="cert-karta">
-            <svg class="cert-ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-              <path d="M6 7h12l1.2 13.2a1 1 0 0 1-1 1.1H5.8a1 1 0 0 1-1-1.1L6 7Z"/>
-              <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
-              <path d="m9.6 14.4 1.8 1.8 3.4-3.4"/>
-            </svg>
-            <h3 class="h3-mini cert-nazev">{c.nazev}</h3>
-            <p class="cert-podtitul">Ověřená dovednost · Shopify</p>
-          </div>
+          <img src={c.img} alt={c.alt} class="certifikace-badge" loading="lazy" />
         ))}
       </div>
     </div>
@@ -291,40 +274,29 @@ const certifikace = [
   .partner-logo { max-height: 40px; max-width: 70%; width: auto; }
   .partner-nazev { font-family: var(--font-primary); font-size: 20px; font-weight: 700; color: var(--neutral-300); }
 
-  /* Čemu věříme — číslované principy (gradientová čísla jako na Co umíme) */
-  .principy { display: flex; flex-direction: column; gap: var(--space-40); max-width: 760px; margin-top: var(--space-40); }
-  .princip { display: grid; grid-template-columns: 88px 1fr; gap: var(--space-24); align-items: start; }
-  .princip-num {
-    font-family: var(--font-primary); font-size: var(--fs-56); font-weight: 700; line-height: 1;
-    background: linear-gradient(135deg, var(--accent-purple), var(--action));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .princip-titulek { margin-bottom: 8px; }
-  .princip-text { font-size: 17px; color: var(--neutral-300); line-height: 1.65; max-width: 560px; }
+  /* Naše zásady + Děláme/Neděláme — dva sloupce */
+  .zasady-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: start; }
+  .principy { display: flex; flex-direction: column; gap: var(--space-32); margin-top: var(--space-40); }
+  .princip-titulek { margin-bottom: 6px; }
+  .princip-text { font-size: 17px; color: var(--neutral-300); line-height: 1.65; max-width: 520px; }
+  .nedelame-nadpis { margin-top: var(--space-48); }
 
   /* Děláme / Neděláme */
-  .delame-sekce { padding-top: 0; }
-  .delame-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); }
   .delame-list { list-style: none; padding: 0; margin: var(--space-32) 0 0; display: flex; flex-direction: column; gap: var(--space-16); }
   .delame-list li { position: relative; padding-left: 34px; font-size: 17px; color: var(--neutral-300); line-height: 1.55; }
   .delame-list li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
   .delame-list--ano li::before { content: '✓'; color: var(--action); }
   .delame-list--ne li::before { content: '✕'; color: var(--semantic-error); }
 
-  /* Certifikace — vlastní karty v DS, škálují na libovolný počet */
-  .certifikace { background: var(--ae-bg-primary); padding: var(--space-80) 0; }
-  .cert-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: var(--space-16); margin-top: var(--space-40);
+  /* Certifikace — originální badge, nenápadně na konci */
+  .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
+  .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
+  .certifikace-label {
+    font-family: var(--font-primary); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; color: var(--neutral-500);
   }
-  .cert-karta {
-    background: var(--ae-bg-primary); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius-md); padding: var(--space-32) var(--space-24);
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .cert-ikona { width: 40px; height: 40px; color: var(--action); }
-  .cert-nazev { margin-top: 6px; }
-  .cert-podtitul { font-size: var(--text-small); color: var(--neutral-500); }
+  .certifikace-badges { display: flex; gap: var(--space-32); align-items: center; flex-wrap: wrap; }
+  .certifikace-badge { height: 220px; width: auto; }
 
   .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
   .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -337,9 +309,8 @@ const certifikace = [
     .team-grid { grid-template-columns: 1fr; }
     .spoluprace-grid { grid-template-columns: 1fr; }
     .partneri-lista { grid-template-columns: repeat(2, 1fr); }
-    .delame-grid { grid-template-columns: 1fr; gap: var(--space-40); }
-    .princip { grid-template-columns: 64px 1fr; }
-    .princip-num { font-size: var(--fs-40); }
+    .zasady-grid { grid-template-columns: 1fr; gap: var(--space-40); }
+    .certifikace-badge { height: 150px; }
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-manifest p { font-size: 18px; }
