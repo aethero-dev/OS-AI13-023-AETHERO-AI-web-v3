@@ -18,11 +18,13 @@ const t = lang === 'en'
       rez: 'Typeface', bez: 'Sans serif', patky: 'Serif', motiv: 'Theme',
       tmavy: 'Dark', svetly: 'Light', sepia: 'Sepia',
       klid: 'Text only', klidPopis: 'Hides the menu and footer. Leaves the title and article.',
+      reset: 'Reset', resetPopis: 'Restore default reading settings',
       otevri: 'Open reading settings', zavri: 'Hide reading settings' }
   : { titulek: 'Čtecí režim', velikost: 'Velikost písma', mensi: 'Zmenšit písmo', vetsi: 'Zvětšit písmo',
       rez: 'Řez písma', bez: 'Bezpatkové', patky: 'Patkové', motiv: 'Motiv',
       tmavy: 'Tmavý', svetly: 'Světlý', sepia: 'Sepia',
       klid: 'Jen text', klidPopis: 'Schová menu i patičku. Zůstane nadpis a článek.',
+      reset: 'Reset', resetPopis: 'Vrátit výchozí nastavení čtení',
       otevri: 'Otevřít čtecí režim', zavri: 'Skrýt čtecí režim' };
 ---
 
@@ -65,7 +67,10 @@ const t = lang === 'en'
   </div>
 
   <div class="cteni-skupina">
-    <button class="cteni-klid" id="cteni-klid" aria-pressed="false">{t.klid}</button>
+    <div class="cteni-radek">
+      <button class="cteni-klid" id="cteni-klid" aria-pressed="false">{t.klid}</button>
+      <button class="cteni-reset" id="cteni-reset" disabled title={t.resetPopis}>{t.reset}</button>
+    </div>
     <p class="cteni-klid-popis">{t.klidPopis}</p>
   </div>
 </aside>
@@ -89,11 +94,13 @@ const t = lang === 'en'
     document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
     spust.onclick = () => zobrazPanel(true);
 
+    let obnovReset = () => {};   // přiřadí se níž, settery ji už můžou volat
     const nastav = (klic, hodnota) => {
       H.setAttribute('data-cteni-' + klic, hodnota);
       panel.querySelectorAll('[data-' + klic + ']').forEach((b) =>
         b.setAttribute('aria-pressed', String(b.dataset[klic] === hodnota)));
       uloz(klic, hodnota);
+      obnovReset();
     };
     panel.querySelectorAll('[data-rez]').forEach((b) => { b.onclick = () => nastav('rez', b.dataset.rez); });
     panel.querySelectorAll('[data-motiv]').forEach((b) => { b.onclick = () => nastav('motiv', b.dataset.motiv); });
@@ -111,6 +118,7 @@ const t = lang === 'en'
       vetsi.disabled = n === POLOH;
       popisVel.dataset.stav = n + '/' + POLOH;
       uloz('px', String(n));
+      obnovReset();
     };
     mensi.onclick = () => nastavVelikost(Number(H.getAttribute('data-cteni-px')) - 1);
     vetsi.onclick = () => nastavVelikost(Number(H.getAttribute('data-cteni-px')) + 1);
@@ -121,6 +129,24 @@ const t = lang === 'en'
       if (zapnuto) H.removeAttribute('data-cteni-klid'); else H.setAttribute('data-cteni-klid', '1');
       klid.setAttribute('aria-pressed', String(!zapnuto));
       uloz('klid', zapnuto ? '' : '1');
+      obnovReset();
+    };
+
+    /* Reset — tmavý, dokud je všechno ve výchozím stavu; rozsvítí se, jen
+       když se čtenář od výchozích hodnot odchýlí (DK 2026-08-05). */
+    const VYCHOZI = { rez: 'bez', motiv: 'tmavy', px: '3' };
+    const reset = document.getElementById('cteni-reset');
+    obnovReset = () => {
+      reset.disabled = H.getAttribute('data-cteni-rez') === VYCHOZI.rez
+        && H.getAttribute('data-cteni-motiv') === VYCHOZI.motiv
+        && H.getAttribute('data-cteni-px') === VYCHOZI.px
+        && !H.hasAttribute('data-cteni-klid');
+    };
+    reset.onclick = () => {
+      nastav('rez', VYCHOZI.rez);
+      nastav('motiv', VYCHOZI.motiv);
+      nastavVelikost(Number(VYCHOZI.px));
+      if (H.hasAttribute('data-cteni-klid')) klid.click();
     };
 
     // obnovit, co si čtenář nastavil minule

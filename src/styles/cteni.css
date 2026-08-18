@@ -231,12 +231,22 @@ html[data-cteni-ctu] .cteni-spust {
   box-shadow: 0 0 0 2px var(--action), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
+.cteni-radek { display: flex; gap: 8px; }
 .cteni-klid {
-  width: 100%; border: 1px solid rgba(255, 255, 255, 0.16);
+  flex: 1; min-width: 0; border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.04); color: var(--neutral-300);
-  font-family: inherit; font-size: 13px; font-weight: 600;
-  padding: 9px; border-radius: 9px; cursor: pointer; transition: var(--transition-base);
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  padding: 7px; border-radius: 9px; cursor: pointer; transition: var(--transition-base);
 }
+/* Reset — tmavý v klidu, svítí jen když je co vracet */
+.cteni-reset {
+  border: 1px solid rgba(255, 255, 255, 0.08); background: transparent;
+  color: var(--neutral-500); font-family: inherit; font-size: 12px; font-weight: 600;
+  padding: 7px 12px; border-radius: 9px; cursor: pointer; transition: var(--transition-base);
+}
+.cteni-reset:disabled { opacity: 0.35; cursor: default; }
+.cteni-reset:not(:disabled) { border-color: var(--action); color: var(--action); }
+.cteni-reset:not(:disabled):hover { background: var(--action); color: #00121a; }
 .cteni-klid:hover { border-color: var(--action); color: #fff; }
 .cteni-klid[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: #00121a; }
 .cteni-klid-popis { font-size: 11px; line-height: 1.4; color: var(--neutral-500); margin-top: 6px; text-align: center; }
