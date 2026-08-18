@@ -6,15 +6,15 @@ date: 2026-05-01
 image: "/blog/povinne-tlacitko-odstoupit-od-smlouvy2x.webp"
 ---
 
-From June 2026, the mandatory withdrawal button is set to apply to Czech e-shops. Here's a practical guide to preparing for it in Shopify — without an unnecessary extra app.
+From June 2026, the mandatory withdrawal button is set to apply to Czech e-shops. Here's a practical guide to preparing for it in Shopify - without an unnecessary extra app.
 
 ## E-shops can tune the buying process down to the last detail
 
 The colour of the cart button. The shipping copy. The order of payment methods. The discount popup. Every click gets measured, because every click can mean revenue.
 
-Then a customer wants to withdraw from the contract — and suddenly the "shopping archaeology" begins. Where did they write it? FAQ. Terms and conditions. A PDF form. An email to support. Waiting.
+Then a customer wants to withdraw from the contract - and suddenly the "shopping archaeology" begins. Where did they write it? FAQ. Terms and conditions. A PDF form. An email to support. Waiting.
 
-The new obligation exposes that gap nicely. The mandatory withdrawal button isn't meant to be one more legal item on the website — it's meant to give the customer a **clear online route** to submitting a withdrawal. According to [Právní prostor](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy), the obligation must be implemented by **19 June 2026** at the latest. At the time of writing the amendment is still in the legislative process, so it's worth verifying the exact wording with a lawyer before you publish and implement.
+The new obligation exposes that gap nicely. The mandatory withdrawal button isn't meant to be one more legal item on the website - it's meant to give the customer a **clear online route** to submitting a withdrawal. According to [Právní prostor](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy), the obligation must be implemented by **19 June 2026** at the latest. At the time of writing the amendment is still in the legislative process, so it's worth verifying the exact wording with a lawyer before you publish and implement.
 
 For Shopify store owners, though, something else matters: you can sort out the technical groundwork right now.
 
@@ -28,7 +28,7 @@ The biggest mistake is thinking the mandatory button means "we'll add a link som
 - they get a confirmation,
 - and the merchant knows what to do next.
 
-The button is only the entry point. If there's no comprehensible process behind it, you haven't solved the problem — you've just given it nicer packaging. That's exactly why we wouldn't start a Shopify store with an external app. Let's first look at what Shopify does natively.
+The button is only the entry point. If there's no comprehensible process behind it, you haven't solved the problem - you've just given it nicer packaging. That's exactly why we wouldn't start a Shopify store with an external app. Let's first look at what Shopify does natively.
 
 ## What Shopify does natively
 
@@ -44,7 +44,7 @@ So are we done? No. Self-serve returns don't automatically give you a legally co
 
 ### Where should the button go?
 
-The mandatory button must not be hidden where nobody looks — don't leave it only in the terms and conditions.
+The mandatory button must not be hidden where nobody looks - don't leave it only in the terms and conditions.
 
 In practice it makes sense to create a dedicated page along the lines of "Returns and withdrawal from contract" and put a clear **Withdraw from contract** button on it. The button can then lead to the customer accounts URL, where the customer starts the self-serve process. We'd recommend adding the same link to the footer and, where relevant, the help centre.
 
@@ -90,6 +90,6 @@ Shopify gives us the foundation. But the responsibility for making sure the cust
 
 ## Sources
 
-- [Právní prostor — The new "button" obligation for e-shops (in Czech)](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy)
-- [Shopify Help Center — Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup)
-- [Shopify Help Center — Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules)
+- [Právní prostor - The new "button" obligation for e-shops (in Czech)](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy)
+- [Shopify Help Center - Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup)
+- [Shopify Help Center - Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules)

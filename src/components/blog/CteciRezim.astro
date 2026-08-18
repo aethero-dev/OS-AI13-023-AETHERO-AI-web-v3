@@ -1,6 +1,6 @@
 ---
 /**
- * Čtecí režim — panel s nastavením čtení u článku (AE-53, DK 2026-08-04).
+ * Čtecí režim - panel s nastavením čtení u článku (AE-53, DK 2026-08-04).
  *
  * Panel nesahá na žádný prvek přímo. Přepíná atributy na <html>, ty mění
  * proměnné --cteni-* a o zbytek se stará src/styles/cteni.css.
@@ -8,7 +8,7 @@
  * má ho zvětšené i u dalšího článku.
  *
  * Bez JS zůstane stránka ve výchozím (tmavém) nastavení a panel se vůbec
- * nezobrazí — proto je v markupu skrytý a odkrývá ho až skript.
+ * nezobrazí - proto je v markupu skrytý a odkrývá ho až skript.
  */
 interface Props { lang?: 'cs' | 'en' }
 const { lang = 'cs' } = Astro.props;
@@ -83,13 +83,13 @@ const t = lang === 'en'
   const panel = document.getElementById('cteni-panel');
   const spust = document.getElementById('cteni-spust');
   if (panel && spust) {
-    // Panel je v markupu skrytý — bez JS by byl k ničemu. Odkryjeme až tady.
+    // Panel je v markupu skrytý - bez JS by byl k ničemu. Odkryjeme až tady.
     const zobrazPanel = (ano) => { panel.hidden = !ano; spust.hidden = ano; };
-    /* Panel je při načtení ZAVŘENÝ na všech šířkách a VŽDY — vidět je jen
+    /* Panel je při načtení ZAVŘENÝ na všech šířkách a VŽDY - vidět je jen
        kolečko „Aa“. Stav se schválně nepamatuje: uložený otevřený panel by
        čtenáře překvapil na dalším článku a na malém monitoru by ukrajoval
        z textu (DK 2026-08-04, dvakrát). Pamatuje se jen NASTAVENÍ čtení
-       (velikost, řez, motiv) — to je to, co má hodnotu. */
+       (velikost, řez, motiv) - to je to, co má hodnotu. */
     zobrazPanel(false);
     document.getElementById('cteni-zavri').onclick = () => zobrazPanel(false);
     spust.onclick = () => zobrazPanel(true);
@@ -132,7 +132,7 @@ const t = lang === 'en'
       obnovReset();
     };
 
-    /* Reset — tmavý, dokud je všechno ve výchozím stavu; rozsvítí se, jen
+    /* Reset - tmavý, dokud je všechno ve výchozím stavu; rozsvítí se, jen
        když se čtenář od výchozích hodnot odchýlí (DK 2026-08-05). */
     const VYCHOZI = { rez: 'bez', motiv: 'tmavy', px: '3' };
     const reset = document.getElementById('cteni-reset');
@@ -156,19 +156,19 @@ const t = lang === 'en'
     if (nacti('klid') === '1') klid.click();
   }
 
-  /* Panel se odkryje, teprve když se do okna dostane tělo článku — nad hero
+  /* Panel se odkryje, teprve když se do okna dostane tělo článku - nad hero
      obrázkem nemá co dělat. Sleduje se přímo prvek, ne počet odscrollovaných
      pixelů: hero má na každé stránce jinou výšku a na 14" notebooku jinou
      než na velkém monitoru. */
   /* Panel se drží HORNÍ HRANY ČTENÍ, tedy místa, kde začíná nadpis. Dokud
      je hrana v okně, jede s ní; jakmile vyjede nahoru, panel se zastaví pod
      hlavičkou webu. Počítá se to za běhu, protože hero má na každé stránce
-     i každém monitoru jinou výšku — pevné číslo by lhalo (DK 2026-08-04).
+     i každém monitoru jinou výšku - pevné číslo by lhalo (DK 2026-08-04).
      Nad hero obrázkem se panel neukazuje vůbec. */
   const zacatekCteni = document.querySelector('.blog-hero-inner');
   if (zacatekCteni) {
     const STROP = 141;    // hlavička webu (87 px) + mezera
-    const ODSTUP = 30;    // od hrany čtení dolů — nalepená na šev vypadala nepřirozeně (DK)
+    const ODSTUP = 30;    // od hrany čtení dolů - nalepená na šev vypadala nepřirozeně (DK)
     let ceka = false;
     const uprav = () => {
       ceka = false;

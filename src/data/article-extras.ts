@@ -1,12 +1,12 @@
 // Doplňky k článkům: velké CTA pod perexem + blok Časté otázky (FAQ).
 //
 // PROČ TADY A NE V CMS: Storyblok byl 2026-08-02 odstraněn (AE-49, přesun
-// AE-39 tím padl) — tenhle soubor je trvalý domov FAQ a CTA. Edituje ho
+// AE-39 tím padl) - tenhle soubor je trvalý domov FAQ a CTA. Edituje ho
 // DK/CC; Bára posílá otázky a odpovědi textem (viz docs/NAVOD-CLANKY.md).
 //
 // FAQ NENÍ OZDOBA: generuje FAQPage schema, což je nejsilnější formát pro
 // citace v odpovědích AI vyhledávačů. Odpovědi proto musí být věcné a krátké
-// a MUSÍ vycházet z textu článku — ne z ničeho jiného.
+// a MUSÍ vycházet z textu článku - ne z ničeho jiného.
 //
 // Klíč = slug článku v daném jazyce (CS a EN se u části článků liší).
 
@@ -15,7 +15,7 @@ export interface ArticleCta {
   title?: string;
   /** Doprovodná věta pod nadpisem */
   note?: string;
-  /** Popisek tlačítka — sloveso akce (GOV.UK: „Kontaktovat", ne „Více") */
+  /** Popisek tlačítka - sloveso akce (GOV.UK: „Kontaktovat", ne „Více") */
   label: string;
   href: string;
 }
@@ -36,7 +36,7 @@ const cs: Record<string, ArticleExtras> = {
   'shopify-vs-shoptet': {
     cta: {
       title: 'Převeďte si produkty ze Shoptetu do Shopify',
-      note: 'Zdarma a hned — přímo ve vašem prohlížeči.',
+      note: 'Zdarma a hned - přímo ve vašem prohlížeči.',
       label: 'Chci si přechod na Shopify vyzkoušet',
       href: '/cs/migrace-shoptet-na-shopify/',
     },
@@ -86,20 +86,20 @@ const cs: Record<string, ArticleExtras> = {
       {
         q: 'Do kdy to musí být hotové?',
         a: [
-          'Implementace má být hotová do 19. června 2026. Legislativa je ale stále v procesu — konkrétní podobu povinnosti si proto před spuštěním ověřte s právníkem.',
+          'Implementace má být hotová do 19. června 2026. Legislativa je ale stále v procesu - konkrétní podobu povinnosti si proto před spuštěním ověřte s právníkem.',
         ],
       },
       {
         q: 'Stačí na to Shopify nativně?',
         a: [
           'Shopify nabízí Self-serve returns, které zákazníkovi umožní požádat o vrácení přes jeho účet nebo stránku stavu objednávky.',
-          'Samy o sobě ale automaticky nesplňují české zákonné požadavky — jsou solidní technický základ, ne kompletní řešení.',
+          'Samy o sobě ale automaticky nesplňují české zákonné požadavky - jsou solidní technický základ, ne kompletní řešení.',
         ],
       },
       {
         q: 'Jde opravdu jen o tlačítko?',
         a: [
-          'Ne. Po kliknutí musí zákazník najít správnou objednávku, vybrat zboží, odeslat žádost a dostat potvrzení — a obchodník musí vědět, co dál.',
+          'Ne. Po kliknutí musí zákazník najít správnou objednávku, vybrat zboží, odeslat žádost a dostat potvrzení - a obchodník musí vědět, co dál.',
           'Tlačítko je jen vstupní bod. Bez procesu za ním jde o kosmetiku.',
         ],
       },
@@ -125,7 +125,7 @@ const cs: Record<string, ArticleExtras> = {
         q: 'Znamená zero-click konec SEO?',
         a: [
           'Ne. Znamená to, že se část hodnoty přesouvá z návštěvnosti do viditelnosti značky.',
-          'AI vybírá jen omezený počet zdrojů — kdo mezi nimi není, prakticky neexistuje. SEO se tím mění z taktického kanálu na strategickou disciplínu.',
+          'AI vybírá jen omezený počet zdrojů - kdo mezi nimi není, prakticky neexistuje. SEO se tím mění z taktického kanálu na strategickou disciplínu.',
         ],
       },
       {
@@ -156,7 +156,7 @@ const cs: Record<string, ArticleExtras> = {
       {
         q: 'Co je Sidekick Pulse?',
         a: [
-          'Největší novinka edice. Sidekick přechází od reagování na příkazy k anticipaci potřeb — analyzuje data vašeho obchodu, trendy a e-commerce insights a navrhuje konkrétní vylepšení včetně automatizací, slev a e-mailových textů.',
+          'Největší novinka edice. Sidekick přechází od reagování na příkazy k anticipaci potřeb - analyzuje data vašeho obchodu, trendy a e-commerce insights a navrhuje konkrétní vylepšení včetně automatizací, slev a e-mailových textů.',
         ],
       },
       {
@@ -198,7 +198,7 @@ const cs: Record<string, ArticleExtras> = {
       {
         q: 'Můžu překlad nechat na AI?',
         a: [
-          'Ano. Místo ručního překladu se osvědčily modely jako ChatGPT nebo DeepL — ušetří čas a výsledky bývají přesné. Po importu vždy zkontrolujte zobrazení v checkoutu.',
+          'Ano. Místo ručního překladu se osvědčily modely jako ChatGPT nebo DeepL - ušetří čas a výsledky bývají přesné. Po importu vždy zkontrolujte zobrazení v checkoutu.',
         ],
       },
     ],
@@ -209,11 +209,11 @@ const en: Record<string, ArticleExtras> = {
   'shopify-vs-shoptet': {
     cta: {
       title: 'Convert your Shoptet products to Shopify',
-      note: 'Free and instant — right in your browser.',
+      note: 'Free and instant - right in your browser.',
       label: 'I want to try the move to Shopify',
       href: '/en/migrace-shoptet-na-shopify/',
     },
-    faqTitle: 'Shopify vs Shoptet — frequently asked questions',
+    faqTitle: 'Shopify vs Shoptet - frequently asked questions',
     faq: [
       {
         q: 'What is the difference between Shoptet and Shopify?',
@@ -254,7 +254,7 @@ const en: Record<string, ArticleExtras> = {
   },
 
   'shopify-mandatory-button': {
-    faqTitle: 'Withdrawal from contract — frequently asked questions',
+    faqTitle: 'Withdrawal from contract - frequently asked questions',
     faq: [
       {
         q: 'What is the deadline?',
@@ -266,13 +266,13 @@ const en: Record<string, ArticleExtras> = {
         q: 'Is native Shopify enough?',
         a: [
           'Shopify offers Self-serve returns, which let customers request a return through their account or the order status page.',
-          'On their own they do not automatically satisfy Czech legal requirements — they are a solid technical base, not a complete solution.',
+          'On their own they do not automatically satisfy Czech legal requirements - they are a solid technical base, not a complete solution.',
         ],
       },
       {
         q: 'Is it really just about a button?',
         a: [
-          'No. After the click the customer has to find the right order, select the goods, submit the request and receive confirmation — and the merchant has to know what happens next.',
+          'No. After the click the customer has to find the right order, select the goods, submit the request and receive confirmation - and the merchant has to know what happens next.',
           'The button is only an entry point. Without a process behind it, it is cosmetics.',
         ],
       },
@@ -286,7 +286,7 @@ const en: Record<string, ArticleExtras> = {
   },
 
   'ai-seo-2026': {
-    faqTitle: 'AI SEO — frequently asked questions',
+    faqTitle: 'AI SEO - frequently asked questions',
     faq: [
       {
         q: 'What is GEO and how does it differ from classic SEO?',
@@ -298,7 +298,7 @@ const en: Record<string, ArticleExtras> = {
         q: 'Does zero-click mean the end of SEO?',
         a: [
           'No. It means part of the value shifts from traffic to brand visibility.',
-          'AI picks only a limited number of sources — whoever is not among them effectively does not exist. SEO turns from a tactical channel into a strategic discipline.',
+          'AI picks only a limited number of sources - whoever is not among them effectively does not exist. SEO turns from a tactical channel into a strategic discipline.',
         ],
       },
       {
@@ -318,7 +318,7 @@ const en: Record<string, ArticleExtras> = {
   },
 
   'shopify-editions-winter-2026': {
-    faqTitle: 'Shopify Editions Winter ’26 — frequently asked questions',
+    faqTitle: 'Shopify Editions Winter ’26 - frequently asked questions',
     faq: [
       {
         q: 'What is Shopify Editions?',
@@ -329,7 +329,7 @@ const en: Record<string, ArticleExtras> = {
       {
         q: 'What is Sidekick Pulse?',
         a: [
-          'The biggest news of the edition. Sidekick moves from reacting to commands towards anticipating needs — it analyses your store data, trends and e-commerce insights and proposes concrete improvements including automations, discounts and email copy.',
+          'The biggest news of the edition. Sidekick moves from reacting to commands towards anticipating needs - it analyses your store data, trends and e-commerce insights and proposes concrete improvements including automations, discounts and email copy.',
         ],
       },
       {
@@ -348,7 +348,7 @@ const en: Record<string, ArticleExtras> = {
   },
 
   'translating-payment-methods-shopify': {
-    faqTitle: 'Translating payment methods — frequently asked questions',
+    faqTitle: 'Translating payment methods - frequently asked questions',
     faq: [
       {
         q: 'Why does Translate & Adapt not translate payment methods?',
@@ -371,7 +371,7 @@ const en: Record<string, ArticleExtras> = {
       {
         q: 'Can I let AI do the translation?',
         a: [
-          'Yes. Instead of translating by hand, models such as ChatGPT or DeepL work well — they save time and the results are usually accurate. Always check the checkout display after importing.',
+          'Yes. Instead of translating by hand, models such as ChatGPT or DeepL work well - they save time and the results are usually accurate. Always check the checkout display after importing.',
         ],
       },
     ],

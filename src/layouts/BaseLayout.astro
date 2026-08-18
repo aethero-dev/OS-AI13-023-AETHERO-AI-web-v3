@@ -18,7 +18,7 @@ const {
   jsonLd,
 } = Astro.props;
 const siteUrl = 'https://aethero.agency';
-// Protějšky pro hreflang — přes altPath, ne prostou záměnou prefixu.
+// Protějšky pro hreflang - přes altPath, ne prostou záměnou prefixu.
 // null = stránka protějšek nemá (mimo jazykové větve, nebo článek bez páru)
 // a hreflang se nevykreslí; dřív mířil na neexistující URL (AE-8).
 const altCs = altPath(Astro.url.pathname, 'cs');
@@ -68,14 +68,14 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Favicon: zdroj je značková ikona AE-2026-FAVICON-agency.png (BRAND AE).
-       SVG varianta se záměrně nepoužívá — v prohlížečích má přednost před PNG
+       SVG varianta se záměrně nepoužívá - v prohlížečích má přednost před PNG
        a přebíjela by novou ikonu. -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <!-- Fonty jsou self-hostované (src/styles/fonts.css) — žádná cizí doména
+  <!-- Fonty jsou self-hostované (src/styles/fonts.css) - žádná cizí doména
        v kritické cestě, žádná IP návštěvníka do USA bez souhlasu (AE-5).
        Preload jen dvou řezů, které jsou v prvním viewportu: nadpisy Kanit 700
        a běžný text Montserrat 400. Zbytek se dotáhne, až bude potřeba. -->
@@ -103,7 +103,7 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
 
   {analyticsEnabled && (
     <script is:inline define:vars={{ ANALYTICS_ID, CONSENT_KEY }}>
-      // Měření se načte AŽ po souhlasu — do té doby se nespouští nic.
+      // Měření se načte AŽ po souhlasu - do té doby se nespouští nic.
       // Zdroj pravdy o souhlasu je u nás (localStorage), ne u měřicího nástroje.
       window.dataLayer = window.dataLayer || [];
       window.aeLoadAnalytics = function () {

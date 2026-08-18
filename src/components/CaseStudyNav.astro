@@ -1,6 +1,6 @@
 ---
 /**
- * Pojízdné okno případovky — obsah stránky (zadání DK 2026-08-04).
+ * Pojízdné okno případovky - obsah stránky (zadání DK 2026-08-04).
  *
  * Design = čtecí panel (CteciRezim): tmavé sklo, blur, tyrkysové kolečko.
  * Chování = ObsahPlovouci z Pilgerlandu, jen ukotvené VLEVO: jeden seznam
@@ -10,7 +10,7 @@
  * Proč ne dva prvky (statický + plovoucí): odečítač by přečetl tytéž odkazy
  * dvakrát a nepoznal, který je který.
  *
- * Bez JavaScriptu zůstane obyčejný seznam odkazů nahoře — kotvy fungují
+ * Bez JavaScriptu zůstane obyčejný seznam odkazů nahoře - kotvy fungují
  * vždycky, plovoucí chování je jen navrch (kolečko odkrývá až skript).
  */
 interface Props {
@@ -57,7 +57,7 @@ const t = lang === 'en'
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
 
-  /* ── stav v textu — sklo z čtecího panelu ── */
+  /* ── stav v textu - sklo z čtecího panelu ── */
   .csnav-panel {
     background: rgba(10, 14, 46, 0.86);
     backdrop-filter: blur(14px) saturate(1.3);
@@ -87,7 +87,7 @@ const t = lang === 'en'
   /* kapitola, ve které čtenář právě je */
   .csnav-odkaz[aria-current='true'] { color: var(--action); border-left-color: var(--action); }
 
-  /* ── kolečko — dokud obsah stojí v textu, není k ničemu, ukáže se až
+  /* ── kolečko - dokud obsah stojí v textu, není k ničemu, ukáže se až
      přilepené. Vzhled spouštěče čtecího panelu (plné tyrkysové kolečko). ── */
   .csnav-prepinac {
     display: none;
@@ -109,7 +109,7 @@ const t = lang === 'en'
   .csnav-ikona::before { top: 0; box-shadow: 0 5px 0 #00121a; }
   .csnav-ikona::after { bottom: 0; }
 
-  /* ── přilepený stav — VLEVO, zarovnaný se sloupcem obsahu případovky.
+  /* ── přilepený stav - VLEVO, zarovnaný se sloupcem obsahu případovky.
      Drží se levé hrany layoutu (max-width 1200), ne okraje okna; když se
      vedle sloupce nevejde, spadne na okraj. ── */
   .csnav.je-plovouci {
@@ -120,7 +120,7 @@ const t = lang === 'en'
     z-index: 50;
     transition: opacity var(--transition-base);
   }
-  /* Nad CTA a patičkou kolečko nesvítí — tyrkysová na tyrkysové by zmizela
+  /* Nad CTA a patičkou kolečko nesvítí - tyrkysová na tyrkysové by zmizela
      a pod případovkou už není kam navigovat (DK 2026-08-04). */
   .csnav.je-plovouci.je-schovany { opacity: 0; pointer-events: none; }
   .csnav.je-plovouci .csnav-prepinac { display: grid; }
@@ -178,7 +178,7 @@ const t = lang === 'en'
       if (popisek) popisek.textContent = otevreno ? texty.zavrit : texty.otevrit;
     };
 
-    /* Místo si drží výšku, kterou obsah zabíral v textu — jinak by stránka
+    /* Místo si drží výšku, kterou obsah zabíral v textu - jinak by stránka
        v okamžiku přilepení poskočila. Práh se měří od dokumentu, ne přes
        offsetTop: obsah sedí v gridu. */
     let vyskaVTextu = 0;
@@ -248,7 +248,7 @@ const t = lang === 'en'
     // klik na kapitolu panel zavře, ať nepřekrývá cíl skoku
     odkazy.forEach((a) => a.addEventListener('click', () => nastavOtevreno(false)));
 
-    /* Zvýraznění kapitoly, ve které čtenář právě je — pruh pod hlavičkou
+    /* Zvýraznění kapitoly, ve které čtenář právě je - pruh pod hlavičkou
        webu (87 px): nejvýše položená sekce, která do něj vjela, je aktivní. */
     const cile = odkazy
       .map((a) => document.getElementById(a.dataset.cil ?? ''))

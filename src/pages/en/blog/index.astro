@@ -2,7 +2,7 @@
 import PageLayout from '../../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Články z repu (src/content/blog/en/), dřív ze Storybloku — AE-49.
+// Články z repu (src/content/blog/en/), dřív ze Storybloku - AE-49.
 const posts = (await getCollection('blog', (e) => e.id.startsWith('en/') && !e.data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .map((e) => ({
@@ -18,7 +18,7 @@ const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<PageLayout title="Blog — AETHERO" description="Shopify tips, e-commerce strategy and case studies from the AETHERO team." lang="en">
+<PageLayout title="Blog - AETHERO" description="Shopify tips, e-commerce strategy and case studies from the AETHERO team." lang="en">
 
   <section class="blog-index-hero">
     <div class="container">

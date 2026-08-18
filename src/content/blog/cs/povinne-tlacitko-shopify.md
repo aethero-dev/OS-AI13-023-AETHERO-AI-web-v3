@@ -12,9 +12,9 @@ Povinné tlačítko pro odstoupení od smlouvy se má od června 2026 týkat e-s
 
 Barva tlačítka v košíku. Text u dopravy. Pořadí platebních metod. Popup na slevu. Každý klik se měří, protože každý klik může znamenat tržbu.
 
-Pak ale zákazník chce odstoupit od smlouvy — a najednou začíná „nákupní archeologie". Kam co napsali? FAQ. Obchodní podmínky. PDF formulář. E-mail na podporu. Čekání.
+Pak ale zákazník chce odstoupit od smlouvy - a najednou začíná „nákupní archeologie". Kam co napsali? FAQ. Obchodní podmínky. PDF formulář. E-mail na podporu. Čekání.
 
-Nová povinnost pro e-shopy tenhle rozdíl dobře ukáže. Povinné tlačítko pro odstoupení od smlouvy nemá být jen další právní položka na webu — má zákazníkovi dát **jasnou online cestu**, jak odstoupení podat. Podle [Právního prostoru](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy) má být povinnost implementována nejpozději do **19. června 2026**. Novela je v době psaní pořád v legislativním procesu, takže konkrétní znění je dobré před publikací a implementací ještě ověřit s právníkem.
+Nová povinnost pro e-shopy tenhle rozdíl dobře ukáže. Povinné tlačítko pro odstoupení od smlouvy nemá být jen další právní položka na webu - má zákazníkovi dát **jasnou online cestu**, jak odstoupení podat. Podle [Právního prostoru](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy) má být povinnost implementována nejpozději do **19. června 2026**. Novela je v době psaní pořád v legislativním procesu, takže konkrétní znění je dobré před publikací a implementací ještě ověřit s právníkem.
 
 Pro majitele e-shopů v Shopify je ale důležité něco jiného: technický základ můžete řešit už teď.
 
@@ -28,7 +28,7 @@ Největší omyl je myslet si, že povinné tlačítko znamená „někam přid�
 - dostane potvrzení,
 - a obchodník ví, co má dál dělat.
 
-Tlačítko je jen vstupní bod. Pokud za ním není srozumitelný proces, problém jste nevyřešili — jen jste mu dali hezčí obal. To je přesně důvod, proč bychom u Shopify e-shopu nezačínali externí aplikací. Pojďme se nejdřív podívat, co umí Shopify samo.
+Tlačítko je jen vstupní bod. Pokud za ním není srozumitelný proces, problém jste nevyřešili - jen jste mu dali hezčí obal. To je přesně důvod, proč bychom u Shopify e-shopu nezačínali externí aplikací. Pojďme se nejdřív podívat, co umí Shopify samo.
 
 ## Co umí Shopify nativně
 
@@ -44,7 +44,7 @@ Máme tedy hotovo? Ne. Self-serve returns neznamenají, že automaticky získáv
 
 ### Kam tlačítko dát?
 
-Povinné tlačítko nesmí být schované tam, kam se nikdo nedívá — nenechávejte ho jen v obchodních podmínkách.
+Povinné tlačítko nesmí být schované tam, kam se nikdo nedívá - nenechávejte ho jen v obchodních podmínkách.
 
 Prakticky dává smysl vytvořit samostatnou stránku typu „Vrácení a odstoupení od smlouvy" a na ni dát jasné tlačítko **Odstoupit od smlouvy**. Tlačítko pak může vést na customer accounts URL, kde zákazník spustí self-serve proces. Stejný odkaz bychom doporučili přidat i do patičky a případně do help centra.
 
@@ -90,6 +90,6 @@ Shopify nám dá základ. Ale odpovědnost za to, že zákazník opravdu najde s
 
 ## Zdroje
 
-- [Právní prostor — Nová „tlačítková" povinnost pro e-shopy](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy)
-- [Shopify Help Center — Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup)
-- [Shopify Help Center — Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules)
+- [Právní prostor - Nová „tlačítková" povinnost pro e-shopy](https://www.pravniprostor.cz/clanky/obcanske-pravo/nova-tlacitkova-povinnost-pro-e-shopy)
+- [Shopify Help Center - Self-serve returns](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/self-serve-returns/setup)
+- [Shopify Help Center - Return rules](https://help.shopify.com/en/manual/fulfillment/managing-orders/returns/return-rules)

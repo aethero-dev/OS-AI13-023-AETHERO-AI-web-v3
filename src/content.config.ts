@@ -1,6 +1,6 @@
-// Obsahové kolekce — články blogu žijí v repu, ne v CMS.
+// Obsahové kolekce - články blogu žijí v repu, ne v CMS.
 //
-// PROČ (rozhodnutí DK 2026-08-02, AE-49): Storyblok držel jediné — blog.
+// PROČ (rozhodnutí DK 2026-08-02, AE-49): Storyblok držel jediné - blog.
 // Na plánu Starter měl 1 sedadlo, takže se do něj kromě API stejně nikdo
 // nedostal; obrázky visely na cizím CDN a token bylo nutné hlídat.
 // Články jsou teď obyčejné .md soubory: verzované v gitu, editovatelné
@@ -14,7 +14,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     perex: z.string(),
-    /** Např. „7 min" — v hlavičce článku i ve výpisu. */
+    /** Např. „7 min" - v hlavičce článku i ve výpisu. */
     readTime: z.string().default('5 min'),
     /** Datum vydání; řídí i pořadí ve výpisu (nejnovější nahoře). */
     date: z.date(),

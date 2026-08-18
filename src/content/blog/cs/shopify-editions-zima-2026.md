@@ -1,6 +1,6 @@
 ---
-title: "Shopify Editions — Zima 2026"
-perex: "Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026 — co přichází a co to znamená pro váš e-shop."
+title: "Shopify Editions - Zima 2026"
+perex: "Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026 - co přichází a co to znamená pro váš e-shop."
 readTime: "5 min"
 date: 2025-12-10
 image: "/blog/shopify-edition-zima-2026.webp"
@@ -20,7 +20,7 @@ Pokud vás tohle téma zajímá do detailu, doporučujeme zhlédnout [záznam z�
 
 ## Sidekick AI
 
-Tohle nás zaujalo úplně nejvíc. Ještě nedávno jsme jásali, že nám aplikace umí sama napsat textík k produktu díky „Shopify Magic". Jde se dál — mnoho z vás už si určitě vyzkoušelo, že Sidekick toho umí nečekaně dost: poradit, najít data, vytvořit slevu. Teď ale přichází **proaktivní Sidekick Pulse**.
+Tohle nás zaujalo úplně nejvíc. Ještě nedávno jsme jásali, že nám aplikace umí sama napsat textík k produktu díky „Shopify Magic". Jde se dál - mnoho z vás už si určitě vyzkoušelo, že Sidekick toho umí nečekaně dost: poradit, najít data, vytvořit slevu. Teď ale přichází **proaktivní Sidekick Pulse**.
 
 <div class="video" data-yt="LU4tghjdnG8" data-nahled="/blog/yt-sidekick.webp" data-titulek="20+ updates to Sidekick"><a href="https://www.youtube.com/watch?v=LU4tghjdnG8" rel="noopener">Přehrát na YouTube: 20+ updates to Sidekick</a></div>
 
@@ -28,15 +28,15 @@ Tohle nás zaujalo úplně nejvíc. Ještě nedávno jsme jásali, že nám apli
 
 Nová, proaktivní fáze pomoci od AI v e-shopu je tady. Rovnou ocitujeme Carla Riveru, nového Chief Design Officera:
 
-> Opravdu si myslím, že se jedná o zásadní změnu v tom, jak se software vytváří. Dosud software pouze reagoval. Než software postavíte, potřebujete plán, musíte mu dát jasné pokyny. Musíte mít všechny nápady dopředu a říct mu, co má dělat, a teprve pak začne dělat ty chytré věci. Shopify se Sidekick Pulse se nyní stává proaktivním. Jako by předvídal věci, které jsou pro vás správné, navrhuje vám je a pak je jde udělat — vlastně je provádí za vás.
+> Opravdu si myslím, že se jedná o zásadní změnu v tom, jak se software vytváří. Dosud software pouze reagoval. Než software postavíte, potřebujete plán, musíte mu dát jasné pokyny. Musíte mít všechny nápady dopředu a říct mu, co má dělat, a teprve pak začne dělat ty chytré věci. Shopify se Sidekick Pulse se nyní stává proaktivním. Jako by předvídal věci, které jsou pro vás správné, navrhuje vám je a pak je jde udělat - vlastně je provádí za vás.
 
-Mnoho uživatelů už považuje za prokazatelně přínosné komunikovat se Sidekickem přímo a vést s ním rozhovory, vzhledem k tomu, jak je napojený na všechna data. Díky modulu Pulse za vás ale Sidekick nově **přemýšlí sám**: využívá znalosti o vašem obchodě, vaše data, ekonomické trendy i všechno, co Shopify ví o e-commerce v souvislostech, aby vám dal konkrétní návrhy, co zlepšit — a rovnou připraví podklady, jako jsou návrhy automatizací, slevy nebo znění mailů.
+Mnoho uživatelů už považuje za prokazatelně přínosné komunikovat se Sidekickem přímo a vést s ním rozhovory, vzhledem k tomu, jak je napojený na všechna data. Díky modulu Pulse za vás ale Sidekick nově **přemýšlí sám**: využívá znalosti o vašem obchodě, vaše data, ekonomické trendy i všechno, co Shopify ví o e-commerce v souvislostech, aby vám dal konkrétní návrhy, co zlepšit - a rovnou připraví podklady, jako jsou návrhy automatizací, slevy nebo znění mailů.
 
 ![Návrh od Sidekick Pulse přímo v administraci Shopify](/blog/shopify-sidekick-pulse.webp)
 
 ### Tinker app
 
-Appka, kterou Shopify na edici teprve ohlašoval, už je venku. **Tinker by Shopify** sdružuje **přes 100 AI nástrojů** na tvorbu obrázků, videí a značkových podkladů — produktová fotka, logo, video na sociální sítě. Pod kapotou běží modely od OpenAI, Googlu a Anthropicu, ale nevybíráte podle modelu: vyberete si, co chcete vytvořit, popíšete to pár slovy a o zbytek se appka postará sama.
+Appka, kterou Shopify na edici teprve ohlašoval, už je venku. **Tinker by Shopify** sdružuje **přes 100 AI nástrojů** na tvorbu obrázků, videí a značkových podkladů - produktová fotka, logo, video na sociální sítě. Pod kapotou běží modely od OpenAI, Googlu a Anthropicu, ale nevybíráte podle modelu: vyberete si, co chcete vytvořit, popíšete to pár slovy a o zbytek se appka postará sama.
 
 Je **zdarma** (s měsíčním limitem využití), vyžaduje iOS 16.4 nebo novější a váží 82 MB. Přihlásíte se e-mailem nebo rovnou svým Shopify účtem. K dispozici je i [pro Android na Google Play](https://play.google.com/store/apps/details?id=com.shopify.tinker).
 
@@ -48,7 +48,7 @@ Je **zdarma** (s měsíčním limitem využití), vyžaduje iOS 16.4 nebo nově
 
 ### Prodej přímo v AI kanálech
 
-Změny prezentované ve Winter '26 Edition výrazně rozšiřují pojem agentního obchodu — vaše produkty lze nyní snadno zpřístupnit a prodat přímo v AI rozhovorech na platformách jako ChatGPT, Microsoft Copilot nebo Perplexity.
+Změny prezentované ve Winter '26 Edition výrazně rozšiřují pojem agentního obchodu - vaše produkty lze nyní snadno zpřístupnit a prodat přímo v AI rozhovorech na platformách jako ChatGPT, Microsoft Copilot nebo Perplexity.
 
 To znamená nový prodejní kanál, který funguje mimo klasický web.
 
@@ -83,4 +83,4 @@ Tyhle upgrady zlepšují škálovatelnost i obchodní flexibilitu, hlavně u k
 
 ### A tohle není ani zdaleka všechno
 
-Pokud vás „The RenAIssance Edition" zaujala, koukněte na [web edice](https://www.shopify.com/editions/winter2026) — je parádní.
+Pokud vás „The RenAIssance Edition" zaujala, koukněte na [web edice](https://www.shopify.com/editions/winter2026) - je parádní.

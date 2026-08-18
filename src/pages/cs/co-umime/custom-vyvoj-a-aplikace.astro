@@ -69,7 +69,7 @@ const faq = [
     <div class="container intro-layout">
       <div class="intro-main">
         <h2 class="h1 intro-h2">Potřebujete <span class="accent-purple">APPKU</span> <br />nebo <span class="accent-purple">CUSTOM ÚPRAVU</span>?</h2>
-        <p class="intro-text">Tato část naší práce je, na straně jedné, úžasně jednoduchá — na vysvětlování, ale také <strong class="hl">dosti nepředvídatelná na straně druhé — při realizaci</strong>. V ideálním případě za námi přijdete s definicí problému a odcházíte od nás s řešením. Je to srozumitelné?</p>
+        <p class="intro-text">Tato část naší práce je, na straně jedné, úžasně jednoduchá - na vysvětlování, ale také <strong class="hl">dosti nepředvídatelná na straně druhé - při realizaci</strong>. V ideálním případě za námi přijdete s definicí problému a odcházíte od nás s řešením. Je to srozumitelné?</p>
         <h3 class="h3 intro-subhead">Nejdřív porozumět, pak řešit.</h3>
         <p class="intro-text">Aby custom řešení nespálila váš rozpočet ani nervy, držíme se jednoduché logiky: nejprve pochopit problém, pak teprve něco stavět.</p>
         <p class="intro-text">Zkontrolujeme zda opravdu někde není nějaké řešení hotové a pak společně rozebereme váš problém na kousky, abychom ho mohli vyřešit. Někdy je to jedna drobná úprava, která zvedne konverze. Jindy je to napojení, které vám <strong class="hl">srovná data v celém provozu</strong>. A občas je to aplikace, bez které to prostě nepůjde.</p>
@@ -106,7 +106,7 @@ const faq = [
     </div>
   </section>
 
-  <!-- Proč s námi + Typické oříšky — 2 sloupce -->
+  <!-- Proč s námi + Typické oříšky - 2 sloupce -->
   <section class="section bg-primary">
     <div class="container proc-row">
       <div class="proc-card edge-glow">
@@ -128,7 +128,7 @@ const faq = [
     </div>
   </section>
 
-  <!-- FAQ — sdílená komponenta ArticleFaq; vlastní akordeon na téhle
+  <!-- FAQ - sdílená komponenta ArticleFaq; vlastní akordeon na téhle
        stránce byl STARŠÍ podoba téhož bloku (DK 2026-08-04) -->
   <ArticleFaq title="FAQ (rychle a bez omáčky)" items={faq.map((f) => ({ q: f.q, a: [f.a] }))} />
 
@@ -153,7 +153,7 @@ const faq = [
           </div>
           <div class="app-card-body">
             <h3 class="h3">AE Translator</h3>
-            <p>AI překlad obsahu Shopify e-shopu. DeepL, Claude nebo DeepSeek — na výběr.</p>
+            <p>AI překlad obsahu Shopify e-shopu. DeepL, Claude nebo DeepSeek - na výběr.</p>
             <span class="btn-action btn-action--lg app-cta">Více o AE Translatoru</span>
           </div>
         </a>
@@ -188,7 +188,7 @@ const faq = [
   /* Intro + sidebar = 2 sloupce */
   .intro-layout { display: grid; grid-template-columns: 1fr 355px; gap: var(--space-64); align-items: start; }
   @media (max-width: 900px) { .intro-layout { grid-template-columns: 1fr; gap: var(--space-40); } }
-  /* .hl (bold lavender) — globální utilita v global.css */
+  /* .hl (bold lavender) - globální utilita v global.css */
   .section-text { margin-bottom: var(--space-24); max-width: 760px; }
 
   .intro-wrap { max-width: 800px; }
@@ -228,7 +228,7 @@ const faq = [
 
   /* FAQ Accordion */
 
-  /* Aplikace — 3-kartový grid (port z co-umime) */
+  /* Aplikace - 3-kartový grid (port z co-umime) */
   .app-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; text-decoration: none; }
   .app-card:hover { border-color: rgba(13,212,205,0.3); transform: translateY(-2px); }
   .app-card-header { position: relative; height: 260px; background-size: cover; background-position: center top; }

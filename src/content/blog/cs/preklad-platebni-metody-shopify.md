@@ -1,16 +1,16 @@
 ---
 title: "Překlad platební metody v Shopify, když Translate & Adapt nepomáhá"
-perex: "Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje — bez aplikací, přímo přes export a import CSV."
+perex: "Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje - bez aplikací, přímo přes export a import CSV."
 readTime: "3 min"
 date: 2025-10-05
 image: "/blog/platebni-brany-v-shopify-preklad-v2.webp"
 ---
 
-Chcete přeložit platební brány — třeba **Cash on delivery** — a Translate & Adapt vám hodí klacky pod nohy? Žádný strach. Máme řešení, které vám pomůže rychleji, než řeknete „mezinárodní platba".
+Chcete přeložit platební brány - třeba **Cash on delivery** - a Translate & Adapt vám hodí klacky pod nohy? Žádný strach. Máme řešení, které vám pomůže rychleji, než řeknete „mezinárodní platba".
 
 ## Proč se trápit ručně, když to jde chytře
 
-Když standardní překladové nástroje selžou, nastupuje osvědčený postup přes export a import CSV. Připravte si v klidu kávu — nakonec to bude docela snadné.
+Když standardní překladové nástroje selžou, nastupuje osvědčený postup přes export a import CSV. Připravte si v klidu kávu - nakonec to bude docela snadné.
 
 ## Návod krok za krokem
 
@@ -29,7 +29,7 @@ Když standardní překladové nástroje selžou, nastupuje osvědčený postup 
 
 Otevřete stažený CSV soubor a najděte sloupec **Translated content**. Tady proveďte všechna překladová kouzla.
 
-**Tip pro opravdové chytráky:** proč každou metodu překládat ručně? Nahrajte exportovaný soubor do AI modelu — ChatGPT nebo DeepL — a nechte ho, ať maká za vás.
+**Tip pro opravdové chytráky:** proč každou metodu překládat ručně? Nahrajte exportovaný soubor do AI modelu - ChatGPT nebo DeepL - a nechte ho, ať maká za vás.
 
 ### 3. Uživatelé macOS, pozor
 
@@ -52,8 +52,8 @@ Otevřete stažený CSV soubor a najděte sloupec **Translated content**. Tady 
 - Před importem vždycky zkontrolujte formátování
 - Uchovávejte si kopii původního exportu jako zálohu
 - Po importu otestujte zobrazení platebních metod přímo v checkoutu
-- Nebojte se AI — je to váš kamarád, ne nepřítel
+- Nebojte se AI - je to váš kamarád, ne nepřítel
 
 ## Poznámka na závěr
 
-Všimli jste si? Právě jste sami zvládli něco, co před chvílí vypadalo jako scéna ze sci-fi filmu — a vaše platební brány jsou lokalizované dřív, než jste dopili kávu. Gratulujeme.
+Všimli jste si? Právě jste sami zvládli něco, co před chvílí vypadalo jako scéna ze sci-fi filmu - a vaše platební brány jsou lokalizované dřív, než jste dopili kávu. Gratulujeme.

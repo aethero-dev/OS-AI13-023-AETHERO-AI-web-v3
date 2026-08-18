@@ -5,7 +5,7 @@ export interface Props { lang?: string; skryjLogo?: boolean; }
 const { skryjLogo = false, lang = 'cs' } = Astro.props;
 const p = lang === 'en' ? '/en' : '/cs';
 
-// Přepínač jazyka — protějšek řeší altPath, ne záměna prefixu.
+// Přepínač jazyka - protějšek řeší altPath, ne záměna prefixu.
 // Blogové články mají v každém jazyce jiný slug, takže prostá záměna
 // vedla z článku rovnou do 404 (audit prokliků AE-38, 2026-08-02).
 const currentPath = Astro.url.pathname;
@@ -223,7 +223,7 @@ const navItems = lang === 'en'
     /* fallback předchozí verze (ztmavující pruh): background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 100%); */
   }
 
-  /* Základní stav: glassmorphism strip — frosted nahoře, přes mask se vytrácí dolů.
+  /* Základní stav: glassmorphism strip - frosted nahoře, přes mask se vytrácí dolů.
      V ::before, aby blur/mask nezasáhly text menu. Po scrollu se skryje. */
   header::before {
     content: '';
@@ -241,7 +241,7 @@ const navItems = lang === 'en'
   header.scrolled::before { opacity: 0; }
 
   /* ──────────────────────────────────────────────────────────────
-     PŘEDCHOZÍ VERZE (fallback pro vrácení) — plná tmavá lišta přes celou šířku.
+     PŘEDCHOZÍ VERZE (fallback pro vrácení) - plná tmavá lišta přes celou šířku.
      Pro návrat: nahradit blok „header.scrolled" + smazat „header.scrolled .header-inner"
      a vrátit .header-inner bez border/border-radius/transition:
         header.scrolled { background: rgba(0, 3, 38, 1); padding: 16px 0; }
@@ -268,7 +268,7 @@ const navItems = lang === 'en'
   }
 
   /* Ve světlém a sepia čtecím režimu je lišta ze 7% bílé nad světlou stránkou
-     neviditelná — bílý text na bílém skle. Necháváme bílý text a měníme
+     neviditelná - bílý text na bílém skle. Necháváme bílý text a měníme
      podklad na tmavý frost; lišta se tím čte jako záměrný tmavý pruh nad
      světlou stránkou a nemusí se přebarvovat jediný odkaz (DK 2026-08-04). */
   :global(html[data-cteni-motiv="svetly"]) header.scrolled .header-inner,
@@ -300,7 +300,7 @@ const navItems = lang === 'en'
   /* Po odlepení zmenšit logo */
   header.scrolled .logo img { width: 108px; height: auto; }
 
-  /* Nav — col 2 (1fr, center) */
+  /* Nav - col 2 (1fr, center) */
   nav {
     display: flex;
     justify-content: center;
@@ -313,7 +313,7 @@ const navItems = lang === 'en'
     list-style: none;
     margin: 0;
     padding: 0;
-    /* nav texty o 5px níž vůči liště (logo + jazyk beze změny) — relative, nemění výšku */
+    /* nav texty o 5px níž vůči liště (logo + jazyk beze změny) - relative, nemění výšku */
     position: relative;
     top: 5px;
   }
@@ -355,10 +355,10 @@ const navItems = lang === 'en'
     opacity: 1;
   }
 
-  /* Dropdown — bridged gap so submenu is always clickable */
+  /* Dropdown - bridged gap so submenu is always clickable */
   .has-dropdown { position: relative; }
 
-  /* Invisible bridge between nav-link and dropdown — prevents hover gap */
+  /* Invisible bridge between nav-link and dropdown - prevents hover gap */
   .has-dropdown::after {
     content: '';
     position: absolute;
@@ -409,7 +409,7 @@ const navItems = lang === 'en'
   }
   .dropdown-link.is-active { color: #fff; }
 
-  /* Language switcher — col 3 */
+  /* Language switcher - col 3 */
   .lang-switch {
     font-family: var(--font-secondary);
     font-size: 14px;
@@ -424,7 +424,7 @@ const navItems = lang === 'en'
   }
   .lang-switch:hover { color: #fff; border-color: var(--action); }
 
-  /* Hamburger — col 4, hidden on desktop */
+  /* Hamburger - col 4, hidden on desktop */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -449,10 +449,10 @@ const navItems = lang === 'en'
   .hamburger.open span:nth-child(2) { opacity: 0; transition: opacity 0s 0.1s; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); transition: transform 0.2s ease; }
 
-  /* Close button inside nav panel — hidden on desktop */
+  /* Close button inside nav panel - hidden on desktop */
   .nav-close { display: none; }
 
-  /* Mobile lang switch inside nav — hidden on desktop */
+  /* Mobile lang switch inside nav - hidden on desktop */
   .mobile-lang-li { display: none; }
 
   /* ─── MOBILE ≤ 900px ─── */
@@ -466,10 +466,10 @@ const navItems = lang === 'en'
 
     .hamburger { display: flex; }
 
-    /* Collapse desktop lang-switch — mobile has it inside nav */
+    /* Collapse desktop lang-switch - mobile has it inside nav */
     .lang-switch { display: none; }
 
-    /* Nav overlay — pravý panel 2/3 šířky */
+    /* Nav overlay - pravý panel 2/3 šířky */
     nav {
       position: fixed;
       top: 0;
@@ -514,7 +514,7 @@ const navItems = lang === 'en'
       background: transparent;
       border: none;
       box-shadow: none;
-      padding: 0 0 0 16px; /* indent doprava — hierarchie */
+      padding: 0 0 0 16px; /* indent doprava - hierarchie */
       margin-top: 0;       /* těsně pod rodičem */
       margin-bottom: 24px; /* výrazné oddělení od další skupiny */
       min-width: unset;

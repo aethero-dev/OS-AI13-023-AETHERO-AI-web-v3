@@ -6,7 +6,7 @@ import '../../../styles/cteni.css';
 import { articleExtras } from '../../../data/article-extras';
 import { getCollection, render } from 'astro:content';
 
-// Články jsou .md soubory v src/content/blog/en/ — viz src/content/config.ts.
+// Články jsou .md soubory v src/content/blog/en/ - viz src/content/config.ts.
 // Do 2026-08-02 se tahaly ze Storybloku; ten byl odstraněn (AE-49).
 export async function getStaticPaths() {
   const vsechny = (await getCollection('blog', (e) =>
@@ -182,7 +182,7 @@ const articleSchema = {
 <style>
   /* ── Velké CTA hned pod perexem ── */
   .article-cta {
-    /* plochu řídí čtecí režim — ve světlém motivu tu jinak zůstal černý pruh */
+    /* plochu řídí čtecí režim - ve světlém motivu tu jinak zůstal černý pruh */
     background: var(--cteni-plocha, var(--ae-bg-primary));
     padding: var(--space-40) 0 0;
   }
@@ -195,7 +195,7 @@ const articleSchema = {
     gap: 0;
     padding: var(--space-40) var(--space-40) calc(var(--space-40) + 4px);
     border-radius: var(--radius-md);
-    /* Výsek z obrázku hlaviček služeb (jeho pravá, čistě fialová část —
+    /* Výsek z obrázku hlaviček služeb (jeho pravá, čistě fialová část -
        modrý roh vlevo nahoře se nepoužívá) + fialový přechod přes něj,
        aby text držel kontrast. Bez tyrkysové, ta zůstává jen tlačítku. */
     background-image:
@@ -216,7 +216,7 @@ const articleSchema = {
     color: rgba(255, 255, 255, 0.9);
   }
   .article-cta-btn {
-    /* větší vzduch kolem tlačítka — ať akce nesplývá s textem */
+    /* větší vzduch kolem tlačítka - ať akce nesplývá s textem */
     margin-top: var(--space-32);
     display: inline-flex;
     align-items: center;
@@ -242,7 +242,7 @@ const articleSchema = {
     .article-cta-inner {
       padding: var(--space-32) var(--space-24);
       /* .container má na mobilu vlastní boční padding, ale ten výše
-         přepisujeme — box by pak dosedl na okraje displeje. */
+         přepisujeme - box by pak dosedl na okraje displeje. */
       margin-left: 16px;
       margin-right: 16px;
     }
@@ -262,7 +262,7 @@ const articleSchema = {
     .article-cta-inner {
       padding: var(--space-32) var(--space-24);
       /* .container má na mobilu vlastní boční padding, ale ten výše
-         přepisujeme — box by pak dosedl na okraje displeje. */
+         přepisujeme - box by pak dosedl na okraje displeje. */
       margin-left: 16px;
       margin-right: 16px;
     }
@@ -308,7 +308,7 @@ const articleSchema = {
   }
   .blog-hero-inner {
     max-width: 840px;
-    /* jen horní padding — `padding: X 0 0` by přepsalo boční odsazení
+    /* jen horní padding - `padding: X 0 0` by přepsalo boční odsazení
        .containeru a nadpis by na mobilu dosedl na okraj displeje */
     padding-top: var(--space-32);
   }
@@ -335,7 +335,7 @@ const articleSchema = {
   }
 
   /* Šířka: měřítkem je počet znaků na řádek, ne pixely. 840px při výchozích
-     20px drží ~64 znaků — uvnitř optima 65–75 (Bringhurst 66).
+     20px drží ~64 znaků - uvnitř optima 65–75 (Bringhurst 66).
      VELIKOST, ŘEZ A BARVY textu si řídí čtenář přes čtecí režim,
      hodnoty jsou v styles/cteni.css. Tady zůstává jen to, co nemění. */
   .article-inner { max-width: 840px; }
@@ -353,12 +353,12 @@ const articleSchema = {
   .article-body.sb-content :global(blockquote) { border-left: 3px solid; padding-left: 1.5em; margin: 1.5em 0; font-style: italic; }
   .article-body.sb-content :global(code) { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: monospace; }
   .article-body.sb-content :global(pre) { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5em; overflow-x: auto; margin-bottom: 1.4em; }
-  /* Obrázky v textu se necentrují přes width:100% — část podkladů z původního
+  /* Obrázky v textu se necentrují přes width:100% - část podkladů z původního
      webu je malá (screenshot exportu má 320 px) a roztažení na šířku sloupce
      by je rozmazalo. Necháváme přirozenou velikost a středujeme. */
-  /* Obrázky v textu — styly v global.css, ať nekolidují specificitou
+  /* Obrázky v textu - styly v global.css, ať nekolidují specificitou
      s pravidly pro značku a video. */
-  /* Styly videa žijí v global.css — vznikají skriptem až v prohlížeči
+  /* Styly videa žijí v global.css - vznikají skriptem až v prohlížeči
      a scoped styl Astro na ně nedosáhne. */
   .article-body.sb-content :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 2.5em 0; }
 

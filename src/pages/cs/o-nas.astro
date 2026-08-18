@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 
-// Obsah 1:1 podle ostrého aethero.cz/o-nas (pokyn DK 2026-08-05) — osobní
+// Obsah 1:1 podle ostrého aethero.cz/o-nas (pokyn DK 2026-08-05) - osobní
 // bios se při dřívějším přepisu ztratily a byly to nejoriginálnější texty
 // na stránce. Fotky = pixel avatary (PixelLab, DK 2026-08-05; zdroj
 // __1 AETHERO/02 WEB/__WEB AE 3-0/TYM icons/, 424×424, pozadí zapečené).
@@ -29,7 +29,7 @@ const team = [
   },
 ];
 
-// Externí tým — texty u jmen jsou zatím Lorem ipsum (vědomě, pokyn DK
+// Externí tým - texty u jmen jsou zatím Lorem ipsum (vědomě, pokyn DK
 // 2026-08-05; web není spuštěný). DK je nahradí skutečnými větami.
 const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [
   { jmeno: 'Petr', photo: '/team-placeholder.svg', obor: 'AI evangelist, procesní řízení, analytika', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
@@ -38,8 +38,8 @@ const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [
   { jmeno: 'Honza', photo: '/team-placeholder.svg', obor: 'Design', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
 ];
 
-// Tech partneři — blok je PŘIPRAVENÝ, ale zobrazí se až od 4 položek
-// (pokyn DK 2026-08-05: „až budou 4, nastal čas"). Logo je nepovinné —
+// Tech partneři - blok je PŘIPRAVENÝ, ale zobrazí se až od 4 položek
+// (pokyn DK 2026-08-05: „až budou 4, nastal čas"). Logo je nepovinné -
 // bez něj se vykreslí jen název. Kandidáti k doplnění: Packeta/Zásilkovna,
 // Comgate, Make, Gorgias, Judge.me (viz answers/78).
 const techPartneri: { nazev: string; logo?: string; url?: string }[] = [
@@ -47,35 +47,35 @@ const techPartneri: { nazev: string; logo?: string; url?: string }[] = [
   { nazev: 'Ecomail', url: 'https://ecomail.cz' },
 ];
 
-// Čemu věříme — manifest místo frází (formát 37signals, obsah aethero;
+// Čemu věříme - manifest místo frází (formát 37signals, obsah aethero;
 // zadání DK 2026-08-05 „zkus to napsat")
 const principy = [
-  { titulek: 'Specializace vyhrává', text: 'Děláme Shopify — a proto o něm víme víc než generalisté. Jedna platforma dělaná pořádně je víc než pět platforem napůl.' },
-  { titulek: 'AI je náš nástroj, ne náhrada řemesla', text: 'Automatizujeme všechno, co stroj umí líp, aby na design, strategii a obsah zbylo víc hlavy. Rozhoduje vždycky člověk.' },
-  { titulek: 'Spuštění je začátek, ne konec', text: 'E-shop se nespouští, e-shop se provozuje: měření, iterace, podpora, růst. Proto s námi klienti zůstávají roky.' },
-  { titulek: 'Žádná překvapení', text: 'Víte, co se dělá, proč se to dělá a kolik to stojí — průběžně, ne až na faktuře.' },
+  { titulek: 'Spuštění je teprve začátek, ne konec', text: 'E-shop se nespouští, e-shop se provozuje: měření, iterace, podpora, růst. Proto s námi klienti zůstávají roky.' },
+  { titulek: 'Žádná překvapení', text: 'S námi víte, co se dělá, proč se to dělá a kolik to stojí - průběžně, ne až na faktuře.' },
+  { titulek: 'Krok za krokem a jste v cíli', text: 'Děláme Shopify každý den a proto o něm víme víc než ostatní. Nejde o kouzla, spíše o pár let práce, hledání a zkoušení znovu a znovu.' },
+  { titulek: 'AI je náš nástroj, ne náhrada řemesla', text: 'Automatizujeme úplně všechno, co stroj umí líp, aby na strategii, design, komunikaci a obsah zbylo víc hlavy. Rozhoduje vždy člověk.' },
 ];
 
-// Děláme / Neděláme — kultura humorem (formát Humaan)
+// Děláme / Neděláme - kultura humorem (formát Humaan)
 const delame = [
   'Shopify od brandu po custom aplikace',
   'Pořádné řemeslo: rychlost, přístupnost, design, logiku',
-  'vlastní appky v Shopify App Store — testujeme na sobě',
-  'dlouhodobé vztahy — spuštěním to u nás začíná',
-  'med — Tom fakt chová včely',
+  'vlastní appky v Shopify App Store - testujeme na sobě',
+  'dlouhodobé vztahy - spuštěním to u nás začíná',
+  'med - Tom fakt chová včely',
 ];
 const nedelame = [
   'projekty, kterým sami nevěříme',
   'weby za víkend a „nějak to dopadne"',
   'přeprodávání anonymních juniorů',
   'WordPress (promiňte)',
-  'víkendové deadliny — o víkendu jsme s rodinami',
+  'víkendové deadliny - o víkendu jsme s rodinami',
 ];
 
 const certifikace = [
-  { img: '/badge-selling.png', alt: 'Shopify — Selling Fundamentals, ověřená dovednost' },
-  { img: '/badge-development.png', alt: 'Shopify — Development Fundamentals, ověřená dovednost' },
-  { img: '/badge-solution.png', alt: 'Shopify — Solution Planning Fundamentals, ověřená dovednost' },
+  { img: '/badge-selling.png', alt: 'Shopify - Selling Fundamentals, ověřená dovednost' },
+  { img: '/badge-development.png', alt: 'Shopify - Development Fundamentals, ověřená dovednost' },
+  { img: '/badge-solution.png', alt: 'Shopify - Solution Planning Fundamentals, ověřená dovednost' },
 ];
 ---
 
@@ -101,7 +101,7 @@ const certifikace = [
       <div class="team-grid">
         {team.map((member) => (
           <div class="team-card">
-            <img src={member.photo} alt={`${member.name} — ${member.role}`} class="team-photo" width="424" height="424" loading="lazy" />
+            <img src={member.photo} alt={`${member.name} - ${member.role}`} class="team-photo" width="424" height="424" loading="lazy" />
             <h3 class="h3-mini team-name">{member.name}</h3>
             <p class="team-role">{member.role}</p>
             <p class="team-desc">{member.desc}</p>
@@ -115,14 +115,14 @@ const certifikace = [
     </div>
   </section>
 
-  <!-- Externí tým — navazuje na Tým jako jeden blok (DK 2026-08-05) -->
+  <!-- Externí tým - navazuje na Tým jako jeden blok (DK 2026-08-05) -->
   <section class="section bg-primary externi-sekce">
     <div class="container spoluprace-inner">
       {spoluprace.length > 0 && (
         <div class="spoluprace-grid">
           {spoluprace.map((s) => (
             <div class="spoluprace-card">
-              <img src={s.photo} alt={`${s.jmeno} — ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
+              <img src={s.photo} alt={`${s.jmeno} - ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
               {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
@@ -180,7 +180,7 @@ const certifikace = [
     </section>
   )}
 
-  <!-- Certifikace — originální Shopify badge, NIKDY nepřekreslovat do vlastních
+  <!-- Certifikace - originální Shopify badge, NIKDY nepřekreslovat do vlastních
        karet (DK 2026-08-05: „je to odznak, co jinak nezískáš") -->
   <section class="certifikace">
     <div class="container certifikace-inner">
@@ -216,13 +216,13 @@ const certifikace = [
     border-radius: 50%; filter: blur(60px); pointer-events: none;
   }
   .o-nas-hero .container { position: relative; }
-  /* Velké logo místo toho v menu — jako na .cz (DK 2026-08-05) */
+  /* Velké logo místo toho v menu - jako na .cz (DK 2026-08-05) */
   .hero-logo { width: 64%; height: auto; display: block; margin: var(--space-48) 0 var(--space-120); }
   .o-nas-hero h1 { font-size: var(--fs-64); font-weight: 700; }
   .hero-manifest { margin-top: var(--space-24); max-width: 680px; display: flex; flex-direction: column; gap: var(--space-16); }
   .hero-manifest p { font-size: 20px; color: #fff; line-height: 1.65; }
 
-  /* Stejná mřížka jako Externí tým — všichni mají stejně velkou kartu
+  /* Stejná mřížka jako Externí tým - všichni mají stejně velkou kartu
      (pokyn DK 2026-08-05); u jádra zbývá čtvrté pole volné. */
   .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-16); }
   .team-card {
@@ -230,7 +230,7 @@ const certifikace = [
     border-radius: var(--radius-md); padding: var(--space-24);
     display: flex; flex-direction: column; gap: 10px;
   }
-  /* Duotone + blob jsou zapečené přímo v PNG z .cz — fotka se jen položí */
+  /* Duotone + blob jsou zapečené přímo v PNG z .cz - fotka se jen položí */
   .team-photo { width: min(150px, 70%); height: auto; align-self: flex-start;
     image-rendering: pixelated; border-radius: var(--radius-md); }
   .team-name { }
@@ -253,12 +253,12 @@ const certifikace = [
   .spoluprace-obor { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 8px; }
   .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
 
-  /* Externí tým lepí na Tým — jeden souvislý blok lidí, bez vlastního
+  /* Externí tým lepí na Tým - jeden souvislý blok lidí, bez vlastního
      nadpisu (DK 2026-08-05); mezera mezi mřížkami = gap mřížky */
   .team-sekce { padding-bottom: var(--space-16); scroll-margin-top: 90px; }
   .externi-sekce { padding-top: 0; }
 
-  /* Tech partneři — lišta ve stylu Swanky (mřížka buněk s logy) */
+  /* Tech partneři - lišta ve stylu Swanky (mřížka buněk s logy) */
   .partneri-lista {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08);
@@ -274,16 +274,16 @@ const certifikace = [
   .partner-logo { max-height: 40px; max-width: 70%; width: auto; }
   .partner-nazev { font-family: var(--font-primary); font-size: 20px; font-weight: 700; color: var(--neutral-300); }
 
-  /* Naše zásady + Děláme/Neděláme — dva sloupce */
+  /* Naše zásady + Děláme/Neděláme - dva sloupce */
   .zasady-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: start; }
   .principy { display: flex; flex-direction: column; gap: var(--space-32); margin-top: var(--space-40); }
   .princip-titulek { margin-bottom: 6px; }
   .princip-text { font-size: 17px; color: var(--neutral-300); line-height: 1.65; max-width: 520px; }
   .nedelame-nadpis { margin-top: var(--space-48); }
 
-  /* Děláme / Neděláme — tmavá karta (DK 2026-08-05) */
+  /* Děláme / Neděláme - tmavá karta (DK 2026-08-05) */
   .delame-karta {
-    background: #000218; border: 1px solid rgba(255,255,255,0.08);
+    background: #000114; border: 1px solid rgba(255,255,255,0.10);
     border-radius: var(--radius-md); padding: var(--space-40);
   }
   .delame-karta .section-title:first-child { margin-top: 0; }
@@ -294,7 +294,7 @@ const certifikace = [
   .delame-list--ano li::before { content: '✓'; color: var(--action); }
   .delame-list--ne li::before { content: '✕'; color: var(--semantic-error); }
 
-  /* Certifikace — originální badge, nenápadně na konci */
+  /* Certifikace - originální badge, nenápadně na konci */
   .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
   .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
   .certifikace-label {

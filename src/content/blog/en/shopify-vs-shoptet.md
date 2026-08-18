@@ -1,6 +1,6 @@
 ---
 title: "Which E-commerce Platform to Choose? Shopify vs Shoptet"
-perex: "Detailed comparison of Shopify and Shoptet for the Central European market — performance, price, ecosystem, and the future. We'll help you pick the right platform."
+perex: "Detailed comparison of Shopify and Shoptet for the Central European market - performance, price, ecosystem, and the future. We'll help you pick the right platform."
 readTime: "18 min"
 date: 2025-06-01
 image: "/blog/porovnani-platforem-shoptet-vs-shopify-v6.webp"
@@ -10,7 +10,7 @@ image: "/blog/porovnani-platforem-shoptet-vs-shopify-v6.webp"
 
 Picking an e-commerce system is one of the most important decisions you make at the start. It shapes not only how fast you launch, but also future growth, expansion options and total cost. Just as an athlete needs the right kit for the race, you need the right platform for your business. The wrong choice slows you down; the right one opens the way to growth.
 
-You face a choice: invest in custom development, or use a ready-made solution? Custom development offers maximum flexibility but is very expensive. Ready-made solutions — Shopify or Shoptet, for instance — are fast, cheap and proven by thousands of users. But there are significant differences between them too. Let's look at them.
+You face a choice: invest in custom development, or use a ready-made solution? Custom development offers maximum flexibility but is very expensive. Ready-made solutions - Shopify or Shoptet, for instance - are fast, cheap and proven by thousands of users. But there are significant differences between them too. Let's look at them.
 
 **In this article:**
 
@@ -29,19 +29,19 @@ You face a choice: invest in custom development, or use a ready-made solution? C
 | Geography | Worldwide, 170+ countries | Mainly Czechia and Slovakia |
 | Price | from CZK 600/mo (Basic) to thousands of EUR (Plus) | from CZK 340/mo, FREE tier up to 10 products |
 
-Shopify is a huge global player, whereas Shoptet is clearly aimed at the Czech and Slovak market. A number of other parameters follow from that, and we'll go through them below. Shoptet's entry tariff is friendlier; Shopify is a few hundred crowns a month more expensive — but offers somewhat more out of the box and a wider base later on. The picture can even out or flip quickly, though: it depends on how many enhancements you need and what the add-ons cost. In the context of small and medium business, both are priced sensibly.
+Shopify is a huge global player, whereas Shoptet is clearly aimed at the Czech and Slovak market. A number of other parameters follow from that, and we'll go through them below. Shoptet's entry tariff is friendlier; Shopify is a few hundred crowns a month more expensive - but offers somewhat more out of the box and a wider base later on. The picture can even out or flip quickly, though: it depends on how many enhancements you need and what the add-ons cost. In the context of small and medium business, both are priced sensibly.
 
-### Not every box is the same box — if professionals adapt it
+### Not every box is the same box - if professionals adapt it
 
-If you decide to start an e-commerce project, a moment will almost certainly come when you're wrestling with an "individual requirement". This is where the box becomes a hybrid — which is what a large share of successful e-commerce projects actually run on.
+If you decide to start an e-commerce project, a moment will almost certainly come when you're wrestling with an "individual requirement". This is where the box becomes a hybrid - which is what a large share of successful e-commerce projects actually run on.
 
 You'll simply want something that doesn't yet exist in your chosen box, or that nobody needed badly enough for a ready-made app to exist. Maybe it's just the look of the project and animated elements; maybe it's a bespoke change without which selling your product wouldn't even be possible.
 
-That's when you need **partners** — companies or individuals who can do a little more with the system than mere mortals. From graphics through UX to programming. In our experience it pays to discuss the project early; it often saves a lot of time spent finding dead ends. So look for a Shopify partner, or in Shoptet's case their Shoptet Plus service, which partly stands in for Shopify's vast options and partner network.
+That's when you need **partners** - companies or individuals who can do a little more with the system than mere mortals. From graphics through UX to programming. In our experience it pays to discuss the project early; it often saves a lot of time spent finding dead ends. So look for a Shopify partner, or in Shoptet's case their Shoptet Plus service, which partly stands in for Shopify's vast options and partner network.
 
 ### Shoptet's strengths
 
-If you're genuinely determined to stay only in Czechia and Slovakia, and you have no competitors in your field already on Shoptet, then Shoptet is probably the best platform you can pick right now. If you have any bigger plans — or that competition — it's less clear-cut. Take a look at the comparison:
+If you're genuinely determined to stay only in Czechia and Slovakia, and you have no competitors in your field already on Shoptet, then Shoptet is probably the best platform you can pick right now. If you have any bigger plans - or that competition - it's less clear-cut. Take a look at the comparison:
 
 |  | Shoptet | Shopify |
 |---|---|---|
@@ -59,7 +59,7 @@ If you're genuinely determined to stay only in Czechia and Slovakia, and you hav
 
 ### Shopify's strengths
 
-Want to sell internationally? Need a more robust solution that gives you the best e-commerce tooling almost immediately, and English doesn't scare you? Then Shopify may be your pick — it supports you in the jungle of international selling and offers tools honed by thousands of developers.
+Want to sell internationally? Need a more robust solution that gives you the best e-commerce tooling almost immediately, and English doesn't scare you? Then Shopify may be your pick - it supports you in the jungle of international selling and offers tools honed by thousands of developers.
 
 |  | Shopify | Shoptet |
 |---|---|---|
@@ -83,7 +83,7 @@ Want to sell internationally? Need a more robust solution that gives you the bes
 
 ### Questions to ask yourself
 
-1. Where will my customers be — only in Czechia and Slovakia, or abroad too?
+1. Where will my customers be - only in Czechia and Slovakia, or abroad too?
 2. What payment and delivery methods will customers want?
 3. How many products will I sell?
 4. How complex are the products (parameters, variants)?
@@ -93,7 +93,7 @@ Want to sell internationally? Need a more robust solution that gives you the bes
 8. How important is flawless Czech legal compliance to me?
 9. Am I planning expansion later, or will the local market always be enough?
 10. Do I want heavy customisation, or will I start from a theme?
-11. Do I need connections to systems I can't do without — warehouse, ERP/CRM or global marketplaces?
+11. Do I need connections to systems I can't do without - warehouse, ERP/CRM or global marketplaces?
 12. Am I clear on which parts I'll definitely need outside help with?
 13. Do I expect detailed support in Czech, or will my team and I manage in English?
 
@@ -105,7 +105,7 @@ A family shop in a smaller town wants to start selling regional produce online. 
 
 #### 2) A specialist cycling store in Czechia
 
-A seller of cycling components operates where competition is fierce and often global — cheap products from abroad, for example. The target market is Czech customers, but to succeed the store needs strong SEO and marketing tools. The products are highly complex (many variants, parameters and categories). No expansion abroad is planned, but even for the local market a robust solution is needed to hold its own against big players.
+A seller of cycling components operates where competition is fierce and often global - cheap products from abroad, for example. The target market is Czech customers, but to succeed the store needs strong SEO and marketing tools. The products are highly complex (many variants, parameters and categories). No expansion abroad is planned, but even for the local market a robust solution is needed to hold its own against big players.
 
 #### 3) A sports equipment manufacturer
 
@@ -125,7 +125,7 @@ An education-focused startup offers online courses in design and technology. Its
 | Localisation and legislation | Critically important (VAT, invoicing) | Important, but strong SEO tools needed too | Multi-language, international VAT | Global tax rules, OSS |
 | Expansion ambitions | None | No, but competition is global | Yes, global expansion | Yes, global |
 | Customisation vs themes | Themes are enough | Customisation and integration required | Customisation and B2B modules required | Customisation and automation required |
-| Integration needs (ERP, CRM, marketplaces) | Minimal | Medium — marketing, analytics | High (ERP, B2B portal) | High (payment and distribution apps) |
+| Integration needs (ERP, CRM, marketplaces) | Minimal | Medium - marketing, analytics | High (ERP, B2B portal) | High (payment and distribution apps) |
 | Support expectations | Czech support, by phone | 24/7 global support, local partners | 24/7 global support | 24/7 global support |
 | **Recommended platform** | **Shoptet** | **Shopify** | **Shopify** | **Shopify** |
 

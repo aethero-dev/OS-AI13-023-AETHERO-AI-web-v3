@@ -1,10 +1,10 @@
 ---
-// Cookie lišta — měřicí skript se načte až po souhlasu.
+// Cookie lišta - měřicí skript se načte až po souhlasu.
 // Loader window.aeLoadAnalytics() definuje BaseLayout; tady se jen rozhoduje.
 // localStorage "ae_cookie_consent": "accept" | "reject".
 // Znovuotevření z patičky přes window.aeOpenCookieSettings().
 //
-// Dokud je ANALYTICS_ID prázdné (src/config/analytics.ts), lišta se nevykreslí —
+// Dokud je ANALYTICS_ID prázdné (src/config/analytics.ts), lišta se nevykreslí -
 // web totiž žádné cookies nenastavuje a nebylo by k čemu dávat souhlas.
 import { analyticsEnabled } from '../../config/analytics';
 
@@ -20,7 +20,7 @@ const t = {
     : 'Používáme cookies k měření návštěvnosti a vylepšování webu. Analytika se spustí až po vašem souhlasu.',
   more: en ? 'More info' : 'Více informací',
   accept: en ? 'Accept all' : 'Přijmout',
-  // „Pouze nutné" místo „Odmítnout" — technické cookies zůstávají tak jako tak,
+  // „Pouze nutné" místo „Odmítnout" - technické cookies zůstávají tak jako tak,
   // odmítnutí se týká jen analytiky. Obě volby mají záměrně stejnou váhu
   // (požadavek na rovnocennost volby, ÚOOÚ / EDPB).
   reject: en ? 'Necessary only' : 'Pouze nutné',
@@ -42,7 +42,7 @@ const t = {
 )}
 
 <style>
-  /* MUSÍ být před .ae-cookies — jinak display:flex přebije atribut hidden
+  /* MUSÍ být před .ae-cookies - jinak display:flex přebije atribut hidden
      (stejná specificita, vyhrává pozdější pravidlo) a lišta po kliknutí nezmizí. */
   .ae-cookies[hidden] {
     display: none;
