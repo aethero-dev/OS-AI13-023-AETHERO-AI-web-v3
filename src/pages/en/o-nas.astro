@@ -218,6 +218,13 @@ const certifikace = [
 </script>
 
 <style>
+  /* Posun obsahu doprava na úroveň blogového sloupce - ale BEZ zúžení
+     na čtecí šířku: odsazená je jen levá hrana, doprava obsah dál dýchá
+     (DK 2026-08-05: „nechci zúžit vše") */
+  @media (min-width: 1101px) {
+    .container { padding-left: calc(var(--space-24) + 200px); }
+  }
+
   .o-nas-hero {
     position: relative; padding: 130px 0 80px;
     background: var(--ae-bg-primary-alt); overflow: hidden;
