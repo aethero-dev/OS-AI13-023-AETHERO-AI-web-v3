@@ -150,11 +150,11 @@ const certifikace = [
         <div class="delame-karta">
           <h2 class="h2 section-title">What we do,</h2>
           <ul class="delame-list delame-list--ano">
-            {delame.map((d) => <li>{d}</li>)}
+            {delame.map((d, i) => <li style={`--i: ${i}`}>{d}</li>)}
           </ul>
           <h2 class="h2 section-title nedelame-nadpis">and what we don't</h2>
           <ul class="delame-list delame-list--ne">
-            {nedelame.map((n) => <li>{n}</li>)}
+            {nedelame.map((n, i) => <li style={`--i: ${i + delame.length}`}>{n}</li>)}
           </ul>
         </div>
       </div>
@@ -202,6 +202,20 @@ const certifikace = [
   </section>
 
 </PageLayout>
+
+<script>
+  // Animace karty Co děláme/neděláme - položky nastoupí, až když je karta vidět
+  const karta = document.querySelector('.delame-karta');
+  if (karta && 'IntersectionObserver' in window) {
+    karta.classList.add('anim-ready');
+    const io = new IntersectionObserver((zaznamy) => {
+      zaznamy.forEach((z) => {
+        if (z.isIntersecting) { karta.classList.add('zije'); io.disconnect(); }
+      });
+    }, { threshold: 0.2 });
+    io.observe(karta);
+  }
+</script>
 
 <style>
   .o-nas-hero {
@@ -283,6 +297,18 @@ const certifikace = [
   .delame-karta {
     background: #000114; border: 1px solid rgba(255,255,255,0.10);
     border-radius: var(--radius-md); padding: var(--space-40);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .delame-karta:hover { border-color: rgba(22,190,207,0.35); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+  /* Nástup položek: schová je až JS (progressive enhancement) - bez něj je vše vidět */
+  .delame-karta.anim-ready .delame-list li {
+    opacity: 0; transform: translateX(-14px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  .delame-karta.anim-ready.zije .delame-list li { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .delame-karta.anim-ready .delame-list li { opacity: 1; transform: none; transition: none; }
   }
   .delame-karta .section-title:first-child { margin-top: 0; }
 
