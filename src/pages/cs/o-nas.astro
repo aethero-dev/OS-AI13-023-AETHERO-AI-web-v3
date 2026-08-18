@@ -3,8 +3,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
 // Obsah 1:1 podle ostrého aethero.cz/o-nas (pokyn DK 2026-08-05) — osobní
 // bios se při dřívějším přepisu ztratily a byly to nejoriginálnější texty
-// na stránce. Fotky staženy z .cz (duotone + blob zapečený v PNG);
-// DK je později vymění.
+// na stránce. Fotky = pixel avatary (PixelLab, DK 2026-08-05; zdroj
+// __1 AETHERO/02 WEB/__WEB AE 3-0/TYM icons/, 424×424, pozadí zapečené).
 const team = [
   {
     name: 'David',
@@ -102,7 +102,7 @@ const certifikace = [
       <div class="team-grid">
         {team.map((member) => (
           <div class="team-card">
-            <img src={member.photo} alt={`${member.name} — ${member.role}`} class="team-photo" width="700" height="700" loading="lazy" />
+            <img src={member.photo} alt={`${member.name} — ${member.role}`} class="team-photo" width="424" height="424" loading="lazy" />
             <h3 class="h3-mini team-name">{member.name}</h3>
             <p class="team-role">{member.role}</p>
             <p class="team-desc">{member.desc}</p>
@@ -123,7 +123,7 @@ const certifikace = [
         <div class="spoluprace-grid">
           {spoluprace.map((s) => (
             <div class="spoluprace-card">
-              <img src={s.photo} alt={`${s.jmeno} — ${s.obor}`} class="team-photo" width="700" height="700" loading="lazy" />
+              <img src={s.photo} alt={`${s.jmeno} — ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
               {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
@@ -238,7 +238,8 @@ const certifikace = [
     display: flex; flex-direction: column; gap: 10px;
   }
   /* Duotone + blob jsou zapečené přímo v PNG z .cz — fotka se jen položí */
-  .team-photo { width: min(150px, 70%); height: auto; align-self: flex-start; }
+  .team-photo { width: min(150px, 70%); height: auto; align-self: flex-start;
+    image-rendering: pixelated; border-radius: var(--radius-md); }
   .team-name { }
   .team-role { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; }
   .team-desc { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; flex: 1; }
