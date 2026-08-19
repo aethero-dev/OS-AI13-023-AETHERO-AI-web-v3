@@ -120,8 +120,8 @@ const blogPosts = [
               <span class="row">
                 <span class="sizer">We are <br>Shopify <br>specialists</span>
                 <span class="live">
-                  <span class="l1" data-empty="1"></span>
-                  <span class="l2" data-empty="1"></span>
+                  <span class="l1">We are</span>
+                  <span class="l2">æthero</span>
                   <span class="l3" data-empty="1"></span>
                   <span class="caret" aria-hidden="true"></span>
                 </span>
@@ -143,10 +143,13 @@ const blogPosts = [
                 async function typeInto(el,text){ moveCaret(el); setEmpty(el,false); for(var i=1;i<=text.length;i++){ el.textContent=text.slice(0,i); if(SPEED) await sleep(SPEED); } }
                 async function eraseAll(el){ moveCaret(el); while(el.textContent.length){ el.textContent=el.textContent.slice(0,-1); if(BACK) await sleep(BACK); } setEmpty(el,true); }
                 function clearLines(){ l1.textContent=''; l2.textContent=''; l3.textContent=''; setEmpty(l1,true); setEmpty(l2,true); setEmpty(l3,true); }
-                async function runOnce(){
-                  clearLines();
-                  await typeInto(l1,'We are'); if(PAUSE) await sleep(PAUSE);
-                  await typeInto(l2,'æthero'); if(PAUSE) await sleep(PAUSE);
+                async function runOnce(prvni){
+                  if(!prvni){
+                    clearLines();
+                    await typeInto(l1,'We are'); if(PAUSE) await sleep(PAUSE);
+                    await typeInto(l2,'æthero');
+                  }
+                  if(PAUSE) await sleep(PAUSE);
                   await eraseAll(l2); if(BETWEEN) await sleep(BETWEEN);
                   await typeInto(l2,'Shopify'); if(PAUSE) await sleep(PAUSE);
                   await typeInto(l3,'partners'); if(PAUSE) await sleep(PAUSE);
@@ -155,7 +158,7 @@ const blogPosts = [
                   for(var i=0;i<words.length;i++){ await typeInto(l3,words[i]); if(PAUSE) await sleep(PAUSE); await eraseAll(l3); if(BETWEEN) await sleep(BETWEEN); }
                   await typeInto(l3,'partners'); if(PAUSE) await sleep(PAUSE);
                 }
-                (async function loop(){ while(true){ await runOnce(); if(RESTART>0) await sleep(RESTART); } })();
+                (async function loop(){ var prvni=true; while(true){ await runOnce(prvni); prvni=false; if(RESTART>0) await sleep(RESTART); } })();
               })();
             </script>
           </div>
