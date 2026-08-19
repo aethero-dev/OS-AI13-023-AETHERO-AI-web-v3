@@ -181,8 +181,7 @@ const certifikace = [
   <!-- Certifikace - originální Shopify badge, NIKDY nepřekreslovat do vlastních
        karet (DK 2026-08-05: „je to odznak, co jinak nezískáš") -->
   <section class="certifikace">
-    <div class="container certifikace-inner">
-      <p class="certifikace-label">Shopify certifications</p>
+    <div class="container">
       <div class="certifikace-badges">
         {certifikace.map((c) => (
           <img src={c.img} alt={c.alt} class="certifikace-badge" loading="lazy" />
@@ -318,15 +317,14 @@ const certifikace = [
   .delame-list--ano li::before { content: '✓'; color: var(--action); }
   .delame-list--ne li::before { content: '✕'; color: var(--semantic-error); }
 
-  /* Certifikace - originální badge, nenápadně na konci */
+  /* Certifikace - originální badge v mřížce jako na .cz (3 sloupce přes
+     šířku obsahu, bez nadpisu; velikost ~21 % šířky sloupce dle vzoru) */
   .certifikace { background: var(--ae-bg-primary); padding: var(--space-40) 0 var(--space-80); }
-  .certifikace-inner { display: flex; align-items: center; gap: var(--space-40); flex-wrap: wrap; }
-  .certifikace-label {
-    font-family: var(--font-primary); font-size: 13px; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase; color: var(--neutral-500);
+  .certifikace-badges {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-40); justify-items: center; align-items: center;
   }
-  .certifikace-badges { display: flex; gap: var(--space-32); align-items: center; flex-wrap: wrap; }
-  .certifikace-badge { height: 220px; width: auto; }
+  .certifikace-badge { width: min(270px, 90%); height: auto; }
 
   .cta-link { font-size: var(--fs-40); color: var(--ae-straight-blue); font-family: var(--font-primary); font-weight: 700; text-decoration: none; transition: opacity var(--transition-base); }
   .cta-link:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -340,7 +338,8 @@ const certifikace = [
     .spoluprace-grid { grid-template-columns: 1fr; }
     .partneri-lista { grid-template-columns: repeat(2, 1fr); }
     .zasady-grid { grid-template-columns: 1fr; gap: var(--space-40); }
-    .certifikace-badge { height: 150px; }
+    .certifikace-badges { grid-template-columns: 1fr; gap: var(--space-24); }
+    .certifikace-badge { width: min(240px, 70%); }
     .cta-contacts { flex-direction: column; align-items: center; gap: var(--space-16); }
     .o-nas-hero { padding: 90px 0 60px; }
     .hero-manifest p { font-size: 18px; }
