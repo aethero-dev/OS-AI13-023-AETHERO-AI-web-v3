@@ -9,7 +9,7 @@ const team = [
   {
     name: 'David',
     role: 'Design, Business Development',
-    photo: '/team-david-v3.png',
+    photo: '/team-david-v4.png',
     desc: "David handles mainly design and business development at aethero. So when you call us, he's the one who'll pick up.",
     email: 'david@aethero.cz',
     phone: '+420 776 067 663',
@@ -32,11 +32,38 @@ const team = [
 
 // External team - poznámky jsou zatím Lorem ipsum (vědomě, pokyn DK
 // 2026-08-05; web není spuštěný). DK je nahradí skutečnými větami.
-const spoluprace: { jmeno: string; obor: string; poznamka?: string }[] = [
-  { jmeno: 'Petr', photo: '/team-petr-v1.png', obor: 'AI evangelist, process management, analytics', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Dominik', photo: '/team-dominik-v1.png', obor: 'SEO specialist', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Daniel', photo: '/team-daniel-v1.png', obor: 'Legal services', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
-  { jmeno: 'Honza', photo: '/team-honza-v1.png', obor: 'Design', poznamka: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.' },
+const spoluprace: { jmeno: string; photo: string; obor: string; poznamka?: string[] }[] = [
+  {
+    jmeno: 'Petr',
+    photo: '/team-petr-v1.png',
+    obor: 'AI evangelist, process management, analytics',
+    poznamka: [
+      "Co-owner of a successful e-shop and one of the few people we can safely call AI-first. We joke that he thinks in ones and zeros - even though he's not a programmer.",
+      "His company is our client, and he works with us at the same time. You can't get closer to real-world practice than that.",
+      'Petr focuses on process management, complex analytics and training. He knows an enormous amount about e-commerce and Shopify - all of it from practice.',
+    ],
+  },
+  {
+    jmeno: 'Dominik',
+    photo: '/team-dominik-v1.png',
+    obor: 'SEO, content strategy, search visibility',
+    poznamka: [
+      'An SEO consultant who went through the biggest Czech SEO school - he led SEO and UX at H1.cz. Today he runs his own brand, Click Happens, and helps companies grow from organic search.',
+      'Dominik can set up an SEO strategy, support developers, or build a company its own in-house SEO team. He looks at websites and technology through a business lens, not checklists. And while the whole market argues about whether AI will kill SEO, he calmly works on being visible in both.',
+    ],
+  },
+  {
+    jmeno: 'Daniel',
+    photo: '/team-daniel-v1.png',
+    obor: 'Legal services',
+    poznamka: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'],
+  },
+  {
+    jmeno: 'Honza',
+    photo: '/team-honza-v1.png',
+    obor: 'Design',
+    poznamka: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'],
+  },
 ];
 
 // Tech partners - block is READY but renders only with 4+ items
@@ -124,7 +151,7 @@ const certifikace = [
               <img src={s.photo} alt={`${s.jmeno} - ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
-              {s.poznamka && <p class="spoluprace-poznamka">{s.poznamka}</p>}
+              {s.poznamka && s.poznamka.map((odst) => <p class="spoluprace-poznamka">{odst}</p>)}
             </div>
           ))}
         </div>
@@ -263,7 +290,8 @@ const certifikace = [
   .spoluprace-card .team-photo { margin-bottom: 0; }
   .spoluprace-jmeno { margin-bottom: 4px; }
   .spoluprace-obor { font-size: var(--text-small); color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 8px; }
-  .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; }
+  .spoluprace-poznamka { font-size: var(--text-small); color: var(--neutral-300); line-height: 1.6; margin-bottom: 10px; }
+  .spoluprace-poznamka:last-child { margin-bottom: 0; }
 
   /* Externí tým lepí na Tým - jeden souvislý blok lidí, bez vlastního
      nadpisu (DK 2026-08-05); mezera mezi mřížkami = gap mřížky */
