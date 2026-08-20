@@ -12,6 +12,10 @@
  * a mezi prvním deployem a `wrangler secret put` byla stránka veřejná.
  * Tady je proto 503, nikdy průchod.
  *
+ * Titulek stránky je „AE web Design System" schválně: pod tímhle jménem si
+ * položku uloží správce hesel (bere ho z <title>). Když se změní, rozejde se
+ * to s tím, co má DK v 1Passwordu — měnit jen vědomě.
+ *
  * POZOR: bez `"run_worker_first": true` v configu tahle brána NEPLATÍ —
  * Cloudflare naservíruje nalezený soubor dřív, než Worker vůbec spustí.
  */
@@ -32,7 +36,9 @@ function prihlaseni(spatne = false) {
     `<!doctype html><html lang="cs"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Design systém — aethero</title>
+<title>AE web Design System</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 :root{color-scheme:dark}
 body{font-family:Montserrat,system-ui,sans-serif;display:grid;place-items:center;
@@ -50,7 +56,7 @@ button:hover{background:#5a51f0}
 .err{color:#ff8b7d;font-size:14px;margin:0}
 </style></head><body>
 <form method="post">
-<strong>Design systém — aethero</strong>
+<strong>AE web Design System</strong>
 <small>Interní stránka. Přihlášení platí půl roku.</small>
 ${spatne ? '<p class="err">Nesprávné heslo, zkuste to znovu.</p>' : ""}
 <input type="password" name="password" placeholder="Heslo" autofocus
@@ -71,6 +77,14 @@ export default {
         status: 503,
         headers: { "content-type": "text/plain; charset=utf-8" },
       });
+    }
+
+    // Ikony pouštíme i nepřihlášenému: přihlašovací stránka je sama potřebuje
+    // (a s nimi i správce hesel, když si položku ukládá). Je to značkové logo,
+    // ne obsah design systému — nic se tím neprozradí.
+    const cesta = new URL(request.url).pathname;
+    if (/^\/(favicon\.(svg|ico)|favicon-\d+x\d+\.png|apple-touch-icon\.png)$/.test(cesta)) {
+      return env.ASSETS.fetch(request);
     }
 
     const otisk = await sha256(heslo);
