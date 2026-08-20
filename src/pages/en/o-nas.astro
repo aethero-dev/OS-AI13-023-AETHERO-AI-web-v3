@@ -8,9 +8,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
 const team = [
   {
     name: 'David',
-    role: 'Design, Business Development',
+    role: 'Design, business development',
     photo: '/team-david-v4.png',
-    desc: "David handles mainly design and business development at aethero. So when you call us, he's the one who'll pick up.",
+    desc: "The one who gets projects started and keeps aethero's momentum going. David's strength is synthesis - he connects what's happening in the market, what makes sense from a design perspective, and what works for the client, then turns all of that, together with experience, into a direction for their business. He's at home in design, in Shopify, and in AI. When you call us, he's the one who picks up.",
     email: 'david@aethero.cz',
     phone: '+420 776 067 663',
   },
@@ -26,7 +26,7 @@ const team = [
     role: 'Design',
     photo: '/team-tom-v2.png',
     email: 'tom@aethero.cz',
-    desc: "He's in charge of graphics, video, 3D, motion design and all the “prettifying” of the products we make for clients. Tom is on the Path - he teaches yoga, streams about healthy living, keeps bees and is an all-round easy-going guy.",
+    desc: "He's in charge of graphics, video, 3D, motion design and all the “prettifying” of the products we make for clients. Tom is on the Path - streams about healthy living, practices HEMA, keeps bees, and is a total easy-going guy.",
   },
 ];
 
@@ -48,7 +48,7 @@ const spoluprace: { jmeno: string; photo: string; obor: string; poznamka?: strin
     photo: '/team-dominik-v1.png',
     obor: 'SEO, content strategy, search visibility',
     poznamka: [
-      'An SEO consultant who went through the biggest Czech SEO school - he led SEO and UX at H1.cz. Today he runs his own brand, Click Happens, and helps companies grow from organic search.',
+      'An SEO consultant who went through the biggest Czech SEO school - he led SEO and UX at H1.cz. Today he runs his own brand, <a href="https://www.clickhappens.cz/" class="text-link" target="_blank" rel="noopener noreferrer">Click Happens</a>, and helps companies grow from organic search.',
       'Dominik can set up an SEO strategy, support developers, or build a company its own in-house SEO team. He looks at websites and technology through a business lens, not checklists. And while the whole market argues about whether AI will kill SEO, he calmly works on being visible in both.',
     ],
   },
@@ -151,7 +151,7 @@ const certifikace = [
               <img src={s.photo} alt={`${s.jmeno} - ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
-              {s.poznamka && s.poznamka.map((odst) => <p class="spoluprace-poznamka">{odst}</p>)}
+              {s.poznamka && s.poznamka.map((odst) => <p class="spoluprace-poznamka" set:html={odst} />)}
             </div>
           ))}
         </div>

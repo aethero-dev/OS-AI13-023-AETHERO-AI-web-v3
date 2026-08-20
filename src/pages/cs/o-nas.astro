@@ -8,9 +8,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
 const team = [
   {
     name: 'David',
-    role: 'Design, Business Development',
+    role: 'Design, business development',
     photo: '/team-david-v4.png',
-    desc: 'David dělá pro aethero hlavně design a business development. Takže když k nám budete volat, dovoláte se právě jemu.',
+    desc: 'Startovač projektů a akční síla v aetheru. Davidova silná stránka je syntéza — spojí, co se děje na trhu, co dává smysl designově a co funguje danému klientovi spolu se zkušenostmi a z toho poskládá směr pro jeho byznys. Doma je v designu, na Shopify a v AI. Když k nám zavoláte, ozve se vám právě on.',
     email: 'david@aethero.cz',
     phone: '+420 776 067 663',
   },
@@ -26,7 +26,7 @@ const team = [
     role: 'Design',
     photo: '/team-tom-v2.png',
     email: 'tom@aethero.cz',
-    desc: 'Má pod palcem grafiku, video, 3D, motion design a všechno to „zpěkňování" produktů, které děláme pro klienty. Tom je na Cestě, učí jógu, streamuje o zdravém bytí, chová včely a je pohodář.',
+    desc: 'Má pod palcem grafiku, video, 3D, motion design a všechno to „zpěkňování" produktů, které děláme pro klienty. Tom je na Cestě, streamuje o zdravém bytí, cvičí HEMA, chová včely a je naprostý pohodář.',
   },
 ];
 
@@ -48,7 +48,7 @@ const spoluprace: { jmeno: string; photo: string; obor: string; poznamka?: strin
     photo: '/team-dominik-v1.png',
     obor: 'SEO, obsahová strategie, viditelnost ve vyhledávání',
     poznamka: [
-      'SEO konzultant, který prošel největší českou SEO školou - vedl SEO a UX v H1.cz. Dnes jede pod vlastní značkou Click Happens a pomáhá firmám růst z organického vyhledávání.',
+      'SEO konzultant, který prošel největší českou SEO školou - vedl SEO a UX v H1.cz. Dnes jede pod vlastní značkou <a href="https://www.clickhappens.cz/" class="text-link" target="_blank" rel="noopener noreferrer">Click Happens</a> a pomáhá firmám růst z organického vyhledávání.',
       'Dominik umí nastavit SEO strategii, být k ruce vývojářům i vybudovat firmě vlastní inhouse SEO tým. Na web a technologie se dívá byznysovým pohledem, ne přes checklisty. A když se celý trh hádá, jestli AI zabije SEO, on v klidu řeší, jak být vidět v obojím.',
     ],
   },
@@ -153,7 +153,7 @@ const certifikace = [
               <img src={s.photo} alt={`${s.jmeno} - ${s.obor}`} class="team-photo" width="424" height="424" loading="lazy" />
               <h3 class="h3-mini spoluprace-jmeno">{s.jmeno}</h3>
               <p class="spoluprace-obor">{s.obor}</p>
-              {s.poznamka && s.poznamka.map((odst) => <p class="spoluprace-poznamka">{odst}</p>)}
+              {s.poznamka && s.poznamka.map((odst) => <p class="spoluprace-poznamka" set:html={odst} />)}
             </div>
           ))}
         </div>
