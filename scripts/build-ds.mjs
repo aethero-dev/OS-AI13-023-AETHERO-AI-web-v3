@@ -68,7 +68,13 @@ if (!/name="robots"/i.test(html)) {
 writeFileSync(join(OUT, "index.html"), html);
 writeFileSync(join(OUT, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
+// DS je vytažený — z hlavního buildu musí PRYČ, jinak jsou venku dvě kopie
+// a ta na webu není chráněná ničím. Přesně tenhle stav vznikl 2026-08-20,
+// když se DS nasadil zvlášť, ale z webu se nesmazal.
+rmSync(join(DIST, "design-system"), { recursive: true, force: true });
+
 console.log(`✓ ${OUT}/ — index.html + ${zkopírováno} souborů`);
+console.log(`✓ ${join(DIST, "design-system")} smazán z hlavního buildu`);
 if (chybí.length) {
   console.log(`⚠ ${chybí.length} odkazů bez souboru (nejspíš neexistují ani na webu):`);
   for (const c of chybí) console.log(`    ${c}`);

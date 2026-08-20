@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/schovej-maily.mjs",
+    "build": "astro build && node scripts/schovej-maily.mjs && node scripts/build-ds.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
