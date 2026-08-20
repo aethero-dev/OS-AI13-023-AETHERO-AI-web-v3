@@ -1,0 +1,11 @@
+# Root → výchozí jazyk.
+#
+# Astro s `prefixDefaultLocale: true` staví `dist/index.html` jako stránku
+# s <meta http-equiv="refresh">. Cloudflare PAGES z ní udělalo pravý HTTP 302;
+# Workers Static Assets ji servírují jako obyčejné HTML se statusem 200
+# a přesměrování nechají na prohlížeči. To je pomalejší a pro roboty mlhavější.
+#
+# Proto explicitní redirect. 302 (ne 301) schválně: volba jazyka není trvalá
+# vlastnost URL — kdybychom ji zabetonovali, přepnutí výchozího jazyka
+# by pak museli řešit i ti, co mají root v cache.
+/  /cs/  302

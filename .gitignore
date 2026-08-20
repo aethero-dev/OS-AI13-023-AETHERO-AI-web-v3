@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 .env.bak*
 .env.backup*
+
+# balík design systému — vyrábí scripts/build-ds.mjs z dist/
+dist-ds/

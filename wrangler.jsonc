@@ -1,0 +1,46 @@
+{
+  // Cloudflare Workers — Static Assets (přechod z Pages, 2026-08-20, zadání DK).
+  //
+  // Proč Workers a ne Pages: Cloudflare Pages už nerozvíjí, nové funkce jdou
+  // do Workers (a Pages neumí ani cron triggery). Tenhle web je `output: 'static'`
+  // BEZ Cloudflare adaptéru, takže přechod je čistě otázka hostování statiky —
+  // žádná změna kódu stránek.
+  //
+  // Konfigurace žije v repu, ne v dashboardu: projde přes PR a je vidět v diffu.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aethero-web-v3",
+
+  // Účet aethero (ověřeno proti kartě webu AI13009/weby/aethero-web-v3.md).
+  // Na účtu je jich víc — bez tohohle wrangler v neinteraktivním běhu spadne.
+  "account_id": "21fe5c7d8cb8a30a16566e477c985c28",
+  "compatibility_date": "2026-08-20",
+
+  "assets": {
+    "directory": "./dist",
+
+    // KRITICKÉ: bez tohohle vrací neexistující URL rovnou index (soft-404).
+    // Přesně ta vada, kterou jsme našli na LICHu, AE i Geotere — vyhledávač
+    // pak indexuje stovky "stránek", které neexistují.
+    // WEB-STANDARD kap. 7: neexistující URL MUSÍ vracet HTTP 404.
+    "not_found_handling": "404-page",
+
+    // /cesta/ i /cesta míří na stejnou stránku (Astro staví adresáře s index.html)
+    "html_handling": "auto-trailing-slash"
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  // workers.dev náhled ZAPNUTÝ schválně: jakmile se do configu přidá `routes`,
+  // wrangler workers.dev sám vypne a testovací URL zhasne (ověřeno 2026-08-20).
+  "workers_dev": true,
+
+  // Vlastní doména. Do 2026-08-20 visela na Pages projektu
+  // `os-ai13-023-aethero-ai-web-v3`; ten zůstává stát jako cesta zpět.
+  // Dokud tam doména visela, CF ji na Workers nepustil:
+  //   „hostname already has externally managed DNS records" [code: 100117].
+  "routes": [
+    { "pattern": "aethero.agency", "custom_domain": true }
+  ]
+}

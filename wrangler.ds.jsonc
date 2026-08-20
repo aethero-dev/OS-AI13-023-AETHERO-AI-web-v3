@@ -1,0 +1,27 @@
+{
+  // Design systém jako SAMOSTATNÝ projekt — WEB-STANDARD kap. 2.
+  // Do buildu webu nepatří; tam se stavěl omylem a jen se filtroval ze sitemapy.
+  //
+  // Obsah vyrábí `node scripts/build-ds.mjs` z hotového `dist/`.
+  // Heslo: `npx wrangler secret put DS_HESLO -c wrangler.ds.jsonc`
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aethero-web-v3-ds",
+  "account_id": "21fe5c7d8cb8a30a16566e477c985c28",
+  "compatibility_date": "2026-08-20",
+  "main": "worker-ds/index.js",
+
+  "assets": {
+    "directory": "./dist-ds",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+
+    // BEZ TOHOHLE OCHRANA NEPLATÍ. Cloudflare standardně servíruje nalezený
+    // statický soubor rovnou a Worker vůbec nespustí — takže heslo hlídá jen
+    // to, co v assetech NENÍ. Ověřeno 2026-08-20: bez `run_worker_first`
+    // vracel design systém 200 i bez hesla.
+    "run_worker_first": true
+  },
+
+  "workers_dev": true,
+  "observability": { "enabled": true }
+}
