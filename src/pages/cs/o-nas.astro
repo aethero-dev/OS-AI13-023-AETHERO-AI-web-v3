@@ -30,8 +30,8 @@ const team = [
   },
 ];
 
-// Externí tým - texty u jmen jsou zatím Lorem ipsum (vědomě, pokyn DK
-// 2026-08-05; web není spuštěný). DK je nahradí skutečnými větami.
+// Externí tým - bio texty dodány DK 2026-08-21 (Daniel, Honza doplněni
+// po launchi; dřív Lorem ipsum). Petr a Dominik měli text od začátku.
 const spoluprace: { jmeno: string; photo: string; obor: string; poznamka?: string[] }[] = [
   {
     jmeno: 'Petr',
@@ -56,13 +56,19 @@ const spoluprace: { jmeno: string; photo: string; obor: string; poznamka?: strin
     jmeno: 'Daniel',
     photo: '/team-daniel-v1.png',
     obor: 'Právní služby',
-    poznamka: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'],
+    poznamka: [
+      'Usměvavý puntičkář. Důslednost je u Daniela vlastnost i profesní výhoda zároveň. Je to právník s dlouholetou praxí v e-commerce a jeho práce má jeden hlavní výsledek: jistotu, že jste na nic nezapomněli.',
+      'Obchodní podmínky, reklamace, osobní údaje, všechno sedí, takže vás žádná kontrola nezaskočí a vy můžete klidně spát a prodávat. Žádný komisní přístup, vždycky hledá řešení, které sedí konkrétnímu byznysu. Když zrovna nehlídá každou čárku ve smlouvě, leze po horách nebo zvelebuje své „venkovské sídlo".',
+    ],
   },
   {
     jmeno: 'Honza',
     photo: '/team-honza-v1.png',
     obor: 'Design',
-    poznamka: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'],
+    poznamka: [
+      'Když si představíte designéra, který moc nemluví a nechá za sebe mluvit práci, vyjde vám přesně Honza. Je důkaz, že i nad věcí, nad kterou ostatní mávnou rukou, se dá popřemýšlet a udělat z ní malý designový zázrak.',
+      'Prošel korporáty i největšími českými reklamními agenturami, dělal pro Manu, takže marketing zná ze všech stran. Nejlíp mu to sedí s klienty, kteří vědí, co chtějí, a hledají někoho, kdo to dotáhne o úroveň výš. Miluje psy, jezdí na skejtu a fyzička nezapře vášnivého cyklistu.',
+    ],
   },
 ];
 
