@@ -151,15 +151,12 @@ const blogPosts = await homeBlogPosts('cs');
                   }
                   if(PAUSE) await sleep(PAUSE);
                   await eraseAll(l2); if(BETWEEN) await sleep(BETWEEN);
-                  await typeInto(l2,'Shopify'); if(PAUSE) await sleep(PAUSE);
-                  await typeAppend(l2,' Plus'); if(PAUSE) await sleep(PAUSE);
-                  await typeInto(l3,'partneři'); if(PAUSE) await sleep(PAUSE);
-                  await eraseAll(l3); if(BETWEEN) await sleep(BETWEEN);
-                  await eraseAppend(l2,' Plus'); if(BETWEEN) await sleep(BETWEEN);
+                  await typeInto(l2,'Shopify'); if(BETWEEN) await sleep(BETWEEN);
+                  await Promise.all([typeAppend(l2,' Plus'), typeInto(l3,'partneři')]); if(PAUSE) await sleep(PAUSE);
+                  await Promise.all([eraseAppend(l2,' Plus'), eraseAll(l3)]); if(BETWEEN) await sleep(BETWEEN);
                   var words=['experti','vývojáři','designéři','analytici','specialisté'];
                   for(var i=0;i<words.length;i++){ await typeInto(l3,words[i]); if(PAUSE) await sleep(PAUSE); await eraseAll(l3); if(BETWEEN) await sleep(BETWEEN); }
-                  await typeAppend(l2,' Plus'); if(PAUSE) await sleep(PAUSE);
-                  await typeInto(l3,'partneři'); if(PAUSE) await sleep(PAUSE);
+                  await Promise.all([typeAppend(l2,' Plus'), typeInto(l3,'partneři')]); if(PAUSE) await sleep(PAUSE);
                 }
                 (async function loop(){ var prvni=true; while(true){ await runOnce(prvni); prvni=false; if(RESTART>0) await sleep(RESTART); } })();
               })();
