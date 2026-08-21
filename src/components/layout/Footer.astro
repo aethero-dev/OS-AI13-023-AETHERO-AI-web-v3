@@ -141,15 +141,16 @@ const intentLinks = lang === 'en'
   }
 
   .footer-brand {
+    /* Badge POD logem, stejná šířka jako logo (DK 2026-08-21, DS blok 4) */
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .logo { display: flex; align-items: center; }
   .logo img { opacity: 0.9; width: 180px; height: auto; }
-  .shopify-badge { display: block; height: 45px; width: auto; }
+  .shopify-badge { display: block; width: 180px; height: auto; }
 
   .footer-label {
     font-family: var(--font-primary);
