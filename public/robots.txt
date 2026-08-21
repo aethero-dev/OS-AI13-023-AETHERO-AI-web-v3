@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 Sitemap: https://aethero.cz/sitemap-cs.xml
 Sitemap: https://aethero.agency/sitemap-en.xml
