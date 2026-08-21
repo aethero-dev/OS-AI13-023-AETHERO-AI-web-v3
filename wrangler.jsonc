@@ -35,7 +35,16 @@
 
     // Worker skript (src/worker.js) sám volá env.ASSETS.fetch() jako fallback —
     // bez binding jména by se assets a Worker code nemohly propojit.
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+
+    // KRITICKÉ: bez tohohle assets vrstva servíruje existující soubory DŘÍV,
+    // než se Worker spustí — celá host/jazyková logika v src/worker.js je pak
+    // mrtvý kód pro každou URL, která má soubor v dist/. Projev (nález DK
+    // 2026-08-21, přes www vracející 200): ".agency/" servírovalo root
+    // index.html (meta-refresh /cs/, past P5) místo 302 /en/ — EN návštěvník
+    // končil na starém .cz webu. S run_worker_first jde KAŽDÝ request nejdřív
+    // do Workeru a assets až přes env.ASSETS.fetch().
+    "run_worker_first": true
   },
 
   "observability": {
