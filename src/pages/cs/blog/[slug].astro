@@ -135,7 +135,7 @@ const articleSchema = {
         <h2 class="h3-maxi more-heading">Další články</h2>
         <div class="more-grid">
           {otherPosts.map(post => (
-            <a href={`/blog/${post.slug}`} class="more-card">
+            <a href={`/blog/${post.slug}/`} class="more-card">
               <div class="more-card-img">
                 <img src={post.img} alt={post.title} loading="lazy" width="600" height="340" />
               </div>

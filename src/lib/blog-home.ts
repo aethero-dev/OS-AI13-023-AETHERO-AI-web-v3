@@ -57,7 +57,7 @@ export async function homeBlogPosts(lang: 'cs' | 'en') {
       // Šablona dopisuje „ min.", ve frontmatteru je „7 min" - jinak by vzniklo „7 min min."
       time: e.data.readTime.replace(' min', ''),
       ago: agoLabel(e.data.date, lang),
-      href: `/${lang}/blog/${e.id.slice(prefix.length)}`,
+      href: `/blog/${e.id.slice(prefix.length)}/`,
       img: e.data.image || '/blog-01.webp',
     }));
 }

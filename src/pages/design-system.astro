@@ -29,6 +29,7 @@ const faqUkazka = [
         <a href="#blocks">Bloky</a>
         <a href="#cards">Karty</a>
         <a href="#gallery">Galerie</a>
+        <a href="#blog">Blog</a>
       </div>
     </nav>
 
@@ -472,7 +473,7 @@ const faqUkazka = [
             <tr>
               <td class="ds-gt-id ds-locked">T1a</td>
               <td><code class="ds-gt-class">.h1-maxi</code></td>
-              <td class="ds-gt-meta">Kanit 700 <br/>var(--fs-100) · 100px <br/>lh 1.15 <br/>color #fff</td>
+              <td class="ds-gt-meta">Kanit 700 <br/>var(--fs-90) · 90px <br/>lh 1.15 <br/>color #fff</td>
               <td class="ds-gt-preview"><span class="h1-maxi" style="color:#fff">Jsme specialisté</span></td>
               <td class="ds-gt-use">Homepage, co-umime, <br/>esyncer, ae-translator, <br/>kontakt</td>
             </tr>
@@ -666,7 +667,7 @@ const faqUkazka = [
             <div class="ds-incon-preview">
               <span style="font-family: var(--font-primary); font-size: var(--fs-60); font-weight: 700; line-height: 1.15; color: #fff;">Jsme <br />Shopify <br />specialisté</span>
             </div>
-            <code style="color: #4ECCA3;">var(--fs-100) · lh 1.15</code>
+            <code style="color: #4ECCA3;">var(--fs-90) · lh 1.15</code>
           </div>
           <div class="ds-incon-card ds-incon-bad">
             <div class="ds-incon-label">Service hero <span class="ds-incon-file">ServiceHero.astro</span></div>
@@ -682,7 +683,7 @@ const faqUkazka = [
         <h3 class="ds-subsection-title">2 · Font-size tokeny v tokens.css - nikde se nepoužívají</h3>
         <div class="ds-token-unused-grid">
           {[
-            { token: '--text-h1', val: '100px' },
+            { token: '--text-h1', val: '90px' },
             { token: '--text-h2', val: '70px' },
             { token: '--text-h2-vp', val: '54px' },
             { token: '--text-h3', val: '40px' },
@@ -2381,6 +2382,134 @@ font-family: var(--font-secondary);</code></pre>
         </div>
       </section>
 
+      <!-- ══ BLOG / ČTECÍ REŽIM (v2, 2026-08-21 — každé tvrzení kryté řádkem v cteni.css) ══ -->
+      <section class="ds-section" id="blog">
+        <h2 class="ds-section-title">Blog / Čtecí režim</h2>
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:8px;">
+          Čtecí panel u článků nesahá na prvky přímo — přepíná atributy na <code>&lt;html&gt;</code>
+          a ty mění proměnné <code>--cteni-*</code>. Bez JS platí výchozí (světlé) hodnoty, nic se
+          nerozbije. Žije v <code>src/styles/cteni.css</code>, načítá se jen na stránce článku
+          (import v <code>cs|en/blog/[slug].astro</code>). Tři nezávislé osy: <b>motiv</b>,
+          <b>velikost</b>, <b>řez</b> + režim „Jen text". Vznik 2026-08-04 (AE-53), výchozí motiv
+          světlý od 21.&nbsp;8. (do té doby tmavý).
+        </p>
+
+                <details class="ds-akordeon">
+          <summary class="ds-locked">Motiv — 3 varianty (naše barvy v odstínu, který na svém podkladu unese kontrast)</summary>
+          <div class="ds-akordeon-telo">
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
+          Tyrkysová <code>--action</code> #16BECF má na bílé jen 2,2:1 — odkaz ve světlém
+          a sepiovém motivu proto jede v #0A7079 (stejný odstín 184°, 5,7:1). Fialové zvýraznění
+          je <code>--accent-purple</code> #552A9F — token, který v <code>tokens.css</code> existuje
+          právě pro světlé plochy (9,3:1). V tmavém motivu se vrací <code>--action</code>
+          a zvýraznění <code>--text-secondary</code> #A081D1.
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:32px;">
+
+          <!-- SVĚTLÝ -->
+          <div style="border-radius:14px; overflow:hidden; border:1px solid var(--ds-border);">
+            <div style="background:#fdfdfb; padding:20px;">
+              <div style="font-family:var(--font-primary); font-size:20px; font-weight:700; color:#092066; margin-bottom:8px;">Nadpis článku</div>
+              <div style="font-family:var(--font-secondary); font-size:14px; color:#092066; line-height:1.6;">Tělo textu drží značkovou <b>tmavě modrou</b>, ne neutrální černou. <a style="color:#0A7079; text-decoration:underline; text-underline-offset:3px;">Odkaz</a> a <span style="color:#552A9F;">zvýraznění</span>.</div>
+            </div>
+            <div style="padding:12px 16px; background:rgba(255,255,255,0.04); font-size:.78rem; line-height:1.7; color:var(--ds-muted);">
+              <b style="color:var(--ds-text);">Světlý ★ výchozí</b> (od 21.8.)<br>
+              plocha #fdfdfb · text/nadpis <code>--ae-straight-blue</code> #092066 · slabé #5f6070 · odkaz #0A7079 · zvýraznění <code>--accent-purple</code> #552A9F
+            </div>
+          </div>
+
+          <!-- TMAVÝ -->
+          <div style="border-radius:14px; overflow:hidden; border:1px solid var(--ds-border);">
+            <div style="background:#000326; padding:20px;">
+              <div style="font-family:var(--font-primary); font-size:20px; font-weight:700; color:#FFFFFF; margin-bottom:8px;">Nadpis článku</div>
+              <div style="font-family:var(--font-secondary); font-size:14px; color:#D2D2D2; line-height:1.6;">Tělo v neutrální světlé. <a style="color:#16BECF; text-decoration:underline; text-underline-offset:3px;">Odkaz</a> tyrkysový a <span style="color:#A081D1;">zvýraznění</span> světle fialové.</div>
+            </div>
+            <div style="padding:12px 16px; background:rgba(255,255,255,0.04); font-size:.78rem; line-height:1.7; color:var(--ds-muted);">
+              <b style="color:var(--ds-text);">Tmavý</b> (do 21.8. výchozí)<br>
+              plocha <code>--ae-bg-primary</code> #000326 · text <code>--neutral-300</code> · nadpis <code>--text-primary</code> · odkaz <code>--action</code> · zvýraznění <code>--text-secondary</code>
+            </div>
+          </div>
+
+          <!-- SEPIA -->
+          <div style="border-radius:14px; overflow:hidden; border:1px solid var(--ds-border);">
+            <div style="background:#f4ecd8; padding:20px;">
+              <div style="font-family:var(--font-primary); font-size:20px; font-weight:700; color:#241d16; margin-bottom:8px;">Nadpis článku</div>
+              <div style="font-family:var(--font-secondary); font-size:14px; color:#3f362c; line-height:1.6;">Teplý papírový podklad, hnědočerný text. <a style="color:#0A7079; text-decoration:underline; text-underline-offset:3px;">Odkaz</a> a <span style="color:#552A9F;">zvýraznění</span>.</div>
+            </div>
+            <div style="padding:12px 16px; background:rgba(255,255,255,0.04); font-size:.78rem; line-height:1.7; color:var(--ds-muted);">
+              <b style="color:var(--ds-text);">Sepiový</b><br>
+              plocha #f4ecd8 · text #3f362c · nadpis #241d16 · slabé #6d6053 · odkaz #0A7079 · zvýraznění #552A9F
+            </div>
+          </div>
+        </div>
+
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Čtecí plocha — kde motiv platí</summary>
+          <div class="ds-akordeon-telo">
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
+          Motiv se týká jen toho, kde se čte: hlavička článku (<code>.blog-hero</code>), tělo
+          (<code>article.section</code>), CTA článku a FAQ. Hlavička webu a „další články" zůstávají
+          tmavé — je to zařízení webu, ne text. Blok uvnitř čtecí plochy (otázka ve FAQ,
+          <code>--cteni-blok</code>) je <b>vždy tmavší než plocha, nikdy světlejší</b> — původně to
+          bylo obráceně a bloky „svítily nahoru" (DK 2026-08-04). Plovoucí lišta webu dostane ve
+          světlém a sepiovém motivu tmavý frost podklad — čte se jako záměrný tmavý pruh nad
+          světlou stránkou a nemusí se přebarvovat jediný odkaz (pravidlo v <code>Header.astro</code>).
+        </p>
+
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Velikost — 6 poloh</summary>
+          <div class="ds-akordeon-telo">
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
+          <code>16 · 18 · 20 · 23 · 27 · 32 px</code> — geometrický krok ~1,15×, aby byl každý
+          stisk stejně znát (po dvou pixelech by dole skákalo a nahoře se nedělo nic). Řídí
+          <code>data-cteni-px="1..6"</code>, výchozí 3 (20&nbsp;px). Rozsah 16→32 plní WCAG
+          zvětšení textu na 200&nbsp;%. Nadpisy se odvozují z těla (h2 = 1,7× · h3 = 1,3× ·
+          tabulky 0,8×), aby škála držela. V panelu −/+ po stranách a mezi nimi stupnice šesti
+          čárek — bez ní by −/+ bylo slepé.
+        </p>
+
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Řez písma</summary>
+          <div class="ds-akordeon-telo">
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
+          <b>Bezpatkový</b> (výchozí) = běžný vzhled webu: tělo <code>--font-secondary</code>
+          (Montserrat), nadpisy <code>--font-primary</code> (Kanit). <b>Patkový</b> =
+          self-hostovaná Lora (<code>--font-serif</code>) a jde na VŠECHNO v čtecí ploše —
+          nadpisy, perex, meta, tělo, tabulky i FAQ, ne jen tělo („patkový font — dej ho na
+          všechno", DK 2026-08-04).
+        </p>
+
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Panel, spouštěč, „Jen text"</summary>
+          <div class="ds-akordeon-telo">
+        <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7;">
+          Panel <code>.cteni</code> visí u horní hrany čtení (vpravo; strop pod hlavičkou webu,
+          výšku počítá skript do <code>--cteni-top</code>). Objeví se, až když začne text
+          (<code>data-cteni-ctu</code>) — nad hero obrázkem není co nastavovat. Motivová tlačítka
+          v panelu <b>jsou každé ukázkou svého motivu</b>; vybraná volba se pozná tyrkysovým
+          prstencem, ne přebarvením — to by ukázku zrušilo. Reset svítí, jen když je co vracet.
+          Zavřený panel = plovoucí spouštěč: tyrkysové kolečko „Aa" (54&nbsp;px). Nahoře běží 2px
+          ukazatel postupu čtení. Režim <b>„Jen text"</b> (<code>data-cteni-klid</code>) schová
+          hlavičku webu, footer, CTA, hero obrázek i „další články" — zůstane text a panel.
+          Na ≤820&nbsp;px se panel otevírá jako lišta u spodku obrazovky;
+          <code>prefers-reduced-motion</code> vypíná přechody i posuny.
+        </p>
+          </div>
+        </details>
+      </section>
+
       <span>aethero web design system · v3.1 · 2026</span>
     </footer>
 
@@ -2540,6 +2669,38 @@ font-family: var(--font-secondary);</code></pre>
     margin: 48px 0 16px;
   }
   .ds-subsection-title:first-of-type { margin-top: 0; }
+
+  /* Akordeon v sekci Blog (zadání DK 21.8. — odstavce se rozevírají, ať nezabírají místo) */
+  .ds-akordeon {
+    border: 1px solid var(--ds-border);
+    border-radius: 12px;
+    margin: 0 0 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  .ds-akordeon > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ds-muted);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .ds-akordeon > summary::-webkit-details-marker { display: none; }
+  .ds-akordeon > summary::after {
+    content: '+';
+    position: absolute; right: 18px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ds-accent);
+    font-size: 18px; font-weight: 700;
+  }
+  .ds-akordeon[open] > summary::after { content: '\2212'; }
+  .ds-akordeon > summary:hover { color: var(--ds-text); }
+  .ds-akordeon[open] > summary { color: var(--ds-text); }
+  .ds-akordeon-telo { padding: 4px 18px 18px; }
 
   /* LOGO */
   .ds-logo-grid {
