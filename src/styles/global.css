@@ -558,7 +558,7 @@ img { max-width: 100%; height: auto; }
 }
 .app-hero-logo { width: 220px; height: auto; object-fit: contain; }
 .app-hero h1 {
-  font-family: var(--font-primary); font-size: var(--fs-100);
+  font-family: var(--font-primary); font-size: var(--fs-90);
   font-weight: 700; line-height: 1.2; color: #fff; margin: 0;
 }
 .app-hero-sub {
