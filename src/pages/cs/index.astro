@@ -1051,7 +1051,11 @@ const blogPosts = await homeBlogPosts('cs');
   @media (max-width: 480px) {
     .hero-right { padding-top: 56px; }
     .hero-left { padding-bottom: 40px; }
-    .hero-heading { font-size: var(--fs-48); }
+    /* Dynamická velikost (DK 22.8.): nadpis vyplňuje šířku plynule od malých
+       mobilů (320-375) po velké (430+). 12.5vw = ~97 % změřeného maxima pro
+       „Shopify Plus" na řádek vč. rezervy na kurzor; strop 52px navazuje
+       bez skoku na tabletní --fs-64 (52px mobile token) od 481px. */
+    .hero-heading { font-size: clamp(40px, 12.5vw, 52px); }
     .service-text br { display: none; }
     .value-prop { padding: 60px 0; }
     .value-body { font-size: 22px; }
