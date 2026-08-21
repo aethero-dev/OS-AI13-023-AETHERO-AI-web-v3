@@ -339,14 +339,19 @@ const articleSchema = {
      VELIKOST, ŘEZ A BARVY textu si řídí čtenář přes čtecí režim,
      hodnoty jsou v styles/cteni.css. Tady zůstává jen to, co nemění. */
   .article-inner { max-width: 840px; }
-  .article-body { line-height: 1.7; }
+  /* 1.4 (140 %) misto 1.7 (170 %) - doporucene rozmezi 120-145 %
+     (practicaltypography.com/line-spacing), 170 % delalo text rozvlekly.
+     font-weight 400 misto zdedenych 500 z globalniho body{} - to zdedene
+     je na kratky UI text, na dlouhem cteni delalo odstavce vizualne tezke
+     jako nadpisy (zadani DK 2026-08-21). */
+  .article-body { line-height: 1.4; font-weight: 400; }
 
   /* velikost i barva nadpisů jde z cteni.css (odvozeno od --cteni-px) */
   .article-body.sb-content :global(h2) { font-weight: 700; margin: 2em 0 0.75em; }
   .article-body.sb-content :global(h3) { font-weight: 600; margin: 1.75em 0 0.6em; }
   .article-body.sb-content :global(p) { margin-bottom: 1.4em; }
   .article-body.sb-content :global(ul), .article-body.sb-content :global(ol) { padding-left: 1.5em; margin-bottom: 1.4em; }
-  .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.7; }
+  .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.4; }
   .article-body.sb-content :global(a) { text-decoration: underline; text-underline-offset: 3px; }
   .article-body.sb-content :global(strong) { font-weight: 700; }
   .article-body.sb-content :global(em) { font-style: italic; }
