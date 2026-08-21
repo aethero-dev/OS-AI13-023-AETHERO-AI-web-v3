@@ -1,4 +1,4 @@
-# Jak psát a upravovat články na webu — návod pro Báru
+# Jak psát a upravovat články na webu — návod pro autory
 
 Články žijí přímo v tomhle repozitáři jako obyčejné textové soubory.
 Žádný Storyblok, žádné CMS — všechno se dělá **ve webovém rozhraní
@@ -8,6 +8,10 @@ minut sám přestaví a změna je venku.
 > Potřebuješ jen přihlášení do GitHubu s přístupem k repozitáři
 > `aethero-dev/OS-AI13-023-AETHERO-AI-web-v3`. O zbytek se stará
 > Cloudflare sám.
+
+Nový článek se **sám** objeví na výpisu blogu, na homepage, v sitemapě
+i v přepínači jazyka. Do kódu nesaháš, nikoho nepotřebuješ — jediné,
+co musíš dodržet, je hlavička souboru popsaná níž.
 
 ---
 
@@ -20,9 +24,14 @@ minut sám přestaví a změna je venku.
 | Obrázky článků | `public/blog/` |
 | Tento návod | `docs/NAVOD-CLANKY.md` |
 
-Název souboru = adresa článku. `ai-seo-2026.md` → `aethero.agency/cs/blog/ai-seo-2026/`.
+Název souboru = adresa článku. `ai-seo-2026.md` v `cs/` →
+`aethero.cz/cs/blog/ai-seo-2026/`, tentýž název v `en/` →
+`aethero.agency/en/blog/ai-seo-2026/`. Čeština běží na `.cz`,
+angličtina na `.agency`.
+
 Malá písmena, bez diakritiky, slova oddělená pomlčkou. CS a EN soubor se
-může jmenovat různě (každý jazyk má vlastní slug).
+může jmenovat různě (každý jazyk má vlastní slug) — pak je ale potřeba
+je svázat polem `twin`, viz níž.
 
 ---
 
@@ -32,7 +41,7 @@ může jmenovat různě (každý jazyk má vlastní slug).
 2. Vpravo nahoře klikni na **tužku** (Edit this file).
 3. Uprav text.
 4. Zelené tlačítko **Commit changes** → do popisu napiš jednou větou,
-   co jsi změnila (např. „oprava cen v tabulce") → **Commit**.
+   co jsi změnil/a (např. „oprava cen v tabulce") → **Commit**.
 5. Za 1–2 minuty je změna na webu. Nezapomeň na **EN verzi** téhož článku.
 
 ## Nový článek
@@ -48,6 +57,7 @@ perex: "Jedna–dvě věty, které článek shrnou. Ukazují se pod nadpisem a v
 readTime: "6 min"
 date: 2026-11-01
 image: "/blog/vanocni-kampan.webp"
+twin: "christmas-campaign-shopify"
 draft: true
 ---
 
@@ -63,10 +73,33 @@ Text článku…
 | `readTime` | Doba čtení, např. „6 min" — odhadni ~1 min na 200 slov |
 | `date` | Datum vydání ve formátu `2026-11-01`; řídí pořadí ve výpisu |
 | `image` | Úvodní obrázek — cesta k souboru v `public/blog/` (nepovinné) |
+| `twin` | Název souboru téhož článku v druhém jazyce — **jen když se liší** (viz níž) |
 | `draft` | **`true` = článek není na webu.** Rozepsané nech na `true`, před vydáním smaž celý řádek nebo přepni na `false` |
 
 4. Napiš tělo v Markdownu (tahák níž), **Commit changes**.
 5. Založ **EN verzi** v `src/content/blog/en/` (může mít anglický slug).
+
+## Svázání české a anglické verze (`twin`)
+
+Web musí vědět, který anglický článek patří ke kterému českému. Podle toho
+staví přepínač jazyka, `hreflang` pro vyhledávače a sitemapu.
+
+- **Když se soubor v obou jazycích jmenuje stejně** (`ai-seo-2026.md` v `cs/`
+  i v `en/`) — nedělej nic, spáruje se sám.
+- **Když se jmenují různě** — do hlavičky **jednoho** z těch dvou souborů
+  přidej `twin` s názvem toho druhého (bez `.md`). Je jedno do kterého:
+
+  ```
+  # v src/content/blog/cs/povinne-tlacitko-shopify.md
+  twin: "shopify-mandatory-button"
+  ```
+
+Když párování chybí nebo je v něm překlep, **nic nespadne** — jen se
+u článku nevykreslí přepínač jazyka a hreflang. Radši nic než odkaz do 404.
+
+Dokud EN verze neexistuje (nebo je `draft: true`), chová se článek stejně:
+vyjde česky, sám o sobě, a přepínač se u něj neukáže. Až EN verzi doplníš,
+naváže se automaticky.
 
 ## Obrázky
 
@@ -96,9 +129,14 @@ Text článku…
 
 ## Jak poznáš, že je to venku
 
-Po commitu se web sám přestaví (~1–2 min). Když se změna neukazuje:
-zkus obnovit stránku (Cmd+Shift+R). Kdyby ani po pěti minutách ne,
-napiš Davidovi — build mohl spadnout (uvidí to v Cloudflare).
+Po commitu se web sám přestaví (~1–2 min). Zkontroluj troje:
+
+1. samotný článek — `aethero.cz/cs/blog/<nazev-souboru>/`
+2. výpis `aethero.cz/cs/blog/` a karta na homepage
+3. přepínač jazyka v hlavičce článku (když má článek EN verzi)
+
+Když se změna neukazuje, zkus obnovit stránku (Cmd+Shift+R). Kdyby ani po
+pěti minutách ne, napiš Davidovi — build mohl spadnout (uvidí to v Cloudflare).
 
 ---
 
@@ -111,4 +149,6 @@ napiš Davidovi — build mohl spadnout (uvidí to v Cloudflare).
 - **Audio verze článku** — až bude předčítání (AE-54), přibude sem krok.
 
 *Nahrazuje starý návod se Storyblokem (ten už neplatí — Storyblok byl
-2026-08-02 odstraněn, rozhodnutí AE-49). Vzniklo 2026-08-04 (AE-51).*
+2026-08-02 odstraněn, rozhodnutí AE-49). Vzniklo 2026-08-04 (AE-51).
+2026-08-21: karty na homepage i sitemapa se generují z článků, přibylo
+pole `twin` — do kódu se při psaní článku už nesahá.*

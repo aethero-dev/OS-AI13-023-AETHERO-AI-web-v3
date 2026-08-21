@@ -15,7 +15,7 @@ const isActive = (href: string) => {
   return currentPath === href || currentPath.startsWith(href + '/');
 };
 // null = protějšek neexistuje → přepínač se nevykreslí (lepší než odkaz do 404)
-const otherPath = altPath(currentPath, otherLang);
+const otherPath = await altPath(currentPath, otherLang);
 
 const navItems = lang === 'en'
   ? [
