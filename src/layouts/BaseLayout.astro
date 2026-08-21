@@ -7,6 +7,7 @@ export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
   lang?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -14,6 +15,7 @@ const {
   title,
   description = 'Česká digitální agentura. Design, strategie a technologie pro e-commerce.',
   ogImage = '/og-image.png',
+  ogType = 'website',   // blog článek předá 'article' (crosscheck 21.8.)
   lang = 'cs',
   jsonLd,
 } = Astro.props;
@@ -102,7 +104,7 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   {altCs && <link rel="alternate" hreflang="cs" href={`https://aethero.cz${altCs}`} />}
   {altEn && <link rel="alternate" hreflang="en" href={`https://aethero.agency${altEn}`} />}
   {altEn && <link rel="alternate" hreflang="x-default" href={`https://aethero.agency${altEn}`} />}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
   <meta property="og:title" content={`${title} | aethero`} />
