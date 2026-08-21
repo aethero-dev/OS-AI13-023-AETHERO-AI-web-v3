@@ -16,11 +16,12 @@
       dropA: "Přetáhněte sem ", dropB: "XML export", dropC: " ze Shoptetu<br>nebo klikněte pro výběr souboru",
       note: "Zvládne i velké katalogy — 5 000 produktů převede do vteřiny. Shopify import má limit 15 MB na soubor (zhruba 10 000 produktů), větší e-shopy s vámi rádi vyřešíme napřímo.",
       nProd: "produktů", nVar: "variant", nImg: "obrázků",
-      gateText: "CSV je připravené. Zadejte email a zobrazí se vám odkaz ke stažení:",
+      gateText: "Nebo v\u00e1m odkaz ke sta\u017een\u00ed po\u0161leme e-mailem (plat\u00ed 7 dn\u00ed):",
+      infoText: "E-mail pou\u017eijeme jen k zasl\u00e1n\u00ed odkazu. ",
       emailPh: "vas@email.cz",
-      consent: " Souhlasím se zpracováním e-mailu a občasným zasíláním novinek od Aethero. ",
+      newsLabel: " Chci ob\u010das dost\u00e1vat novinky od Aethero. ",
       gdprLabel: "Zásady zpracování osobních údajů",
-      send: "Zobrazit odkaz ke stažení", sending: "Odesílám…", download: "Stáhnout CSV",
+      send: "Poslat odkaz e-mailem", sending: "Odesílám…", download: "Stáhnout CSV",
       footA: "Nástroj od ", footB: " — migrace e-shopů na Shopify. Potřebujete převést celý e-shop včetně objednávek a zákazníků? ",
       footLink: "Ozvěte se nám",
       errXml: "Soubor není platné XML.",
@@ -31,7 +32,7 @@
       warnMore: function (n) { return "… a dalších " + n + " upozornění."; },
       okDownload: "CSV staženo. Ve Shopify: Products → Import.",
       errEmail: "Zadejte platný email.",
-      errConsent: "Bez souhlasu vám soubor nemůžeme poslat.",
+      
       errServer: function (c) { return "Server vrátil chybu (" + c + "). Zkuste to prosím znovu."; },
       okSent: function (e) { return "Hotovo! Odkaz ke stažení CSV jsme poslali na " + e + ". Platí 7 dní."; }
     },
@@ -41,11 +42,12 @@
       dropA: "Drop your ", dropB: "XML export", dropC: " from Shoptet here<br>or click to choose a file",
       note: "Handles large catalogues — 5,000 products in a second. Shopify limits imports to 15 MB per file (roughly 10,000 products); for bigger stores we are happy to help directly.",
       nProd: "products", nVar: "variants", nImg: "images",
-      gateText: "Your CSV is ready. Enter your email and the download link will appear:",
+      gateText: "Or we can e-mail you the download link (valid 7 days):",
+      infoText: "We use your e-mail only to send the link. ",
       emailPh: "you@email.com",
-      consent: " I agree to the processing of my e-mail and to occasional news from Aethero. ",
+      newsLabel: " I\u2019d also like occasional news from Aethero. ",
       gdprLabel: "Privacy policy",
-      send: "Show download link", sending: "Sending…", download: "Download CSV",
+      send: "E-mail me the link", sending: "Sending…", download: "Download CSV",
       footA: "A tool by ", footB: " — e-shop migrations to Shopify. Need to move a whole store including orders and customers? ",
       footLink: "Get in touch",
       errXml: "The file is not valid XML.",
@@ -56,7 +58,7 @@
       warnMore: function (n) { return "… and " + n + " more warnings."; },
       okDownload: "CSV downloaded. In Shopify: Products → Import.",
       errEmail: "Please enter a valid email.",
-      errConsent: "We cannot send the file without your consent.",
+      
       errServer: function (c) { return "The server returned an error (" + c + "). Please try again."; },
       okSent: function (e) { return "Done! We have sent the CSV download link to " + e + ". It is valid for 7 days."; }
     }
@@ -333,15 +335,16 @@
     '    <div class="ae-stat"><b id="ae-n-img">0</b><span>' + T.nImg + '</span></div>' +
     '  </div>' +
     '  <div id="ae-warnings"></div>' +
-    '  <div id="ae-gate">' +
-    '    <p style="font-size:.9rem">' + T.gateText + '</p>' +
-    '    <input type="email" id="ae-email" placeholder="' + T.emailPh + '">' +
-    '    <label class="ae-gdpr"><input type="checkbox" id="ae-consent">' + T.consent +
-    '<a href="' + P + '/gdpr" target="_blank">' + T.gdprLabel + '</a></label>' +
-    '    <button class="ae-btn" id="ae-send">' + T.send + '</button>' +
-    '  </div>' +
     '  <div id="ae-download" class="ae-hidden">' +
     '    <button class="ae-btn" id="ae-dl">' + T.download + '</button>' +
+    '  </div>' +
+    '  <div id="ae-gate">' +
+    '    <p style="font-size:.9rem;margin-top:20px">' + T.gateText + '</p>' +
+    '    <input type="email" id="ae-email" placeholder="' + T.emailPh + '">' +
+    '    <p class="ae-gdpr" style="display:block">' + T.infoText +
+    '<a href="' + P + '/gdpr" target="_blank">' + T.gdprLabel + '</a></p>' +
+    '    <label class="ae-gdpr"><input type="checkbox" id="ae-news">' + T.newsLabel + '</label>' +
+    '    <button class="ae-btn" id="ae-send">' + T.send + '</button>' +
     '  </div>' +
     '  <div id="ae-done" class="ae-ok ae-hidden" style="margin-top:12px"></div>' +
     '</div>' +
@@ -378,13 +381,11 @@
           w.appendChild(d2);
         }
         document.getElementById("ae-result").classList.remove("ae-hidden");
-        if (ENDPOINT) {
-          document.getElementById("ae-gate").classList.remove("ae-hidden");
-          document.getElementById("ae-download").classList.add("ae-hidden");
-        } else {
-          document.getElementById("ae-gate").classList.add("ae-hidden");
-          document.getElementById("ae-download").classList.remove("ae-hidden");
-        }
+        // CSV vznikl lokálně -> stažení HNED; e-mail je jen volitelná cesta
+        // (rozdělení souhlasů dle GPT crosscheck + EDPB, DK 2026-08-22).
+        document.getElementById("ae-download").classList.remove("ae-hidden");
+        if (ENDPOINT) document.getElementById("ae-gate").classList.remove("ae-hidden");
+        else document.getElementById("ae-gate").classList.add("ae-hidden");
       } catch (e) { showError(e.message); }
     }, function (e) { showError(e.message); });
   }
@@ -412,16 +413,15 @@
 
   document.getElementById("ae-send").addEventListener("click", function () {
     var email = document.getElementById("ae-email").value.trim();
-    var consent = document.getElementById("ae-consent").checked;
+    var news = document.getElementById("ae-news").checked;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showError(T.errEmail); return; }
-    if (!consent) { showError(T.errConsent); return; }
     document.getElementById("ae-error").classList.add("ae-hidden");
     var btn = document.getElementById("ae-send");
     btn.disabled = true; btn.textContent = T.sending;
     fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, filename: state.filename, csv: state.csv })
+      body: JSON.stringify({ email: email, filename: state.filename, csv: state.csv, newsletter: news })
     }).then(function (r) {
       if (!r.ok) throw new Error(T.errServer(r.status));
       return r.json();
