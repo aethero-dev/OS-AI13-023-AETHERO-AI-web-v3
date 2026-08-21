@@ -420,8 +420,11 @@ const blogPosts = await homeBlogPosts('en');
 
       const originals = Array.from(track.children) as HTMLElement[];
       const N = originals.length;
-      [...originals].reverse().forEach(el => track.insertBefore(el.cloneNode(true), track.firstChild));
-      originals.forEach(el => track.appendChild(el.cloneNode(true)));
+      // Klony jsou jen vizuální výplň nekonečné smyčky — čtečkám a tabu se schovávají,
+      // jinak slyší 7 nadpisů služeb 3× (nález GPT crosscheck, změřeno 26 H2 v DOMu).
+      const klon = (el: HTMLElement) => { const c = el.cloneNode(true) as HTMLElement; c.setAttribute('aria-hidden', 'true'); c.setAttribute('tabindex', '-1'); return c; };
+      [...originals].reverse().forEach(el => track.insertBefore(klon(el), track.firstChild));
+      originals.forEach(el => track.appendChild(klon(el)));
 
       const itemW = () => (track.children[N] as HTMLElement).offsetWidth;
       let pos = N * itemW();
