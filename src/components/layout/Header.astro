@@ -4,7 +4,7 @@ import { altPath } from '../../lib/i18n-paths';
 export interface Props { lang?: string; skryjLogo?: boolean; }
 const { skryjLogo = false, lang = 'cs' } = Astro.props;
 // Odkazy BEZ jazykového prefixu (rozhodnutí DK 2026-08-21) - jazyk určuje doména,
-// Worker prefix skryje. Build cesta má ale prefix (/cs/, /en/), tak ho pro
+// Worker prefix skryje. Build cesta má ale prefix (/, /en/), tak ho pro
 // porovnávání i odkazy strippujeme.
 const p = '';
 
