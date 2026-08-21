@@ -8,6 +8,7 @@ export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
   lang?: string;
   /** Schéma stránky (Article, FAQPage…). MUSÍ se předat do BaseLayoutu -
       dokud tady chybělo, články sice schéma posílaly, ale tiše se zahazovalo
@@ -17,10 +18,10 @@ export interface Props {
   skryjLogo?: boolean;
 }
 
-const { title, description, ogImage, lang, jsonLd, skryjLogo } = Astro.props;
+const { title, description, ogImage, ogType, lang, jsonLd, skryjLogo } = Astro.props;
 ---
 
-<BaseLayout {title} {description} {ogImage} {lang} {jsonLd}>
+<BaseLayout {title} {description} {ogImage} {ogType} {lang} {jsonLd}>
   <a href="#main-content" class="skip-link">
     {lang === 'en' ? 'Skip to content' : 'Přeskočit na obsah'}
   </a>

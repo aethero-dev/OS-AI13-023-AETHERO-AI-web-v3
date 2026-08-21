@@ -52,23 +52,25 @@ const articleSchema = {
   "datePublished": dateIso,
   "dateModified": dateIso,
   "inLanguage": "en-US",
-  "image": featuredImage || undefined,
-  "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href },
+  // Absolutní URL bez /en/ prefixu (crosscheck 21.8.). EN blog žije na
+  // aethero.agency; publisher/author = firma jako entita → aethero.cz.
+  "image": featuredImage ? `https://aethero.agency${featuredImage}` : undefined,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://aethero.agency/blog/${slug}/` },
   "publisher": {
     "@type": "Organization",
     "name": "AETHERO s.r.o.",
-    "url": "https://aethero.agency"
+    "url": "https://aethero.cz"
   },
   "author": {
     "@type": "Organization",
     "name": "æthero team",
-    "url": "https://aethero.agency"
+    "url": "https://aethero.cz"
   }
 };
 ---
 
 
-<PageLayout {title} description={perex} lang="en" jsonLd={articleSchema}>
+<PageLayout {title} description={perex} lang="en" ogType="article" ogImage={featuredImage || undefined} jsonLd={articleSchema}>
 
   <CteciRezim lang="en" />
 
