@@ -31,7 +31,8 @@
   /* ── Type scale — desktop values ── */
   /* Pravidlo: mobile = desktop × 0.8, minimum 16px. ≤16px = beze změny. */
   --fs-160: 160px;   /* velká stats čísla */
-  --fs-100: 100px;   /* display / hero H1 */
+  --fs-100: 100px;   /* display (dekorativní uvozovky citátů) */
+  --fs-90:   90px;   /* H1 maxi — hero/kontakt/co-umime/app (DK 2026-08-21: plošně z 100) */
   --fs-80:   80px;
   --fs-72:   72px;
   --fs-70:   70px;   /* primární H1 */
@@ -59,7 +60,7 @@
   --text-small: 14px;
 
   /* ── Deprecated semantic font aliases (zachovány pro zpětnou kompatibilitu) ── */
-  --text-h1: var(--fs-100);
+  --text-h1: var(--fs-90);
   --text-h2: var(--fs-70);
   --text-h2-vp: var(--fs-52);
   --text-h3: var(--fs-40);
@@ -103,6 +104,7 @@
     /* ── Type scale — mobile values (desktop × 0.8, min 16px) ── */
     --fs-160: 128px;
     --fs-100:  80px;
+    --fs-90:   72px;
     --fs-80:   64px;
     --fs-72:   58px;
     --fs-70:   56px;
