@@ -10,7 +10,7 @@
    WCAG žádá zvětšitelnost textu na 200 %; rozsah 16 → 32 px to plní.
    Vzniklo 2026-08-04 (AE-53), zadání a připomínky DK.
    Výchozí motiv světlý (změna 2026-08-21, zadání DK) — text v něm drží
-   značkovou tmavě modrou (--ae-bg-primary #000326), ne neutrální černou.
+   značkovou tmavě modrou (--ae-straight-blue #092066), ne neutrální černou.
    ===================================================================== */
 
 :root {
