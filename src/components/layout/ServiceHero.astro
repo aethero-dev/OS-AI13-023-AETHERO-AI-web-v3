@@ -13,7 +13,7 @@ export interface Props {
   imageAlt?: string;
 }
 const { label, title, subtitle, ctaLabel = 'Zavolejme si', ctaHref = 'tel:+420776067663', cta2Label, cta2Href, ctaLower = true, lang = 'cs', image, imageAlt = '' } = Astro.props;
-const contactHref = cta2Href || `/${lang}/kontakt`;
+const contactHref = cta2Href || (lang === 'cs' ? '/kontakt/' : '/contact/');
 const contactLabel = cta2Label || (lang === 'en' ? 'Find out how' : 'Zjistěte jak');
 ---
 
