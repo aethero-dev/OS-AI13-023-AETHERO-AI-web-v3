@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { homeBlogPosts } from '../../lib/blog-home';
 
 const features = [
   {
@@ -72,13 +73,9 @@ const services = [
   { num: '07', pre: "My store <br />isn't growing, <br />I need", title: 'ANALYTICS <br />& STRATEGY', label: 'Analytics & Strategy', href: '/en/co-umime/analyza-a-strategie' },
 ];
 
-const blogPosts = [
-  { title: 'Mandatory Button in Shopify: Don\'t Wait Until It Becomes a Problem', perex: 'How to correctly set up the mandatory button in Shopify and avoid compliance issues.', time: '7', ago: '1 month ago', href: '/en/blog/shopify-mandatory-button', img: '/blog-01.webp' },
-  { title: 'AI SEO - The New Hard Reality of Search for E-shops (2026)', perex: 'How artificial intelligence is changing SEO and what it means for your e-shop in 2026.', time: '7', ago: '5 months ago', href: '/en/blog/ai-seo-2026', img: '/blog-02.webp' },
-  { title: 'Shopify Editions - Winter 2026', perex: 'Overview of the most important updates from Shopify Editions Winter 2026 - what\'s coming and why it matters.', time: '5', ago: '6 months ago', href: '/en/blog/shopify-editions-winter-2026', img: '/blog-03.webp' },
-  { title: 'Translating Payment Methods in Shopify When Translate & Adapt Doesn\'t Help', perex: 'A practical guide to translating payment methods in Shopify outside of standard tools.', time: '3', ago: '8 months ago', href: '/en/blog/translating-payment-methods-shopify', img: '/blog-04.webp' },
-  { title: 'Which E-commerce Platform to Choose? Shopify vs Shoptet', perex: 'Detailed comparison of Shopify and Shoptet for the Central European market - performance, cost, ecosystem.', time: '18', ago: '1 year ago', href: '/en/blog/shopify-vs-shoptet', img: '/blog-05.webp' },
-];
+// Karty se čtou z content collection - viz src/lib/blog-home.ts.
+// Dřív tu bylo pole zapsané natvrdo, které se rozcházelo s články.
+const blogPosts = await homeBlogPosts('en');
 ---
 
 <PageLayout
