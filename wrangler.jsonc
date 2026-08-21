@@ -51,6 +51,9 @@
   // Dokud tam doména visela, CF ji na Workers nepustil:
   //   „hostname already has externally managed DNS records" [code: 100117].
   "routes": [
-    { "pattern": "aethero.agency", "custom_domain": true }
+    { "pattern": "aethero.agency", "custom_domain": true },
+    // www nemělo ŽÁDNÝ DNS záznam (NXDOMAIN, nález DK 2026-08-21) - custom
+    // domain si záznam při deployi vytvoří sám; Worker pak www 301kuje na apex.
+    { "pattern": "www.aethero.agency", "custom_domain": true }
   ]
 }
