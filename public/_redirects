@@ -11,48 +11,82 @@
 # Kontrola po přidání: `curl -I https://aethero.cz/stara` → 301 na správný cíl.
 
 # --- CS: staré ploché služby → nové vnořené pod /co-umime/ ---
-/cs/potrebuji-brand              /co-umime/potrebuji-brand              301
-/cs/novy-shopify-e-shop          /co-umime/novy-shopify-e-shop          301
-/cs/prechod-na-shopify           /co-umime/prechod-na-shopify           301
-/cs/expanze-do-zahranici         /co-umime/expanze-do-zahranici         301
-/cs/rozvoj-a-podpora             /co-umime/rozvoj-a-podpora             301
-/cs/analyza-a-strategie          /co-umime/analyza-a-strategie          301
-/cs/custom-vyvoj-a-aplikace      /co-umime/custom-vyvoj-a-aplikace      301
+/cs/potrebuji-brand              /co-umime/potrebuji-brand/              301
+/cs/novy-shopify-e-shop          /co-umime/novy-shopify-e-shop/          301
+/cs/prechod-na-shopify           /co-umime/prechod-na-shopify/           301
+/cs/expanze-do-zahranici         /co-umime/expanze-do-zahranici/         301
+/cs/rozvoj-a-podpora             /co-umime/rozvoj-a-podpora/             301
+/cs/analyza-a-strategie          /co-umime/analyza-a-strategie/          301
+/cs/custom-vyvoj-a-aplikace      /co-umime/custom-vyvoj-a-aplikace/      301
 
 # --- CS: případovka (starý prefix "pripadovka-") ---
-/cs/pripadovka-groomo-cz-na-shopify   /groomo-cz-na-shopify            301
+/cs/pripadovka-groomo-cz-na-shopify   /groomo-cz-na-shopify/            301
 
 # --- CS: blog (staré dlouhé slugy → nové krátké) ---
-/cs/blog/povinne-tlacitko-v-shopify-necekejte-az-z-toho-bude-problem-cz   /blog/povinne-tlacitko-shopify        301
-/cs/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026                     301
-/cs/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-zima-2026      301
-/cs/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/preklad-platebni-metody-shopify 301
-/cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet              301
+/cs/blog/povinne-tlacitko-v-shopify-necekejte-az-z-toho-bude-problem-cz   /blog/povinne-tlacitko-shopify/        301
+/cs/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026/                     301
+/cs/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-zima-2026/      301
+/cs/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/preklad-platebni-metody-shopify/ 301
+/cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet/              301
 
 # --- EN: staré české slugy → nové anglické (na .agency, cíl bez prefixu) ---
 # Podslugy PŘED /en/co-umime (Cloudflare bere první shodu).
-/en/co-umime/potrebuji-brand           /what-we-do/i-need-a-brand              301
-/en/co-umime/novy-shopify-e-shop       /what-we-do/new-shopify-store           301
-/en/co-umime/prechod-na-shopify        /what-we-do/switch-to-shopify           301
-/en/co-umime/expanze-do-zahranici      /what-we-do/international-expansion      301
-/en/co-umime/rozvoj-a-podpora          /what-we-do/growth-and-support          301
-/en/co-umime/analyza-a-strategie       /what-we-do/analysis-and-strategy       301
-/en/co-umime/custom-vyvoj-a-aplikace   /what-we-do/custom-development-and-apps  301
-/en/co-umime                           /what-we-do                             301
-/en/kontakt                            /contact                                301
-/en/o-nas                              /about-us                               301
-/en/migrace-shoptet-na-shopify         /shoptet-to-shopify-migration           301
-/en/pripadova-studie-email-marketing-fleppi-cz   /case-study-email-marketing-fleppi   301
-/en/groomo-cz-na-shopify               /groomo-cz-to-shopify                    301
+/en/co-umime/potrebuji-brand           /what-we-do/i-need-a-brand/              301
+/en/co-umime/novy-shopify-e-shop       /what-we-do/new-shopify-store/           301
+/en/co-umime/prechod-na-shopify        /what-we-do/switch-to-shopify/           301
+/en/co-umime/expanze-do-zahranici      /what-we-do/international-expansion/      301
+/en/co-umime/rozvoj-a-podpora          /what-we-do/growth-and-support/          301
+/en/co-umime/analyza-a-strategie       /what-we-do/analysis-and-strategy/       301
+/en/co-umime/custom-vyvoj-a-aplikace   /what-we-do/custom-development-and-apps/  301
+/en/co-umime                           /what-we-do/                             301
+/en/kontakt                            /contact/                                301
+/en/o-nas                              /about-us/                               301
+/en/migrace-shoptet-na-shopify         /shoptet-to-shopify-migration/           301
+/en/pripadova-studie-email-marketing-fleppi-cz   /case-study-email-marketing-fleppi/   301
+/en/groomo-cz-na-shopify               /groomo-cz-to-shopify/                    301
 
 # --- EN: blog (staré slugy → nové) ---
-/en/blog/mandatory-withdrawal-button-shopify-czech-rep-2026               /blog/shopify-mandatory-button              301
-/en/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026                           301
-/en/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-winter-2026          301
-/en/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/translating-payment-methods-shopify   301
-/en/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet                    301
+/en/blog/mandatory-withdrawal-button-shopify-czech-rep-2026               /blog/shopify-mandatory-button/              301
+/en/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026/                           301
+/en/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-winter-2026/          301
+/en/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/translating-payment-methods-shopify/   301
+/en/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet/                    301
 
 # TODO (DK): 3 osiřelé staré stránky /typo, /en/typo, /test - zatím 404
 # (viz docs/puvodni-struktura.md). Legal /privacy-policy a /gdpr fungují bez
 # pravidla - /privacy-policy je sdílená root stránka (Worker root fallback),
 # /gdpr má /cs/ i /en/ verzi (Worker rewrite je najde).
+
+# --- Audit 301 (2026-08-22, Wayback CDX + curl sweep): reálné staré URL,
+# které vracely 404. Šablonový balast SolidPixels (eshop/*, kolekce, typo,
+# test, go, …) se VĚDOMĚ nechává 404. Tabulka: scratch audit + STATUS. ---
+
+# CS: číslované služby starého webu
+/cs/01-shopify                    /co-umime/                             301
+/cs/02-e-commerce                 /co-umime/                             301
+/cs/03-design                     /co-umime/potrebuji-brand/             301
+/cs/04-marketing                  /co-umime/analyza-a-strategie/         301
+
+# CS: staré slugy a stránky
+/cs/analyza-a-strategie-e-shopu   /co-umime/analyza-a-strategie/         301
+/cs/aplikace                      /esyncer/                              301
+/cs/czech-connector               /                                      301
+/cs/shopify-versus-shoptet        /blog/shopify-vs-shoptet/              301
+/cs/podminky                      /gdpr/                                 301
+/cs/podminky-pouziti              /gdpr/                                 301
+/cs/blog/a-co-znamena-tohle       /blog/                                 301
+/cs/blog/expanze-do-zahranici     /co-umime/expanze-do-zahranici/        301
+/cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet-kopie  /blog/shopify-vs-shoptet/  301
+
+# EN zrcadla
+/en/01-shopify                    /what-we-do/                           301
+/en/02-e-commerce                 /what-we-do/                           301
+/en/03-design                     /what-we-do/i-need-a-brand/            301
+/en/04-marketing                  /what-we-do/analysis-and-strategy/     301
+/en/about                         /about-us/                             301
+/en/apps                          /esyncer/                              301
+/en/czech-connector               /                                      301
+/en/podminky                      /gdpr/                                 301
+/en/podminky-pouziti              /gdpr/                                 301
+/en/blog/a-co-znamena-tohle       /blog/                                 301
+/en/blog/expanze-do-zahranici     /what-we-do/international-expansion/   301
