@@ -1,95 +1,58 @@
-# 301 mapa starých URL (starý web aethero.cz na SolidPixels) → nový web.
+# 301 mapa - staré URL (SolidPixels aethero.cz + prefixované /cs/ /en/) → nový
+# web BEZ jazykového prefixu (prefix removal DK 2026-08-21).
 #
-# Zdroj: docs/puvodni-struktura.md — crawl + sitemap starého webu, 46 URL,
-# dva nezávislé zdroje dle WEB-STANDARD kap. 7 (2026-08-21).
-# "/" a "/cs/*" ↔ "/en/*" křížové směrování řeší src/worker.js, ne tenhle
-# soubor — tady jsou jen KONKRÉTNÍ staré cesty, které nový web nemá.
+# JAK TO ČTE (důležité): src/worker.js běží PŘED assety a přepisuje bezprefixové
+# cesty na /cs/… nebo /en/… (dle domény). Vlastní i cizí jazykový prefix v URL
+# 301kuje sám. Takže sem k assetům dorazí cesty VŽDY s /cs/ nebo /en/ prefixem
+# → zdroje pravidel jsou proto PREFIXOVANÉ, cíle BEZ prefixu (aby 301 Location
+# vedl na čistou URL). Pravidla se shodným slugem tu NEJSOU - ta by dělala
+# smyčku (Worker cestu rewritne na asset, který existuje).
 #
-# Bára: nový řádek = /stara-cesta  /nova-cesta  301  (mezery nebo tab).
-# Kontrola po přidání: `curl -I https://aethero.cz/stara-cesta` musí vrátit
-# 301 s Location na správný cíl.
+# Kontrola po přidání: `curl -I https://aethero.cz/stara` → 301 na správný cíl.
 
-# Vstup bez prefixu do anglické verze (na .cz to bylo /en, na novém webu
-# je EN celá na jiné doméně)
-/en                                            https://aethero.agency/en/                              301
+# --- CS: staré ploché služby → nové vnořené pod /co-umime/ ---
+/cs/potrebuji-brand              /co-umime/potrebuji-brand              301
+/cs/novy-shopify-e-shop          /co-umime/novy-shopify-e-shop          301
+/cs/prechod-na-shopify           /co-umime/prechod-na-shopify           301
+/cs/expanze-do-zahranici         /co-umime/expanze-do-zahranici         301
+/cs/rozvoj-a-podpora             /co-umime/rozvoj-a-podpora             301
+/cs/analyza-a-strategie          /co-umime/analyza-a-strategie          301
+/cs/custom-vyvoj-a-aplikace      /co-umime/custom-vyvoj-a-aplikace      301
 
-# Služby — beze změny slugu, jen o úroveň hlouběji pod /co-umime/
-/co-umime                                      /cs/co-umime                                             301
-/potrebuji-brand                               /cs/co-umime/potrebuji-brand                             301
-/novy-shopify-e-shop                           /cs/co-umime/novy-shopify-e-shop                         301
-/prechod-na-shopify                            /cs/co-umime/prechod-na-shopify                          301
-/expanze-do-zahranici                          /cs/co-umime/expanze-do-zahranici                        301
-/rozvoj-a-podpora                              /cs/co-umime/rozvoj-a-podpora                            301
-/analyza-a-strategie                           /cs/co-umime/analyza-a-strategie                         301
-/custom-vyvoj-a-aplikace                       /cs/co-umime/custom-vyvoj-a-aplikace                     301
-/migrace-shoptet-na-shopify                    /cs/migrace-shoptet-na-shopify                           301
-/esyncer                                       /cs/esyncer                                              301
-/ae-translator                                 /cs/ae-translator                                        301
+# --- CS: případovka (starý prefix "pripadovka-") ---
+/cs/pripadovka-groomo-cz-na-shopify   /groomo-cz-na-shopify            301
 
-/en/what-we-do                                 https://aethero.agency/en/co-umime                       301
-/en/need-brand                                 https://aethero.agency/en/co-umime/potrebuji-brand       301
-/en/new-shopify-e-shop                         https://aethero.agency/en/co-umime/novy-shopify-e-shop   301
-/en/migrate-to-shopify                         https://aethero.agency/en/co-umime/prechod-na-shopify    301
-/en/expanzion-abroad                           https://aethero.agency/en/co-umime/expanze-do-zahranici  301
-/en/development-support                        https://aethero.agency/en/co-umime/rozvoj-a-podpora      301
-/en/data-analysis-strategy                     https://aethero.agency/en/co-umime/analyza-a-strategie   301
-/en/custom-dev-apps                            https://aethero.agency/en/co-umime/custom-vyvoj-a-aplikace 301
-/en/esyncer                                    https://aethero.agency/en/esyncer                        301
-/en/ae-translator                              https://aethero.agency/en/ae-translator                  301
+# --- CS: blog (staré dlouhé slugy → nové krátké) ---
+/cs/blog/povinne-tlacitko-v-shopify-necekejte-az-z-toho-bude-problem-cz   /blog/povinne-tlacitko-shopify        301
+/cs/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026                     301
+/cs/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-zima-2026      301
+/cs/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/preklad-platebni-metody-shopify 301
+/cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet              301
 
-# Rozbitý odkaz na starém webu (interní nav vede na 404, správná stránka
-# byla /en/custom-dev-apps) — dostane teď platný cíl poprvé, ne regresi
-/en/custom-development-and-aplikacations       https://aethero.agency/en/co-umime/custom-vyvoj-a-aplikace 301
-
-# Případovky — starý web měl prefix "pripadovka-"/"case-study-", nový ne
-/pripadovka-groomo-cz-na-shopify               /cs/groomo-cz-na-shopify                                 301
-/en/case-study-groomo-cz-shopify               https://aethero.agency/en/groomo-cz-na-shopify            301
-/pripadova-studie-email-marketing-fleppi-cz    /cs/pripadova-studie-email-marketing-fleppi-cz            301
-# (Fleppi neměla na starém webu EN verzi — nový web ji už má, bez staré
-# cesty k namapování)
-
-# Blog — sluggy se mezi starým a novým webem liší, žádný vzorec
-/blog/povinne-tlacitko-v-shopify-necekejte-az-z-toho-bude-problem-cz          /cs/blog/povinne-tlacitko-shopify                                          301
-/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026                  /cs/blog/ai-seo-2026                                                       301
-/blog/shopify-edition-zima-2026                                                /cs/blog/shopify-editions-zima-2026                                        301
-/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha          /cs/blog/preklad-platebni-metody-shopify                                   301
-/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet                 /cs/blog/shopify-vs-shoptet                                                301
-
-/en/blog/mandatory-withdrawal-button-shopify-czech-rep-2026                    https://aethero.agency/en/blog/shopify-mandatory-button                   301
-/en/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026                https://aethero.agency/en/blog/ai-seo-2026                                301
-/en/blog/shopify-edition-zima-2026                                             https://aethero.agency/en/blog/shopify-editions-winter-2026               301
-/en/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha       https://aethero.agency/en/blog/translating-payment-methods-shopify        301
-/en/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet              https://aethero.agency/en/blog/shopify-vs-shoptet                         301
-
-# Kontakt, o nás
-/kontakt                                       /cs/kontakt                                              301
-/en/contact                                    https://aethero.agency/en/kontakt                        301
-/o-nas                                         /cs/o-nas                                                301
-/en/about-us                                   https://aethero.agency/en/o-nas                          301
-
-# Právní stránky — nový web je má BEZ jazykového prefixu (funguje na obou
-# doménách stejně, viz src/pages/privacy-policy.astro)
-/gdpr                                          /cs/gdpr                                                 301
-/privacy-policy                                /privacy-policy                                          301
-/en/privacy-policy                             /privacy-policy                                          301
-
-# TODO — 3 osiřelé stránky ze starého webu (v sitemapě, ale nikde
-# neodkazované, viz docs/puvodni-struktura.md): /typo, /en/typo, /test.
-# Vypadají jako pozůstatky/testovací stránky, ne skutečný obsah — čeká na
-# rozhodnutí DK, jestli mají kam přesměrovat, nebo mají prostě zaniknout (404).
-
-# EN stránkové slugy přeloženy z českých (2026-08-21) - staré → nové.
+# --- EN: staré české slugy → nové anglické (na .agency, cíl bez prefixu) ---
 # Podslugy PŘED /en/co-umime (Cloudflare bere první shodu).
-/en/co-umime/potrebuji-brand                    /en/what-we-do/i-need-a-brand                 301
-/en/co-umime/novy-shopify-e-shop                /en/what-we-do/new-shopify-store              301
-/en/co-umime/prechod-na-shopify                 /en/what-we-do/switch-to-shopify              301
-/en/co-umime/expanze-do-zahranici               /en/what-we-do/international-expansion         301
-/en/co-umime/rozvoj-a-podpora                   /en/what-we-do/growth-and-support             301
-/en/co-umime/analyza-a-strategie                /en/what-we-do/analysis-and-strategy          301
-/en/co-umime/custom-vyvoj-a-aplikace            /en/what-we-do/custom-development-and-apps     301
-/en/co-umime                                    /en/what-we-do                                301
-/en/kontakt                                     /en/contact                                   301
-/en/o-nas                                       /en/about-us                                  301
-/en/migrace-shoptet-na-shopify                  /en/shoptet-to-shopify-migration              301
-/en/pripadova-studie-email-marketing-fleppi-cz  /en/case-study-email-marketing-fleppi         301
-/en/groomo-cz-na-shopify                        /en/groomo-cz-to-shopify                      301
+/en/co-umime/potrebuji-brand           /what-we-do/i-need-a-brand              301
+/en/co-umime/novy-shopify-e-shop       /what-we-do/new-shopify-store           301
+/en/co-umime/prechod-na-shopify        /what-we-do/switch-to-shopify           301
+/en/co-umime/expanze-do-zahranici      /what-we-do/international-expansion      301
+/en/co-umime/rozvoj-a-podpora          /what-we-do/growth-and-support          301
+/en/co-umime/analyza-a-strategie       /what-we-do/analysis-and-strategy       301
+/en/co-umime/custom-vyvoj-a-aplikace   /what-we-do/custom-development-and-apps  301
+/en/co-umime                           /what-we-do                             301
+/en/kontakt                            /contact                                301
+/en/o-nas                              /about-us                               301
+/en/migrace-shoptet-na-shopify         /shoptet-to-shopify-migration           301
+/en/pripadova-studie-email-marketing-fleppi-cz   /case-study-email-marketing-fleppi   301
+/en/groomo-cz-na-shopify               /groomo-cz-to-shopify                    301
+
+# --- EN: blog (staré slugy → nové) ---
+/en/blog/mandatory-withdrawal-button-shopify-czech-rep-2026               /blog/shopify-mandatory-button              301
+/en/blog/ai-seo-nova-tvrda-realita-vyhledavani-pro-e-shopy-2026           /blog/ai-seo-2026                           301
+/en/blog/shopify-edition-zima-2026                                        /blog/shopify-editions-winter-2026          301
+/en/blog/preklad-platebni-metody-v-shopify-kdyz-translate-adapt-nepomaha  /blog/translating-payment-methods-shopify   301
+/en/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet         /blog/shopify-vs-shoptet                    301
+
+# TODO (DK): 3 osiřelé staré stránky /typo, /en/typo, /test - zatím 404
+# (viz docs/puvodni-struktura.md). Legal /privacy-policy a /gdpr fungují bez
+# pravidla - /privacy-policy je sdílená root stránka (Worker root fallback),
+# /gdpr má /cs/ i /en/ verzi (Worker rewrite je najde).

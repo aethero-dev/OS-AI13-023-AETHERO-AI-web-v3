@@ -31,7 +31,7 @@ const formatDate = (d: Date) =>
     <div class="container">
       <div class="blog-grid">
         {posts.map((post, i) => (
-          <a href={`/en/blog/${post.slug}`} class={`blog-card ${i === 0 ? 'blog-card--featured' : ''}`}>
+          <a href={`/blog/${post.slug}`} class={`blog-card ${i === 0 ? 'blog-card--featured' : ''}`}>
             <div class="blog-card-img">
               <img
                 src={post.img}

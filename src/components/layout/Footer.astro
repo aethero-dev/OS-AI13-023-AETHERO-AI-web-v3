@@ -1,7 +1,8 @@
 ---
 export interface Props { lang?: string; }
 const { lang = 'cs' } = Astro.props;
-const p = lang === 'en' ? '/en' : '/cs';
+// Odkazy bez jazykového prefixu - jazyk určuje doména (DK 2026-08-21).
+const p = '';
 
 const intentLinks = lang === 'en'
   ? [

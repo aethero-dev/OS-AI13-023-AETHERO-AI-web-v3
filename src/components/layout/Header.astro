@@ -3,19 +3,25 @@ import { altPath } from '../../lib/i18n-paths';
 
 export interface Props { lang?: string; skryjLogo?: boolean; }
 const { skryjLogo = false, lang = 'cs' } = Astro.props;
-const p = lang === 'en' ? '/en' : '/cs';
+// Odkazy BEZ jazykového prefixu (rozhodnutí DK 2026-08-21) - jazyk určuje doména,
+// Worker prefix skryje. Build cesta má ale prefix (/cs/, /en/), tak ho pro
+// porovnávání i odkazy strippujeme.
+const p = '';
 
 // Přepínač jazyka - protějšek řeší altPath, ne záměna prefixu.
 // Blogové články mají v každém jazyce jiný slug, takže prostá záměna
 // vedla z článku rovnou do 404 (audit prokliků AE-38, 2026-08-02).
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname;               // /en/what-we-do/ (build prefix)
+const bare = currentPath.replace(/^\/(cs|en)/, '') || '/';  // /what-we-do/ (bez prefixu)
 const otherLang = lang === 'en' ? 'cs' : 'en';
 const isActive = (href: string) => {
-  if (href === `${p}/`) return currentPath === `${p}/`;
-  return currentPath === href || currentPath.startsWith(href + '/');
+  if (href === '/') return bare === '/';
+  return bare === href || bare.startsWith(href + '/');
 };
-// null = protějšek neexistuje → přepínač se nevykreslí (lepší než odkaz do 404)
-const otherPath = altPath(currentPath, otherLang);
+// Přepínač míří na DRUHOU doménu, bez prefixu. null = protějšek neexistuje.
+const otherDomain = otherLang === 'cs' ? 'https://aethero.cz' : 'https://aethero.agency';
+const otherRaw = altPath(currentPath, otherLang);     // /cs/co-umime/ nebo null
+const otherPath = otherRaw ? otherDomain + (otherRaw.replace(/^\/(cs|en)/, '') || '/') : null;
 
 const navItems = lang === 'en'
   ? [
