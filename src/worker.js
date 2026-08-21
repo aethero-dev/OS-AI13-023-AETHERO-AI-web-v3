@@ -26,6 +26,16 @@ const AGENCY_HOST = 'aethero.agency';
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // www.* -> apex 301. Kanonická podoba obou domén je bez www (canonical,
+    // hreflang i sitemapy míří na apex) - www custom domain provoz jen
+    // přijme a pošle dál, obsah na něm neběží. Bez route v wrangler.jsonc
+    // by www neexistovalo vůbec (NXDOMAIN - nález DK 2026-08-21).
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.slice(4);
+      return Response.redirect(url.toString(), 301);
+    }
+
     const host = url.hostname.replace(/^www\./, '');
     const path = url.pathname;
 
