@@ -137,4 +137,4 @@ The choice between Shoptet and Shopify comes down mainly to where you want to do
 
 **Shopify** is the better fit if you want to sell or expand into Europe and the world. It offers not only multi-language and multi-currency support, but also strong tools for SEO, marketing, automation and analytics. These are useful even for purely local stores that want to raise their game and compete on the Czech market. Thanks to global integrations and strong infrastructure it's ideal for companies in competitive environments or with plans to expand beyond their borders.
 
-To make migrating products easy, we've prepared [a simple free tool on the Shoptet to Shopify migration page](/en/migrace-shoptet-na-shopify/).
+To make migrating products easy, we've prepared [a simple free tool on the Shoptet to Shopify migration page](/en/shoptet-to-shopify-migration/).

@@ -77,3 +77,19 @@
 # neodkazované, viz docs/puvodni-struktura.md): /typo, /en/typo, /test.
 # Vypadají jako pozůstatky/testovací stránky, ne skutečný obsah — čeká na
 # rozhodnutí DK, jestli mají kam přesměrovat, nebo mají prostě zaniknout (404).
+
+# EN stránkové slugy přeloženy z českých (2026-08-21) - staré → nové.
+# Podslugy PŘED /en/co-umime (Cloudflare bere první shodu).
+/en/co-umime/potrebuji-brand                    /en/what-we-do/i-need-a-brand                 301
+/en/co-umime/novy-shopify-e-shop                /en/what-we-do/new-shopify-store              301
+/en/co-umime/prechod-na-shopify                 /en/what-we-do/switch-to-shopify              301
+/en/co-umime/expanze-do-zahranici               /en/what-we-do/international-expansion         301
+/en/co-umime/rozvoj-a-podpora                   /en/what-we-do/growth-and-support             301
+/en/co-umime/analyza-a-strategie                /en/what-we-do/analysis-and-strategy          301
+/en/co-umime/custom-vyvoj-a-aplikace            /en/what-we-do/custom-development-and-apps     301
+/en/co-umime                                    /en/what-we-do                                301
+/en/kontakt                                     /en/contact                                   301
+/en/o-nas                                       /en/about-us                                  301
+/en/migrace-shoptet-na-shopify                  /en/shoptet-to-shopify-migration              301
+/en/pripadova-studie-email-marketing-fleppi-cz  /en/case-study-email-marketing-fleppi         301
+/en/groomo-cz-na-shopify                        /en/groomo-cz-to-shopify                      301

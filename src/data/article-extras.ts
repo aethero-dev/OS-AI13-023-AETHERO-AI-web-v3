@@ -211,7 +211,7 @@ const en: Record<string, ArticleExtras> = {
       title: 'Convert your Shoptet products to Shopify',
       note: 'Free and instant - right in your browser.',
       label: 'I want to try the move to Shopify',
-      href: '/en/migrace-shoptet-na-shopify/',
+      href: '/en/shoptet-to-shopify-migration/',
     },
     faqTitle: 'Shopify vs Shoptet - frequently asked questions',
     faq: [
@@ -240,14 +240,14 @@ const en: Record<string, ArticleExtras> = {
         q: 'Can I migrate from Shoptet to Shopify?',
         a: [
           'Yes, it is a standard migration. Products, customers and orders can all be moved; for SEO the key part is setting up redirects from the old URLs.',
-          'For an easy product migration we have prepared a free tool on the [Shoptet to Shopify migration](/en/migrace-shoptet-na-shopify/) page.',
+          'For an easy product migration we have prepared a free tool on the [Shoptet to Shopify migration](/en/shoptet-to-shopify-migration/) page.',
         ],
       },
       {
         q: 'Does Shopify handle Czech language and Czech payments?',
         a: [
           'It does, just not out of the box. Czech is handled by translating the theme, payments through gateways such as Comgate or GoPay, and carriers through apps.',
-          'It is one-off setup work. If you would rather not do it yourself, [get in touch](/en/kontakt/).',
+          'It is one-off setup work. If you would rather not do it yourself, [get in touch](/en/contact/).',
         ],
       },
     ],
