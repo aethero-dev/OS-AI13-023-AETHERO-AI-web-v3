@@ -15,6 +15,12 @@
   "account_id": "21fe5c7d8cb8a30a16566e477c985c28",
   "compatibility_date": "2026-08-20",
 
+  // Vlastní Worker skript před statickými assety — host/jazykové routování
+  // pro dvě domény (aethero.cz CS / aethero.agency EN). Detail a důvod
+  // v src/worker.js. Bez tohohle by `assets` servírovalo napřímo a "/"
+  // by šlo jen podle _redirects (bez rozlišení domény — špatně pro .cz).
+  "main": "src/worker.js",
+
   "assets": {
     "directory": "./dist",
 
@@ -25,7 +31,11 @@
     "not_found_handling": "404-page",
 
     // /cesta/ i /cesta míří na stejnou stránku (Astro staví adresáře s index.html)
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+
+    // Worker skript (src/worker.js) sám volá env.ASSETS.fetch() jako fallback —
+    // bez binding jména by se assets a Worker code nemohly propojit.
+    "binding": "ASSETS"
   },
 
   "observability": {
