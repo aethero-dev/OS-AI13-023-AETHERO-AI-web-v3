@@ -5,26 +5,28 @@
    Jak to funguje: panel nesahá na žádný prvek přímo. Přepíná atributy na
    <html> a ty mění hodnoty proměnných --cteni-*. Cokoliv, co se má čtecím
    režimem řídit, si prostě vezme příslušnou proměnnou. Bez JS se nic
-   nerozbije — platí výchozí (tmavé) hodnoty.
+   nerozbije — platí výchozí (světlé) hodnoty.
 
    WCAG žádá zvětšitelnost textu na 200 %; rozsah 16 → 32 px to plní.
    Vzniklo 2026-08-04 (AE-53), zadání a připomínky DK.
+   Výchozí motiv světlý (změna 2026-08-21, zadání DK) — text v něm drží
+   značkovou tmavě modrou (--ae-bg-primary #000326), ne neutrální černou.
    ===================================================================== */
 
 :root {
   --cteni-px: 20px;
   --cteni-rodina: var(--font-secondary);
-  --cteni-plocha: var(--ae-bg-primary);
-  --cteni-text: var(--neutral-300);
-  --cteni-nadpis: var(--text-primary);
-  --cteni-slabe: var(--neutral-500);
-  --cteni-linka: rgba(255, 255, 255, 0.10);
-  --cteni-odkaz: var(--action);
-  --cteni-zvyrazneni: var(--text-secondary);
+  --cteni-plocha: #fdfdfb;
+  --cteni-text: var(--ae-bg-primary);
+  --cteni-nadpis: var(--ae-bg-primary);
+  --cteni-slabe: #5f6070;
+  --cteni-linka: rgba(0, 0, 0, 0.12);
+  --cteni-odkaz: #0A7079;
+  --cteni-zvyrazneni: var(--accent-purple);
   /* Blok uvnitř čtecí plochy (otázka ve FAQ) — VŽDY tmavší než plocha,
      nikdy světlejší. Původně to bylo obráceně: sekce měla vlastní tmavší
      pozadí a bloky na ní svítily nahoru (DK 2026-08-04). */
-  --cteni-blok: rgba(0, 0, 0, 0.42);
+  --cteni-blok: rgba(0, 0, 0, 0.055);
 }
 
 /* ── velikost: šest poloh, kroky rostou geometricky (~1,15×), aby byl
@@ -55,21 +57,23 @@ html[data-cteni-rez="patky"] .faq-q,
 html[data-cteni-rez="patky"] .faq-a { font-family: var(--font-serif); }
 
 /* ── motivy ─────────────────────────────────────────────────────────────
-   Světlý a sepia si drží NAŠE barvy, jen v odstínu, který na světlém
-   podkladu unese kontrast:
+   Světlý (výchozí, viz :root výše) a sepia si drží NAŠE barvy, jen
+   v odstínu, který na světlém podkladu unese kontrast:
    · tyrkysová --action #16BECF má na bílé 2,2:1 → #0A7079 (5,7:1),
      stejný odstín 184°, jen tmavší
    · fialová je --accent-purple #552A9F, tedy token, který v tokens.css
-     existuje PRÁVĚ pro světlé plochy (9,3:1) */
-html[data-cteni-motiv="svetly"] {
-  --cteni-plocha: #fdfdfb;
-  --cteni-text: #26262e;
-  --cteni-nadpis: #0b0b12;
-  --cteni-slabe: #5f6070;
-  --cteni-linka: rgba(0, 0, 0, 0.12);
-  --cteni-odkaz: #0A7079;
-  --cteni-zvyrazneni: var(--accent-purple);
-  --cteni-blok: rgba(0, 0, 0, 0.055);
+     existuje PRÁVĚ pro světlé plochy (9,3:1)
+   Tmavý byl do 2026-08-21 výchozí (:root) — teď je to explicitní volba,
+   hodnoty beze změny. */
+html[data-cteni-motiv="tmavy"] {
+  --cteni-plocha: var(--ae-bg-primary);
+  --cteni-text: var(--neutral-300);
+  --cteni-nadpis: var(--text-primary);
+  --cteni-slabe: var(--neutral-500);
+  --cteni-linka: rgba(255, 255, 255, 0.10);
+  --cteni-odkaz: var(--action);
+  --cteni-zvyrazneni: var(--text-secondary);
+  --cteni-blok: rgba(0, 0, 0, 0.42);
 }
 html[data-cteni-motiv="sepia"] {
   --cteni-plocha: #f4ecd8;

@@ -7,7 +7,7 @@
  * Volba se pamatuje v localStorage, takže kdo si jednou zvětší písmo,
  * má ho zvětšené i u dalšího článku.
  *
- * Bez JS zůstane stránka ve výchozím (tmavém) nastavení a panel se vůbec
+ * Bez JS zůstane stránka ve výchozím (světlém) nastavení a panel se vůbec
  * nezobrazí - proto je v markupu skrytý a odkrývá ho až skript.
  */
 interface Props { lang?: 'cs' | 'en' }
@@ -60,8 +60,8 @@ const t = lang === 'en'
   <div class="cteni-skupina">
     <label id="cteni-l-mot">{t.motiv}</label>
     <div class="cteni-prep motiv" role="group" aria-labelledby="cteni-l-mot">
-      <button data-motiv="tmavy" aria-pressed="true">{t.tmavy}</button>
-      <button data-motiv="svetly" aria-pressed="false">{t.svetly}</button>
+      <button data-motiv="tmavy" aria-pressed="false">{t.tmavy}</button>
+      <button data-motiv="svetly" aria-pressed="true">{t.svetly}</button>
       <button data-motiv="sepia" aria-pressed="false">{t.sepia}</button>
     </div>
   </div>
@@ -133,8 +133,9 @@ const t = lang === 'en'
     };
 
     /* Reset - tmavý, dokud je všechno ve výchozím stavu; rozsvítí se, jen
-       když se čtenář od výchozích hodnot odchýlí (DK 2026-08-05). */
-    const VYCHOZI = { rez: 'bez', motiv: 'tmavy', px: '3' };
+       když se čtenář od výchozích hodnot odchýlí (DK 2026-08-05).
+       Výchozí motiv světlý od 2026-08-21 (zadání DK). */
+    const VYCHOZI = { rez: 'bez', motiv: 'svetly', px: '3' };
     const reset = document.getElementById('cteni-reset');
     obnovReset = () => {
       reset.disabled = H.getAttribute('data-cteni-rez') === VYCHOZI.rez
@@ -151,7 +152,7 @@ const t = lang === 'en'
 
     // obnovit, co si čtenář nastavil minule
     nastav('rez', nacti('rez') || 'bez');
-    nastav('motiv', nacti('motiv') || 'tmavy');
+    nastav('motiv', nacti('motiv') || 'svetly');
     nastavVelikost(Number(nacti('px')) || 3);
     if (nacti('klid') === '1') klid.click();
   }
