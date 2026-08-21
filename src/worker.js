@@ -61,6 +61,18 @@ export default {
     assetUrl.pathname = path === '/' ? `/${lang}/` : `/${lang}${path}`;
     const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
 
+    // Assets umí vrátit 3xx (auto-trailing-slash: /cs/co-umime -> /cs/co-umime/)
+    // s VNITŘNÍ prefixovanou Location - tu musíme strippnout, jinak prefix
+    // prosákne ven do URL (nález DK 2026-08-21: .cz/co-umime -> .cz/cs/co-umime/).
+    if ([301, 302, 307, 308].includes(res.status)) {
+      const loc = res.headers.get('Location');
+      if (loc && /^\/(cs|en)(\/|$)/.test(loc)) {
+        const h = new Headers(res.headers);
+        h.set('Location', loc.replace(/^\/(cs|en)/, '') || '/');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+    }
+
     // Sdílené stránky BEZ jazykového prefixu (privacy-policy) žijí v rootu,
     // ne pod /cs/ ani /en/ - prefixovaná cesta je nenajde. Fallback na root.
     if (res.status === 404 && path !== '/') {
