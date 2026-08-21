@@ -2394,7 +2394,9 @@ font-family: var(--font-secondary);</code></pre>
           světlý od 21.&nbsp;8. (do té doby tmavý).
         </p>
 
-        <h3 class="ds-subsection-title ds-locked">Motiv — 3 varianty (naše barvy v odstínu, který na svém podkladu unese kontrast)</h3>
+                <details class="ds-akordeon">
+          <summary class="ds-locked">Motiv — 3 varianty (naše barvy v odstínu, který na svém podkladu unese kontrast)</summary>
+          <div class="ds-akordeon-telo">
         <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
           Tyrkysová <code>--action</code> #16BECF má na bílé jen 2,2:1 — odkaz ve světlém
           a sepiovém motivu proto jede v #0A7079 (stejný odstín 184°, 5,7:1). Fialové zvýraznění
@@ -2441,7 +2443,12 @@ font-family: var(--font-secondary);</code></pre>
           </div>
         </div>
 
-        <h3 class="ds-subsection-title ds-locked">Čtecí plocha — kde motiv platí</h3>
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Čtecí plocha — kde motiv platí</summary>
+          <div class="ds-akordeon-telo">
         <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
           Motiv se týká jen toho, kde se čte: hlavička článku (<code>.blog-hero</code>), tělo
           (<code>article.section</code>), CTA článku a FAQ. Hlavička webu a „další články" zůstávají
@@ -2452,7 +2459,12 @@ font-family: var(--font-secondary);</code></pre>
           světlou stránkou a nemusí se přebarvovat jediný odkaz (pravidlo v <code>Header.astro</code>).
         </p>
 
-        <h3 class="ds-subsection-title ds-locked">Velikost — 6 poloh</h3>
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Velikost — 6 poloh</summary>
+          <div class="ds-akordeon-telo">
         <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
           <code>16 · 18 · 20 · 23 · 27 · 32 px</code> — geometrický krok ~1,15×, aby byl každý
           stisk stejně znát (po dvou pixelech by dole skákalo a nahoře se nedělo nic). Řídí
@@ -2462,7 +2474,12 @@ font-family: var(--font-secondary);</code></pre>
           čárek — bez ní by −/+ bylo slepé.
         </p>
 
-        <h3 class="ds-subsection-title ds-locked">Řez písma</h3>
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Řez písma</summary>
+          <div class="ds-akordeon-telo">
         <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7; margin-bottom:20px;">
           <b>Bezpatkový</b> (výchozí) = běžný vzhled webu: tělo <code>--font-secondary</code>
           (Montserrat), nadpisy <code>--font-primary</code> (Kanit). <b>Patkový</b> =
@@ -2471,7 +2488,12 @@ font-family: var(--font-secondary);</code></pre>
           všechno", DK 2026-08-04).
         </p>
 
-        <h3 class="ds-subsection-title ds-locked">Panel, spouštěč, „Jen text"</h3>
+                  </div>
+        </details>
+
+        <details class="ds-akordeon">
+          <summary class="ds-locked">Panel, spouštěč, „Jen text"</summary>
+          <div class="ds-akordeon-telo">
         <p style="color:var(--text-secondary); max-width:70ch; line-height:1.7;">
           Panel <code>.cteni</code> visí u horní hrany čtení (vpravo; strop pod hlavičkou webu,
           výšku počítá skript do <code>--cteni-top</code>). Objeví se, až když začne text
@@ -2484,6 +2506,8 @@ font-family: var(--font-secondary);</code></pre>
           Na ≤820&nbsp;px se panel otevírá jako lišta u spodku obrazovky;
           <code>prefers-reduced-motion</code> vypíná přechody i posuny.
         </p>
+          </div>
+        </details>
       </section>
 
       <span>aethero web design system · v3.1 · 2026</span>
@@ -2645,6 +2669,38 @@ font-family: var(--font-secondary);</code></pre>
     margin: 48px 0 16px;
   }
   .ds-subsection-title:first-of-type { margin-top: 0; }
+
+  /* Akordeon v sekci Blog (zadání DK 21.8. — odstavce se rozevírají, ať nezabírají místo) */
+  .ds-akordeon {
+    border: 1px solid var(--ds-border);
+    border-radius: 12px;
+    margin: 0 0 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  .ds-akordeon > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ds-muted);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .ds-akordeon > summary::-webkit-details-marker { display: none; }
+  .ds-akordeon > summary::after {
+    content: '+';
+    position: absolute; right: 18px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ds-accent);
+    font-size: 18px; font-weight: 700;
+  }
+  .ds-akordeon[open] > summary::after { content: '\2212'; }
+  .ds-akordeon > summary:hover { color: var(--ds-text); }
+  .ds-akordeon[open] > summary { color: var(--ds-text); }
+  .ds-akordeon-telo { padding: 4px 18px 18px; }
 
   /* LOGO */
   .ds-logo-grid {
