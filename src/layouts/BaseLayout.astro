@@ -17,10 +17,17 @@ const {
   lang = 'cs',
   jsonLd,
 } = Astro.props;
-const siteUrl = 'https://aethero.agency';
+// Cíl LAUNCH.md §1: canonical/OG per JAZYK, ne per aktuální host - CS vždy
+// na .cz, EN vždy na .agency, bez ohledu na to, ze které domény přišel
+// request (dokud .cz neběží ostře, je jazyk jediný spolehlivý ukazatel).
+// primaryDomain = firma jako entita (Organization schema), ne stránka.
+const primaryDomain = 'https://aethero.cz';
+const langSiteUrl = lang === 'cs' ? 'https://aethero.cz' : 'https://aethero.agency';
+const canonicalUrl = `${langSiteUrl}${Astro.url.pathname}`;
 // Protějšky pro hreflang - přes altPath, ne prostou záměnou prefixu.
 // null = stránka protějšek nemá (mimo jazykové větve, nebo článek bez páru)
 // a hreflang se nevykreslí; dřív mířil na neexistující URL (AE-8).
+// Absolutně cross-domain (LAUNCH.md §1): cs vždy .cz, en vždy .agency.
 const altCs = altPath(Astro.url.pathname, 'cs');
 const altEn = altPath(Astro.url.pathname, 'en');
 
@@ -29,10 +36,10 @@ const orgSchema = {
   "@type": "Organization",
   "name": "AETHERO s.r.o.",
   "alternateName": "aethero",
-  "url": siteUrl,
+  "url": primaryDomain,
   // Google chce u Organization skutečné logo, ne favicon; navíc favicon.svg
   // se po výměně ikony (2026-08-02) už nepoužívá.
-  "logo": `${siteUrl}/ae-logo.svg`,
+  "logo": `${primaryDomain}/ae-logo.svg`,
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+420776067663",
@@ -54,9 +61,9 @@ const webPageSchema = {
   "@type": "WebPage",
   "name": `${title} | aethero`,
   "description": description,
-  "url": Astro.url.href,
+  "url": canonicalUrl,
   "inLanguage": lang === 'cs' ? 'cs-CZ' : 'en-US',
-  "publisher": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": siteUrl }
+  "publisher": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": primaryDomain }
 };
 
 const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
@@ -86,22 +93,22 @@ const schemas = [orgSchema, webPageSchema, ...(jsonLd ? (Array.isArray(jsonLd) ?
   <title>{title} | aethero</title>
   <meta name="description" content={description} />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="canonical" href={Astro.url.href} />
-  {altCs && <link rel="alternate" hreflang="cs" href={`${siteUrl}${altCs}`} />}
-  {altEn && <link rel="alternate" hreflang="en" href={`${siteUrl}${altEn}`} />}
-  {altEn && <link rel="alternate" hreflang="x-default" href={`${siteUrl}${altEn}`} />}
+  <link rel="canonical" href={canonicalUrl} />
+  {altCs && <link rel="alternate" hreflang="cs" href={`https://aethero.cz${altCs}`} />}
+  {altEn && <link rel="alternate" hreflang="en" href={`https://aethero.agency${altEn}`} />}
+  {altEn && <link rel="alternate" hreflang="x-default" href={`https://aethero.agency${altEn}`} />}
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:url" content={canonicalUrl} />
   <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
   <meta property="og:title" content={`${title} | aethero`} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:image" content={`${langSiteUrl}${ogImage}`} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} | aethero`} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+  <meta name="twitter:image" content={`${langSiteUrl}${ogImage}`} />
   {schemas.map((schema) => (
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
