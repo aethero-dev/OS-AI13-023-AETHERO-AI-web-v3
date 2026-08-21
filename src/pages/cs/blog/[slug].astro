@@ -335,7 +335,18 @@ const articleSchema = {
   .article-body.sb-content :global(p) { margin-bottom: 1.4em; }
   .article-body.sb-content :global(ul), .article-body.sb-content :global(ol) { padding-left: 1.5em; margin-bottom: 1.4em; }
   .article-body.sb-content :global(li) { margin-bottom: 0.4em; line-height: 1.4; }
-  .article-body.sb-content :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  /* Odkazy v textu — sladěno s DS .text-link (váha 600 + přechod). V běžícím
+     textu podtržení zůstává vždy (přístupnost); hover ho zesílí. Barva jde
+     z cteni.css (--cteni-odkaz), mění se s motivem čtecího režimu. */
+  .article-body.sb-content :global(a) {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-thickness var(--transition-base);
+  }
+  .article-body.sb-content :global(a:hover) { text-decoration-thickness: 2px; }
+  .article-body.sb-content :global(a:focus-visible) { outline: 2px solid var(--cteni-odkaz); outline-offset: 2px; border-radius: 2px; }
   .article-body.sb-content :global(strong) { font-weight: 700; }
   .article-body.sb-content :global(em) { font-style: italic; }
   .article-body.sb-content :global(blockquote) { border-left: 3px solid; padding-left: 1.5em; margin: 1.5em 0; font-style: italic; }
