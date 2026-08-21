@@ -81,13 +81,16 @@ export default {
 
     // Cizí jazykový prefix na téhle doméně -> 301 na druhou doménu, bez prefixu
     if (path === other || path.startsWith(other + '/')) {
-      const rest = path.slice(other.length) || '/';
+      let rest = path.slice(other.length) || '/';
+      // rovnou s lomítkem, jinak cíl přidá další 301 (audit 2026-08-22)
+      if (!rest.endsWith('/') && !/\.[a-z0-9]+$/i.test(rest)) rest += '/';
       return Response.redirect(`https://${otherHost}${rest}${url.search}`, 301);
     }
 
     // Vlastní starý prefix v URL -> 301 na bezprefixovou podobu
     if (path === own || path.startsWith(own + '/')) {
-      const rest = path.slice(own.length) || '/';
+      let rest = path.slice(own.length) || '/';
+      if (!rest.endsWith('/') && !/\.[a-z0-9]+$/i.test(rest)) rest += '/';
       return Response.redirect(`https://${host}${rest}${url.search}`, 301);
     }
 
