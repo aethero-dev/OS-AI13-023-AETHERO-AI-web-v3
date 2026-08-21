@@ -8,9 +8,11 @@ export const prerender = true;
 const DOMAIN = 'https://aethero.agency';
 const pageModules = import.meta.glob('/src/pages/en/**/*.astro');
 
+// URL BEZ jazykového prefixu (DK 2026-08-21) - jazyk určuje doména.
 function toPath(filePath: string): string {
   let p = filePath.replace(/^\/src\/pages/, '').replace(/\.astro$/, '');
-  p = p.replace(/\/index$/, '') || '/en';
+  p = p.replace(/^\/en/, '');            // strip jazykový prefix
+  p = p.replace(/\/index$/, '') || '/';  // /index → adresář; prázdné → root
   return p.endsWith('/') ? p : `${p}/`;
 }
 
@@ -18,7 +20,7 @@ export const GET: APIRoute = () => {
   const staticPaths = Object.keys(pageModules)
     .filter((p) => !p.includes('['))
     .map(toPath);
-  const blogPaths = BLOG_PAIRS.map((p) => `/en/blog/${p.en}/`);
+  const blogPaths = BLOG_PAIRS.map((p) => `/blog/${p.en}/`);
   const paths = [...new Set([...staticPaths, ...blogPaths])].sort();
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

@@ -137,4 +137,4 @@ Výběr mezi Shoptetem a Shopify závisí hlavně na tom, kde chcete podnikat a
 
 **Shopify** je vhodnější, pokud chcete prodávat či expandovat do Evropy a světa. Nabízí nejen multi-jazyky a multi-měny, ale také silné nástroje pro SEO, marketing, automatizaci a analytiku. Tyhle funkce jsou užitečné i pro čistě lokální e-shopy, které chtějí posílit výkon a konkurovat na českém trhu. Díky globálním integracím a silné infrastruktuře je ideální pro firmy v kompetitivním prostředí nebo s plány na expanzi za hranice.
 
-Pro snadnou migraci produktů jsme pro vás připravili [jednoduchý nástroj zdarma na stránce Migrace ze Shoptetu na Shopify](/cs/migrace-shoptet-na-shopify/).
+Pro snadnou migraci produktů jsme pro vás připravili [jednoduchý nástroj zdarma na stránce Migrace ze Shoptetu na Shopify](/migrace-shoptet-na-shopify/).

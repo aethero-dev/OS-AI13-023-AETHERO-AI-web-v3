@@ -3,39 +3,45 @@ import { altPath } from '../../lib/i18n-paths';
 
 export interface Props { lang?: string; skryjLogo?: boolean; }
 const { skryjLogo = false, lang = 'cs' } = Astro.props;
-const p = lang === 'en' ? '/en' : '/cs';
+// Odkazy BEZ jazykového prefixu (rozhodnutí DK 2026-08-21) - jazyk určuje doména,
+// Worker prefix skryje. Build cesta má ale prefix (/, /en/), tak ho pro
+// porovnávání i odkazy strippujeme.
+const p = '';
 
 // Přepínač jazyka - protějšek řeší altPath, ne záměna prefixu.
 // Blogové články mají v každém jazyce jiný slug, takže prostá záměna
 // vedla z článku rovnou do 404 (audit prokliků AE-38, 2026-08-02).
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname;               // /en/what-we-do/ (build prefix)
+const bare = currentPath.replace(/^\/(cs|en)/, '') || '/';  // /what-we-do/ (bez prefixu)
 const otherLang = lang === 'en' ? 'cs' : 'en';
 const isActive = (href: string) => {
-  if (href === `${p}/`) return currentPath === `${p}/`;
-  return currentPath === href || currentPath.startsWith(href + '/');
+  if (href === '/') return bare === '/';
+  return bare === href || bare.startsWith(href + '/');
 };
-// null = protějšek neexistuje → přepínač se nevykreslí (lepší než odkaz do 404)
-const otherPath = altPath(currentPath, otherLang);
+// Přepínač míří na DRUHOU doménu, bez prefixu. null = protějšek neexistuje.
+const otherDomain = otherLang === 'cs' ? 'https://aethero.cz' : 'https://aethero.agency';
+const otherRaw = altPath(currentPath, otherLang);     // /cs/co-umime/ nebo null
+const otherPath = otherRaw ? otherDomain + (otherRaw.replace(/^\/(cs|en)/, '') || '/') : null;
 
 const navItems = lang === 'en'
   ? [
       { label: 'HOME', href: `${p}/` },
       {
         label: 'WHAT WE DO',
-        href: `${p}/co-umime`,
+        href: `${p}/what-we-do`,
         dropdown: [
-          { label: 'Brand & Identity', href: `${p}/co-umime/potrebuji-brand` },
-          { label: 'New Shopify Store', href: `${p}/co-umime/novy-shopify-e-shop` },
-          { label: 'Migration to Shopify', href: `${p}/co-umime/prechod-na-shopify` },
-          { label: 'International Expansion', href: `${p}/co-umime/expanze-do-zahranici` },
-          { label: 'Development & Support', href: `${p}/co-umime/rozvoj-a-podpora` },
-          { label: 'Strategy & Analytics', href: `${p}/co-umime/analyza-a-strategie` },
-          { label: 'Custom Development', href: `${p}/co-umime/custom-vyvoj-a-aplikace` },
+          { label: 'Brand & Identity', href: `${p}/what-we-do/i-need-a-brand` },
+          { label: 'New Shopify Store', href: `${p}/what-we-do/new-shopify-store` },
+          { label: 'Migration to Shopify', href: `${p}/what-we-do/switch-to-shopify` },
+          { label: 'International Expansion', href: `${p}/what-we-do/international-expansion` },
+          { label: 'Development & Support', href: `${p}/what-we-do/growth-and-support` },
+          { label: 'Strategy & Analytics', href: `${p}/what-we-do/analysis-and-strategy` },
+          { label: 'Custom Development', href: `${p}/what-we-do/custom-development-and-apps` },
         ],
       },
       {
         label: 'APPS',
-        href: `${p}/co-umime/custom-vyvoj-a-aplikace`,
+        href: `${p}/what-we-do/custom-development-and-apps`,
         activeMatch: [`${p}/esyncer`, `${p}/ae-translator`],
         dropdown: [
           { label: 'eSyncer', href: `${p}/esyncer` },
@@ -43,8 +49,8 @@ const navItems = lang === 'en'
         ],
       },
       { label: 'BLOG', href: `${p}/blog` },
-      { label: 'ABOUT', href: `${p}/o-nas` },
-      { label: 'CONTACT', href: `${p}/kontakt` },
+      { label: 'ABOUT', href: `${p}/about-us` },
+      { label: 'CONTACT', href: `${p}/contact` },
     ]
   : [
       { label: 'ÚVOD', href: `${p}/` },

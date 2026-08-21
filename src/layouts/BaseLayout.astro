@@ -23,13 +23,18 @@ const {
 // primaryDomain = firma jako entita (Organization schema), ne stránka.
 const primaryDomain = 'https://aethero.cz';
 const langSiteUrl = lang === 'cs' ? 'https://aethero.cz' : 'https://aethero.agency';
-const canonicalUrl = `${langSiteUrl}${Astro.url.pathname}`;
+// URL BEZ jazykového prefixu (DK 2026-08-21) - build cesta má /cs/ /en/, ale
+// venku doména určuje jazyk a prefix je skrytý. Strip pro canonical/og/hreflang,
+// jinak by Google indexoval prefixované URL, které uživatel nikdy nevidí.
+const strip = (s: string | null) => (s ? (s.replace(/^\/(cs|en)/, '') || '/') : null);
+const barePath = strip(Astro.url.pathname) || '/';
+const canonicalUrl = `${langSiteUrl}${barePath}`;
 // Protějšky pro hreflang - přes altPath, ne prostou záměnou prefixu.
 // null = stránka protějšek nemá (mimo jazykové větve, nebo článek bez páru)
 // a hreflang se nevykreslí; dřív mířil na neexistující URL (AE-8).
-// Absolutně cross-domain (LAUNCH.md §1): cs vždy .cz, en vždy .agency.
-const altCs = altPath(Astro.url.pathname, 'cs');
-const altEn = altPath(Astro.url.pathname, 'en');
+// Absolutně cross-domain (LAUNCH.md §1): cs vždy .cz, en vždy .agency - bez prefixu.
+const altCs = strip(altPath(Astro.url.pathname, 'cs'));
+const altEn = strip(altPath(Astro.url.pathname, 'en'));
 
 const orgSchema = {
   "@context": "https://schema.org",
