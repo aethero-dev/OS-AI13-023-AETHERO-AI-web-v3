@@ -20,6 +20,13 @@ const blog = defineCollection({
     date: z.date(),
     /** Úvodní obrázek, cesta v /public. */
     image: z.string().optional(),
+    /**
+     * Slug téhož článku v druhém jazyce - jen když se liší od tohohle.
+     * Váže CS a EN verzi k sobě (hreflang, přepínač jazyka, sitemapa).
+     * Stačí vyplnit v jednom ze dvou souborů. Když se slug v obou jazycích
+     * shoduje, nevyplňuj nic - spáruje se sám (src/lib/i18n-paths.ts).
+     */
+    twin: z.string().optional(),
     /** true = článek se nikam nevygeneruje. */
     draft: z.boolean().default(false),
   }),

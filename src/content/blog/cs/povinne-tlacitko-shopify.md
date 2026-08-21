@@ -3,6 +3,7 @@ title: "Povinné tlačítko v Shopify: nečekejte, až z toho bude problém"
 perex: "Jak správně nastavit povinné tlačítko v Shopify a vyhnout se problémům s compliance. Legislativa vyžaduje implementaci do 19. června 2026."
 readTime: "7 min"
 date: 2026-05-01
+twin: "shopify-mandatory-button"
 image: "/blog/povinne-tlacitko-odstoupit-od-smlouvy2x.webp"
 ---
 

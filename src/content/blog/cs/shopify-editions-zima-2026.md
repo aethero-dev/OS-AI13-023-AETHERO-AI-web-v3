@@ -3,6 +3,7 @@ title: "Shopify Editions - Zima 2026"
 perex: "Přehled nejdůležitějších novinek ze Shopify Editions Winter 2026 - co přichází a co to znamená pro váš e-shop."
 readTime: "5 min"
 date: 2025-12-10
+twin: "shopify-editions-winter-2026"
 image: "/blog/shopify-edition-zima-2026.webp"
 ---
 
