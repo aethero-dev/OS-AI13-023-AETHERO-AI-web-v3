@@ -640,7 +640,7 @@ const blogPosts = await homeBlogPosts('cs');
     font-family: var(--font-primary);
     font-size: 140px;
     font-weight: 700;
-    color: #552A9F;
+    color: var(--text-secondary);   /* #A081D1 — kontrast 6.3:1 (bylo #552A9F = 2.13, pod WCAG). Crosscheck 21.8. */
     line-height: 1;
   }
   .service-text {
@@ -984,7 +984,7 @@ const blogPosts = await homeBlogPosts('cs');
     font-family: var(--font-primary);
     font-size: var(--fs-70);
     font-weight: 700;
-    color: #fff;
+    color: var(--ae-straight-blue);   /* #092066 — kontrast 6.6:1 na tyrkysovém (bylo #fff = 2.26, pod WCAG). Crosscheck 21.8. */
     margin-bottom: 40px;
     line-height: 1.2;
   }
