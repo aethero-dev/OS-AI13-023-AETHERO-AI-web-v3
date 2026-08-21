@@ -31,6 +31,7 @@ const intentLinks = lang === 'en'
       <a href={`${p}/`} class="logo" aria-label="aethero">
         <img src="/ae-logo.svg" alt="æthero" width="140" height="35" loading="lazy" />
       </a>
+      <img src="/shopify-plus-badge.svg" alt="Shopify Plus Partner" class="shopify-badge" width="130" height="45" loading="lazy" />
     </div>
 
     <div class="footer-intent">
@@ -53,7 +54,6 @@ const intentLinks = lang === 'en'
   <div class="container footer-legal">
     <p class="footer-copy">
       © {new Date().getFullYear()} AETHERO s.r.o.
-      <img src="/shopify-plus-badge.svg" alt="Shopify Plus Partner" class="shopify-badge-mini" width="78" height="27" loading="lazy" />
     </p>
     <ul class="footer-legal-links">
       <li>
@@ -96,11 +96,9 @@ const intentLinks = lang === 'en'
   .footer-copy {
     margin: 0;
     font-size: 13px;
-    color: var(--neutral-500);
+    color: var(--neutral-300); /* rozsvíceno o polovinu (DK 21.8.) */
     display: flex; align-items: center; gap: var(--space-16);
   }
-  /* Badge vědomě malý a dole - „není to důležité" (DK 2026-08-05) */
-  .shopify-badge-mini { height: 27px; width: auto; opacity: 0.7; }
   .footer-legal-links {
     display: flex;
     /* row EXPLICITNĚ - obecné `ul { flex-direction: column }` níž by jinak
@@ -116,7 +114,7 @@ const intentLinks = lang === 'en'
   .footer-legal-links a,
   .footer-cookie-btn {
     font-size: 13px;
-    color: var(--neutral-500);
+    color: var(--neutral-300); /* rozsvíceno o polovinu (DK 21.8.) */
     text-decoration: none;
     background: none;
     border: none;
@@ -143,15 +141,16 @@ const intentLinks = lang === 'en'
   }
 
   .footer-brand {
+    /* Badge POD logem, stejná šířka jako logo (DK 2026-08-21, DS blok 4) */
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .logo { display: flex; align-items: center; }
   .logo img { opacity: 0.9; width: 180px; height: auto; }
-  .shopify-badge { display: block; height: 45px; width: auto; }
+  .shopify-badge { display: block; width: 180px; height: auto; }
 
   .footer-label {
     font-family: var(--font-primary);
