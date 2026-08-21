@@ -17,8 +17,8 @@
   --cteni-px: 20px;
   --cteni-rodina: var(--font-secondary);
   --cteni-plocha: #fdfdfb;
-  --cteni-text: var(--ae-bg-primary);
-  --cteni-nadpis: var(--ae-bg-primary);
+  --cteni-text: var(--ae-straight-blue);
+  --cteni-nadpis: var(--ae-straight-blue);
   --cteni-slabe: #5f6070;
   --cteni-linka: rgba(0, 0, 0, 0.12);
   --cteni-odkaz: #0A7079;
