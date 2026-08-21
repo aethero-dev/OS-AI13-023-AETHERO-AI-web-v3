@@ -63,6 +63,11 @@
     { "pattern": "aethero.agency", "custom_domain": true },
     // www nemělo ŽÁDNÝ DNS záznam (NXDOMAIN, nález DK 2026-08-21) - custom
     // domain si záznam při deployi vytvoří sám; Worker pak www 301kuje na apex.
-    { "pattern": "www.aethero.agency", "custom_domain": true }
+    { "pattern": "www.aethero.agency", "custom_domain": true },
+    // OSTRÝ LAUNCH 2026-08-21: .cz custom domény připojeny přes API (apex měl
+    // A/AAAA SolidPixels - smazány, past P3). Sem do configu MUSÍ, aby je
+    // příští `wrangler deploy` (Workers Builds na každý merge) nezahodil.
+    { "pattern": "aethero.cz", "custom_domain": true },
+    { "pattern": "www.aethero.cz", "custom_domain": true }
   ]
 }
