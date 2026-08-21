@@ -139,6 +139,7 @@ const blogPosts = await homeBlogPosts('cs');
                 function setEmpty(el,isEmpty){ if(isEmpty) el.setAttribute('data-empty','1'); else el.removeAttribute('data-empty'); }
                 function moveCaret(el){ if(!el||!caret) return; if(caret.parentNode!==el) el.appendChild(caret); }
                 async function typeInto(el,text){ moveCaret(el); setEmpty(el,false); for(var i=1;i<=text.length;i++){ el.textContent=text.slice(0,i); if(SPEED) await sleep(SPEED); } }
+                async function typeAppend(el,text){ moveCaret(el); setEmpty(el,false); var base=el.textContent; for(var i=1;i<=text.length;i++){ el.textContent=base+text.slice(0,i); if(SPEED) await sleep(SPEED); } }
                 async function eraseAll(el){ moveCaret(el); while(el.textContent.length){ el.textContent=el.textContent.slice(0,-1); if(BACK) await sleep(BACK); } setEmpty(el,true); }
                 function clearLines(){ l1.textContent=''; l2.textContent=''; l3.textContent=''; setEmpty(l1,true); setEmpty(l2,true); setEmpty(l3,true); }
                 async function runOnce(prvni){
@@ -154,6 +155,7 @@ const blogPosts = await homeBlogPosts('cs');
                   await eraseAll(l3); if(BETWEEN) await sleep(BETWEEN);
                   var words=['experti','vývojáři','designéři','analytici','specialisté'];
                   for(var i=0;i<words.length;i++){ await typeInto(l3,words[i]); if(PAUSE) await sleep(PAUSE); await eraseAll(l3); if(BETWEEN) await sleep(BETWEEN); }
+                  await typeAppend(l2,' Plus'); if(PAUSE) await sleep(PAUSE);
                   await typeInto(l3,'partneři'); if(PAUSE) await sleep(PAUSE);
                 }
                 (async function loop(){ var prvni=true; while(true){ await runOnce(prvni); prvni=false; if(RESTART>0) await sleep(RESTART); } })();
