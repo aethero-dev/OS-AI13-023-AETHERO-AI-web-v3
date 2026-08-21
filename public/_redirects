@@ -61,32 +61,59 @@
 # které vracely 404. Šablonový balast SolidPixels (eshop/*, kolekce, typo,
 # test, go, …) se VĚDOMĚ nechává 404. Tabulka: scratch audit + STATUS. ---
 
+# Zdroje jsou v OBOU tvarech (bez/s lomítkem): EN cesty přicházejí přes
+# doménový 301, který lomítko přidává; CS rewrite ho zachovává dle vstupu.
+
 # CS: číslované služby starého webu
 /cs/01-shopify                    /co-umime/                             301
+/cs/01-shopify/                   /co-umime/                             301
 /cs/02-e-commerce                 /co-umime/                             301
+/cs/02-e-commerce/                /co-umime/                             301
 /cs/03-design                     /co-umime/potrebuji-brand/             301
+/cs/03-design/                    /co-umime/potrebuji-brand/             301
 /cs/04-marketing                  /co-umime/analyza-a-strategie/         301
+/cs/04-marketing/                 /co-umime/analyza-a-strategie/         301
 
 # CS: staré slugy a stránky
 /cs/analyza-a-strategie-e-shopu   /co-umime/analyza-a-strategie/         301
+/cs/analyza-a-strategie-e-shopu/  /co-umime/analyza-a-strategie/         301
 /cs/aplikace                      /esyncer/                              301
+/cs/aplikace/                     /esyncer/                              301
 /cs/czech-connector               /                                      301
+/cs/czech-connector/              /                                      301
 /cs/shopify-versus-shoptet        /blog/shopify-vs-shoptet/              301
+/cs/shopify-versus-shoptet/       /blog/shopify-vs-shoptet/              301
 /cs/podminky                      /gdpr/                                 301
+/cs/podminky/                     /gdpr/                                 301
 /cs/podminky-pouziti              /gdpr/                                 301
+/cs/podminky-pouziti/             /gdpr/                                 301
 /cs/blog/a-co-znamena-tohle       /blog/                                 301
+/cs/blog/a-co-znamena-tohle/      /blog/                                 301
 /cs/blog/expanze-do-zahranici     /co-umime/expanze-do-zahranici/        301
+/cs/blog/expanze-do-zahranici/    /co-umime/expanze-do-zahranici/        301
 /cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet-kopie  /blog/shopify-vs-shoptet/  301
+/cs/blog/jakou-e-commerce-platformu-zvolit-shopify-versus-shoptet-kopie/ /blog/shopify-vs-shoptet/  301
 
 # EN zrcadla
 /en/01-shopify                    /what-we-do/                           301
+/en/01-shopify/                   /what-we-do/                           301
 /en/02-e-commerce                 /what-we-do/                           301
+/en/02-e-commerce/                /what-we-do/                           301
 /en/03-design                     /what-we-do/i-need-a-brand/            301
+/en/03-design/                    /what-we-do/i-need-a-brand/            301
 /en/04-marketing                  /what-we-do/analysis-and-strategy/     301
+/en/04-marketing/                 /what-we-do/analysis-and-strategy/     301
 /en/about                         /about-us/                             301
+/en/about/                        /about-us/                             301
 /en/apps                          /esyncer/                              301
+/en/apps/                         /esyncer/                              301
 /en/czech-connector               /                                      301
+/en/czech-connector/              /                                      301
 /en/podminky                      /gdpr/                                 301
+/en/podminky/                     /gdpr/                                 301
 /en/podminky-pouziti              /gdpr/                                 301
+/en/podminky-pouziti/             /gdpr/                                 301
 /en/blog/a-co-znamena-tohle       /blog/                                 301
+/en/blog/a-co-znamena-tohle/      /blog/                                 301
 /en/blog/expanze-do-zahranici     /what-we-do/international-expansion/   301
+/en/blog/expanze-do-zahranici/    /what-we-do/international-expansion/   301
