@@ -135,9 +135,28 @@ const capabilities = [
   'Multi-jazyk a multi-měna',
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Nový Shopify e-shop",
+  "serviceType": "Vývoj Shopify e-shopu",
+  "description": "Spustíme váš nový e-shop na Shopify - od návrhu přes vývoj až po první objednávku. Přeskočíme slepé uličky a rovnou spustíme e-shop, který vydělává.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/novy-shopify-e-shop/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Nový Shopify e-shop" }
+  ]
+};
 ---
 
-<PageLayout title="Nový Shopify e-shop" description="Spustíme váš nový e-shop na Shopify - od návrhu přes vývoj až po první objednávku. Přeskočíme slepé uličky a rovnou spustíme e-shop, který vydělává." lang="cs">
+<PageLayout title="Nový Shopify e-shop" description="Spustíme váš nový e-shop na Shopify - od návrhu přes vývoj až po první objednávku. Přeskočíme slepé uličky a rovnou spustíme e-shop, který vydělává." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Nový e-shop"
     title="NOVÝ E-SHOP <br /><span style='color:#fff'>NA SHOPIFY</span>"

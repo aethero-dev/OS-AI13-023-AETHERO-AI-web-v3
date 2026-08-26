@@ -49,9 +49,28 @@ const faq = [
   { q: 'Umíte napojit i něco, co „nemá integraci"?', a: 'Pokud má služba API (nebo aspoň rozumný export/import), většinou se cesta najde.' },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Custom vývoj a aplikace",
+  "serviceType": "Vývoj Shopify aplikací na míru",
+  "description": "Vlastní Shopify aplikace, integrace a úpravy šablon přesně pro vaše potřeby.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/custom-vyvoj-a-aplikace/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Custom vývoj a aplikace" }
+  ]
+};
 ---
 
-<PageLayout title="Custom vývoj a aplikace" description="Vlastní Shopify aplikace, integrace a úpravy šablon přesně pro vaše potřeby." lang="cs">
+<PageLayout title="Custom vývoj a aplikace" description="Vlastní Shopify aplikace, integrace a úpravy šablon přesně pro vaše potřeby." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Custom vývoj"
     title="APLIKACE & <br /><span style='color:#fff'>CUSTOM VÝVOJ</span>"

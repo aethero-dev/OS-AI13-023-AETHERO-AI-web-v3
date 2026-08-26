@@ -10,9 +10,28 @@ const workCards = [
   { icon: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>', title: 'Růst skrze marketing', desc: 'Příprava pro výkonové kampaně a expanzi. SEO, analytika, lokalizace, napojení na marketingové nástroje a další růst.' },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Potřebuji brand",
+  "serviceType": "Branding a vizuální identita",
+  "description": "Budujeme brandy, které rezonují napříč kulturami. Značka, vizuální identita a digitální zkušenost pro váš Shopify e-shop.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/potrebuji-brand/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Potřebuji brand" }
+  ]
+};
 ---
 
-<PageLayout title="Potřebuji brand" description="Budujeme brandy, které rezonují napříč kulturami. Značka, vizuální identita a digitální zkušenost pro váš Shopify e-shop." lang="cs">
+<PageLayout title="Potřebuji brand" description="Budujeme brandy, které rezonují napříč kulturami. Značka, vizuální identita a digitální zkušenost pro váš Shopify e-shop." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Brand & Identity"
     title="Potřebuji <span style='color:#fff'>BRAND</span>"

@@ -79,9 +79,28 @@ const features = [
   { title: 'Technical consulting & long-term support', desc: 'We are your technical partner for continuous development - from audits and code reviews to strategic decisions about the future direction of your Shopify solution.', img: '/longtime-support.jpg', reverse: false },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Development & Support",
+  "serviceType": "Shopify Support & Development",
+  "description": "Long-term technical partner for your Shopify project. We are here for support, development, integrations and strategy.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.agency/what-we-do/growth-and-support/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.agency/" },
+    { "@type": "ListItem", "position": 2, "name": "What We Do", "item": "https://aethero.agency/what-we-do/" },
+    { "@type": "ListItem", "position": 3, "name": "Development & Support" }
+  ]
+};
 ---
 
-<PageLayout title="Development & Support" description="Long-term technical partner for your Shopify project. We are here for support, development, integrations and strategy." lang="en">
+<PageLayout title="Development & Support" description="Long-term technical partner for your Shopify project. We are here for support, development, integrations and strategy." lang="en" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     lang="en"
     label="Development & Support"

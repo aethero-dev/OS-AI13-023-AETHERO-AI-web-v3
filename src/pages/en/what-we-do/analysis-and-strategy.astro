@@ -36,9 +36,28 @@ const forWho = [
   'You are deciding where to invest your marketing budget in the next year',
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Analytics & Strategy",
+  "serviceType": "Ecommerce Analytics & Strategy",
+  "description": "Stop guessing - find out why your store is not growing. We connect your data and deliver a strategy that works right away.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.agency/what-we-do/analysis-and-strategy/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.agency/" },
+    { "@type": "ListItem", "position": 2, "name": "What We Do", "item": "https://aethero.agency/what-we-do/" },
+    { "@type": "ListItem", "position": 3, "name": "Analytics & Strategy" }
+  ]
+};
 ---
 
-<PageLayout title="Analytics & Strategy" description="Stop guessing - find out why your store is not growing. We connect your data and deliver a strategy that works right away." lang="en">
+<PageLayout title="Analytics & Strategy" description="Stop guessing - find out why your store is not growing. We connect your data and deliver a strategy that works right away." lang="en" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     lang="en"
     label="Analytics & Strategy"

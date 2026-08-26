@@ -68,9 +68,28 @@ const features = [
   { title: 'B2B profi řešení', desc: 'Shopify Plus umožňuje <strong class="hl">plnohodnotné B2B funkce - vlastní ceníky, firemní účty, schvalovací procesy, ERP napojení a B2B checkout.</strong> Enterprise funkce bez enterprise ceny.', img: '/b2b.webp', reverse: false },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Přechod na Shopify",
+  "serviceType": "Migrace e-shopu na Shopify",
+  "description": "Migrujte z Shoptetu, WooCommerce nebo jiné platformy na Shopify bez ztráty SEO, dat a zákazníků.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/prechod-na-shopify/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Přechod na Shopify" }
+  ]
+};
 ---
 
-<PageLayout title="Přechod na Shopify" description="Migrujte z Shoptetu, WooCommerce nebo jiné platformy na Shopify bez ztráty SEO, dat a zákazníků." lang="cs">
+<PageLayout title="Přechod na Shopify" description="Migrujte z Shoptetu, WooCommerce nebo jiné platformy na Shopify bez ztráty SEO, dat a zákazníků." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Migrace"
     title="PŘECHOD <br /><span style='color:#fff'>NA SHOPIFY</span>"
