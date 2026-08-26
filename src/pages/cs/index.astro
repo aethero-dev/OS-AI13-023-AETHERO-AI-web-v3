@@ -114,10 +114,10 @@ const blogPosts = await homeBlogPosts('cs');
               @keyframes spCaret{ 0%,40%,100%{opacity:1} 50%,90%{opacity:0} }
               @media (prefers-reduced-motion: reduce){ .sp-h1-typer .caret{ animation:none; opacity:1; } }
             </style>
-            <h1 class="title" aria-live="polite">
+            <h1 class="title" aria-label="Jsme Shopify Plus partneři a specialisté na e-commerce">
               <span class="row">
                 <span class="sizer">Jsme <br>Shopify <br>specialisté</span>
-                <span class="live">
+                <span class="live" aria-hidden="true">
                   <span class="l1">Jsme</span>
                   <span class="l2">æthero</span>
                   <span class="l3" data-empty="1"></span>
@@ -423,7 +423,22 @@ const blogPosts = await homeBlogPosts('cs');
       const N = originals.length;
       // Klony jsou jen vizuální výplň nekonečné smyčky — čtečkám a tabu se schovávají,
       // jinak slyší 7 nadpisů služeb 3× (nález GPT crosscheck, změřeno 26 H2 v DOMu).
-      const klon = (el: HTMLElement) => { const c = el.cloneNode(true) as HTMLElement; c.setAttribute('aria-hidden', 'true'); c.setAttribute('tabindex', '-1'); return c; };
+      const klon = (el: HTMLElement) => {
+        const c = el.cloneNode(true) as HTMLElement;
+        c.setAttribute('aria-hidden', 'true');
+        c.setAttribute('tabindex', '-1');
+        // Klon je jen vizuální výplň smyčky — h2 uvnitř by v DOMu zdvojily
+        // nadpis (crosscheck GPT 25.8.: aria-hidden stačí pro čtečky, ale
+        // crawler text z DOM čte bez ohledu na to). Přepsat na <div>, třídy
+        // řídí vzhled, ne tag (viz global.css .h2-mini/.service-title).
+        c.querySelectorAll('h2, h3, h4').forEach((h) => {
+          const div = document.createElement('div');
+          div.className = h.className;
+          div.innerHTML = h.innerHTML;
+          h.replaceWith(div);
+        });
+        return c;
+      };
       [...originals].reverse().forEach(el => track.insertBefore(klon(el), track.firstChild));
       originals.forEach(el => track.appendChild(klon(el)));
 
