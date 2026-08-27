@@ -16,8 +16,8 @@ const en = lang === 'en';
 
 const t = {
   text: en
-    ? 'We use cookies to measure traffic and improve the site. Analytics only runs with your consent.'
-    : 'Používáme cookies k měření návštěvnosti a vylepšování webu. Analytika se spustí až po vašem souhlasu.',
+    ? 'We use cookies to measure traffic - only with your consent.'
+    : 'Cookies používáme k měření návštěvnosti - jen s vaším souhlasem.',
   more: en ? 'More info' : 'Více informací',
   accept: en ? 'Accept all' : 'Přijmout',
   // „Pouze nutné" místo „Odmítnout" - technické cookies zůstávají tak jako tak,
@@ -115,13 +115,15 @@ const t = {
       align-items: stretch;
       gap: 6px;
       text-align: center;
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
+      left: 0;
+      right: 0;
+      bottom: 0;
       padding: 10px 12px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
     .ae-cookies-text { font-size: 12px; line-height: 1.35; }
-    .ae-cookies-btn { padding: 7px 14px; font-size: 12px; }
+    .ae-cookies-btn { padding: 5px 14px; font-size: 12px; }
     .ae-cookies-actions {
       justify-content: center;
     }
