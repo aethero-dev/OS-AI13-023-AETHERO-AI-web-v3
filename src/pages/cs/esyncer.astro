@@ -1,8 +1,19 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "eSyncer",
+  "description": "Automatizace importu a synchronizace produktových dat z XML feedů přímo do Shopify. Specializujeme se na komplikované feedy.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Shopify",
+  "url": "https://aethero.cz/esyncer/",
+  "author": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" }
+};
 ---
 
-<PageLayout title="eSyncer - import a synchronizace pro Shopify" description="Automatizace importu a synchronizace produktových dat z XML feedů přímo do Shopify. Specializujeme se na komplikované feedy." lang="cs">
+<PageLayout title="eSyncer - import a synchronizace pro Shopify" description="Automatizace importu a synchronizace produktových dat z XML feedů přímo do Shopify. Specializujeme se na komplikované feedy." lang="cs" jsonLd={appSchema}>
 
   <!-- HERO -->
   <section class="app-hero">

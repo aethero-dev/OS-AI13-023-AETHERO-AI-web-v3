@@ -84,9 +84,28 @@ const features = [
   { title: 'Technické konzultace i dlouhodobý support', desc: 'Jsme váš technický partner pro kontinuální rozvoj – od auditů a code review až po strategická rozhodnutí o dalším směřování Shopify řešení.', img: '/longtime-support.jpg', reverse: false },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Rozvoj a podpora",
+  "serviceType": "Podpora a rozvoj Shopify e-shopu",
+  "description": "Dlouhodobý technický partner pro váš Shopify projekt. Jsme tu pro support, rozvoj, integrace i strategii.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/rozvoj-a-podpora/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Rozvoj a podpora" }
+  ]
+};
 ---
 
-<PageLayout title="Rozvoj a podpora" description="Dlouhodobý technický partner pro váš Shopify projekt. Jsme tu pro support, rozvoj, integrace i strategii." lang="cs">
+<PageLayout title="Rozvoj a podpora" description="Dlouhodobý technický partner pro váš Shopify projekt. Jsme tu pro support, rozvoj, integrace i strategii." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Rozvoj a podpora"
     title="ROZVOJ <br /><span style='color:#fff'>A PODPORA</span>"

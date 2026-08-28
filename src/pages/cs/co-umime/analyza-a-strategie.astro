@@ -36,9 +36,28 @@ const forWho = [
   'Rozhodujete se, kam investovat marketingový rozpočet v příštím roce',
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Analýza a strategie",
+  "serviceType": "Analýza a strategie e-commerce",
+  "description": "Přestaňte hádat - zjistěte proč váš e-shop neroste. Propojíme vaše data a dodáme strategii, která rovnou funguje.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/analyza-a-strategie/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Analýza a strategie" }
+  ]
+};
 ---
 
-<PageLayout title="Analýza a strategie" description="Přestaňte hádat - zjistěte proč váš e-shop neroste. Propojíme vaše data a dodáme strategii, která rovnou funguje." lang="cs">
+<PageLayout title="Analýza a strategie" description="Přestaňte hádat - zjistěte proč váš e-shop neroste. Propojíme vaše data a dodáme strategii, která rovnou funguje." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Analýza a strategie"
     title="ANALÝZA <br /><span style='color:#fff'>A STRATEGIE</span>"

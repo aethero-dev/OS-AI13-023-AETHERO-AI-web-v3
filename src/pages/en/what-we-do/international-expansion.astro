@@ -68,9 +68,29 @@ const features = [
   { title: 'Shopify SHOP app, on your customer\'s phone', desc: '<p class="body">Thanks to the Shop app, your brand reaches directly into customers\' mobile devices all over the world. An ideal user experience. Customers can easily track orders, return to favourite products and make repeat purchases without having to go through the entire checkout process again.</p>', img: '/shopify-shop-app.webp', reverse: true },
   { title: 'Automation', desc: '<p class="body">With growing order volumes, manual management stops making sense. Automation lets you move key processes - from order and customer management through pricing and inventory to marketing scenarios - into controlled, predictable flows.</p><p class="body">The result is less dependence on manual intervention, lower error rates and the ability to scale without constantly growing the team.</p>', img: '/flow-automation.webp', reverse: false },
 ];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "International Expansion",
+  "serviceType": "International Ecommerce Expansion",
+  "description": "One Shopify store, the whole world. We help you expand into international markets using Shopify Markets.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.agency/what-we-do/international-expansion/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.agency/" },
+    { "@type": "ListItem", "position": 2, "name": "What We Do", "item": "https://aethero.agency/what-we-do/" },
+    { "@type": "ListItem", "position": 3, "name": "International Expansion" }
+  ]
+};
 ---
 
-<PageLayout title="International Expansion" description="One Shopify store, the whole world. We help you expand into international markets using Shopify Markets." lang="en">
+<PageLayout title="International Expansion" description="One Shopify store, the whole world. We help you expand into international markets using Shopify Markets." lang="en" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     lang="en"
     label="International Expansion"

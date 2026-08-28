@@ -1,8 +1,20 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AE Translator",
+  "description": "Hromadný AI překlad produktů, kolekcí a stránek v Shopify za zlomek ceny klasických překladačů. DeepL, Claude nebo DeepSeek.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Shopify",
+  "url": "https://aethero.cz/ae-translator/",
+  "author": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "featureList": ["DeepL translation", "Claude translation", "DeepSeek translation"]
+};
 ---
 
-<PageLayout title="AE Translator - AI překlad Shopify e-shopu" description="Hromadný AI překlad produktů, kolekcí a stránek v Shopify za zlomek ceny klasických překladačů. DeepL, Claude nebo DeepSeek." lang="cs">
+<PageLayout title="AE Translator - AI překlad Shopify e-shopu" description="Hromadný AI překlad produktů, kolekcí a stránek v Shopify za zlomek ceny klasických překladačů. DeepL, Claude nebo DeepSeek." lang="cs" jsonLd={appSchema}>
 
   <!-- HERO -->
   <section class="app-hero">

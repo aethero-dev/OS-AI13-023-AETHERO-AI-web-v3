@@ -101,9 +101,28 @@ const features = [
   },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Expanze do zahraničí",
+  "serviceType": "Mezinárodní expanze e-shopu",
+  "description": "Jeden Shopify e-shop, celý svět. Pomůžeme vám s expanzí na zahraniční trhy pomocí Shopify Markets.",
+  "provider": { "@type": "Organization", "name": "AETHERO s.r.o.", "url": "https://aethero.cz" },
+  "areaServed": ["CZ", "SK", "PL", "AT", "DE"],
+  "url": "https://aethero.cz/co-umime/expanze-do-zahranici/"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "aethero", "item": "https://aethero.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Co umíme", "item": "https://aethero.cz/co-umime/" },
+    { "@type": "ListItem", "position": 3, "name": "Expanze do zahraničí" }
+  ]
+};
 ---
 
-<PageLayout title="Expanze do zahraničí" description="Jeden Shopify e-shop, celý svět. Pomůžeme vám s expanzí na zahraniční trhy pomocí Shopify Markets." lang="cs">
+<PageLayout title="Expanze do zahraničí" description="Jeden Shopify e-shop, celý svět. Pomůžeme vám s expanzí na zahraniční trhy pomocí Shopify Markets." lang="cs" jsonLd={[serviceSchema, breadcrumbSchema]}>
   <ServiceHero
     label="Mezinárodní expanze"
     title="EXPANZE <br /><span style='color:#fff'>DO ZAHRANIČÍ</span>"
