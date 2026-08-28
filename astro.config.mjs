@@ -15,4 +15,8 @@ export default defineConfig({
     locales: ['cs', 'en'],
     routing: { prefixDefaultLocale: true },
   },
+  // Dev toolbar (plovoucí ikonka vlevo dole v `astro dev`) nepoužíváme -
+  // projektová volba, platí pro každého, kdo repo spustí (ne jen lokální
+  // preference přes `astro preferences disable devToolbar`).
+  devToolbar: { enabled: false },
 });
