@@ -145,6 +145,12 @@ const t = {
   document.getElementById('ae-cookies-accept')?.addEventListener('click', () => choose('accept'));
   document.getElementById('ae-cookies-reject')?.addEventListener('click', () => choose('reject'));
 
+  // Testovací trik: ?resetcookies=1 v URL vynuluje uloženou volbu (pro opakované
+  // testování bez ručního mazání localStorage / soukromého okna).
+  if (new URLSearchParams(location.search).get('resetcookies') === '1') {
+    localStorage.removeItem(KEY);
+  }
+
   // První návštěva bez volby → ukázat lištu
   if (banner && !localStorage.getItem(KEY)) {
     banner.removeAttribute('hidden');
