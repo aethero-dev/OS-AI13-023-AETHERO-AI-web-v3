@@ -92,7 +92,7 @@ const blogPosts = await homeBlogPosts('en');
         <div class="hero-heading">
           <div class="sp-h1-typer sp-h1-typer--en"
                style="--speed:85; --back:65; --pause:900; --between:350; --restart:30000;
-                      --l1-sizer:'We are'; --l2-sizer:'Shopify'; --l3-sizer:'specialists';">
+                      --l1-sizer:'We are'; --l2-sizer:'Shopify Plus'; --l3-sizer:'specialists';">
             <style>
               .sp-h1-typer--en .l1,
               .sp-h1-typer--en .l2,
@@ -115,7 +115,7 @@ const blogPosts = await homeBlogPosts('en');
             </style>
             <h1 class="title" aria-label="We are Shopify Plus partners and e-commerce specialists">
               <span class="row">
-                <span class="sizer">We are <br>Shopify <br>specialists</span>
+                <span class="sizer">We are <br>Shopify Plus<br>specialists</span>
                 <span class="live" aria-hidden="true">
                   <span class="l1">We are</span>
                   <span class="l2">æthero</span>
@@ -1032,17 +1032,17 @@ const blogPosts = await homeBlogPosts('en');
     .ae-services-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
-    .hero-inner { display: flex; flex-direction: column; padding: 0; margin-left: 0; margin-right: 0; width: 100%; }
+    .hero-inner { display: flex; flex-direction: column; padding: 0; margin-left: 0; margin-right: 0; width: 100%; gap: 0; }
     .hero-right {
       display: block;
       position: static;
       order: -1;
       width: 100%;
-      padding-top: 70px;
+      padding-top: 50px;
       pointer-events: none;
     }
     .hero-shape { width: 100%; max-width: none; margin-right: 0; display: block; }
-    .hero-left { padding: 28px 21px 48px; }
+    .hero-left { padding: 0 21px 48px; margin-top: -17px; }
     .hero-heading { font-size: var(--fs-64); }
     .features-grid { grid-template-columns: 1fr; }
     .ae-services-grid {
@@ -1071,7 +1071,7 @@ const blogPosts = await homeBlogPosts('en');
     .blog-nav { display: none; }
   }
   @media (max-width: 480px) {
-    .hero-right { padding-top: 56px; }
+    .hero-right { padding-top: 36px; }
     .hero-left { padding-bottom: 40px; }
     /* Dynamická velikost (DK 22.8.): nadpis vyplňuje šířku plynule od malých
        mobilů (320-375) po velké (430+). 12.5vw = ~97 % změřeného maxima pro

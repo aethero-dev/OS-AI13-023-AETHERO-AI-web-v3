@@ -16,8 +16,8 @@ const en = lang === 'en';
 
 const t = {
   text: en
-    ? 'We use cookies to measure traffic and improve the site. Analytics only runs with your consent.'
-    : 'Používáme cookies k měření návštěvnosti a vylepšování webu. Analytika se spustí až po vašem souhlasu.',
+    ? 'We use cookies to measure traffic - only with your consent.'
+    : 'Cookies používáme k měření návštěvnosti - jen s vaším souhlasem.',
   more: en ? 'More info' : 'Více informací',
   accept: en ? 'Accept all' : 'Přijmout',
   // „Pouze nutné" místo „Odmítnout" - technické cookies zůstávají tak jako tak,
@@ -35,8 +35,8 @@ const t = {
       {t.text}&nbsp;<a href={t.href}>{t.more}</a>
     </p>
     <div class="ae-cookies-actions">
-      <button class="ae-cookies-btn primary" id="ae-cookies-accept" type="button">{t.accept}</button>
       <button class="ae-cookies-btn ghost" id="ae-cookies-reject" type="button">{t.reject}</button>
+      <button class="ae-cookies-btn primary" id="ae-cookies-accept" type="button">{t.accept}</button>
     </div>
   </div>
 )}
@@ -62,6 +62,7 @@ const t = {
     background: var(--ae-bg-raised);
     color: var(--neutral-100);
     border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   }
   .ae-cookies-text {
@@ -113,9 +114,17 @@ const t = {
     .ae-cookies {
       flex-direction: column;
       align-items: stretch;
-      gap: 14px;
+      gap: 6px;
       text-align: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 12px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
+    .ae-cookies-text { font-size: 12px; line-height: 1.35; }
+    .ae-cookies-btn { padding: 5px 14px; font-size: 12px; }
     .ae-cookies-actions {
       justify-content: center;
     }
@@ -136,6 +145,12 @@ const t = {
 
   document.getElementById('ae-cookies-accept')?.addEventListener('click', () => choose('accept'));
   document.getElementById('ae-cookies-reject')?.addEventListener('click', () => choose('reject'));
+
+  // Testovací trik: ?resetcookies=1 v URL vynuluje uloženou volbu (pro opakované
+  // testování bez ručního mazání localStorage / soukromého okna).
+  if (new URLSearchParams(location.search).get('resetcookies') === '1') {
+    localStorage.removeItem(KEY);
+  }
 
   // První návštěva bez volby → ukázat lištu
   if (banner && !localStorage.getItem(KEY)) {
