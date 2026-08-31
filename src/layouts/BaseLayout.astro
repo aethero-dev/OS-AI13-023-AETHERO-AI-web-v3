@@ -35,8 +35,8 @@ const canonicalUrl = `${langSiteUrl}${barePath}`;
 // null = stránka protějšek nemá (mimo jazykové větve, nebo článek bez páru)
 // a hreflang se nevykreslí; dřív mířil na neexistující URL (AE-8).
 // Absolutně cross-domain (LAUNCH.md §1): cs vždy .cz, en vždy .agency - bez prefixu.
-const altCs = strip(altPath(Astro.url.pathname, 'cs'));
-const altEn = strip(altPath(Astro.url.pathname, 'en'));
+const altCs = strip(await altPath(Astro.url.pathname, 'cs'));
+const altEn = strip(await altPath(Astro.url.pathname, 'en'));
 
 const orgSchema = {
   "@context": "https://schema.org",

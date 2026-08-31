@@ -1,7 +1,7 @@
 // Sitemapa jen pro EN větev, absolutně na aethero.agency. Zrcadlo
 // sitemap-cs.xml.ts - viz tam pro vysvětlení přístupu.
 import type { APIRoute } from 'astro';
-import { BLOG_PAIRS } from '../lib/i18n-paths';
+import { blogPairs } from '../lib/i18n-paths';
 
 export const prerender = true;
 
@@ -16,11 +16,11 @@ function toPath(filePath: string): string {
   return p.endsWith('/') ? p : `${p}/`;
 }
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
   const staticPaths = Object.keys(pageModules)
     .filter((p) => !p.includes('['))
     .map(toPath);
-  const blogPaths = BLOG_PAIRS.map((p) => `/blog/${p.en}/`);
+  const blogPaths = (await blogPairs()).map((p) => `/blog/${p.en}/`);
   const paths = [...new Set([...staticPaths, ...blogPaths])].sort();
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
