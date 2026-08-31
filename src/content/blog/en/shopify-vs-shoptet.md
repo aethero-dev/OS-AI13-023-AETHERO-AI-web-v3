@@ -25,9 +25,9 @@ You face a choice: invest in custom development, or use a ready-made solution? C
 |---|---|---|
 | Number of stores | ~4.8 million globally | ~41 thousand (CZ / SK / HU) |
 | Store revenue (2024) | USD 292 bn (globally) | ~USD 4 bn (CZ / SK / HU) |
-| Apps and add-ons | 10,000+ globally | 200–215, mainly for CZ/SK |
+| Apps and add-ons | 16,000+ globally | 200–215, mainly for CZ/SK |
 | Geography | Worldwide, 170+ countries | Mainly Czechia and Slovakia |
-| Price | from CZK 600/mo (Basic) to thousands of EUR (Plus) | from CZK 340/mo, FREE tier up to 10 products |
+| Price | from CZK 499/mo on annual billing (Basic) to thousands of EUR (Plus) | from CZK 396/mo on annual billing, FREE tier up to 10 products |
 
 Shopify is a huge global player, whereas Shoptet is clearly aimed at the Czech and Slovak market. A number of other parameters follow from that, and we'll go through them below. Shoptet's entry tariff is friendlier; Shopify is a few hundred crowns a month more expensive - but offers somewhat more out of the box and a wider base later on. The picture can even out or flip quickly, though: it depends on how many enhancements you need and what the add-ons cost. In the context of small and medium business, both are priced sensibly.
 
@@ -51,7 +51,7 @@ If you're genuinely determined to stay only in Czechia and Slovakia, and you hav
 | CZ carrier integrations | Zásilkovna, Balíkovna, PPL, DPD, Czech Post | Local carriers via apps |
 | Local payment gateways | GoPay, ComGate, ČSOB, GP WebPay, Česká spořitelna | Stripe, PayPal, Shopify Payments |
 | Localisation and legislation | Full compliance with Czech law (VAT, invoicing, accounting) | Global, adjustments left to the user |
-| Price for beginners | Free tier up to 10 products, low entry | Cheapest tariff ~CZK 560, no free tier |
+| Price for beginners | Free tier up to 10 products, low entry | Cheapest plan CZK 499 on annual billing, no free tier |
 | Accounting systems | Direct integration with Pohoda, Money S3, Abra | Integration via API, more complex |
 | Time to launch | Store live within a few hours, all in Czech | Some translations and add-ons need setting up |
 
@@ -64,7 +64,7 @@ Want to sell internationally? Need a more robust solution that gives you the bes
 |  | Shopify | Shoptet |
 |---|---|---|
 | Currencies and languages | Up to 20 languages, 130+ currencies | 9 languages, 12 currencies (Shoptet Pay) |
-| Available extensions | 10,000+ globally, strong ERP/CRM integrations | approx. 200–215, local integrations |
+| Available extensions | 16,000+ globally, strong ERP/CRM integrations | approx. 200–215, local integrations |
 | Themes | 70+ professional, modern design | 11–15, fewer variations |
 | Developer base | Hundreds of thousands of developers and agencies, global community | Tens to hundreds locally |
 | Multiple stores in one admin | Manage several regions and markets | Limited to 1 store |
