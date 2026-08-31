@@ -46,7 +46,7 @@ const cs: Record<string, ArticleExtras> = {
         q: 'Jaký je rozdíl mezi Shoptetem a Shopify?',
         a: [
           'Shoptet je česká platforma stavěná pro tuzemský trh. Má v základu české platby, dopravce i propojení na místní srovnávače.',
-          'Shopify je globální systém s více než 10 000 aplikacemi a podporou prodeje do celého světa. Lokalizaci pro ČR řešíte doplňky, zato neexistuje strop, kam může e-shop vyrůst.',
+          'Shopify je globální systém s více než 16 000 aplikacemi a podporou prodeje do celého světa. Lokalizaci pro ČR řešíte doplňky, zato neexistuje strop, kam může e-shop vyrůst.',
         ],
       },
       {
@@ -59,7 +59,7 @@ const cs: Record<string, ArticleExtras> = {
       {
         q: 'Kolik stojí e-shop na Shopify v porovnání se Shoptetem?',
         a: [
-          'Základní tarif Shopify začíná zhruba na 600 Kč měsíčně, Shoptet na 340 Kč a do 10 produktů je zdarma.',
+          'Základní tarif Shopify (Basic) vyjde na 499 Kč měsíčně při roční platbě, Shoptet Basic na 396 Kč. Do 10 produktů má Shoptet variantu zdarma. Ceny jsou bez DPH a platí k srpnu 2026.',
           'Rozhodují ale celkové náklady. U obou platforem počítejte s cenou aplikací a úprav, které rozdíl v základním tarifu snadno otočí.',
         ],
       },
@@ -219,7 +219,7 @@ const en: Record<string, ArticleExtras> = {
         q: 'What is the difference between Shoptet and Shopify?',
         a: [
           'Shoptet is a Czech platform built for the local market. Czech payments, carriers and local price-comparison feeds are there by default.',
-          'Shopify is a global system with more than 10,000 apps and support for selling worldwide. Czech localisation is handled through add-ons, but there is no ceiling on how far the store can grow.',
+          'Shopify is a global system with more than 16,000 apps and support for selling worldwide. Czech localisation is handled through add-ons, but there is no ceiling on how far the store can grow.',
         ],
       },
       {
@@ -232,7 +232,7 @@ const en: Record<string, ArticleExtras> = {
       {
         q: 'How much does Shopify cost compared to Shoptet?',
         a: [
-          'The entry Shopify plan starts at roughly 600 CZK per month, Shoptet at 340 CZK, and Shoptet is free up to 10 products.',
+          'The entry Shopify plan (Basic) costs CZK 499 per month on annual billing, Shoptet Basic CZK 396. Shoptet is free up to 10 products. Prices exclude VAT and are valid as of August 2026.',
           'What decides is the total cost. On both platforms count on apps and customisation, which easily reverse the difference in the base plan.',
         ],
       },

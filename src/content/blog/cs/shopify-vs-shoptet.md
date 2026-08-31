@@ -25,9 +25,9 @@ Stojíte před volbou: investovat do vlastního vývoje na míru, nebo využít 
 |---|---|---|
 | Počet e-shopů | ~4,8 milionu globálně | ~41 tisíc (ČR / SR / HU) |
 | Tržby obchodů (2024) | 292 mld. USD (globálně) | ~4 mld. USD (CZ / SK / HU) |
-| Aplikace a doplňky | 10 000+ globálně | 200–215, primárně pro CZ/SK |
+| Aplikace a doplňky | 16 000+ globálně | 200–215, primárně pro CZ/SK |
 | Geografie | Celý svět, 170+ zemí | Hlavně ČR a Slovensko |
-| Cena | od 600 Kč/měs. (Basic), do tisíců EUR (Plus) | od 340 Kč/měs., FREE varianta do 10 produktů |
+| Cena | od 499 Kč/měs. při roční platbě (Basic), do tisíců EUR (Plus) | od 396 Kč/měs. při roční platbě, FREE varianta do 10 produktů |
 
 Shopify je obrovský globální hráč, zatímco Shoptet je jasně orientovaný na český a slovenský trh. Z toho vyplývá i řada dalších parametrů, které si rozebereme dál. Cena základního tarifu je u Shoptetu příznivější, Shopify je v řádech jednotek stokorun měsíčně dražší - zato nabízí v základu o něco víc možností a později širší základnu. Situace se ovšem může rychle vyrovnat nebo obrátit: záležet bude na počtu potřebných vylepšení a ceně dokoupených nadstaveb. V obou případech jsou ceny v kontextu malého a středního podnikání nastavené rozumně.
 
@@ -51,7 +51,7 @@ Pokud jste opravdu odhodláni zůstat jen v České republice a na Slovensku a
 | Integrace CZ dopravců | Zásilkovna, Balíkovna, PPL, DPD, Česká pošta | Lokální dopravci přes aplikace |
 | Lokální platební brány | GoPay, ComGate, ČSOB, GP WebPay, Česká spořitelna | Stripe, PayPal, Shopify Payments |
 | Lokalizace a legislativa | Plná shoda s českou legislativou (DPH, fakturace, účetní) | Globální, úpravy řeší uživatel |
-| Cena pro začátečníky | Free tarif do 10 produktů, nízké vstupy | Nejlevnější tarif ~560 Kč, bez free |
+| Cena pro začátečníky | Free tarif do 10 produktů, nízké vstupy | Nejlevnější tarif 499 Kč při roční platbě, bez free |
 | Účetní systémy | Přímá integrace s Pohodou, Money S3, Abrou | Integrace přes API, složitější |
 | Rychlost spuštění | E-shop během pár hodin, vše v češtině | Nutné nastavit některé překlady a doplňky |
 
@@ -64,7 +64,7 @@ Chcete prodávat mezinárodně? Potřebujete robustnější řešení, které m�
 |  | Shopify | Shoptet |
 |---|---|---|
 | Měny a jazyky | Až 20 jazyků, 130+ měn | 9 jazyků, 12 měn (Shoptet Pay) |
-| Dostupná rozšíření | 10 000+ globálně, silné ERP/CRM integrace | cca 200–215, lokální integrace |
+| Dostupná rozšíření | 16 000+ globálně, silné ERP/CRM integrace | cca 200–215, lokální integrace |
 | Šablony | 70+ profesionálních, moderní design | 11–15, méně variací |
 | Vývojářská báze | Statisíce vývojářů a agentur, globální komunita | Desítky až stovky lokálně |
 | Více obchodů v adminu | Správa více regionů a trhů | Omezeno na 1 obchod |
