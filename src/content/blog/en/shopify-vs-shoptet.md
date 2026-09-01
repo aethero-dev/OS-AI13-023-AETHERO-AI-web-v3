@@ -1,6 +1,6 @@
 ---
-title: "Which E-commerce Platform to Choose? Shopify vs Shoptet"
-perex: "Detailed comparison of Shopify and Shoptet for the Central European market - performance, price, ecosystem, and the future. We'll help you pick the right platform."
+title: "Shopify vs Shoptet 2026: Which Platform Fits Your Store?"
+perex: "Pricing, apps and cross-border selling in one comparison. We show when Shoptet is enough and when Shopify pays off. No marketing fluff."
 readTime: "18 min"
 date: 2025-06-01
 image: "/blog/porovnani-platforem-shoptet-vs-shopify-v6.webp"

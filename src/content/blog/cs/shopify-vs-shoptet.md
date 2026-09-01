@@ -1,6 +1,6 @@
 ---
-title: "Jakou e-commerce platformu zvolit? Shopify versus Shoptet"
-perex: "Detailní srovnání Shopify a Shoptetu pro český trh - výkon, cena, ekosystém i budoucnost. Pomůžeme vám vybrat tu správnou platformu."
+title: "Shopify vs. Shoptet 2026: srovnání pro český e-shop"
+perex: "Cena, aplikace i expanze do zahraničí v jednom srovnání. Poradíme, kdy vám stačí Shoptet a kdy se vyplatí Shopify. Bez marketingových řečí."
 readTime: "18 min"
 date: 2025-06-01
 image: "/blog/porovnani-platforem-shoptet-vs-shopify-v6.webp"
