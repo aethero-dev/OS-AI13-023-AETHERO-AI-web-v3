@@ -1,5 +1,5 @@
 ---
-title: "Translating Payment Methods in Shopify When Translate & Adapt Doesn't Help"
+title: "Translating Payment Methods in Shopify Manually"
 perex: "A practical guide to translating payment method names in Shopify outside of standard tools - no apps needed, using CSV export and import."
 readTime: "3 min"
 date: 2025-10-05

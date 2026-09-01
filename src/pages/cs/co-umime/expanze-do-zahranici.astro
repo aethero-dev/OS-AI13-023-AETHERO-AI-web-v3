@@ -4,6 +4,11 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
+// f.title jde do h3 přes set:html (kvůli vizuálnímu <br /> zalomení) i do
+// alt atributu obrázků - alt je prostý text, <br /> by do něj proteklo
+// doslovně jako "br /" (nález BP Claude 31.8., revize webu bod 5).
+const plainAlt = (html: string) => html.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
+
 // Rešerše 2026-08-04: Shopify Markets dokumentace a agenturní průvodce
 // mezinárodním prodejem. Nejčastější drahá chyba je hned první otázka.
 const faq = [
@@ -192,12 +197,12 @@ const breadcrumbSchema = {
     <section class={`feature-section${f.reverse ? ' feature-section--reverse' : ''}`}>
       <div class="container feature-inner">
         <div class="feature-text">
-          {f.logo && <img src={f.logo} alt={f.title} class="feature-logo" loading="lazy" />}
+          {f.logo && <img src={f.logo} alt={plainAlt(f.title)} class="feature-logo" loading="lazy" />}
           <h3 class="h3 feature-title" set:html={f.title}></h3>
           <div class="feature-desc" set:html={f.desc}></div>
         </div>
         <div class="feature-img-wrap">
-          {f.img && <img src={f.img} alt={f.title} class="feature-img" loading="lazy" />}
+          {f.img && <img src={f.img} alt={plainAlt(f.title)} class="feature-img" loading="lazy" />}
         </div>
       </div>
     </section>

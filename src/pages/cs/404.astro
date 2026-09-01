@@ -1,14 +1,10 @@
 ---
-// 404 - poslední bilingvní záchrana pro cesty MIMO /cs/ a /en/ (root,
-// design-system apod.). Běžný provoz dostane lokalizovanou verzi -
-// src/pages/cs/404.astro nebo src/pages/en/404.astro - Cloudflare
-// "404-page" (wrangler.jsonc) hledá 404.html od rewritnuté cesty nahoru,
-// takže /cs/cokoli i /en/cokoli najde tu svou dřív, než dojde sem.
-// Vzniklo: AI13009 06-UDRZBA bod 1 (soft-404 nález NALEZY-05/1).
-// Přidány lokalizované varianty: nález BP Claude 31.8. (revize webu, P2.4) -
-// dřív byl worker na Workers (ne Pages) schopný jazyk určit pro každou jinou
-// stránku, jen 404 zůstala bilingvní ze staré Pages éry.
-import PageLayout from '../layouts/PageLayout.astro';
+// 404 lokalizovaná pro CS - Cloudflare "404-page" not_found_handling
+// (wrangler.jsonc) hledá 404.html od rewritnuté cesty nahoru, takže
+// /cs/cokoli dostane tuhle a /en/cokoli tu z src/pages/en/404.astro.
+// Kořenová src/pages/404.astro zůstává jako poslední bilingvní záchrana.
+// Vzniklo: nález BP Claude 31.8. (revize webu, bod P2.4).
+import PageLayout from '../../layouts/PageLayout.astro';
 ---
 
 <PageLayout
@@ -21,10 +17,8 @@ import PageLayout from '../layouts/PageLayout.astro';
       <p class="nf-code" aria-hidden="true">404</p>
       <h1 class="h2">Stránka nenalezena</h1>
       <p class="nf-sub">Tahle adresa neexistuje, nebo se přestěhovala jinam.</p>
-      <p class="nf-sub nf-en">Page not found - it may have been moved.</p>
       <div class="nf-actions">
         <a href="/" class="btn-action">Zpět na úvod</a>
-        <a href="/" class="btn-ghost btn-ghost--lower">Home (EN)</a>
       </div>
       <p class="nf-links">
         Hledáte něco konkrétního?
@@ -57,11 +51,6 @@ import PageLayout from '../layouts/PageLayout.astro';
     font-size: var(--fs-20);
     margin: 0 auto;
     max-width: 600px;
-  }
-  .nf-en {
-    color: var(--neutral-500);
-    font-size: var(--text-body);
-    margin-top: 4px;
   }
   .nf-actions {
     display: flex;
