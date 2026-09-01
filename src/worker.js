@@ -79,8 +79,24 @@ export default {
     const own = `/${lang}`;                        // /cs nebo /en
     const other = lang === 'cs' ? '/en' : '/cs';
 
-    // Cizí jazykový prefix na téhle doméně -> 301 na druhou doménu, bez prefixu
+    // Cizí jazykový prefix na téhle doméně -> 301 na druhou doménu, bez prefixu.
+    // Napřed necháme _redirects (assets vrstva) přeložit případně i slug (staré
+    // ploché EN cesty typu /en/co-umime -> /what-we-do/) - jinak vznikne
+    // dvojitý hop: nejdřív sem strippnutý prefix, pak na druhé doméně teprve
+    // slug (nález BP Claude 31.8., bod P3.8). ASSETS.fetch je řídí samo -
+    // stejná vrstva, co dělá "own prefix" redirect níž i lokalizovanou 404.
     if (path === other || path.startsWith(other + '/')) {
+      const probe = await env.ASSETS.fetch(new Request(new URL(path, url).toString(), request));
+      if ([301, 302, 307, 308].includes(probe.status)) {
+        const loc = probe.headers.get('Location');
+        if (loc) {
+          const target = new URL(loc, url);
+          const restTranslated = /^\/(cs|en)(\/|$)/.test(target.pathname)
+            ? target.pathname.replace(/^\/(cs|en)/, '') || '/'
+            : target.pathname;
+          return Response.redirect(`https://${otherHost}${restTranslated}${target.search}`, 301);
+        }
+      }
       let rest = path.slice(other.length) || '/';
       // rovnou s lomítkem, jinak cíl přidá další 301 (audit 2026-08-22)
       if (!rest.endsWith('/') && !/\.[a-z0-9]+$/i.test(rest)) rest += '/';
@@ -116,6 +132,27 @@ export default {
     if (res.status === 404 && path !== '/') {
       const rootRes = await env.ASSETS.fetch(request);
       if (rootRes.status !== 404) return sCsp(rootRes);
+
+      // Přeložený slug jen na DRUHÉ doméně (nález BP Claude 31.8., bod P3.9):
+      // aethero.cz/what-we-do/ dávalo 404 misto 301 na .agency, opačný směr
+      // (.agency/co-umime/ -> .cz) funguje přes _redirects výš. Když cesta
+      // existuje jako reálná stránka v DRUHÉM jazyce, radši 301 než 404.
+      const otherRes = await env.ASSETS.fetch(new Request(new URL(`${other}${path}`, url).toString(), request));
+      if (otherRes.status === 200) {
+        return Response.redirect(`https://${otherHost}${path}${url.search}`, 301);
+      }
+
+      // Lokalizovaná 404 (nález BP Claude 31.8. - 404 nebyla per jazyk).
+      // Cloudflare "404-page" (wrangler.jsonc) hledá jen PLOCHÝ 404.html -
+      // to sedí na kořenovou dist/404.html (Astro root 404.astro staví
+      // vždycky plochou), ale dist/{lang}/404/index.html je adresářová
+      // (html_handling: auto-trailing-slash) a tahle heuristika ji nenajde -
+      // bez tohohle by "404-page" vždycky spadla na bilingvní kořenovou.
+      // Natáhneme si lokalizovanou stránku ručně a vrátíme s 404 statusem.
+      const localized = await env.ASSETS.fetch(new Request(new URL(`${own}/404/`, url).toString(), request));
+      if (localized.status === 200) {
+        return sCsp(new Response(localized.body, { status: 404, headers: localized.headers }));
+      }
     }
     return sCsp(res);
   },

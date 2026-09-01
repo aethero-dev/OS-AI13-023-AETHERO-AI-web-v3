@@ -1,5 +1,5 @@
 ---
-title: "AI SEO - The New Hard Reality of Search for E-shops (2026)"
+title: "AI SEO 2026: The New Reality of Search for E-shops"
 perex: "Search is fundamentally changing. If you want your e-shop to be found and profitable in the AI era, it's time to innovate fast."
 readTime: "7 min"
 date: 2026-01-15

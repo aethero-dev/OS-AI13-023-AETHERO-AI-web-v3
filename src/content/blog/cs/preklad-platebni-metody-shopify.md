@@ -1,5 +1,5 @@
 ---
-title: "Překlad platební metody v Shopify, když Translate & Adapt nepomáhá"
+title: "Překlad plateb v Shopify bez Translate & Adapt"
 perex: "Praktický návod jak přeložit platební metody v Shopify mimo standardní nástroje - bez aplikací, přímo přes export a import CSV."
 readTime: "3 min"
 date: 2025-10-05

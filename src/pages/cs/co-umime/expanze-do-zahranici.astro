@@ -4,6 +4,11 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 import ServiceHero from '../../../components/layout/ServiceHero.astro';
 import WorkSidebar from '../../../components/layout/WorkSidebar.astro';
 
+// f.title jde do h3 přes set:html (kvůli vizuálnímu <br /> zalomení) i do
+// alt atributu obrázků - alt je prostý text, <br /> by do něj proteklo
+// doslovně jako "br /" (nález BP Claude 31.8., revize webu bod 5).
+const plainAlt = (html: string) => html.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
+
 // Rešerše 2026-08-04: Shopify Markets dokumentace a agenturní průvodce
 // mezinárodním prodejem. Nejčastější drahá chyba je hned první otázka.
 const faq = [
@@ -182,7 +187,7 @@ const breadcrumbSchema = {
         <p class="body"><strong class="hl">Sidekick</strong> je AI asistent integrovaný do adminu e-shopu a výrazně vám urychlí práci v Shopify. Dokáže provádět <strong class="hl">operativní úkoly</strong> (vytvořit produkt, upravovat kolekce, analyzovat prodeje, připraví reporty), pomůže s <strong class="hl">marketingem</strong> (psaní popisků, e-mailů, SEO doporučení), umí navrhovat a aplikovat <strong class="hl">úpravy storefrontu</strong> včetně změn vzhledu nebo upravovat téma podle zadání včetně tvorby Liquid kódu. Sidekick umí vysvětlit, jak fungují nastavení v adminu, doporučit kroky pro růst e-shopu, automatizovat procesy a navrhovat best practices. Odpovědi personalizuje podle prodejů, zákazníků a specifické konfigurace vašeho obchodu.</p>
       </div>
       <div class="feature-img-wrap">
-        <img src="/sidekick.png" alt="Shopify Sidekick AI" class="feature-img" loading="lazy" />
+        <img src="/sidekick.png" width="644" height="488" alt="Shopify Sidekick AI" class="feature-img" loading="lazy" />
       </div>
     </div>
   </section>
@@ -192,12 +197,12 @@ const breadcrumbSchema = {
     <section class={`feature-section${f.reverse ? ' feature-section--reverse' : ''}`}>
       <div class="container feature-inner">
         <div class="feature-text">
-          {f.logo && <img src={f.logo} alt={f.title} class="feature-logo" loading="lazy" />}
+          {f.logo && <img src={f.logo} alt={plainAlt(f.title)} class="feature-logo" loading="lazy" />}
           <h3 class="h3 feature-title" set:html={f.title}></h3>
           <div class="feature-desc" set:html={f.desc}></div>
         </div>
         <div class="feature-img-wrap">
-          {f.img && <img src={f.img} alt={f.title} class="feature-img" loading="lazy" />}
+          {f.img && <img src={f.img} alt={plainAlt(f.title)} class="feature-img" loading="lazy" />}
         </div>
       </div>
     </section>

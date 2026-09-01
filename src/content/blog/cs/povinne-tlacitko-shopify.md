@@ -1,5 +1,5 @@
 ---
-title: "Povinné tlačítko v Shopify: nečekejte, až z toho bude problém"
+title: "Povinné tlačítko v Shopify: nečekejte na problém"
 perex: "Jak správně nastavit povinné tlačítko v Shopify a vyhnout se problémům s compliance. Legislativa vyžaduje implementaci do 19. června 2026."
 readTime: "7 min"
 date: 2026-05-01

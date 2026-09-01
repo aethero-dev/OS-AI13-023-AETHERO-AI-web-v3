@@ -1,5 +1,5 @@
 ---
-title: "Mandatory Button in Shopify: Don't Wait Until It Becomes a Problem"
+title: "Mandatory Button in Shopify: Don't Wait for a Problem"
 perex: "How to correctly set up the mandatory withdrawal button in Shopify and avoid compliance issues. Legislation requires implementation by June 19, 2026."
 readTime: "7 min"
 date: 2026-05-01

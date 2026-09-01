@@ -1,5 +1,5 @@
 ---
-title: "AI SEO - nová tvrdá realita vyhledávání pro e-shopy (2026)"
+title: "AI SEO 2026: nová realita vyhledávání pro e-shopy"
 perex: "Vyhledávání se zásadně mění. Pokud chcete mít e-shop vyhledávaný a vydělávající i v AI éře, je nejvyšší čas začít rychle inovovat."
 readTime: "7 min"
 date: 2026-01-15

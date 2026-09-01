@@ -1,0 +1,64 @@
+---
+// 404 lokalizovaná pro EN - zrcadlo src/pages/cs/404.astro, viz tam pro
+// vysvětlení. Cloudflare "404-page" not_found_handling ji najde pro
+// jakoukoli 404 cestu pod /en/.
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="404 - Page Not Found"
+  description="This page doesn't exist or has been moved."
+  lang="en"
+>
+  <section class="nf">
+    <div class="container">
+      <p class="nf-code" aria-hidden="true">404</p>
+      <h1 class="h2">Page Not Found</h1>
+      <p class="nf-sub">This page doesn't exist, or it has moved somewhere else.</p>
+      <div class="nf-actions">
+        <a href="/" class="btn-action">Back to Home</a>
+      </div>
+      <p class="nf-links">
+        Looking for something specific?
+        <a href="/what-we-do/" class="text-link">What We Do</a> ·
+        <a href="/blog/" class="text-link">Blog</a> ·
+        <a href="/contact/" class="text-link">Contact</a>
+      </p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .nf {
+    padding: 200px 0 120px; /* fixed header offset dle vzoru .cs-layout */
+    text-align: center;
+    min-height: 70vh;
+  }
+  .nf-code {
+    font-family: var(--font-primary);
+    font-size: var(--fs-160);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    color: var(--text-secondary);
+    opacity: 0.35;
+  }
+  .nf h1 { margin: 8px 0 16px; }
+  .nf-sub {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--fs-20);
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .nf-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0 48px;
+  }
+  .nf-links { color: var(--neutral-500); font-size: var(--text-body); }
+  @media (max-width: 480px) {
+    .nf { padding: 154px 0 80px; }
+  }
+</style>
