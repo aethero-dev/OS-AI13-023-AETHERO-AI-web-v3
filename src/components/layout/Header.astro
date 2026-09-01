@@ -20,7 +20,7 @@ const isActive = (href: string) => {
 };
 // Přepínač míří na DRUHOU doménu, bez prefixu. null = protějšek neexistuje.
 const otherDomain = otherLang === 'cs' ? 'https://aethero.cz' : 'https://aethero.agency';
-const otherRaw = altPath(currentPath, otherLang);     // /cs/co-umime/ nebo null
+const otherRaw = await altPath(currentPath, otherLang);  // /cs/co-umime/ nebo null
 const otherPath = otherRaw ? otherDomain + (otherRaw.replace(/^\/(cs|en)/, '') || '/') : null;
 
 const navItems = lang === 'en'
